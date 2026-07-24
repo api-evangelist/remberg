@@ -1,0 +1,334 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat inventories API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: inventories
+paths:
+  /v2/parts/{partTypeId}/inventories/storage/{storageAssetId}:
+    get:
+      description: Returns the part inventory for a specific part type and storage asset combination, identified by their internal IDs.
+      operationId: /v2/parts/{partTypeId}/inventories/storage/{storageAssetId}_get
+      parameters:
+      - name: partTypeId
+        required: true
+        in: path
+        description: The part's internal ID.
+        schema:
+          type: string
+      - name: storageAssetId
+        required: true
+        in: path
+        description: The storage asset's internal ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartInventoryCfaResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a part inventory by part ID and storage asset ID
+      tags:
+      - inventories
+      x-controller-class: PartInventoriesCfaController
+    post:
+      description: Sets the target stock level for a specific part inventory identified by the part type ID and storage asset ID.
+      operationId: /v2/parts/{partTypeId}/inventories/storage/{storageAssetId}_post
+      parameters:
+      - name: partTypeId
+        required: true
+        in: path
+        description: The part's internal ID.
+        schema:
+          type: string
+      - name: storageAssetId
+        required: true
+        in: path
+        description: The storage asset's internal ID.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartInventoriesCfaUpdateStockBodyDto'
+      responses:
+        '204':
+          description: Stock updated
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Update the stock of a part inventory by part ID and storage asset ID
+      tags:
+      - inventories
+      x-controller-class: PartInventoriesCfaController
+  /v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}:
+    get:
+      description: Returns the part inventory for a specific part type and storage asset combination, identified by their human-readable numbers. Both numbers must be URL-encoded.
+      operationId: /v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_get
+      parameters:
+      - name: partNumber
+        required: true
+        in: path
+        description: The part's number (must be URL encoded)
+        schema:
+          type: string
+      - name: storageAssetNumber
+        required: true
+        in: path
+        description: The storage asset's number (must be URL encoded)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Part retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartInventoryCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a part inventory by part number and storage asset number
+      tags:
+      - inventories
+      x-controller-class: PartInventoriesCfaController
+    post:
+      description: Sets the stock level of a part inventory identified by the part number and storage asset number. Both numbers must be URL-encoded.
+      operationId: /v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_post
+      parameters:
+      - name: partNumber
+        required: true
+        in: path
+        description: The part's number (must be URL encoded)
+        schema:
+          type: string
+      - name: storageAssetNumber
+        required: true
+        in: path
+        description: The storage asset's number (must be URL encoded)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartInventoriesCfaUpdateStockBodyDto'
+      responses:
+        '204':
+          description: Stock updated
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Update the stock of a part inventory by part number and storage asset number
+      tags:
+      - inventories
+      x-controller-class: PartInventoriesCfaController
+  /v2/parts/{partTypeId}/inventories:
+    get:
+      description: Returns a paginated list of all inventories for a specific part type, including storage location details. The part type is identified by its internal ID.
+      operationId: /v2/parts/{partTypeId}/inventories_get
+      parameters:
+      - name: partTypeId
+        required: true
+        in: path
+        description: The part's internal ID.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartInventoriesWithStorageCfaFindManyResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get all part inventories by part ID
+      tags:
+      - inventories
+      x-controller-class: PartInventoriesCfaController
+  /v2/parts/number/{partNumber}/inventories:
+    get:
+      description: Returns a paginated list of part inventories for the part identified by its part number. The part number must be URL-encoded.
+      operationId: /v2/parts/number/{partNumber}/inventories_get
+      parameters:
+      - name: partNumber
+        required: true
+        in: path
+        description: The part's number (must be URL encoded)
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartInventoriesWithStorageCfaFindManyResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get all part inventories by part number
+      tags:
+      - inventories
+      x-controller-class: PartInventoriesCfaController
+components:
+  schemas:
+    PartInventoriesWithStorageCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: The list of part inventories with storage information.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartInventoryWithStorageCfaResponseDto'
+        count:
+          type: number
+          description: The total number of part inventories found.
+      required:
+      - data
+      - count
+    PartInventoriesCfaUpdateStockBodyDto:
+      type: object
+      properties:
+        targetStock:
+          type: number
+          description: Target stock level for the part inventory.
+          example: 10
+          minimum: 0
+      required:
+      - targetStock
+    PartInventoryCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The inventory's internal ID.
+        storageAssetId:
+          type: string
+          description: The inventory's storage asset ID.
+        partTypeId:
+          type: string
+          description: The inventory's part type ID.
+        availableStock:
+          type: number
+          description: The inventory's available stock.
+        totalStock:
+          type: number
+          description: The inventory's total stock.
+        createdAt:
+          type: string
+          format: date-time
+          description: The inventory's creation date.
+      required:
+      - id
+      - storageAssetId
+      - partTypeId
+      - availableStock
+      - totalStock
+      - createdAt
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+    PartInventoryWithStorageCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The inventory's internal ID.
+        storageAsset:
+          description: The inventory's storage asset information.
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+        partTypeId:
+          type: string
+          description: The inventory's part type ID.
+        availableStock:
+          type: number
+          description: The inventory's available stock.
+        totalStock:
+          type: number
+          description: The inventory's total stock.
+        createdAt:
+          type: string
+          format: date-time
+          description: The inventory's creation date.
+      required:
+      - id
+      - storageAsset
+      - partTypeId
+      - availableStock
+      - totalStock
+      - createdAt
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

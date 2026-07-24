@@ -1,0 +1,299 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat failure-types API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: failure-types
+paths:
+  /v2/assets/failure-types:
+    get:
+      description: Returns a list of all failure types available in the tenant.
+      operationId: /v2/assets/failure-types_get
+      parameters: []
+      responses:
+        '200':
+          description: A list of failure types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomTagCfaFindAllResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get all failure types
+      tags:
+      - failure-types
+      x-controller-class: CustomTagsDynamicCfaController
+    post:
+      description: Creates a new failure type for the tenant. The request body must include a label. Returns the created failure type.
+      operationId: /v2/assets/failure-types_post
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomTagCfaCreateBodyDto'
+      responses:
+        '201':
+          description: failure type created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomTagCfaCreateResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Create a new failure type
+      tags:
+      - failure-types
+      x-controller-class: CustomTagsDynamicCfaController
+  /v2/assets/failure-types/{reference}:
+    patch:
+      description: Updates an existing failure type identified by its reference. The request body may include any updatable fields such as the label.
+      operationId: /v2/assets/failure-types/{reference}_patch
+      parameters:
+      - name: reference
+        required: true
+        in: path
+        description: The reference of the failure type to update
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomTagCfaUpdateBodyDto'
+      responses:
+        '204':
+          description: failure type updated successfully
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Update an existing failure type
+      tags:
+      - failure-types
+      x-controller-class: CustomTagsDynamicCfaController
+    delete:
+      description: Permanently deletes the failure type identified by the given reference. This action cannot be undone.
+      operationId: /v2/assets/failure-types/{reference}_delete
+      parameters:
+      - name: reference
+        required: true
+        in: path
+        description: failure type reference
+        schema:
+          type: string
+      responses:
+        '204':
+          description: failure type deleted successfully
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Delete a failure type by its reference
+      tags:
+      - failure-types
+      x-controller-class: CustomTagsDynamicCfaController
+components:
+  schemas:
+    CustomTagCfaCreateBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference identifier for the item.
+        label:
+          description: The label that the item has in each language. At least one language is required.
+          allOf:
+          - $ref: '#/components/schemas/MultiLanguageTextBodyDto'
+        description:
+          type: string
+          description: The description of the item.
+      required:
+      - reference
+      - label
+    CustomTagCfaFindAllResponseDto:
+      type: object
+      properties:
+        data:
+          description: Array of items.
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomTagCfaResponseDto'
+      required:
+      - data
+    CustomTagCfaCreateResponseDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the created item.
+      required:
+      - reference
+    MultiLanguageTextBodyDto:
+      type: object
+      properties:
+        de:
+          type: string
+          description: Label text in German (de).
+        en:
+          type: string
+          description: Label text in English (en).
+        tr:
+          type: string
+          description: Label text in Turkish (tr).
+        fr:
+          type: string
+          description: Label text in French (fr).
+        es:
+          type: string
+          description: Label text in Spanish (es).
+        it:
+          type: string
+          description: Label text in Italian (it).
+        el:
+          type: string
+          description: Label text in Greek (el).
+        th:
+          type: string
+          description: Label text in Thai (th).
+        pl:
+          type: string
+          description: Label text in Polish (pl).
+        cs:
+          type: string
+          description: Label text in Czech (cs).
+        hu:
+          type: string
+          description: Label text in Hungarian (hu).
+        ro:
+          type: string
+          description: Label text in Romanian (ro).
+        pt:
+          type: string
+          description: Label text in Portuguese (pt).
+        nl:
+          type: string
+          description: Label text in Dutch (nl).
+        sk:
+          type: string
+          description: Label text in Slovak (sk).
+        sr:
+          type: string
+          description: Label text in Serbian (sr).
+        sv:
+          type: string
+          description: Label text in Swedish (sv).
+    CustomTagCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Item internal ID.
+        label:
+          description: The label that the item has in each language.
+          allOf:
+          - $ref: '#/components/schemas/MultiLanguageTextResponseDto'
+        description:
+          type: string
+          description: The description of the item.
+        reference:
+          type: string
+          description: The reference identifier.
+        createdAt:
+          type: object
+          description: The creation timestamp.
+        updatedAt:
+          type: object
+          description: The last update timestamp.
+      required:
+      - id
+      - label
+      - reference
+      - createdAt
+    CustomTagCfaUpdateBodyDto:
+      type: object
+      properties:
+        label:
+          description: The label that the item has in each language. At least one language is required.
+          allOf:
+          - $ref: '#/components/schemas/MultiLanguageTextBodyDto'
+        description:
+          type: string
+          description: The description of the item.
+    MultiLanguageTextResponseDto:
+      type: object
+      properties:
+        de:
+          type: string
+          description: Label text in German (de).
+        en:
+          type: string
+          description: Label text in English (en).
+        tr:
+          type: string
+          description: Label text in Turkish (tr).
+        fr:
+          type: string
+          description: Label text in French (fr).
+        es:
+          type: string
+          description: Label text in Spanish (es).
+        it:
+          type: string
+          description: Label text in Italian (it).
+        el:
+          type: string
+          description: Label text in Greek (el).
+        th:
+          type: string
+          description: Label text in Thai (th).
+        pl:
+          type: string
+          description: Label text in Polish (pl).
+        cs:
+          type: string
+          description: Label text in Czech (cs).
+        hu:
+          type: string
+          description: Label text in Hungarian (hu).
+        ro:
+          type: string
+          description: Label text in Romanian (ro).
+        pt:
+          type: string
+          description: Label text in Portuguese (pt).
+        nl:
+          type: string
+          description: Label text in Dutch (nl).
+        sk:
+          type: string
+          description: Label text in Slovak (sk).
+        sr:
+          type: string
+          description: Label text in Serbian (sr).
+        sv:
+          type: string
+          description: Label text in Swedish (sv).
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

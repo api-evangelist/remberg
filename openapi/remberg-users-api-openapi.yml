@@ -1,0 +1,1510 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat users API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: users
+paths:
+  /v1/users:
+    get:
+      description: Returns a paginated list of internal users for the tenant. Supports search over name and email, status and creation/update date filters.
+      operationId: /v1/users_get
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: Allows to filter by the search phrase over firstName, lastName, email.
+        schema:
+          type: string
+      - name: status
+        required: false
+        in: query
+        description: Exact-match status filter.
+        schema:
+          type: string
+          enum:
+          - notInvited
+          - invited
+          - activated
+          - suspended
+          - permanentlyDisabled
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter users created at or after this ISO timestamp.
+        schema:
+          type: string
+      - name: createdAtTo
+        required: false
+        in: query
+        description: Filter users created at or before this ISO timestamp.
+        schema:
+          type: string
+      - name: updatedAtFrom
+        required: false
+        in: query
+        description: Filter users updated at or after this ISO timestamp.
+        schema:
+          type: string
+      - name: updatedAtTo
+        required: false
+        in: query
+        description: Filter users updated at or before this ISO timestamp.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request.(default 20 items, max 1000 items)
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersCfaFindManyResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get a list of users
+      tags:
+      - users
+      x-controller-class: UsersCfaController
+    post:
+      description: Creates a new internal user. Returns 409 if the email already belongs to an internal user, or 209 if the user was created but sending the activation invite mail failed.
+      operationId: /v1/users_post
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsersCfaCreateOneBodyDto'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersCfaCreateOneResponseDto'
+        '209':
+          description: User created but sending the activation invite mail was not successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersCfaCreateOneResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '409':
+          description: A user with this email already exists
+      security:
+      - authorization: []
+      summary: Create a new user
+      tags:
+      - users
+      x-controller-class: UsersCfaController
+  /v1/users/{id}:
+    get:
+      description: Retrieves a single internal user by its unique identifier.
+      operationId: /v1/users/{id}_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: ID of the user to retrieve
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Single user object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCfaResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a specific user by ID
+      tags:
+      - users
+      x-controller-class: UsersCfaController
+    patch:
+      description: Partially updates an internal user. Returns status 209 if the user was updated but sending the email change verification mail failed.
+      operationId: /v1/users/{id}_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: ID of the user to update
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsersCfaUpdateOneBodyDto'
+      responses:
+        '204':
+          description: User updated
+        '209':
+          description: User updated but sending email change verification mail was not successful
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: A user with this email already exists
+      security:
+      - authorization: []
+      summary: Update a user by ID
+      tags:
+      - users
+      x-controller-class: UsersCfaController
+  /v1/users/{id}/invite:
+    post:
+      description: Sends the activation invite email to a user that has not activated their account yet. Use it to invite a newly created user or to re-send an invite whose link has expired.
+      operationId: /v1/users/{id}/invite_post
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: ID of the user to invite
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Invitation email sent
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: User is already activated
+      security:
+      - authorization: []
+      summary: (Re-)send the activation invite email to a user
+      tags:
+      - users
+      x-controller-class: UsersCfaController
+components:
+  schemas:
+    UsersCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the created user.
+      required:
+      - id
+    UsersCfaCreateOneBodyDto:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The login email of the user. Must be unique per tenant.
+        role:
+          type: string
+          description: 'The role to assign: an internal default-role shorthand (adminUser, managerUser, fullUser, viewerUser) or a role id from GET /v1/users/roles.'
+        firstName:
+          type: string
+          description: The first name of the user.
+        lastName:
+          type: string
+          description: The last name of the user.
+        position:
+          type: string
+          description: The job position of the user.
+        externalReference:
+          type: string
+          description: A workspace-unique reference to this user in an external system. Must be unique per tenant.
+        lang:
+          type: string
+          enum:
+          - en-US
+          - de-DE
+          - tr-TR
+          - fr-FR
+          - es-ES
+          - it-IT
+          - el-GR
+          - th-TH
+          - pl-PL
+          - cs-CZ
+          - hu-HU
+          - ro-RO
+          - pt-PT
+          - nl-NL
+          - sk-SK
+          - sr-RS
+          - sv-SE
+          description: The selected system language.
+        sendInvitationEmail:
+          type: boolean
+          description: Send the activation invite email. Defaults to false (no email is sent).
+        groupIds:
+          description: User group ids from GET /v1/users/groups.
+          type: array
+          items:
+            type: string
+      required:
+      - email
+      - role
+      - firstName
+      - lastName
+    UsersCfaUpdateOneBodyDto:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The login email of the user. Must be unique per tenant.
+        firstName:
+          type: string
+          description: The first name of the user.
+        lastName:
+          type: string
+          description: The last name of the user.
+        position:
+          type: string
+          description: The job position of the user.
+        externalReference:
+          type: string
+          description: A workspace-unique reference to this user in an external system. Must be unique per tenant.
+        lang:
+          type: string
+          enum:
+          - en-US
+          - de-DE
+          - tr-TR
+          - fr-FR
+          - es-ES
+          - it-IT
+          - el-GR
+          - th-TH
+          - pl-PL
+          - cs-CZ
+          - hu-HU
+          - ro-RO
+          - pt-PT
+          - nl-NL
+          - sk-SK
+          - sr-RS
+          - sv-SE
+          description: The selected system language.
+        tz:
+          type: string
+          enum:
+          - Africa/Algiers
+          - Atlantic/Cape_Verde
+          - Africa/Ndjamena
+          - Africa/Abidjan
+          - Africa/Bamako
+          - Africa/Banjul
+          - Africa/Conakry
+          - Africa/Dakar
+          - Africa/Freetown
+          - Africa/Lome
+          - Africa/Nouakchott
+          - Africa/Ouagadougou
+          - Atlantic/St_Helena
+          - Africa/Cairo
+          - Africa/Accra
+          - Africa/Bissau
+          - Africa/Nairobi
+          - Africa/Addis_Ababa
+          - Africa/Asmara
+          - Africa/Dar_es_Salaam
+          - Africa/Djibouti
+          - Africa/Kampala
+          - Africa/Mogadishu
+          - Indian/Antananarivo
+          - Indian/Comoro
+          - Indian/Mayotte
+          - Africa/Monrovia
+          - Africa/Tripoli
+          - Indian/Mauritius
+          - Africa/Casablanca
+          - Africa/El_Aaiun
+          - Africa/Maputo
+          - Africa/Blantyre
+          - Africa/Bujumbura
+          - Africa/Gaborone
+          - Africa/Harare
+          - Africa/Kigali
+          - Africa/Lubumbashi
+          - Africa/Lusaka
+          - Africa/Windhoek
+          - Africa/Lagos
+          - Africa/Bangui
+          - Africa/Brazzaville
+          - Africa/Douala
+          - Africa/Kinshasa
+          - Africa/Libreville
+          - Africa/Luanda
+          - Africa/Malabo
+          - Africa/Niamey
+          - Africa/Porto-Novo
+          - Indian/Reunion
+          - Africa/Sao_Tome
+          - Indian/Mahe
+          - Africa/Johannesburg
+          - Africa/Maseru
+          - Africa/Mbabane
+          - Africa/Khartoum
+          - Africa/Juba
+          - Africa/Tunis
+          - Antarctica/Casey
+          - Antarctica/Davis
+          - Antarctica/Mawson
+          - Indian/Kerguelen
+          - Antarctica/DumontDUrville
+          - Antarctica/Syowa
+          - Antarctica/Troll
+          - Antarctica/Vostok
+          - Antarctica/Rothera
+          - Asia/Kabul
+          - Asia/Yerevan
+          - Asia/Baku
+          - Asia/Dhaka
+          - Asia/Thimphu
+          - Indian/Chagos
+          - Asia/Brunei
+          - Asia/Yangon
+          - Asia/Shanghai
+          - Asia/Urumqi
+          - Asia/Hong_Kong
+          - Asia/Taipei
+          - Asia/Macau
+          - Asia/Nicosia
+          - Asia/Famagusta
+          - Europe/Nicosia
+          - Asia/Tbilisi
+          - Asia/Dili
+          - Asia/Kolkata
+          - Asia/Jakarta
+          - Asia/Pontianak
+          - Asia/Makassar
+          - Asia/Jayapura
+          - Asia/Tehran
+          - Asia/Baghdad
+          - Asia/Jerusalem
+          - Asia/Tokyo
+          - Asia/Amman
+          - Asia/Almaty
+          - Asia/Qyzylorda
+          - Asia/Qostanay
+          - Asia/Aqtobe
+          - Asia/Aqtau
+          - Asia/Atyrau
+          - Asia/Oral
+          - Asia/Bishkek
+          - Asia/Seoul
+          - Asia/Pyongyang
+          - Asia/Beirut
+          - Asia/Kuala_Lumpur
+          - Asia/Kuching
+          - Indian/Maldives
+          - Asia/Hovd
+          - Asia/Ulaanbaatar
+          - Asia/Choibalsan
+          - Asia/Kathmandu
+          - Asia/Karachi
+          - Asia/Gaza
+          - Asia/Hebron
+          - Asia/Manila
+          - Asia/Qatar
+          - Asia/Bahrain
+          - Asia/Riyadh
+          - Asia/Aden
+          - Asia/Kuwait
+          - Asia/Singapore
+          - Asia/Colombo
+          - Asia/Damascus
+          - Asia/Dushanbe
+          - Asia/Bangkok
+          - Asia/Phnom_Penh
+          - Asia/Vientiane
+          - Asia/Ashgabat
+          - Asia/Dubai
+          - Asia/Muscat
+          - Asia/Samarkand
+          - Asia/Tashkent
+          - Asia/Ho_Chi_Minh
+          - Australia/Darwin
+          - Australia/Perth
+          - Australia/Eucla
+          - Australia/Brisbane
+          - Australia/Lindeman
+          - Australia/Adelaide
+          - Australia/Hobart
+          - Australia/Currie
+          - Australia/Melbourne
+          - Australia/Sydney
+          - Australia/Broken_Hill
+          - Australia/Lord_Howe
+          - Antarctica/Macquarie
+          - Indian/Christmas
+          - Indian/Cocos
+          - Pacific/Fiji
+          - Pacific/Gambier
+          - Pacific/Marquesas
+          - Pacific/Tahiti
+          - Pacific/Guam
+          - Pacific/Saipan
+          - Pacific/Tarawa
+          - Pacific/Enderbury
+          - Pacific/Kiritimati
+          - Pacific/Majuro
+          - Pacific/Kwajalein
+          - Pacific/Chuuk
+          - Pacific/Pohnpei
+          - Pacific/Kosrae
+          - Pacific/Nauru
+          - Pacific/Noumea
+          - Pacific/Auckland
+          - Pacific/Chatham
+          - Antarctica/McMurdo
+          - Pacific/Rarotonga
+          - Pacific/Niue
+          - Pacific/Norfolk
+          - Pacific/Palau
+          - Pacific/Port_Moresby
+          - Pacific/Bougainville
+          - Pacific/Pitcairn
+          - Pacific/Pago_Pago
+          - Pacific/Midway
+          - Pacific/Apia
+          - Pacific/Guadalcanal
+          - Pacific/Fakaofo
+          - Pacific/Tongatapu
+          - Pacific/Funafuti
+          - Pacific/Wake
+          - Pacific/Efate
+          - Pacific/Wallis
+          - Africa/Asmera
+          - Africa/Timbuktu
+          - America/Argentina/ComodRivadavia
+          - America/Atka
+          - America/Buenos_Aires
+          - America/Catamarca
+          - America/Coral_Harbour
+          - America/Cordoba
+          - America/Ensenada
+          - America/Fort_Wayne
+          - America/Indianapolis
+          - America/Jujuy
+          - America/Knox_IN
+          - America/Louisville
+          - America/Mendoza
+          - America/Montreal
+          - America/Porto_Acre
+          - America/Rosario
+          - America/Santa_Isabel
+          - America/Shiprock
+          - America/Virgin
+          - Antarctica/South_Pole
+          - Asia/Ashkhabad
+          - Asia/Calcutta
+          - Asia/Chongqing
+          - Asia/Chungking
+          - Asia/Dacca
+          - Asia/Harbin
+          - Asia/Kashgar
+          - Asia/Katmandu
+          - Asia/Macao
+          - Asia/Rangoon
+          - Asia/Saigon
+          - Asia/Tel_Aviv
+          - Asia/Thimbu
+          - Asia/Ujung_Pandang
+          - Asia/Ulan_Bator
+          - Atlantic/Faeroe
+          - Atlantic/Jan_Mayen
+          - Australia/ACT
+          - Australia/Canberra
+          - Australia/LHI
+          - Australia/NSW
+          - Australia/North
+          - Australia/Queensland
+          - Australia/South
+          - Australia/Tasmania
+          - Australia/Victoria
+          - Australia/West
+          - Australia/Yancowinna
+          - Brazil/Acre
+          - Brazil/DeNoronha
+          - Brazil/East
+          - Brazil/West
+          - Canada/Atlantic
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Mountain
+          - Canada/Newfoundland
+          - Canada/Pacific
+          - Canada/Saskatchewan
+          - Canada/Yukon
+          - Chile/Continental
+          - Chile/EasterIsland
+          - Etc/UCT
+          - Etc/UTC
+          - Europe/Belfast
+          - Europe/Tiraspol
+          - Mexico/BajaNorte
+          - Mexico/BajaSur
+          - Mexico/General
+          - Pacific/Johnston
+          - Pacific/Ponape
+          - Pacific/Samoa
+          - Pacific/Truk
+          - Pacific/Yap
+          - US/Alaska
+          - US/Aleutian
+          - US/Arizona
+          - US/Central
+          - US/East-Indiana
+          - US/Eastern
+          - US/Hawaii
+          - US/Indiana-Starke
+          - US/Michigan
+          - US/Mountain
+          - US/Pacific
+          - US/Samoa
+          - Europe/London
+          - Europe/Jersey
+          - Europe/Guernsey
+          - Europe/Isle_of_Man
+          - Europe/Dublin
+          - Europe/Tirane
+          - Europe/Andorra
+          - Europe/Vienna
+          - Europe/Minsk
+          - Europe/Brussels
+          - Europe/Sofia
+          - Europe/Prague
+          - Europe/Copenhagen
+          - Atlantic/Faroe
+          - America/Danmarkshavn
+          - America/Scoresbysund
+          - America/Godthab
+          - America/Thule
+          - Europe/Tallinn
+          - Europe/Helsinki
+          - Europe/Mariehamn
+          - Europe/Paris
+          - Europe/Berlin
+          - Europe/Busingen
+          - Europe/Gibraltar
+          - Europe/Athens
+          - Europe/Budapest
+          - Atlantic/Reykjavik
+          - Europe/Rome
+          - Europe/Vatican
+          - Europe/San_Marino
+          - Europe/Riga
+          - Europe/Vaduz
+          - Europe/Vilnius
+          - Europe/Luxembourg
+          - Europe/Malta
+          - Europe/Chisinau
+          - Europe/Monaco
+          - Europe/Amsterdam
+          - Europe/Oslo
+          - Arctic/Longyearbyen
+          - Europe/Warsaw
+          - Europe/Lisbon
+          - Atlantic/Azores
+          - Atlantic/Madeira
+          - Europe/Bucharest
+          - Europe/Kaliningrad
+          - Europe/Moscow
+          - Europe/Simferopol
+          - Europe/Astrakhan
+          - Europe/Volgograd
+          - Europe/Saratov
+          - Europe/Kirov
+          - Europe/Samara
+          - Europe/Ulyanovsk
+          - Asia/Yekaterinburg
+          - Asia/Omsk
+          - Asia/Barnaul
+          - Asia/Novosibirsk
+          - Asia/Tomsk
+          - Asia/Novokuznetsk
+          - Asia/Krasnoyarsk
+          - Asia/Irkutsk
+          - Asia/Chita
+          - Asia/Yakutsk
+          - Asia/Vladivostok
+          - Asia/Khandyga
+          - Asia/Sakhalin
+          - Asia/Magadan
+          - Asia/Srednekolymsk
+          - Asia/Ust-Nera
+          - Asia/Kamchatka
+          - Asia/Anadyr
+          - Europe/Belgrade
+          - Europe/Ljubljana
+          - Europe/Podgorica
+          - Europe/Sarajevo
+          - Europe/Skopje
+          - Europe/Zagreb
+          - Europe/Bratislava
+          - Europe/Madrid
+          - Africa/Ceuta
+          - Atlantic/Canary
+          - Europe/Stockholm
+          - Europe/Zurich
+          - Europe/Istanbul
+          - Asia/Istanbul
+          - Europe/Kiev
+          - Europe/Uzhgorod
+          - Europe/Zaporozhye
+          - America/New_York
+          - America/Chicago
+          - America/North_Dakota/Center
+          - America/North_Dakota/New_Salem
+          - America/North_Dakota/Beulah
+          - America/Denver
+          - America/Los_Angeles
+          - America/Juneau
+          - America/Sitka
+          - America/Metlakatla
+          - America/Yakutat
+          - America/Anchorage
+          - America/Nome
+          - America/Adak
+          - Pacific/Honolulu
+          - America/Phoenix
+          - America/Boise
+          - America/Indiana/Indianapolis
+          - America/Indiana/Marengo
+          - America/Indiana/Vincennes
+          - America/Indiana/Tell_City
+          - America/Indiana/Petersburg
+          - America/Indiana/Knox
+          - America/Indiana/Winamac
+          - America/Indiana/Vevay
+          - America/Kentucky/Louisville
+          - America/Kentucky/Monticello
+          - America/Detroit
+          - America/Menominee
+          - America/St_Johns
+          - America/Goose_Bay
+          - America/Halifax
+          - America/Glace_Bay
+          - America/Moncton
+          - America/Blanc-Sablon
+          - America/Toronto
+          - America/Thunder_Bay
+          - America/Nipigon
+          - America/Rainy_River
+          - America/Atikokan
+          - America/Winnipeg
+          - America/Regina
+          - America/Swift_Current
+          - America/Edmonton
+          - America/Vancouver
+          - America/Dawson_Creek
+          - America/Fort_Nelson
+          - America/Creston
+          - America/Pangnirtung
+          - America/Iqaluit
+          - America/Resolute
+          - America/Rankin_Inlet
+          - America/Cambridge_Bay
+          - America/Yellowknife
+          - America/Inuvik
+          - America/Whitehorse
+          - America/Dawson
+          - America/Cancun
+          - America/Merida
+          - America/Matamoros
+          - America/Monterrey
+          - America/Mexico_City
+          - America/Ojinaga
+          - America/Chihuahua
+          - America/Hermosillo
+          - America/Mazatlan
+          - America/Bahia_Banderas
+          - America/Tijuana
+          - America/Nassau
+          - America/Barbados
+          - America/Belize
+          - Atlantic/Bermuda
+          - America/Costa_Rica
+          - America/Havana
+          - America/Santo_Domingo
+          - America/El_Salvador
+          - America/Guatemala
+          - America/Port-au-Prince
+          - America/Tegucigalpa
+          - America/Jamaica
+          - America/Martinique
+          - America/Managua
+          - America/Panama
+          - America/Cayman
+          - America/Puerto_Rico
+          - America/Miquelon
+          - America/Grand_Turk
+          - America/Argentina/Buenos_Aires
+          - America/Argentina/Cordoba
+          - America/Argentina/Salta
+          - America/Argentina/Tucuman
+          - America/Argentina/La_Rioja
+          - America/Argentina/San_Juan
+          - America/Argentina/Jujuy
+          - America/Argentina/Catamarca
+          - America/Argentina/Mendoza
+          - America/Argentina/San_Luis
+          - America/Argentina/Rio_Gallegos
+          - America/Argentina/Ushuaia
+          - America/Aruba
+          - America/La_Paz
+          - America/Noronha
+          - America/Belem
+          - America/Santarem
+          - America/Fortaleza
+          - America/Recife
+          - America/Araguaina
+          - America/Maceio
+          - America/Bahia
+          - America/Sao_Paulo
+          - America/Campo_Grande
+          - America/Cuiaba
+          - America/Porto_Velho
+          - America/Boa_Vista
+          - America/Manaus
+          - America/Eirunepe
+          - America/Rio_Branco
+          - America/Santiago
+          - America/Punta_Arenas
+          - Pacific/Easter
+          - Antarctica/Palmer
+          - America/Bogota
+          - America/Curacao
+          - America/Lower_Princes
+          - America/Kralendijk
+          - America/Guayaquil
+          - Pacific/Galapagos
+          - Atlantic/Stanley
+          - America/Cayenne
+          - America/Guyana
+          - America/Asuncion
+          - America/Lima
+          - Atlantic/South_Georgia
+          - America/Paramaribo
+          - America/Port_of_Spain
+          - America/Anguilla
+          - America/Antigua
+          - America/Dominica
+          - America/Grenada
+          - America/Guadeloupe
+          - America/Marigot
+          - America/Montserrat
+          - America/St_Barthelemy
+          - America/St_Kitts
+          - America/St_Lucia
+          - America/St_Thomas
+          - America/St_Vincent
+          - America/Tortola
+          - America/Montevideo
+          - America/Caracas
+          description: The selected timezone.
+        role:
+          type: string
+          description: 'The role to assign: an internal default-role shorthand (adminUser, managerUser, fullUser, viewerUser) or a role id from GET /v1/users/roles.'
+        groupIds:
+          description: User group ids from GET /v1/users/groups. Replaces existing memberships.
+          type: array
+          items:
+            type: string
+    user_group_cfa_response_dto_UserGroupCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the user group.
+        name:
+          type: string
+          description: The name of the user group.
+      required:
+      - id
+      - name
+    UsersCfaFindManyResponseDto:
+      type: object
+      properties:
+        count:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCfaListItemResponseDto'
+      required:
+      - count
+      - data
+    UserCfaListItemResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the user.
+        email:
+          type: string
+          description: The login email of the user.
+        firstName:
+          type: string
+          description: The first name of the user.
+        lastName:
+          type: string
+          description: The last name of the user.
+        fullName:
+          type: string
+          description: The combined first and last name of the user.
+        externalReference:
+          type: string
+          description: A workspace-unique reference to this user in an external system.
+        status:
+          type: string
+          enum:
+          - notInvited
+          - invited
+          - activated
+          - suspended
+          - permanentlyDisabled
+          description: The activation status of the user.
+      required:
+      - id
+      - email
+    UserCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the user.
+        email:
+          type: string
+          description: The login email of the user.
+        firstName:
+          type: string
+          description: The first name of the user.
+        lastName:
+          type: string
+          description: The last name of the user.
+        fullName:
+          type: string
+          description: The combined first and last name of the user.
+        position:
+          type: string
+          description: The job position of the user.
+        externalReference:
+          type: string
+          description: A workspace-unique reference to this user in an external system.
+        lang:
+          type: string
+          enum:
+          - en-US
+          - de-DE
+          - tr-TR
+          - fr-FR
+          - es-ES
+          - it-IT
+          - el-GR
+          - th-TH
+          - pl-PL
+          - cs-CZ
+          - hu-HU
+          - ro-RO
+          - pt-PT
+          - nl-NL
+          - sk-SK
+          - sr-RS
+          - sv-SE
+          description: The selected system language.
+        tz:
+          type: string
+          enum:
+          - Africa/Algiers
+          - Atlantic/Cape_Verde
+          - Africa/Ndjamena
+          - Africa/Abidjan
+          - Africa/Bamako
+          - Africa/Banjul
+          - Africa/Conakry
+          - Africa/Dakar
+          - Africa/Freetown
+          - Africa/Lome
+          - Africa/Nouakchott
+          - Africa/Ouagadougou
+          - Atlantic/St_Helena
+          - Africa/Cairo
+          - Africa/Accra
+          - Africa/Bissau
+          - Africa/Nairobi
+          - Africa/Addis_Ababa
+          - Africa/Asmara
+          - Africa/Dar_es_Salaam
+          - Africa/Djibouti
+          - Africa/Kampala
+          - Africa/Mogadishu
+          - Indian/Antananarivo
+          - Indian/Comoro
+          - Indian/Mayotte
+          - Africa/Monrovia
+          - Africa/Tripoli
+          - Indian/Mauritius
+          - Africa/Casablanca
+          - Africa/El_Aaiun
+          - Africa/Maputo
+          - Africa/Blantyre
+          - Africa/Bujumbura
+          - Africa/Gaborone
+          - Africa/Harare
+          - Africa/Kigali
+          - Africa/Lubumbashi
+          - Africa/Lusaka
+          - Africa/Windhoek
+          - Africa/Lagos
+          - Africa/Bangui
+          - Africa/Brazzaville
+          - Africa/Douala
+          - Africa/Kinshasa
+          - Africa/Libreville
+          - Africa/Luanda
+          - Africa/Malabo
+          - Africa/Niamey
+          - Africa/Porto-Novo
+          - Indian/Reunion
+          - Africa/Sao_Tome
+          - Indian/Mahe
+          - Africa/Johannesburg
+          - Africa/Maseru
+          - Africa/Mbabane
+          - Africa/Khartoum
+          - Africa/Juba
+          - Africa/Tunis
+          - Antarctica/Casey
+          - Antarctica/Davis
+          - Antarctica/Mawson
+          - Indian/Kerguelen
+          - Antarctica/DumontDUrville
+          - Antarctica/Syowa
+          - Antarctica/Troll
+          - Antarctica/Vostok
+          - Antarctica/Rothera
+          - Asia/Kabul
+          - Asia/Yerevan
+          - Asia/Baku
+          - Asia/Dhaka
+          - Asia/Thimphu
+          - Indian/Chagos
+          - Asia/Brunei
+          - Asia/Yangon
+          - Asia/Shanghai
+          - Asia/Urumqi
+          - Asia/Hong_Kong
+          - Asia/Taipei
+          - Asia/Macau
+          - Asia/Nicosia
+          - Asia/Famagusta
+          - Europe/Nicosia
+          - Asia/Tbilisi
+          - Asia/Dili
+          - Asia/Kolkata
+          - Asia/Jakarta
+          - Asia/Pontianak
+          - Asia/Makassar
+          - Asia/Jayapura
+          - Asia/Tehran
+          - Asia/Baghdad
+          - Asia/Jerusalem
+          - Asia/Tokyo
+          - Asia/Amman
+          - Asia/Almaty
+          - Asia/Qyzylorda
+          - Asia/Qostanay
+          - Asia/Aqtobe
+          - Asia/Aqtau
+          - Asia/Atyrau
+          - Asia/Oral
+          - Asia/Bishkek
+          - Asia/Seoul
+          - Asia/Pyongyang
+          - Asia/Beirut
+          - Asia/Kuala_Lumpur
+          - Asia/Kuching
+          - Indian/Maldives
+          - Asia/Hovd
+          - Asia/Ulaanbaatar
+          - Asia/Choibalsan
+          - Asia/Kathmandu
+          - Asia/Karachi
+          - Asia/Gaza
+          - Asia/Hebron
+          - Asia/Manila
+          - Asia/Qatar
+          - Asia/Bahrain
+          - Asia/Riyadh
+          - Asia/Aden
+          - Asia/Kuwait
+          - Asia/Singapore
+          - Asia/Colombo
+          - Asia/Damascus
+          - Asia/Dushanbe
+          - Asia/Bangkok
+          - Asia/Phnom_Penh
+          - Asia/Vientiane
+          - Asia/Ashgabat
+          - Asia/Dubai
+          - Asia/Muscat
+          - Asia/Samarkand
+          - Asia/Tashkent
+          - Asia/Ho_Chi_Minh
+          - Australia/Darwin
+          - Australia/Perth
+          - Australia/Eucla
+          - Australia/Brisbane
+          - Australia/Lindeman
+          - Australia/Adelaide
+          - Australia/Hobart
+          - Australia/Currie
+          - Australia/Melbourne
+          - Australia/Sydney
+          - Australia/Broken_Hill
+          - Australia/Lord_Howe
+          - Antarctica/Macquarie
+          - Indian/Christmas
+          - Indian/Cocos
+          - Pacific/Fiji
+          - Pacific/Gambier
+          - Pacific/Marquesas
+          - Pacific/Tahiti
+          - Pacific/Guam
+          - Pacific/Saipan
+          - Pacific/Tarawa
+          - Pacific/Enderbury
+          - Pacific/Kiritimati
+          - Pacific/Majuro
+          - Pacific/Kwajalein
+          - Pacific/Chuuk
+          - Pacific/Pohnpei
+          - Pacific/Kosrae
+          - Pacific/Nauru
+          - Pacific/Noumea
+          - Pacific/Auckland
+          - Pacific/Chatham
+          - Antarctica/McMurdo
+          - Pacific/Rarotonga
+          - Pacific/Niue
+          - Pacific/Norfolk
+          - Pacific/Palau
+          - Pacific/Port_Moresby
+          - Pacific/Bougainville
+          - Pacific/Pitcairn
+          - Pacific/Pago_Pago
+          - Pacific/Midway
+          - Pacific/Apia
+          - Pacific/Guadalcanal
+          - Pacific/Fakaofo
+          - Pacific/Tongatapu
+          - Pacific/Funafuti
+          - Pacific/Wake
+          - Pacific/Efate
+          - Pacific/Wallis
+          - Africa/Asmera
+          - Africa/Timbuktu
+          - America/Argentina/ComodRivadavia
+          - America/Atka
+          - America/Buenos_Aires
+          - America/Catamarca
+          - America/Coral_Harbour
+          - America/Cordoba
+          - America/Ensenada
+          - America/Fort_Wayne
+          - America/Indianapolis
+          - America/Jujuy
+          - America/Knox_IN
+          - America/Louisville
+          - America/Mendoza
+          - America/Montreal
+          - America/Porto_Acre
+          - America/Rosario
+          - America/Santa_Isabel
+          - America/Shiprock
+          - America/Virgin
+          - Antarctica/South_Pole
+          - Asia/Ashkhabad
+          - Asia/Calcutta
+          - Asia/Chongqing
+          - Asia/Chungking
+          - Asia/Dacca
+          - Asia/Harbin
+          - Asia/Kashgar
+          - Asia/Katmandu
+          - Asia/Macao
+          - Asia/Rangoon
+          - Asia/Saigon
+          - Asia/Tel_Aviv
+          - Asia/Thimbu
+          - Asia/Ujung_Pandang
+          - Asia/Ulan_Bator
+          - Atlantic/Faeroe
+          - Atlantic/Jan_Mayen
+          - Australia/ACT
+          - Australia/Canberra
+          - Australia/LHI
+          - Australia/NSW
+          - Australia/North
+          - Australia/Queensland
+          - Australia/South
+          - Australia/Tasmania
+          - Australia/Victoria
+          - Australia/West
+          - Australia/Yancowinna
+          - Brazil/Acre
+          - Brazil/DeNoronha
+          - Brazil/East
+          - Brazil/West
+          - Canada/Atlantic
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Mountain
+          - Canada/Newfoundland
+          - Canada/Pacific
+          - Canada/Saskatchewan
+          - Canada/Yukon
+          - Chile/Continental
+          - Chile/EasterIsland
+          - Etc/UCT
+          - Etc/UTC
+          - Europe/Belfast
+          - Europe/Tiraspol
+          - Mexico/BajaNorte
+          - Mexico/BajaSur
+          - Mexico/General
+          - Pacific/Johnston
+          - Pacific/Ponape
+          - Pacific/Samoa
+          - Pacific/Truk
+          - Pacific/Yap
+          - US/Alaska
+          - US/Aleutian
+          - US/Arizona
+          - US/Central
+          - US/East-Indiana
+          - US/Eastern
+          - US/Hawaii
+          - US/Indiana-Starke
+          - US/Michigan
+          - US/Mountain
+          - US/Pacific
+          - US/Samoa
+          - Europe/London
+          - Europe/Jersey
+          - Europe/Guernsey
+          - Europe/Isle_of_Man
+          - Europe/Dublin
+          - Europe/Tirane
+          - Europe/Andorra
+          - Europe/Vienna
+          - Europe/Minsk
+          - Europe/Brussels
+          - Europe/Sofia
+          - Europe/Prague
+          - Europe/Copenhagen
+          - Atlantic/Faroe
+          - America/Danmarkshavn
+          - America/Scoresbysund
+          - America/Godthab
+          - America/Thule
+          - Europe/Tallinn
+          - Europe/Helsinki
+          - Europe/Mariehamn
+          - Europe/Paris
+          - Europe/Berlin
+          - Europe/Busingen
+          - Europe/Gibraltar
+          - Europe/Athens
+          - Europe/Budapest
+          - Atlantic/Reykjavik
+          - Europe/Rome
+          - Europe/Vatican
+          - Europe/San_Marino
+          - Europe/Riga
+          - Europe/Vaduz
+          - Europe/Vilnius
+          - Europe/Luxembourg
+          - Europe/Malta
+          - Europe/Chisinau
+          - Europe/Monaco
+          - Europe/Amsterdam
+          - Europe/Oslo
+          - Arctic/Longyearbyen
+          - Europe/Warsaw
+          - Europe/Lisbon
+          - Atlantic/Azores
+          - Atlantic/Madeira
+          - Europe/Bucharest
+          - Europe/Kaliningrad
+          - Europe/Moscow
+          - Europe/Simferopol
+          - Europe/Astrakhan
+          - Europe/Volgograd
+          - Europe/Saratov
+          - Europe/Kirov
+          - Europe/Samara
+          - Europe/Ulyanovsk
+          - Asia/Yekaterinburg
+          - Asia/Omsk
+          - Asia/Barnaul
+          - Asia/Novosibirsk
+          - Asia/Tomsk
+          - Asia/Novokuznetsk
+          - Asia/Krasnoyarsk
+          - Asia/Irkutsk
+          - Asia/Chita
+          - Asia/Yakutsk
+          - Asia/Vladivostok
+          - Asia/Khandyga
+          - Asia/Sakhalin
+          - Asia/Magadan
+          - Asia/Srednekolymsk
+          - Asia/Ust-Nera
+          - Asia/Kamchatka
+          - Asia/Anadyr
+          - Europe/Belgrade
+          - Europe/Ljubljana
+          - Europe/Podgorica
+          - Europe/Sarajevo
+          - Europe/Skopje
+          - Europe/Zagreb
+          - Europe/Bratislava
+          - Europe/Madrid
+          - Africa/Ceuta
+          - Atlantic/Canary
+          - Europe/Stockholm
+          - Europe/Zurich
+          - Europe/Istanbul
+          - Asia/Istanbul
+          - Europe/Kiev
+          - Europe/Uzhgorod
+          - Europe/Zaporozhye
+          - America/New_York
+          - America/Chicago
+          - America/North_Dakota/Center
+          - America/North_Dakota/New_Salem
+          - America/North_Dakota/Beulah
+          - America/Denver
+          - America/Los_Angeles
+          - America/Juneau
+          - America/Sitka
+          - America/Metlakatla
+          - America/Yakutat
+          - America/Anchorage
+          - America/Nome
+          - America/Adak
+          - Pacific/Honolulu
+          - America/Phoenix
+          - America/Boise
+          - America/Indiana/Indianapolis
+          - America/Indiana/Marengo
+          - America/Indiana/Vincennes
+          - America/Indiana/Tell_City
+          - America/Indiana/Petersburg
+          - America/Indiana/Knox
+          - America/Indiana/Winamac
+          - America/Indiana/Vevay
+          - America/Kentucky/Louisville
+          - America/Kentucky/Monticello
+          - America/Detroit
+          - America/Menominee
+          - America/St_Johns
+          - America/Goose_Bay
+          - America/Halifax
+          - America/Glace_Bay
+          - America/Moncton
+          - America/Blanc-Sablon
+          - America/Toronto
+          - America/Thunder_Bay
+          - America/Nipigon
+          - America/Rainy_River
+          - America/Atikokan
+          - America/Winnipeg
+          - America/Regina
+          - America/Swift_Current
+          - America/Edmonton
+          - America/Vancouver
+          - America/Dawson_Creek
+          - America/Fort_Nelson
+          - America/Creston
+          - America/Pangnirtung
+          - America/Iqaluit
+          - America/Resolute
+          - America/Rankin_Inlet
+          - America/Cambridge_Bay
+          - America/Yellowknife
+          - America/Inuvik
+          - America/Whitehorse
+          - America/Dawson
+          - America/Cancun
+          - America/Merida
+          - America/Matamoros
+          - America/Monterrey
+          - America/Mexico_City
+          - America/Ojinaga
+          - America/Chihuahua
+          - America/Hermosillo
+          - America/Mazatlan
+          - America/Bahia_Banderas
+          - America/Tijuana
+          - America/Nassau
+          - America/Barbados
+          - America/Belize
+          - Atlantic/Bermuda
+          - America/Costa_Rica
+          - America/Havana
+          - America/Santo_Domingo
+          - America/El_Salvador
+          - America/Guatemala
+          - America/Port-au-Prince
+          - America/Tegucigalpa
+          - America/Jamaica
+          - America/Martinique
+          - America/Managua
+          - America/Panama
+          - America/Cayman
+          - America/Puerto_Rico
+          - America/Miquelon
+          - America/Grand_Turk
+          - America/Argentina/Buenos_Aires
+          - America/Argentina/Cordoba
+          - America/Argentina/Salta
+          - America/Argentina/Tucuman
+          - America/Argentina/La_Rioja
+          - America/Argentina/San_Juan
+          - America/Argentina/Jujuy
+          - America/Argentina/Catamarca
+          - America/Argentina/Mendoza
+          - America/Argentina/San_Luis
+          - America/Argentina/Rio_Gallegos
+          - America/Argentina/Ushuaia
+          - America/Aruba
+          - America/La_Paz
+          - America/Noronha
+          - America/Belem
+          - America/Santarem
+          - America/Fortaleza
+          - America/Recife
+          - America/Araguaina
+          - America/Maceio
+          - America/Bahia
+          - America/Sao_Paulo
+          - America/Campo_Grande
+          - America/Cuiaba
+          - America/Porto_Velho
+          - America/Boa_Vista
+          - America/Manaus
+          - America/Eirunepe
+          - America/Rio_Branco
+          - America/Santiago
+          - America/Punta_Arenas
+          - Pacific/Easter
+          - Antarctica/Palmer
+          - America/Bogota
+          - America/Curacao
+          - America/Lower_Princes
+          - America/Kralendijk
+          - America/Guayaquil
+          - Pacific/Galapagos
+          - Atlantic/Stanley
+          - America/Cayenne
+          - America/Guyana
+          - America/Asuncion
+          - America/Lima
+          - Atlantic/South_Georgia
+          - America/Paramaribo
+          - America/Port_of_Spain
+          - America/Anguilla
+          - America/Antigua
+          - America/Dominica
+          - America/Grenada
+          - America/Guadeloupe
+          - America/Marigot
+          - America/Montserrat
+          - America/St_Barthelemy
+          - America/St_Kitts
+          - America/St_Lucia
+          - America/St_Thomas
+          - America/St_Vincent
+          - America/Tortola
+          - America/Montevideo
+          - America/Caracas
+          description: The selected timezone.
+        userRoleId:
+          type: string
+          description: The identifier of the assigned role.
+        userRoleName:
+          type: string
+          description: The name of the assigned role.
+        groups:
+          description: The assigned user groups.
+          type: array
+          items:
+            $ref: '#/components/schemas/user_group_cfa_response_dto_UserGroupCfaResponseDto'
+        status:
+          type: string
+          enum:
+          - notInvited
+          - invited
+          - activated
+          - suspended
+          - permanentlyDisabled
+          description: The activation status of the user.
+        createdAt:
+          type: string
+          description: When the user was created.
+        updatedAt:
+          type: string
+          description: When the user was last updated.
+      required:
+      - id
+      - email
+      - fullName
+      - lang
+      - tz
+      - userRoleId
+      - userRoleName
+      - groups
+      - status
+      - createdAt
+      - updatedAt
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

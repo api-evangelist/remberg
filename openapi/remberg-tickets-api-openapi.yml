@@ -1,0 +1,831 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat tickets API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: tickets
+paths:
+  /v2/tickets/categories:
+    get:
+      description: Returns the hierarchical tree of ticket categories available to the authenticated tenant. Use the result to populate category selectors when creating or updating tickets.
+      operationId: /v2/tickets/categories_get
+      parameters: []
+      responses:
+        '200':
+          description: Category tree
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCfaCategoriesResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get the available ticket categories as a tree structure
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+  /v2/tickets:
+    get:
+      description: Returns a paginated list of tickets visible to the authenticated tenant. Supports filtering and sorting via query parameters.
+      operationId: /v2/tickets_get
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request (default 20 items, max 1000 items).
+        schema:
+          type: number
+      - name: search
+        required: false
+        in: query
+        description: Search term to filter tickets by subject or other searchable fields.
+        schema:
+          type: string
+      - name: status
+        required: false
+        in: query
+        description: Filter tickets by completion status. new, open, pendingInternal, pendingExternal, solved, closed, moved.
+        schema:
+          type: string
+          enum:
+          - new
+          - open
+          - pendingInternal
+          - pendingExternal
+          - solved
+          - closed
+          - moved
+      - name: priority
+        required: false
+        in: query
+        description: Filter tickets by priority. 000_low, 010_normal, 020_high, 030_critical.
+        schema:
+          type: string
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+      - name: categoryId
+        required: false
+        in: query
+        description: Filter tickets by category internal ID. The filter uses the category hierarchy, so all tickets belonging to the specified category or any of its descendant categories will be included.
+        schema:
+          type: string
+      - name: relatedOrganizationId
+        required: false
+        in: query
+        description: Filter tickets by related organization internal ID.
+        schema:
+          type: string
+      - name: relatedAssetId
+        required: false
+        in: query
+        description: Filter tickets by related asset internal ID (needs relatedAssetTypeId).
+        schema:
+          type: string
+      - name: relatedAssetTypeId
+        required: false
+        in: query
+        description: Filter tickets by related asset type internal ID (needs relatedAssetId).
+        schema:
+          type: string
+      - name: assignedPersonId
+        required: false
+        in: query
+        description: Filter tickets by assigned person contact ID.
+        schema:
+          type: string
+      - name: updatedAtFrom
+        required: false
+        in: query
+        description: Filter tickets updated from this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: updatedAtUntil
+        required: false
+        in: query
+        description: Filter tickets updated until this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter tickets created from this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter tickets created until this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      responses:
+        '200':
+          description: List of Tickets objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsCfaFindManyResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get a list of Tickets
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+    post:
+      description: Creates a new ticket for the authenticated tenant. Returns the ID of the newly created ticket.
+      operationId: /v2/tickets_post
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketsCfaCreateOneBodyDto'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Create a new Ticket
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+  /v2/tickets/{id}/conversations:
+    get:
+      description: Returns the conversation history of the specified ticket, including inbound and outbound email messages and other communication activities.
+      operationId: /v2/tickets/{id}/conversations_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The Ticket's internal ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Resource retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCfaConversationResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a Ticket's conversations by its Ticket's internal ID
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+  /v2/tickets/{id}:
+    get:
+      description: Returns a single ticket identified by its internal ID. Optionally includes associated resources such as contacts or organizations when requested via query parameters.
+      operationId: /v2/tickets/{id}_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The Ticket's internal ID
+        schema:
+          type: string
+      - name: associations
+        required: false
+        in: query
+        description: Define which associations should be included in the response.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - assignedPerson
+            - relatedOrganizations
+            - relatedContacts
+            - relatedAssets
+      responses:
+        '200':
+          description: Resource retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a Ticket by its internal ID
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+    patch:
+      description: Partially updates an existing ticket identified by its internal ID. Only the fields provided in the request body will be modified; omitted fields remain unchanged.
+      operationId: /v2/tickets/{id}_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The internal ID of the Ticket
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketsCfaUpdateOneBodyDto'
+      responses:
+        '204':
+          description: Resource updated
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Update a Ticket by its internal ID
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+    delete:
+      description: Permanently deletes the ticket identified by its internal ID. Returns no content on success.
+      operationId: /v2/tickets/{id}_delete
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The internal ID of the Ticket
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Resource deleted
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Delete a Ticket by its internal ID
+      tags:
+      - tickets
+      x-controller-class: TicketsCfaController
+components:
+  schemas:
+    CustomPropertyValueCreateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property
+      required:
+      - reference
+      - value
+    CustomPropertyValueCfaResponseDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          type: object
+          description: The value of the custom property
+        associationValue:
+          description: The populated related object value if "customProperties" is present in "associations" query
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+      required:
+      - reference
+      - value
+    ContactInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+    TicketCfaCategoryChildResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Internal ID of the category.
+        name:
+          type: string
+          description: The name of the category.
+        children:
+          description: Recursive children of the category - same structure as first level.
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCfaCategoryChildResponseDto'
+      required:
+      - id
+      - name
+      - children
+    TicketsCfaUpdateOneBodyDto:
+      type: object
+      properties:
+        subject:
+          type: string
+          description: The Ticket's subject.
+        status:
+          type: string
+          enum:
+          - open
+          - pendingInternal
+          - pendingExternal
+          - solved
+          - closed
+          description: 'The status of the Ticket, can be one of: open, pendingInternal, pendingExternal, solved, closed.'
+        priority:
+          type: string
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+          description: 'The priority of the Ticket, can be one of: 000_low, 010_normal, 020_high, 030_critical.'
+        solution:
+          type: string
+          description: The solution of the Ticket.
+        summary:
+          type: string
+          description: The summary of the Ticket.
+        assignedPerson:
+          type: string
+          description: The assigned person (internal ID) of the Ticket.
+        relatedOrganizationIds:
+          description: The related organizations (internal IDs) of the Ticket.
+          type: array
+          items:
+            type: string
+        relatedContactIds:
+          description: The related contacts (internal IDs) of the Ticket.
+          type: array
+          items:
+            type: string
+        relatedAssetIds:
+          description: The related assets (internal IDs) of the Ticket.
+          type: array
+          items:
+            type: string
+        relatedParts:
+          description: The related Ticket2 parts with quantity.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartWithQuantityBodyDto'
+        customPropertyValues:
+          description: The custom property values of the Ticket.
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
+    TicketCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ticket's internal ID.
+        subject:
+          type: string
+          description: The ticket's subject.
+        createdAt:
+          type: object
+          description: The ticket's creation date.
+        updatedAt:
+          type: object
+          description: The ticket's last update date.
+        status:
+          type: string
+          description: The ticket's status.
+          enum:
+          - new
+          - open
+          - pendingInternal
+          - pendingExternal
+          - solved
+          - closed
+          - moved
+        ticketID:
+          type: string
+          description: The ticket's ticket ID.
+        priority:
+          type: string
+          description: The ticket's priority.
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+        assignedPersonId:
+          type: string
+          description: The ticket's assigned person ID.
+        assignedPerson:
+          description: The ticket's assigned person.
+          allOf:
+          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        summary:
+          type: string
+          description: The ticket's summary.
+        solution:
+          type: string
+          description: The ticket's solution.
+        resolutionTime:
+          type: number
+          description: The ticket's time to resolution in seconds.
+        relatedOrganizationIds:
+          description: The ticket's related organization IDs.
+          type: array
+          items:
+            type: string
+        relatedOrganizations:
+          description: The ticket's related organizations (only if relatedOrganizations is included in associations).
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+        relatedContactIds:
+          description: The ticket's related contact IDs.
+          type: array
+          items:
+            type: string
+        relatedContacts:
+          description: The ticket's related contacts (only if relatedContacts is included in associations).
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        relatedAssetIds:
+          description: The ticket's related asset IDs.
+          type: array
+          items:
+            type: string
+        relatedAssets:
+          description: The ticket's related assets (only if relatedAssets is included in associations).
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+        relatedParts:
+          default: []
+          description: The Ticket's related parts with quantity.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartWithQuantityResponseDto'
+        sourceType:
+          type: string
+          description: The ticket's source type.
+        supportEmailAddress:
+          type: string
+          description: The ticket's support email address.
+        categoryId:
+          type: string
+          description: The ticket's category internal ID.
+        customPropertyValues:
+          description: The ticket's custom properties
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCfaResponseDto'
+      required:
+      - id
+      - subject
+      - createdAt
+      - updatedAt
+      - status
+      - ticketID
+      - priority
+      - relatedOrganizationIds
+      - relatedContactIds
+      - relatedAssetIds
+      - sourceType
+      - customPropertyValues
+    TicketCfaCategoryResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Internal ID of the category.
+        name:
+          type: string
+          description: The name of the category.
+        children:
+          description: The children of the category.
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCfaCategoryChildResponseDto'
+      required:
+      - id
+      - name
+      - children
+    CustomPropertyValueUpdateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          nullable: true
+          description: The value of the custom property (pass null to remove the custom property value)
+      required:
+      - reference
+      - value
+    TicketCfaConversationResponseDto:
+      type: object
+      properties:
+        activities:
+          description: The ticket conversation activities.
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCfaConversationActivityResponseDto'
+      required:
+      - activities
+    TicketCfaCategoriesResponseDto:
+      type: object
+      properties:
+        categories:
+          description: All the available ticket categories.
+          allOf:
+          - $ref: '#/components/schemas/TicketCfaCategoryResponseDto'
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+    TicketCfaConversationActivityHeaderResponseDto:
+      type: object
+      properties:
+        to:
+          description: The to of the conversation activity.
+          type: array
+          items:
+            type: string
+        cc:
+          description: The cc of the conversation activity.
+          type: array
+          items:
+            type: string
+        bcc:
+          description: The bcc of the conversation activity.
+          type: array
+          items:
+            type: string
+        from:
+          type: string
+          description: The from of the conversation activity.
+    OrganizationInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        organizationName:
+          type: string
+        organizationNumber:
+          type: string
+      required:
+      - id
+      - organizationName
+    TicketsCfaFindManyResponseDto:
+      type: object
+      properties:
+        tickets:
+          description: The list of tickets.
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketCfaResponseDto'
+        count:
+          type: number
+          description: The total number of available tickets.
+      required:
+      - tickets
+      - count
+    PartWithQuantityResponseDto:
+      type: object
+      properties:
+        partId:
+          type: string
+        quantity:
+          type: number
+      required:
+      - partId
+      - quantity
+    TicketCfaConversationActivityResponseDto:
+      type: object
+      properties:
+        creator:
+          type: object
+          description: The creator of the conversation activity.
+        createdAt:
+          type: string
+          description: The creation date of the conversation activity.
+        kind:
+          type: string
+          description: The kind of the conversation activity.
+          enum:
+          - note
+          - inboundEmail
+          - outboundEmail
+          - portalMessage
+        plainText:
+          type: string
+          description: The plain text of the conversation activity.
+        subject:
+          type: string
+          description: The subject of the conversation activity.
+        header:
+          description: The header of the conversation activity.
+          allOf:
+          - $ref: '#/components/schemas/TicketCfaConversationActivityHeaderResponseDto'
+      required:
+      - creator
+      - createdAt
+      - kind
+      - plainText
+    TicketsCfaCreateOneBodyDto:
+      type: object
+      properties:
+        subject:
+          type: string
+          description: The Ticket's subject
+        note:
+          type: string
+          description: Initial private note
+        status:
+          type: string
+          enum:
+          - new
+          - open
+          - pendingInternal
+          - pendingExternal
+          - solved
+          - closed
+          - moved
+          default: open
+          description: 'The status of the Ticket, can be one of: new, open, pendingInternal, pendingExternal, solved, closed, moved.'
+        priority:
+          type: string
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+          default: 000_low
+          description: 'The priority of the Ticket, can be one of: 000_low, 010_normal, 020_high, 030_critical.'
+        solution:
+          type: string
+          description: The solution of the Ticket.
+        summary:
+          type: string
+          description: The summary of the Ticket.
+        assignedPerson:
+          type: string
+          description: The assigned person (internal ID) of the Ticket.
+        relatedOrganizationIds:
+          default: []
+          description: The related organizations (internal IDs) of the Ticket.
+          type: array
+          items:
+            type: string
+        relatedContactIds:
+          default: []
+          description: The related contacts (internal IDs) of the Ticket.
+          type: array
+          items:
+            type: string
+        relatedAssetIds:
+          default: []
+          description: The related assets (internal IDs) of the Ticket.
+          type: array
+          items:
+            type: string
+        relatedParts:
+          default: []
+          description: The related parts with quantity.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartWithQuantityBodyDto'
+        customPropertyValues:
+          description: The custom property values of the Ticket.
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCreateCfaBodyDto'
+      required:
+      - subject
+    PartWithQuantityBodyDto:
+      type: object
+      properties:
+        partId:
+          type: string
+        quantity:
+          type: number
+      required:
+      - partId
+      - quantity
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

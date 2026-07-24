@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat user-groups API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: user-groups
+paths:
+  /v1/users/groups:
+    get:
+      description: Returns a paginated list of user groups for the tenant behind the API key. Supports partial, case-insensitive search over the user group name.
+      operationId: /v1/users/groups_get
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: Filter user groups by name (partial, case-insensitive match).
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request.(default 20 items, max 1000 items)
+        schema:
+          type: number
+      responses:
+        '200':
+          description: List of user groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroupsCfaFindManyResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get a list of user groups
+      tags:
+      - user-groups
+      x-controller-class: UserGroupsCfaController
+components:
+  schemas:
+    UserGroupCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the user group.
+        name:
+          type: string
+          description: The name of the user group.
+        description:
+          type: string
+          description: The description of the user group.
+      required:
+      - id
+      - name
+    UserGroupsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupCfaResponseDto'
+      required:
+      - data
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

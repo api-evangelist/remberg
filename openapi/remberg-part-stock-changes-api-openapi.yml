@@ -1,0 +1,220 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat part-stock-changes API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: part-stock-changes
+paths:
+  /v2/parts/{partTypeId}/stock-changes:
+    get:
+      description: Returns a paginated list of stock changes for a specific part type, identified by its internal ID. Stock changes track inventory movements such as additions, removals, and reservations.
+      operationId: /v2/parts/{partTypeId}/stock-changes_get
+      parameters:
+      - name: partTypeId
+        required: true
+        in: path
+        description: The part's internal ID.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Zero-based page index for pagination.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Maximum number of items to return per page (capped at 1000).
+        schema:
+          type: number
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtFrom
+        required: false
+        in: query
+        description: Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtUntil
+        required: false
+        in: query
+        description: Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartStockChangesCfaFindManyResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get all part stock changes by part ID
+      tags:
+      - part-stock-changes
+      x-controller-class: PartStockChangesCfaController
+  /v2/parts/number/{partNumber}/stock-changes:
+    get:
+      description: Returns a paginated list of stock changes for a specific part type, identified by its part number. Stock changes track inventory movements such as additions, removals, and reservations.
+      operationId: /v2/parts/number/{partNumber}/stock-changes_get
+      parameters:
+      - name: partNumber
+        required: true
+        in: path
+        description: The part's number (must be URL encoded)
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Zero-based page index for pagination.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Maximum number of items to return per page (capped at 1000).
+        schema:
+          type: number
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtFrom
+        required: false
+        in: query
+        description: Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtUntil
+        required: false
+        in: query
+        description: Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartStockChangesCfaFindManyResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get all part stock changes by part number
+      tags:
+      - part-stock-changes
+      x-controller-class: PartStockChangesCfaController
+components:
+  schemas:
+    PartStockChangesCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: List of part stock changes.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartStockChangeCfaResponseDto'
+      required:
+      - data
+    PartStockChangeCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The part stock change's internal ID.
+        createdAt:
+          type: object
+          description: The creation date of the stock change.
+        updatedAt:
+          type: object
+          description: The last update date of the stock change.
+        change:
+          type: number
+          description: The change amount.
+        comment:
+          type: string
+          description: Comment for the stock change.
+        action:
+          type: string
+          description: The action type of the stock change.
+          enum:
+          - created
+          - added
+          - taken
+          - reserved
+          - reservationCanceled
+          - planned
+          - plannedCanceled
+        storageAsset:
+          description: The storage asset where the stock change occurred.
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+      required:
+      - id
+      - createdAt
+      - updatedAt
+      - change
+      - action
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

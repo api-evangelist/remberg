@@ -1,0 +1,257 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat forms API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: forms
+paths:
+  /v1/forms:
+    get:
+      description: Returns a paginated list of form instances the caller has access to. Supports filtering and sorting via query parameters.
+      operationId: /v1/forms_get
+      parameters:
+      - name: status
+        required: false
+        in: query
+        description: Fetch only forms with this status.
+        schema:
+          type: string
+          enum:
+          - inProgress
+          - finalized
+      - name: page
+        required: false
+        in: query
+        description: Define which page to fetch, using the limit property to define how many items a page will contain. (0 indexed)
+        schema:
+          default: 0
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items to include per page.
+        schema:
+          default: 20
+          type: number
+      - name: formTemplateId
+        required: false
+        in: query
+        description: Specify a form template ID to filter by.
+        schema:
+          type: string
+      - name: finalizedAtFrom
+        required: false
+        in: query
+        description: Fetch forms with a finalizedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: finalizedAtUntil
+        required: false
+        in: query
+        description: Fetch forms with a finalizedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: sortField
+        required: false
+        in: query
+        description: Specify the field used for sorting.
+        schema:
+          default: createdAt
+          type: string
+          enum:
+          - counter
+          - name
+          - dateModified
+          - finalizedAt
+          - createdAt
+      - name: sortDirection
+        required: false
+        in: query
+        description: Define the sort order of the received payload.
+        schema:
+          default: desc
+          type: string
+          enum:
+          - asc
+          - desc
+      responses:
+        '200':
+          description: List of forms
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormListCfaResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get a list of forms
+      tags:
+      - forms
+      x-controller-class: FormsCfaController
+  /v1/forms/{id}:
+    get:
+      description: Returns the details of a single form instance identified by its ID.
+      operationId: /v1/forms/{id}_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The form's ID.
+        schema:
+          format: ^[a-f]{24}$
+          type: string
+      responses:
+        '200':
+          description: Form details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormDetailsCfaResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a form by ID
+      tags:
+      - forms
+      x-controller-class: FormsCfaController
+components:
+  schemas:
+    FormDetailsCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Form ID
+        formTemplateId:
+          type: string
+          description: Form template ID
+        counter:
+          type: number
+          description: Form instance counter. In the UI, this is shown as "FM-001-000001", but here, it is returned as a regular number.
+          example: 1
+        name:
+          type: string
+          description: Form name
+        relatedWorkOrderId:
+          type: string
+          description: The internal ID of the related work order.
+        status:
+          type: string
+          enum:
+          - inProgress
+          - finalized
+          description: Form status
+        createdAt:
+          format: date-time
+          type: string
+          description: When this form was created
+        updatedAt:
+          format: date-time
+          type: string
+          description: When this form was last updated
+        finalizedAt:
+          format: date-time
+          type: string
+          description: When this form was finalized
+        data:
+          type: object
+          description: 'Contains the form data in key value pairs.
+
+            The key is always the form field ID and should always be defined.
+
+            The value format depends on the type of the field.
+
+            If the value is empty, it will be returned as "null".
+
+            '
+          example:
+            input_1: Some input value
+            input_2: null
+            company_select_1:
+              organizationName: Company GmbH
+              organizationNumber: '1234'
+      required:
+      - id
+      - formTemplateId
+      - counter
+      - name
+      - status
+      - createdAt
+      - updatedAt
+      - data
+    FormListItemCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Form ID
+        formTemplateId:
+          type: string
+          description: Form template ID
+        counter:
+          type: number
+          description: Form instance counter. In the UI, this is shown as "FM-001-000001", but here, it is returned as a regular number.
+          example: 1
+        relatedWorkOrderId:
+          type: string
+          description: The internal ID of the related work order.
+        name:
+          type: string
+          description: Form name
+        status:
+          type: string
+          enum:
+          - inProgress
+          - finalized
+          description: Form status
+        createdAt:
+          format: date-time
+          type: string
+          description: When this form was created
+        updatedAt:
+          format: date-time
+          type: string
+          description: When this form was last updated
+        finalizedAt:
+          format: date-time
+          type: string
+          description: When this form was finalized
+      required:
+      - id
+      - formTemplateId
+      - counter
+      - name
+      - status
+      - createdAt
+      - updatedAt
+    FormListCfaResponseDto:
+      type: object
+      properties:
+        data:
+          description: A list of forms along with their summary.
+          type: array
+          items:
+            $ref: '#/components/schemas/FormListItemCfaResponseDto'
+      required:
+      - data
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

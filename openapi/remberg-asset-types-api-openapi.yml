@@ -1,0 +1,277 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat asset-types API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: asset-types
+paths:
+  /v2/assets/types/{id}:
+    get:
+      description: Retrieves a single asset type by its unique internal identifier, including all configured properties.
+      operationId: /v2/assets/types/{id}_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The asset type's internal ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Asset type retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetTypeCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get an AssetType by its internal ID
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+    patch:
+      description: Partially updates an existing asset type identified by its internal ID. Only the fields provided in the request body will be modified.
+      operationId: /v2/assets/types/{id}_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The asset type's internal ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTypesCfaCreateAndUpdateOneBodyDto'
+      responses:
+        '204':
+          description: Resource updated
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Duplicate asset type label
+      security:
+      - authorization: []
+      summary: Update an AssetType by its internal ID
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+    delete:
+      description: Permanently deletes the asset type identified by the given ID. Fails with 409 if the asset type still has associated assets.
+      operationId: /v2/assets/types/{id}_delete
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The asset's internal ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Resource deleted
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '409':
+          description: Asset type has associated assets
+      security:
+      - authorization: []
+      summary: Delete an AssetType by its internal ID
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+  /v2/assets/types/label/{assetTypeLabel}:
+    get:
+      description: Retrieves a single asset type by its unique label, including all configured properties. The label must be URL-encoded.
+      operationId: /v2/assets/types/label/{assetTypeLabel}_get
+      parameters:
+      - name: assetTypeLabel
+        required: true
+        in: path
+        description: The asset type's label (must be URL encoded)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Asset type retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetTypeCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get an AssetType by its label
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+    patch:
+      description: Partially updates an existing asset type identified by its label. Only the fields provided in the request body will be modified. The label must be URL-encoded.
+      operationId: /v2/assets/types/label/{assetTypeLabel}_patch
+      parameters:
+      - name: assetTypeLabel
+        required: true
+        in: path
+        description: The asset type's label (must be URL encoded)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTypesCfaCreateAndUpdateOneBodyDto'
+      responses:
+        '204':
+          description: Resource updated
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Duplicate asset type label
+      security:
+      - authorization: []
+      summary: Update an AssetType by its label
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+    delete:
+      description: Permanently deletes the asset type identified by the given label. The label must be URL-encoded. Fails with 409 if the asset type still has associated assets.
+      operationId: /v2/assets/types/label/{assetTypeLabel}_delete
+      parameters:
+      - name: assetTypeLabel
+        required: true
+        in: path
+        description: The asset type's label (must be URL encoded)
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Resource deleted
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '409':
+          description: Asset type has associated assets
+      security:
+      - authorization: []
+      summary: Delete an AssetType by its label
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+  /v2/assets/types:
+    post:
+      description: Creates a new asset type with the given label and property definitions. Returns the ID of the newly created asset type. Fails with 409 if an asset type with the same label already exists.
+      operationId: /v2/assets/types_post
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetTypesCfaCreateAndUpdateOneBodyDto'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '409':
+          description: Duplicate asset type label
+      security:
+      - authorization: []
+      summary: Create a new AssetType
+      tags:
+      - asset-types
+      x-controller-class: AssetTypesCfaController
+components:
+  schemas:
+    AssetTypeCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The asset's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The asset's creation date
+        updatedAt:
+          type: string
+          format: date-time
+          description: The asset's date of the last update
+        label:
+          type: string
+          description: The asset type's label
+        category:
+          type: string
+          enum:
+          - area
+          - group
+          - asset
+          - component
+          - storage
+          description: The asset type's category
+      required:
+      - id
+      - createdAt
+      - updatedAt
+      - label
+      - category
+    AssetTypesCfaCreateAndUpdateOneBodyDto:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The asset type's label
+        category:
+          type: string
+          enum:
+          - area
+          - group
+          - asset
+          - component
+          - storage
+          description: The asset type's category
+      required:
+      - label
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

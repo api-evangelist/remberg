@@ -1,0 +1,882 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat work-requests API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: work-requests
+paths:
+  /v1/work-requests/erp/{externalReference}:
+    get:
+      description: Retrieves a single Work Request identified by its external reference (ERP Reference). Optionally include associated resources via query parameters.
+      operationId: /v1/work-requests/erp/{externalReference}_get
+      parameters:
+      - name: externalReference
+        required: true
+        in: path
+        description: Work Request external reference (ERP Reference). Must be URL encoded.
+        schema:
+          type: string
+      - name: associations
+        required: false
+        in: query
+        description: Define which associations should be included in the response.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - createdBy
+            - updatedBy
+            - approvedBy
+            - completedBy
+            - relatedAsset
+            - relatedWorkOrder
+            - failureTypes
+      responses:
+        '200':
+          description: Work Request retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkRequestCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a Work Request by its external reference (ERP Reference)
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+    patch:
+      description: Updates an existing Work Request identified by its external reference (ERP Reference). Only the fields provided in the request body will be modified.
+      operationId: /v1/work-requests/erp/{externalReference}_patch
+      parameters:
+      - name: externalReference
+        required: true
+        in: path
+        description: Work Request external reference (ERP Reference). Must be URL encoded.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaUpdateBodyDto'
+      responses:
+        '204':
+          description: Work Request updated by its external reference (ERP Reference)
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Update a Work Request by its external reference (ERP Reference)
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+    delete:
+      description: Permanently deletes a Work Request identified by its external reference (ERP Reference). Returns 204 on success or 404 if no matching Work Request exists.
+      operationId: /v1/work-requests/erp/{externalReference}_delete
+      parameters:
+      - name: externalReference
+        required: true
+        in: path
+        description: Work Request external reference (ERP Reference). Must be URL encoded.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Work Request deleted
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Delete a Work Request by its external reference (ERP Reference)
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+  /v1/work-requests/erp/{externalReference}/approve:
+    patch:
+      description: Approves a Work Request identified by its external reference (ERP Reference). An optional comment can be provided in the request body. Returns 204 on success.
+      operationId: /v1/work-requests/erp/{externalReference}/approve_patch
+      parameters:
+      - name: externalReference
+        required: true
+        in: path
+        description: Work Request external reference (ERP Reference). Must be URL encoded.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaApproveBodyDto'
+      responses:
+        '204':
+          description: Work Request approved
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Approve a Work Request by its external reference (ERP Reference)
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+  /v1/work-requests/erp/{externalReference}/decline:
+    patch:
+      description: Declines a Work Request identified by its external reference (ERP Reference). An optional comment can be provided in the request body. Returns 204 on success.
+      operationId: /v1/work-requests/erp/{externalReference}/decline_patch
+      parameters:
+      - name: externalReference
+        required: true
+        in: path
+        description: Work Request external reference (ERP Reference). Must be URL encoded.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaDeclineBodyDto'
+      responses:
+        '204':
+          description: Work Request declined
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Decline a Work Request by its external reference (ERP Reference)
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+  /v1/work-requests:
+    get:
+      description: Returns a paginated list of Work Requests. Use query parameters to filter, sort, and paginate results.
+      operationId: /v1/work-requests_get
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request (default 20 items, max 1000 items).
+        schema:
+          type: number
+      - name: status
+        required: false
+        in: query
+        description: Filter Work Requests by status. 000_new, 010_approved, 020_declined, 030_completed.
+        schema:
+          type: string
+          enum:
+          - 000_new
+          - 010_approved
+          - 020_declined
+          - 030_completed
+      - name: relatedAssetId
+        required: false
+        in: query
+        description: Filter Work Requests by Asset internal ID.
+        schema:
+          type: string
+      - name: assetStatus
+        required: false
+        in: query
+        description: Filter Work Requests by Asset status. new, running, warning, stopped, inactive.
+        schema:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+      - name: updatedAtFrom
+        required: false
+        in: query
+        description: Filter Work Requests updated from this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: updatedAtUntil
+        required: false
+        in: query
+        description: Filter Work Requests updated until this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter Work Requests created from this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter Work Requests created until this date.
+        schema:
+          format: date-time
+          example: '2023-12-10T10:00:00.000Z'
+          type: string
+      - name: failureTypeIds
+        required: false
+        in: query
+        description: Filter Work Requests by failure type internal IDs.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: failureTypeReferences
+        required: false
+        in: query
+        description: Filter Work Requests by failure type external references (ERP References).
+        schema:
+          type: array
+          items:
+            type: string
+      - name: externalReference
+        required: false
+        in: query
+        description: Filter Work Requests by external reference (ERP Reference).
+        schema:
+          type: string
+      - name: relatedWorkOrderId
+        required: false
+        in: query
+        description: Filter Work Requests by related Work Order internal ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Work Request objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkRequestsCfaFindManyResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get a list of Work Requests
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+    post:
+      description: Creates a new Work Request with the provided details. Supports multipart/form-data to allow file attachments alongside the request body. Returns the internal ID of the created Work Request.
+      operationId: /v1/work-requests_post
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaCreateOneMultipartBodyDto'
+      responses:
+        '201':
+          description: The created Work Request internal ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkRequestsCfaCreateOneResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Create a new Work Request
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+  /v1/work-requests/{id}:
+    get:
+      description: Retrieves a single Work Request identified by its internal ID. Optionally include associated resources via query parameters.
+      operationId: /v1/work-requests/{id}_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: Work Request internal ID.
+        schema:
+          type: string
+      - name: associations
+        required: false
+        in: query
+        description: Define which associations should be included in the response.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - createdBy
+            - updatedBy
+            - approvedBy
+            - completedBy
+            - relatedAsset
+            - relatedWorkOrder
+            - failureTypes
+      responses:
+        '200':
+          description: Work Request retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkRequestCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a Work Request by its internal ID
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+    patch:
+      description: Updates an existing Work Request identified by its internal ID. Only the fields provided in the request body will be modified.
+      operationId: /v1/work-requests/{id}_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: Work Request internal ID.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaUpdateBodyDto'
+      responses:
+        '204':
+          description: Work Request updated
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Update a Work Request by its internal ID
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+    delete:
+      description: Permanently deletes a Work Request identified by its internal ID. Returns 204 on success or 404 if no matching Work Request exists.
+      operationId: /v1/work-requests/{id}_delete
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Work Request deleted
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Delete a Work Request by its internal ID
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+  /v1/work-requests/{id}/approve:
+    patch:
+      description: Approves a Work Request identified by its internal ID. An optional comment can be provided in the request body. Returns 204 on success.
+      operationId: /v1/work-requests/{id}/approve_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: Work Request internal ID.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaApproveBodyDto'
+      responses:
+        '204':
+          description: Work Request approved
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Approve a Work Request by its internal ID
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+  /v1/work-requests/{id}/decline:
+    patch:
+      description: Declines a Work Request identified by its internal ID. An optional comment can be provided in the request body. Returns 204 on success.
+      operationId: /v1/work-requests/{id}/decline_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: Work Request internal ID.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkRequestsCfaDeclineBodyDto'
+      responses:
+        '204':
+          description: Work Request declined
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Decline a Work Request by its internal ID
+      tags:
+      - work-requests
+      x-controller-class: WorkRequestsCfaController
+components:
+  schemas:
+    WorkRequestsCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal ID of the created Work Request.
+      required:
+      - id
+    WorkRequestsCfaCreateOneMultipartBodyDto:
+      type: object
+      properties:
+        relatedAssetId:
+          type: string
+          description: Asset internal ID for which the Work Request is created.
+        assetStatus:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: Current status of the asset. Might be required via Tenant level settings.
+        description:
+          type: string
+          description: Description of the Work Request. Might be required via Tenant level settings.
+        externalReference:
+          type: string
+          description: External reference (ERP Reference) of the Work Request.
+        failureTypeIds:
+          description: Failure Type internal IDs for the Work Request. Might be required via Tenant level settings.
+          type: array
+          items:
+            type: string
+        failureTypeReferences:
+          description: Failure Type external references (ERP References) for the Work Request. Might be required via Tenant level settings.
+          type: array
+          items:
+            type: string
+        files:
+          description: Files to attach to the Work Request. Might be required via Tenant level settings.
+          type: array
+          items:
+            type: string
+            format: binary
+        requesterEmail:
+          type: string
+          description: Requester email of the Work Request.
+        requesterName:
+          type: string
+          description: Requester name of the Work Request.
+      required:
+      - relatedAssetId
+    WorkOrderInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The work orders internal ID
+        counter:
+          type: string
+          description: The work orders counter
+        subject:
+          type: string
+          description: The work orders subject
+        externalReference:
+          type: string
+          description: The work orders external reference (ERP Reference)
+      required:
+      - id
+      - counter
+      - subject
+    ContactInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+    WorkRequestsCfaUpdateBodyDto:
+      type: object
+      properties:
+        failureTypeIds:
+          description: Failure Type internal IDs.
+          type: array
+          items:
+            type: string
+        failureTypeReferences:
+          description: Failure Type references.
+          type: array
+          items:
+            type: string
+        assetStatus:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: Asset status to set.
+        description:
+          type: string
+          description: Work Request description.
+        externalReference:
+          type: string
+          description: External reference (ERP Reference) of the Work Request.
+    WorkRequestsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkRequestListItemCfaResponseDto'
+      required:
+      - data
+    WorkRequestsCfaDeclineBodyDto:
+      type: object
+      properties:
+        declineReason:
+          type: string
+          description: Decline reason when rejecting the Work Request.
+    CustomTagInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Custom tag internal ID
+        reference:
+          type: string
+          description: Custom tag external reference (ERP Reference)
+      required:
+      - id
+      - reference
+    WorkRequestCfaWorkOrderPrefillBodyDto:
+      type: object
+      properties:
+        subject:
+          type: string
+          description: Work Order subject.
+        description:
+          type: string
+          description: Work Order description.
+        priority:
+          type: string
+          description: Work Order priority.
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+          default: 000_low
+        typeId:
+          type: string
+          description: Work Order type ID.
+        performingGroupIds:
+          description: Performing group IDs.
+          type: array
+          items:
+            type: string
+      required:
+      - subject
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+    WorkRequestListItemCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Work Request internal ID.
+        counter:
+          type: string
+          description: Work Request human-readable ID, e.g. "WR-000012".
+        status:
+          type: string
+          enum:
+          - 000_new
+          - 010_approved
+          - 020_declined
+          - 030_completed
+          description: Work Request status.
+        relatedAssetId:
+          type: string
+          description: Asset internal ID.
+        assetStatus:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: Asset status when the Work Request was created.
+        description:
+          type: string
+          description: Work Request description.
+        declineReason:
+          type: string
+          description: Work Request decline reason.
+        externalReference:
+          type: string
+          description: External reference (ERP Reference) of the Work Request.
+        relatedWorkOrderId:
+          type: string
+          description: Work Order internal ID.
+        failureTypeIds:
+          description: Work Request Failure Type internal IDs.
+          type: array
+          items:
+            type: string
+        failureTypes:
+          description: Work Request Failure Types with internal ID and external reference (ERP Reference).
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomTagInfoCfaResponseDto'
+        createdAt:
+          type: string
+          format: date-time
+          description: Work Request creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Work Request last update timestamp.
+        approvedAt:
+          type: string
+          format: date-time
+          description: Work Request approval timestamp.
+        completedAt:
+          type: string
+          format: date-time
+          description: Work Request completion timestamp.
+      required:
+      - id
+      - counter
+      - status
+      - relatedAssetId
+      - createdAt
+      - updatedAt
+    WorkRequestCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Work Request internal ID.
+        counter:
+          type: string
+          description: Work Request human-readable ID, e.g. "WR-000012".
+        status:
+          type: string
+          enum:
+          - 000_new
+          - 010_approved
+          - 020_declined
+          - 030_completed
+          description: Work Request status.
+        relatedAssetId:
+          type: string
+          description: Asset internal ID.
+        assetStatus:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: Asset status when the Work Request was created.
+        description:
+          type: string
+          description: Work Request description.
+        declineReason:
+          type: string
+          description: Work Request decline reason.
+        externalReference:
+          type: string
+          description: External reference (ERP Reference) of the Work Request.
+        relatedWorkOrderId:
+          type: string
+          description: Work Order internal ID.
+        relatedWorkOrder:
+          description: Related Work Order details.
+          allOf:
+          - $ref: '#/components/schemas/WorkOrderInfoCfaResponseDto'
+        createdBy:
+          description: Contact who created the Work Request.
+          allOf:
+          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        createdAt:
+          type: string
+          format: date-time
+          description: Work Request creation timestamp.
+        updatedBy:
+          description: Contact who last updated the Work Request.
+          allOf:
+          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Work Request last update timestamp.
+        failureTypeIds:
+          description: Work Request Failure Type internal IDs.
+          type: array
+          items:
+            type: string
+        failureTypes:
+          description: Work Request Failure Types (only if failureTypes is included in associations).
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomTagInfoCfaResponseDto'
+        approvedBy:
+          description: Contact who approved the Work Request.
+          allOf:
+          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        approvedAt:
+          type: string
+          format: date-time
+          description: Work Request approval timestamp.
+        completedBy:
+          description: Contact who completed the Work Request.
+          allOf:
+          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        completedAt:
+          type: string
+          format: date-time
+          description: Work Request completion timestamp.
+        relatedAsset:
+          description: Related Asset details.
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+      required:
+      - id
+      - counter
+      - status
+      - relatedAssetId
+      - createdAt
+      - updatedAt
+    WorkRequestsCfaApproveBodyDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          description: Work Order internal ID to link instead of creating a new one when approving.
+        workOrderPrefill:
+          description: Work order prefill data for creating a new Work Order when approving. Will be ignored if "workOrderId" is present.
+          allOf:
+          - $ref: '#/components/schemas/WorkRequestCfaWorkOrderPrefillBodyDto'
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat user-roles API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: user-roles
+paths:
+  /v1/users/roles:
+    get:
+      description: Returns all user roles available in the tenant.
+      operationId: /v1/users/roles_get
+      parameters: []
+      responses:
+        '200':
+          description: List of user roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRolesCfaFindManyResponseDto'
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get a list of assignable user roles
+      tags:
+      - user-roles
+      x-controller-class: UserRolesCfaController
+components:
+  schemas:
+    UserRoleCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the role.
+        name:
+          type: string
+          description: The name of the role.
+      required:
+      - id
+      - name
+    UserRolesCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRoleCfaResponseDto'
+      required:
+      - data
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

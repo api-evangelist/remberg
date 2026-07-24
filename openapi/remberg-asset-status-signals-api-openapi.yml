@@ -1,0 +1,495 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat asset-status-signals API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: asset-status-signals
+paths:
+  /v2/assets/{id}/status-signals:
+    post:
+      description: Creates a new status signal for the asset identified by its internal ID. Status signals represent the operational state of an asset (e.g. OK, warning, or error) and can include an optional comment.
+      operationId: /v2/assets/{id}/status-signals_post
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The asset's internal ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetStatusSignalsCfaCreateOneBodyDto'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetStatusSignalsCfaCreateOneResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Create a status signal for an asset by ID
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+    get:
+      description: Returns a paginated list of status signals for the asset identified by its internal ID. Status signals indicate the operational state of the asset (e.g. OK, warning, or error).
+      operationId: /v2/assets/{id}/status-signals_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The asset's internal ID
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request. (default 20 items, max 1000 items)
+        schema:
+          type: number
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: resolvedAtFrom
+        required: false
+        in: query
+        description: Filter by resolvedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: resolvedAtUntil
+        required: false
+        in: query
+        description: Filter by resolvedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: List of asset status signals
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetStatusSignalsCfaFindManyResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get status signals for an asset by ID
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+  /v2/assets/number/{assetNumber}/status-signals:
+    post:
+      description: Creates a new status signal for the asset identified by its asset number. Status signals represent the operational state of an asset (e.g. OK, warning, or error) and can include an optional comment. Returns 409 if multiple assets share the same number.
+      operationId: /v2/assets/number/{assetNumber}/status-signals_post
+      parameters:
+      - name: assetNumber
+        required: true
+        in: path
+        description: The asset's number (must be URL encoded)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetStatusSignalsCfaCreateOneBodyDto'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetStatusSignalsCfaCreateOneResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: More than one asset with the same serial number was found
+      security:
+      - authorization: []
+      summary: Create a status signal for an asset by number
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+    get:
+      description: Returns a paginated list of status signals for the asset identified by its asset number. Status signals indicate the operational state of the asset (e.g. OK, warning, or error). Returns 409 if multiple assets share the same number.
+      operationId: /v2/assets/number/{assetNumber}/status-signals_get
+      parameters:
+      - name: assetNumber
+        required: true
+        in: path
+        description: The asset's number (must be URL encoded)
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request. (default 20 items, max 1000 items)
+        schema:
+          type: number
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: resolvedAtFrom
+        required: false
+        in: query
+        description: Filter by resolvedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: resolvedAtUntil
+        required: false
+        in: query
+        description: Filter by resolvedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: List of asset status signals
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetStatusSignalsCfaFindManyResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: More than one asset with the same serial number was found
+      security:
+      - authorization: []
+      summary: Get status signals for an asset by number
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+  /v2/assets/{id}/status-signals/resolve:
+    patch:
+      description: Resolves all active status signals for the asset identified by its internal ID. After this operation, the asset will have no unresolved status signals.
+      operationId: /v2/assets/{id}/status-signals/resolve_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The asset's internal ID
+        schema:
+          type: string
+      responses:
+        '204':
+          description: All asset status signals resolved
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Resolve all status signals for an asset by ID
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+  /v2/assets/number/{assetNumber}/status-signals/resolve:
+    patch:
+      description: Resolves all active status signals for the asset identified by its asset number. After this operation, the asset will have no unresolved status signals. Returns 409 if multiple assets share the same number.
+      operationId: /v2/assets/number/{assetNumber}/status-signals/resolve_patch
+      parameters:
+      - name: assetNumber
+        required: true
+        in: path
+        description: The asset's number (must be URL encoded)
+        schema:
+          type: string
+      responses:
+        '204':
+          description: All asset status signals resolved
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: More than one asset with the same serial number was found
+      security:
+      - authorization: []
+      summary: Resolve all status signals for an asset by number
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+  /v2/assets/status-signals:
+    get:
+      description: Returns a paginated list of all status signals across assets, including associated asset information. Use this endpoint to monitor the operational state of your entire asset fleet.
+      operationId: /v2/assets/status-signals_get
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request. (default 20 items, max 1000 items)
+        schema:
+          type: number
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: resolvedAtFrom
+        required: false
+        in: query
+        description: Filter by resolvedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: resolvedAtUntil
+        required: false
+        in: query
+        description: Filter by resolvedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: workOrderExternalReference
+        required: false
+        in: query
+        description: Filter by Work Order external reference (ERP Reference).
+        schema:
+          type: string
+      - name: workRequestReference
+        required: false
+        in: query
+        description: Filter by Work Request external reference (ERP Reference).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of asset status signals with asset information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetStatusSignalsCfaFindManyWithAssetInfoResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get all status signals with asset information
+      tags:
+      - asset-status-signals
+      x-controller-class: AssetStatusSignalsCfaController
+components:
+  schemas:
+    AssetStatusSignalsCfaCreateOneBodyDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: The status of the signal (warning, stopped, inactive)
+        comment:
+          type: string
+          description: An optional comment for the status signal
+        reportedAt:
+          type: string
+          format: date-time
+          description: Manual start timestamp (ISO 8601 UTC). Defaults to "now" when omitted.
+        resolvedAt:
+          type: string
+          format: date-time
+          description: Manual end timestamp (ISO 8601 UTC). When set, the signal is created already resolved.
+      required:
+      - status
+    AssetStatusSignalsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: Array of asset status signals
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetStatusSignalCfaResponseDto'
+      required:
+      - data
+    AssetStatusSignalCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The status signal's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The status signal's creation date
+        reportedAt:
+          type: string
+          format: date-time
+          description: The status signal's start date (when the status began)
+        resolvedAt:
+          type: string
+          format: date-time
+          description: The status signal's resolution date
+        status:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: The status of the signal
+      required:
+      - id
+      - createdAt
+      - reportedAt
+      - status
+    AssetStatusSignalsCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The internal ID of the created status signal
+      required:
+      - id
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+    AssetStatusSignalWithAssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The status signal's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The status signal's creation date
+        reportedAt:
+          type: string
+          format: date-time
+          description: The status signal's start date (when the status began)
+        resolvedAt:
+          type: string
+          format: date-time
+          description: The status signal's resolution date
+        status:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: The status of the signal
+        asset:
+          description: The asset information
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+      required:
+      - id
+      - createdAt
+      - reportedAt
+      - status
+      - asset
+    AssetStatusSignalsCfaFindManyWithAssetInfoResponseDto:
+      type: object
+      properties:
+        data:
+          description: Array of asset status signals with asset information
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetStatusSignalWithAssetInfoCfaResponseDto'
+      required:
+      - data
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization

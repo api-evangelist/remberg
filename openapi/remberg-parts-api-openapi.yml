@@ -1,0 +1,677 @@
+openapi: 3.0.0
+info:
+  title: AI ai-chat parts API
+  description: The remberg AI API description
+  version: v1
+  contact: {}
+servers:
+- url: https://api.remberg.de
+tags:
+- name: parts
+paths:
+  /v2/parts:
+    get:
+      description: Returns a paginated list of all parts. Use query parameters to filter, sort, and paginate the results.
+      operationId: /v2/parts_get
+      parameters:
+      - name: sortDirection
+        required: false
+        in: query
+        description: Sort direction.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sortField
+        required: false
+        in: query
+        description: 'Sort field (default: name)'
+        schema:
+          type: string
+          enum:
+          - name
+          - partNumber
+          - updatedAt
+          - createdAt
+      - name: page
+        required: false
+        in: query
+        description: Page number.
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Define how many items will be received in the payload per request. (default 20 items, max 1000 items)
+        schema:
+          type: number
+      - name: search
+        required: false
+        in: query
+        description: Filter by specifying a search phrase over the part's name, number or external reference.
+        schema:
+          type: string
+      - name: createdAtFrom
+        required: false
+        in: query
+        description: Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: createdAtUntil
+        required: false
+        in: query
+        description: Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtFrom
+        required: false
+        in: query
+        description: Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      - name: updatedAtUntil
+        required: false
+        in: query
+        description: Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive.
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartTypesCfaFindManyResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+      security:
+      - authorization: []
+      summary: Get all parts
+      tags:
+      - parts
+      x-controller-class: PartTypesCfaController
+    post:
+      description: Creates a new part with the provided properties. Returns the created part including its generated ID. Responds with 409 if a part with the same number already exists.
+      operationId: /v2/parts_post
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartTypesCfaCreateOneBodyDto'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartTypesCfaCreateOneResponseDto'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Duplicate part number
+      security:
+      - authorization: []
+      summary: Create a new part
+      tags:
+      - parts
+      x-controller-class: PartTypesCfaController
+  /v2/parts/{id}:
+    get:
+      description: Returns a single part identified by its internal ID. Use query parameters to control which fields are included in the response.
+      operationId: /v2/parts/{id}_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The part's internal ID.
+        schema:
+          type: string
+      - name: associations
+        required: false
+        in: query
+        description: Define which associations should be included in the response.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - manufacturerOrganization
+            - distributorOrganizations
+            - customProperties
+            - relatedAssets
+            - relatedAssetTypes
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartTypeCfaResponseDto'
+        '400':
+          description: Missing or invalid required parameter/s
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a specific part
+      tags:
+      - parts
+      x-controller-class: PartTypesCfaController
+    patch:
+      description: Partially updates a part identified by its internal ID. Only the fields provided in the request body will be modified.
+      operationId: /v2/parts/{id}_patch
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The part's internal ID.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartTypesCfaUpdateOneBodyDto'
+      responses:
+        '204':
+          description: Resource updated
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Duplicate part number
+      security:
+      - authorization: []
+      summary: Update a specific part
+      tags:
+      - parts
+      x-controller-class: PartTypesCfaController
+  /v2/parts/number/{partNumber}:
+    get:
+      description: Returns a single part identified by its part number. The part number must be URL-encoded. Use query parameters to control which fields are included in the response.
+      operationId: /v2/parts/number/{partNumber}_get
+      parameters:
+      - name: partNumber
+        required: true
+        in: path
+        description: The part's number (must be URL encoded)
+        schema:
+          type: string
+      - name: associations
+        required: false
+        in: query
+        description: Define which associations should be included in the response.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - manufacturerOrganization
+            - distributorOrganizations
+            - customProperties
+            - relatedAssets
+            - relatedAssetTypes
+      responses:
+        '200':
+          description: Part retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartTypeCfaResponseDto'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - authorization: []
+      summary: Get a Part by its number
+      tags:
+      - parts
+      x-controller-class: PartTypesCfaController
+    patch:
+      description: Partially updates an existing part identified by its unique part number. The part number must be URL-encoded. Only the fields provided in the request body will be modified.
+      operationId: /v2/parts/number/{partNumber}_patch
+      parameters:
+      - name: partNumber
+        required: true
+        in: path
+        description: The part's number (must be URL encoded)
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PartTypesCfaUpdateOneBodyDto'
+      responses:
+        '204':
+          description: Resource updated
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Duplicate part number
+      security:
+      - authorization: []
+      summary: Update a Part by its number
+      tags:
+      - parts
+      x-controller-class: PartTypesCfaController
+components:
+  schemas:
+    CustomPropertyValueCreateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property
+      required:
+      - reference
+      - value
+    CustomPropertyValueCfaResponseDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          type: object
+          description: The value of the custom property
+        associationValue:
+          description: The populated related object value if "customProperties" is present in "associations" query
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+      required:
+      - reference
+      - value
+    ContactInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+    PartTypeListItemCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The part's internal ID.
+        partNumber:
+          type: string
+          description: The part's unique number.
+        externalReference:
+          type: string
+          description: The part's external reference.
+        name:
+          type: string
+          description: The part's name.
+        description:
+          type: string
+          description: The part's description.
+        createdAt:
+          type: string
+          format: date-time
+          description: The part's creation date.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The part's date of the last update.
+        price:
+          type: number
+          description: The part's price per unit.
+        minimumStock:
+          type: number
+          description: The part's minimum stock.
+        availableStock:
+          type: number
+          description: The part's available stock.
+      required:
+      - id
+      - partNumber
+      - name
+      - createdAt
+      - updatedAt
+      - minimumStock
+      - availableStock
+    PartTypesCfaCreateOneBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The part's display name.
+        description:
+          type: string
+          description: The part's description.
+        partNumber:
+          type: string
+          description: The part's unique number.
+        externalReference:
+          type: string
+          description: The part's external reference.
+        price:
+          type: number
+          description: The part's price per unit.
+        minimumStock:
+          type: number
+          description: The part's minimum stock.
+        distributorOrganizationIds:
+          description: The internal IDs of the organizations that will be assigned as distributors to the part.
+          type: array
+          items:
+            type: string
+        distributorOrganizationNumbers:
+          description: The unique numbers of the organizations that will be assigned as distributors to the part.
+          type: array
+          items:
+            type: string
+        manufacturerOrganizationId:
+          type: string
+          description: The internal ID of the organization that will be assigned as the manufacturer to the part.
+        manufacturerOrganizationNumber:
+          type: string
+          description: The unique number of the organization that will be assigned as the manufacturer to the part.
+        relatedAssetIds:
+          description: The internal IDs of the assets that contain that part in their BOM.
+          type: array
+          items:
+            type: string
+        relatedAssetNumbers:
+          description: The unique numbers of the assets that contain that part in their BOM.
+          type: array
+          items:
+            type: string
+        relatedAssetTypeIds:
+          description: The internal IDs of the asset types that contain that part in their BOM.
+          type: array
+          items:
+            type: string
+        relatedAssetTypeLabels:
+          description: The labels of the asset types that contain that part in their BOM.
+          type: array
+          items:
+            type: string
+        customPropertyValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCreateCfaBodyDto'
+      required:
+      - name
+      - partNumber
+    PartTypesCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: The list of part items.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartTypeListItemCfaResponseDto'
+        count:
+          type: number
+          description: The total number of parts found.
+      required:
+      - data
+      - count
+    AssetTypeInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+      required:
+      - id
+      - label
+    PartTypesCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    PartTypesCfaUpdateOneBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The part's display name.
+        partNumber:
+          type: string
+          description: The part's unique number. This is a unique field.
+        description:
+          type: string
+          description: The part's description.
+        externalReference:
+          type: string
+          description: The part's external reference.
+        price:
+          type: object
+          description: The part's price per unit. (Provide null to unset value)
+        minimumStock:
+          type: number
+          description: The part's minimum stock.
+        distributorOrganizationIds:
+          description: The internal IDs of the organizations that will be assigned as distributors to the part.
+          type: array
+          items:
+            type: string
+        distributorOrganizationNumbers:
+          description: The unique numbers of the organizations that will be assigned as distributors to the part.
+          type: array
+          items:
+            type: string
+        manufacturerOrganizationId:
+          type: string
+          description: The internal ID of the organization that will be assigned as the manufacturer to the part.
+        manufacturerOrganizationNumber:
+          type: string
+          description: The unique number of the organization that will be assigned as the manufacturer to the part.
+        relatedAssetIds:
+          description: The internal IDs of the assets that contain that part in their BOM. (The values provided will replace existing relations.)
+          type: array
+          items:
+            type: string
+        relatedAssetNumbers:
+          description: The unique numbers of the assets that contain that part in their BOM. (The values provided will replace existing relations.)
+          type: array
+          items:
+            type: string
+        relatedAssetTypeIds:
+          description: The internal IDs of the asset types that contain that part in their BOM. (The values provided will replace existing relations.)
+          type: array
+          items:
+            type: string
+        relatedAssetTypeLabels:
+          description: The labels of the asset types that contain that part in their BOM. (The values provided will replace existing relations.)
+          type: array
+          items:
+            type: string
+        customPropertyValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
+    PartTypeCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The part's internal ID.
+        partNumber:
+          type: string
+          description: The part's unique number.
+        externalReference:
+          type: string
+          description: The part's external reference.
+        name:
+          type: string
+          description: The part's name.
+        description:
+          type: string
+          description: The part's description.
+        createdAt:
+          type: string
+          format: date-time
+          description: The part's creation date.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The part's date of the last update.
+        price:
+          type: number
+          description: The part's price per unit.
+        minimumStock:
+          type: number
+          description: The part's minimum stock.
+        availableStock:
+          type: number
+          description: The part's available stock.
+        distributorOrganizations:
+          description: The part's distributor organizations
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+        manufacturerOrganization:
+          description: The part's manufacturer organization
+          allOf:
+          - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+        relatedAssets:
+          description: The part's related assets
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+        relatedAssetTypes:
+          description: The part's related asset types
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetTypeInfoCfaResponseDto'
+        customPropertyValues:
+          description: The part's custom properties
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCfaResponseDto'
+      required:
+      - id
+      - partNumber
+      - name
+      - createdAt
+      - updatedAt
+      - minimumStock
+      - availableStock
+      - customPropertyValues
+    CustomPropertyValueUpdateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          nullable: true
+          description: The value of the custom property (pass null to remove the custom property value)
+      required:
+      - reference
+      - value
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+    OrganizationInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        organizationName:
+          type: string
+        organizationNumber:
+          type: string
+      required:
+      - id
+      - organizationName
+  securitySchemes:
+    authorization:
+      type: apiKey
+      in: header
+      name: authorization
