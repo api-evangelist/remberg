@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: developers.remberg.de docs + status.remberg.de
+versioning:
+  scheme: uri-path
+  current: v2
+  note: >-
+    Coexisting versions in the path — v2 (assets, parts, work-orders, tickets)
+    and v1 (files, forms, users, work-requests, procedures, ai). No dated or
+    header-based versioning.
+credentials:
+  api_key_expiry: '1 year (default) — API keys expire after one year'
+  note: API keys inherit the access rights of the signing-in user.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation/sunset policy published. Docs warn that OpenAPI
+    operationId and schema reference IDs are documentation-only and subject to
+    change without altering runtime behavior.
+sla:
+  url: null
+status_page: https://status.remberg.de
+status_page_provider: Better Stack
+deprecated_operations: []

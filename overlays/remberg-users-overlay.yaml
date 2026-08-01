@@ -1,0 +1,13 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for remberg users
+  version: 1.0.0
+extends: openapi/remberg-users-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-21'
+    x-apievangelist-provider: remberg
+    x-api-key-header: authorization
+    x-rate-limit: burst 10/1s, base 25/5s (per user, per endpoint)
+    x-status-page: https://status.remberg.de

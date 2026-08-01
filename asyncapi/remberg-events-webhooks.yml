@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.remberg.de/docs/webhooks
+spec_type: Webhooks
+note: >-
+  remberg ships webhooks (currently gated to selected customers) delivered via
+  Svix. No AsyncAPI document is published; this is the captured webhook catalog.
+  Endpoints are configured in Settings > Security > Webhooks; the full event
+  catalog is exposed on the "Event catalog" tab of the webhook management UI.
+delivery:
+  transport: HTTPS POST
+  provider: Svix
+  ack: return 2xx within 15s
+  signature:
+    headers: [svix-id, svix-timestamp, svix-signature]
+    scheme: HMAC (verify with Svix libraries; use the raw payload body)
+    secret: endpoint-specific signing secret (rotatable)
+  retries:
+    schedule: [immediate, 5s, 5min, 30min, 2h, 5h, 10h, 10h]
+    backoff: exponential
+payload:
+  fields: [id, type, timestamp, data, actorId]
+  actor_id: internal user id (user- or API-key-triggered) or empty for system events
+  example_type: asset.updated.status
+  example:
+    data:
+      assetNumber: "123-456"
+      instanceId: dcbadcbadcbadcbadcbadcba
+    id: "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+    timestamp: "2025-01-15T10:00:00.000Z"
+    type: asset.updated.status
+events:
+- type: asset.updated.status
+  description: An asset's operational status signal changed. (Documented example; the full event catalog is listed in the webhook management UI.)

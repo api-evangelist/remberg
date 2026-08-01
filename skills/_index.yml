@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: generated
+source: grounded in operationIds from openapi/*.json + conventions/errors artifacts
+skills:
+- file: remberg-manage-assets.md
+  name: Manage assets and status signals
+  api: openapi/remberg-assets-openapi.json
+  operations:
+  - '/v2/assets_get'
+  - '/v2/assets_post'
+  - '/v2/assets/{id}_patch'
+  - '/v2/assets/{id}/status-signals_post'
+  - '/v2/assets/{id}/status-signals/resolve_patch'
+- file: remberg-manage-work-orders.md
+  name: Create and track work orders
+  api: openapi/remberg-work-orders-openapi.json
+  operations:
+  - '/v2/work-orders_get'
+  - '/v2/work-orders_post'
+  - '/v2/work-orders/{id}_patch'
+  - '/v2/work-orders/{id}/checklist_post'
+  - '/v2/work-orders/{id}/stock-changes_post'
+  - '/v2/work-orders/{id}/times_get'
+- file: remberg-sync-organizations-contacts.md
+  name: Sync organizations and contacts
+  api: openapi/remberg-organizations-openapi.json
+  operations:
+  - 'OrganizationsCfaController_findMany'
+  - 'OrganizationsCfaController_createOne'
+  - 'OrganizationsCfaController_findOneByOrganizationNumber'
+  - 'OrganizationsCfaController_findManyContacts'
+  - 'ContactsCfaController_createOne'

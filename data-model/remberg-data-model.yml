@@ -1,0 +1,133 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.json schema $refs + id-reference fields + developers.remberg.de
+  object reference
+note: Assets and WorkOrders are addressable by internal id, human number, or ERP external
+  reference. Entities are tenant-scoped.
+entities:
+- Asset
+- AssetType
+- FailureType
+- StatusSignal
+- Organization
+- Contact
+- Part
+- PartInventory
+- PartStockChange
+- File
+- Folder
+- Form
+- WorkOrder
+- Ticket
+- TicketCategory
+- User
+- UserGroup
+- Role
+- WorkRequest
+- Procedure
+- ProcedureTemplate
+relationships:
+- from: Asset
+  to: AssetType
+  type: belongs_to
+  via: assetType
+- from: Asset
+  to: Asset
+  type: belongs_to
+  via: parentAsset
+- from: Asset
+  to: StatusSignal
+  type: has_many
+  via: status-signals
+- from: Asset
+  to: PartInventory
+  type: has_many
+  via: inventories
+- from: FailureType
+  to: Asset
+  type: belongs_to
+  via: asset
+- from: StatusSignal
+  to: Asset
+  type: belongs_to
+  via: assetId/assetNumber
+- from: Contact
+  to: Organization
+  type: belongs_to
+  via: organizationNumber
+- from: Organization
+  to: Contact
+  type: has_many
+  via: contacts
+- from: Contact
+  to: User
+  type: has_one
+  via: linked user account
+- from: PartInventory
+  to: Part
+  type: belongs_to
+  via: partTypeId
+- from: PartInventory
+  to: Asset
+  type: belongs_to
+  via: storageAssetId
+- from: PartStockChange
+  to: Part
+  type: belongs_to
+  via: partTypeId
+- from: PartStockChange
+  to: WorkOrder
+  type: belongs_to
+  via: workOrderId
+- from: WorkOrder
+  to: Asset
+  type: belongs_to
+  via: relatedAssetId
+- from: WorkOrder
+  to: Organization
+  type: belongs_to
+  via: relatedOrganizationId
+- from: WorkOrder
+  to: PartStockChange
+  type: has_many
+  via: stock-changes
+- from: WorkOrder
+  to: Procedure
+  type: has_many
+  via: procedures
+- from: WorkOrder
+  to: WorkOrder
+  type: belongs_to
+  via: parentWorkOrderId
+- from: Procedure
+  to: ProcedureTemplate
+  type: belongs_to
+  via: template
+- from: File
+  to: Folder
+  type: belongs_to
+  via: folderId
+- from: Ticket
+  to: TicketCategory
+  type: belongs_to
+  via: categoryId
+- from: Ticket
+  to: Asset
+  type: belongs_to
+  via: relatedAssetId
+- from: WorkRequest
+  to: WorkOrder
+  type: belongs_to
+  via: workOrderExternalReference
+- from: WorkRequest
+  to: Asset
+  type: belongs_to
+  via: relatedAssetId
+- from: User
+  to: UserGroup
+  type: belongs_to
+  via: group
+- from: User
+  to: Role
+  type: belongs_to
+  via: role

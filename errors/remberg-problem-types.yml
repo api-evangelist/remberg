@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.json 4xx/5xx responses
+format: plain
+note: remberg error responses carry no application/problem+json body in the spec;
+  the envelope observed on 429 is {"statusCode":int,"message":str}. Titles/remediation
+  enriched from the developers.remberg.de docs (rate-limiting, reference pages).
+envelope:
+  fields:
+  - statusCode
+  - message
+  example:
+    statusCode: 429
+    message: Too Many Requests
+problems:
+- status: 400
+  title: Bad Request
+  remediation: Validate the request body/query against the schema before retrying.
+  occurrences: 97
+- status: 403
+  title: Forbidden
+  remediation: Ensure the API key has the required access rights for this resource.
+  occurrences: 115
+- status: 404
+  title: Not Found
+  remediation: Verify the identifier or number; the resource may not exist in this
+    tenant.
+  occurrences: 77
+- status: 409
+  title: Conflict
+  remediation: Resolve the conflict (e.g. duplicate number, parent/child relation,
+    or multiple resources sharing the same number/reference) before retrying.
+  occurrences: 39
+- status: 429
+  title: Too Many Requests
+  remediation: Back off using the Retry-After-Base/Retry-After-Burst header; keep
+    under ~5 req/s.
+  occurrences: 1
+- status: 500
+  title: Internal Server Error
+  remediation: Transient server error; retry with exponential backoff and contact
+    support if it persists.
+  occurrences: 1

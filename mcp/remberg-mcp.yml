@@ -1,0 +1,366 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: derived from 12 remberg OpenAPI files (no official hosted MCP server found)
+server:
+  name: remberg
+  transport: http
+  note: "candidate \u2014 no official MCP server published as of 2026-07-21"
+tool_count: 115
+tools:
+- name: AiCopilotCfaController_getAnswer
+  description: Generate an AI-powered answer based on the provided context. Returns
+    the answer along with the knowledge-base sources us
+  source_operation: openapi/remberg-ai-openapi.json#AiCopilotCfaController_getAnswer
+- name: AiCopilotCfaController_provideFeedback
+  description: Submit user feedback (positive or negative) for a previously generated
+    AI answer, identified by its trace ID.
+  source_operation: openapi/remberg-ai-openapi.json#AiCopilotCfaController_provideFeedback
+- name: /v2/assets/failure-types_get
+  description: Get all failure types
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/failure-types_get
+- name: /v2/assets/failure-types_post
+  description: Create a new failure type
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/failure-types_post
+- name: /v2/assets/failure-types/{reference}_patch
+  description: Update an existing failure type
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/failure-types/{reference}_patch
+- name: /v2/assets/failure-types/{reference}_delete
+  description: Delete a failure type by its reference
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/failure-types/{reference}_delete
+- name: /v2/assets/types/{id}_get
+  description: Get an AssetType by its internal ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types/{id}_get
+- name: /v2/assets/types/{id}_patch
+  description: Update an AssetType by its internal ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types/{id}_patch
+- name: /v2/assets/types/{id}_delete
+  description: Delete an AssetType by its internal ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types/{id}_delete
+- name: /v2/assets/types/label/{assetTypeLabel}_get
+  description: Get an AssetType by its label
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types/label/{assetTypeLabel}_get
+- name: /v2/assets/types/label/{assetTypeLabel}_patch
+  description: Update an AssetType by its label
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types/label/{assetTypeLabel}_patch
+- name: /v2/assets/types/label/{assetTypeLabel}_delete
+  description: Delete an AssetType by its label
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types/label/{assetTypeLabel}_delete
+- name: /v2/assets/types_post
+  description: Create a new AssetType
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/types_post
+- name: /v2/assets/{id}/status-signals_post
+  description: Create a status signal for an asset by ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}/status-signals_post
+- name: /v2/assets/{id}/status-signals_get
+  description: Get status signals for an asset by ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}/status-signals_get
+- name: /v2/assets/number/{assetNumber}/status-signals_post
+  description: Create a status signal for an asset by number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}/status-signals_post
+- name: /v2/assets/number/{assetNumber}/status-signals_get
+  description: Get status signals for an asset by number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}/status-signals_get
+- name: /v2/assets/{id}/status-signals/resolve_patch
+  description: Resolve all status signals for an asset by ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}/status-signals/resolve_patch
+- name: /v2/assets/number/{assetNumber}/status-signals/resolve_patch
+  description: Resolve all status signals for an asset by number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}/status-signals/resolve_patch
+- name: /v2/assets/status-signals_get
+  description: Get all status signals with asset information
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/status-signals_get
+- name: /v2/assets_get
+  description: Get a list of assets
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets_get
+- name: /v2/assets_post
+  description: Create a new Asset
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets_post
+- name: /v2/assets/{id}_get
+  description: Get an Asset by its internal ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}_get
+- name: /v2/assets/{id}_patch
+  description: Update an Asset by its internal ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}_patch
+- name: /v2/assets/{id}_delete
+  description: Delete an Asset by its internal ID
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}_delete
+- name: /v2/assets/number/{assetNumber}_get
+  description: Get an Asset by its number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}_get
+- name: /v2/assets/number/{assetNumber}_patch
+  description: Update an Asset by its number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}_patch
+- name: /v2/assets/number/{assetNumber}_delete
+  description: Delete an Asset by its number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}_delete
+- name: /v2/assets/number/{assetNumber}/inventories_get
+  description: Get a list of part inventories by asset by serial number
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/number/{assetNumber}/inventories_get
+- name: /v2/assets/{id}/inventories_get
+  description: Get a list of part inventories by asset
+  source_operation: openapi/remberg-assets-openapi.json#/v2/assets/{id}/inventories_get
+- name: ContactsCfaController_findOne
+  description: Get a specific contact by ID
+  source_operation: openapi/remberg-contacts-openapi.json#ContactsCfaController_findOne
+- name: ContactsCfaController_updateOne
+  description: Update a contact by ID
+  source_operation: openapi/remberg-contacts-openapi.json#ContactsCfaController_updateOne
+- name: ContactsCfaController_deleteOne
+  description: Delete a contact by ID
+  source_operation: openapi/remberg-contacts-openapi.json#ContactsCfaController_deleteOne
+- name: ContactsCfaController_findMany
+  description: Get a list of contacts
+  source_operation: openapi/remberg-contacts-openapi.json#ContactsCfaController_findMany
+- name: ContactsCfaController_createOne
+  description: Add a new contact to an organization
+  source_operation: openapi/remberg-contacts-openapi.json#ContactsCfaController_createOne
+- name: /v1/files_get
+  description: Returns a list of top-level files and folders. Use the folderId query
+    parameter to retrieve nested resources.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files_get
+- name: /v1/files_post
+  description: Upload one or more files using multipart/form-data. Optionally specify
+    a target folder via the metadata payload.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files_post
+- name: /v1/files/resolve_get
+  description: Resolve a file or folder by its slash-delimited path (e.g. "Engineering/Specs/vacuum.pdf")
+    and return its metadata.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/resolve_get
+- name: /v1/files/{id}_get
+  description: Retrieve the metadata of a single file or folder by its unique identifier.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}_get
+- name: /v1/files/{id}_patch
+  description: Update the metadata of a file or folder by its unique identifier.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}_patch
+- name: /v1/files/{id}_delete
+  description: "Delete a file or folder by its unique identifier. This is a cascading\
+    \ operation \u2014 all nested child items will also be pe"
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}_delete
+- name: /v1/files/{id}/download_get
+  description: Download the binary content of a file by its unique id.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}/download_get
+- name: /v1/files/folder_post
+  description: Create a new folder. Optionally specify a parent folder to create a
+    nested folder.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/folder_post
+- name: /v1/files/{id}/content_patch
+  description: Replace the binary content of an existing file by its unique id.
+  source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}/content_patch
+- name: /v1/forms_get
+  description: Get a list of forms
+  source_operation: openapi/remberg-forms-openapi.json#/v1/forms_get
+- name: /v1/forms/{id}_get
+  description: Get a form by ID
+  source_operation: openapi/remberg-forms-openapi.json#/v1/forms/{id}_get
+- name: OrganizationsCfaController_findOneByOrganizationNumber
+  description: Get an Organization by its number
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_findOneByOrganizationNumber
+- name: OrganizationsCfaController_updateOneByOrganizationNumber
+  description: Update an Organization by its number
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_updateOneByOrganizationNumber
+- name: OrganizationsCfaController_deleteOneByOrganizationNumber
+  description: Delete an Organization by its number
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_deleteOneByOrganizationNumber
+- name: OrganizationsCfaController_findOneById
+  description: Get a specific organization by ID
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_findOneById
+- name: OrganizationsCfaController_updateOneById
+  description: Update a organization by ID
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_updateOneById
+- name: OrganizationsCfaController_deleteOneById
+  description: Delete an organization by ID
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_deleteOneById
+- name: OrganizationsCfaController_findMany
+  description: Get a list of organizations
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_findMany
+- name: OrganizationsCfaController_createOne
+  description: Create a new organization
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_createOne
+- name: OrganizationsCfaController_findManyContacts
+  description: Get a list of contacts for a specific organization
+  source_operation: openapi/remberg-organizations-openapi.json#OrganizationsCfaController_findManyContacts
+- name: /v2/parts/{partTypeId}/inventories/storage/{storageAssetId}_get
+  description: Get a part inventory by part ID and storage asset ID
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/{partTypeId}/inventories/storage/{storageAssetId}_get
+- name: /v2/parts/{partTypeId}/inventories/storage/{storageAssetId}_post
+  description: Update the stock of a part inventory by part ID and storage asset ID
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/{partTypeId}/inventories/storage/{storageAssetId}_post
+- name: /v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_get
+  description: Get a part inventory by part number and storage asset number
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_get
+- name: /v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_post
+  description: Update the stock of a part inventory by part number and storage asset
+    number
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_post
+- name: /v2/parts/{partTypeId}/inventories_get
+  description: Get all part inventories by part ID
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/{partTypeId}/inventories_get
+- name: /v2/parts/number/{partNumber}/inventories_get
+  description: Get all part inventories by part number
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}/inventories_get
+- name: /v2/parts/{partTypeId}/stock-changes_get
+  description: Get all part stock changes by part ID
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/{partTypeId}/stock-changes_get
+- name: /v2/parts/number/{partNumber}/stock-changes_get
+  description: Get all part stock changes by part number
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}/stock-changes_get
+- name: /v2/parts_get
+  description: Get all parts
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts_get
+- name: /v2/parts_post
+  description: Create a new part
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts_post
+- name: /v2/parts/{id}_get
+  description: Get a specific part
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/{id}_get
+- name: /v2/parts/{id}_patch
+  description: Update a specific part
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/{id}_patch
+- name: /v2/parts/number/{partNumber}_get
+  description: Get a Part by its number
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}_get
+- name: /v2/parts/number/{partNumber}_patch
+  description: Update a Part by its number
+  source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}_patch
+- name: /v1/procedures/templates_get
+  description: Get a list of Procedure Templates
+  source_operation: openapi/remberg-procedures-openapi.json#/v1/procedures/templates_get
+- name: /v2/tickets/categories_get
+  description: Get the available ticket categories as a tree structure
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets/categories_get
+- name: /v2/tickets_get
+  description: Get a list of Tickets
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets_get
+- name: /v2/tickets_post
+  description: Create a new Ticket
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets_post
+- name: /v2/tickets/{id}/conversations_get
+  description: Get a Ticket's conversations by its Ticket's internal ID
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets/{id}/conversations_get
+- name: /v2/tickets/{id}_get
+  description: Get a Ticket by its internal ID
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets/{id}_get
+- name: /v2/tickets/{id}_patch
+  description: Update a Ticket by its internal ID
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets/{id}_patch
+- name: /v2/tickets/{id}_delete
+  description: Delete a Ticket by its internal ID
+  source_operation: openapi/remberg-tickets-openapi.json#/v2/tickets/{id}_delete
+- name: /v1/users/groups_get
+  description: Get a list of user groups
+  source_operation: openapi/remberg-users-openapi.json#/v1/users/groups_get
+- name: /v1/users/roles_get
+  description: Get a list of assignable user roles
+  source_operation: openapi/remberg-users-openapi.json#/v1/users/roles_get
+- name: /v1/users_get
+  description: Get a list of users
+  source_operation: openapi/remberg-users-openapi.json#/v1/users_get
+- name: /v1/users_post
+  description: Create a new user
+  source_operation: openapi/remberg-users-openapi.json#/v1/users_post
+- name: /v1/users/{id}_get
+  description: Get a specific user by ID
+  source_operation: openapi/remberg-users-openapi.json#/v1/users/{id}_get
+- name: /v1/users/{id}_patch
+  description: Update a user by ID
+  source_operation: openapi/remberg-users-openapi.json#/v1/users/{id}_patch
+- name: /v1/users/{id}/invite_post
+  description: (Re-)send the activation invite email to a user
+  source_operation: openapi/remberg-users-openapi.json#/v1/users/{id}/invite_post
+- name: /v2/work-orders_get
+  description: Get a list of Work Orders
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders_get
+- name: /v2/work-orders_post
+  description: Create a new WorkOrder
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders_post
+- name: /v2/work-orders/{id}_get
+  description: Get a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}_get
+- name: /v2/work-orders/{id}_patch
+  description: Update a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}_patch
+- name: /v2/work-orders/{id}_delete
+  description: Delete an Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}_delete
+- name: /v2/work-orders/erp/{externalReference}_get
+  description: Get a Work Order by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}_get
+- name: /v2/work-orders/erp/{externalReference}_patch
+  description: Update a Work Order by its external reference (ERP reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}_patch
+- name: /v2/work-orders/erp/{externalReference}_delete
+  description: Delete an Work Order by its external reference (ERP reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}_delete
+- name: /v2/work-orders/{id}/checklist_post
+  description: Add checklist items to a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/checklist_post
+- name: /v2/work-orders/erp/{externalReference}/checklist_post
+  description: Add checklist items to a Work Order by its external Reference (ERP
+    reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/checklist_post
+- name: /v2/work-orders/{id}/times_get
+  description: Get time entries for a Work Order
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/times_get
+- name: /v2/work-orders/{id}/stock-changes_get
+  description: Get stock changes for a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/stock-changes_get
+- name: /v2/work-orders/{id}/stock-changes_post
+  description: Create a PartStockChange for a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/stock-changes_post
+- name: /v2/work-orders/erp/{externalReference}/stock-changes_get
+  description: Get stock changes for a Work Order by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/stock-changes_get
+- name: /v2/work-orders/erp/{externalReference}/stock-changes_post
+  description: Create a PartStockChange for a Work Order by its external reference
+    (ERP Reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/stock-changes_post
+- name: /v2/work-orders/{id}/procedures_post
+  description: Add a procedure to a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/procedures_post
+- name: /v2/work-orders/erp/{externalReference}/procedures_post
+  description: Add a procedure to a Work Order by its external reference (ERP reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/procedures_post
+- name: /v2/work-orders/{id}/procedures/{procedureInstanceId}_delete
+  description: Remove a procedure from a Work Order by its internal ID
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/procedures/{procedureInstanceId}_delete
+- name: /v2/work-orders/erp/{externalReference}/procedures/{procedureInstanceId}_delete
+  description: Remove a procedure from a Work Order by its external reference (ERP
+    reference)
+  source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/procedures/{procedureInstanceId}_delete
+- name: /v1/work-requests/erp/{externalReference}_get
+  description: Get a Work Request by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/erp/{externalReference}_get
+- name: /v1/work-requests/erp/{externalReference}_patch
+  description: Update a Work Request by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/erp/{externalReference}_patch
+- name: /v1/work-requests/erp/{externalReference}_delete
+  description: Delete a Work Request by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/erp/{externalReference}_delete
+- name: /v1/work-requests/erp/{externalReference}/approve_patch
+  description: Approve a Work Request by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/erp/{externalReference}/approve_patch
+- name: /v1/work-requests/erp/{externalReference}/decline_patch
+  description: Decline a Work Request by its external reference (ERP Reference)
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/erp/{externalReference}/decline_patch
+- name: /v1/work-requests_get
+  description: Get a list of Work Requests
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests_get
+- name: /v1/work-requests_post
+  description: Create a new Work Request
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests_post
+- name: /v1/work-requests/{id}_get
+  description: Get a Work Request by its internal ID
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/{id}_get
+- name: /v1/work-requests/{id}_patch
+  description: Update a Work Request by its internal ID
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/{id}_patch
+- name: /v1/work-requests/{id}_delete
+  description: Delete a Work Request by its internal ID
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/{id}_delete
+- name: /v1/work-requests/{id}/approve_patch
+  description: Approve a Work Request by its internal ID
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/{id}/approve_patch
+- name: /v1/work-requests/{id}/decline_patch
+  description: Decline a Work Request by its internal ID
+  source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/{id}/decline_patch

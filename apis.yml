@@ -1,24 +1,301 @@
 aid: remberg
 name: Remberg
-description: Remberg is a company surfaced as a portfolio company of earlybird, speedinvest and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: remberg is a Munich-based B2B SaaS provider of an Intelligent Asset Platform for maintenance,
+  operations, and service — CMMS/EAM/CAFM software used by industrial companies (Vaillant, Remondis, Liqui
+  Moly, SCHUNK, EDEKA, OSRAM) to manage assets, work orders, spare parts, tickets, forms, and preventive
+  maintenance, with an AI Copilot and a lightweight execution layer alongside SAP. remberg exposes a public
+  REST API (api.remberg.de) across Assets, Work Orders, Work Requests, Tickets, Parts, Organizations,
+  Contacts, Users, Files, Forms, Procedures, and AI, with API-key auth, Svix-based webhooks, documented
+  rate limits, and ISO 27001 certification.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/673f38dcff99b6e3a5b731cb/67b82bff96b78efd5092c4e4_main-hero-16-9-de-2-1024x576.png
 url: https://raw.githubusercontent.com/api-evangelist/remberg/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - earlybird
 - speedinvest
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-public-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-apis: []
+- Maintenance
+- Asset Management
+- CMMS
+- EAM
+- Field Service
+- Work Orders
+- Industrial
+- SaaS
+- Germany
+apis:
+- aid: remberg:remberg-ai-chat-api
+  name: Remberg ai-chat API
+  description: The ai-chat API from Remberg — 2 operation(s) for ai-chat.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - ai-chat
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-ai-chat-api-openapi.yml
+- aid: remberg:remberg-asset-status-signals-api
+  name: Remberg asset-status-signals API
+  description: The asset-status-signals API from Remberg — 5 operation(s) for asset-status-signals.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - asset-status-signals
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-asset-status-signals-api-openapi.yml
+- aid: remberg:remberg-asset-types-api
+  name: Remberg asset-types API
+  description: The asset-types API from Remberg — 3 operation(s) for asset-types.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - asset-types
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-asset-types-api-openapi.yml
+- aid: remberg:remberg-assets-api
+  name: Remberg assets API
+  description: The assets API from Remberg — 5 operation(s) for assets.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - assets
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-assets-api-openapi.yml
+- aid: remberg:remberg-contacts-api
+  name: Remberg contacts API
+  description: The contacts API from Remberg — 2 operation(s) for contacts.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-contacts-api-openapi.yml
+- aid: remberg:remberg-failure-types-api
+  name: Remberg failure-types API
+  description: The failure-types API from Remberg — 2 operation(s) for failure-types.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - failure-types
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-failure-types-api-openapi.yml
+- aid: remberg:remberg-files-api
+  name: Remberg files API
+  description: The files API from Remberg — 6 operation(s) for files.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - files
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-files-api-openapi.yml
+- aid: remberg:remberg-forms-api
+  name: Remberg forms API
+  description: The forms API from Remberg — 2 operation(s) for forms.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - forms
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-forms-api-openapi.yml
+- aid: remberg:remberg-inventories-api
+  name: Remberg inventories API
+  description: The inventories API from Remberg — 4 operation(s) for inventories.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - inventories
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-inventories-api-openapi.yml
+- aid: remberg:remberg-organizations-api
+  name: Remberg organizations API
+  description: The organizations API from Remberg — 4 operation(s) for organizations.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-organizations-api-openapi.yml
+- aid: remberg:remberg-part-stock-changes-api
+  name: Remberg part-stock-changes API
+  description: The part-stock-changes API from Remberg — 2 operation(s) for part-stock-changes.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - part-stock-changes
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-part-stock-changes-api-openapi.yml
+- aid: remberg:remberg-parts-api
+  name: Remberg parts API
+  description: The parts API from Remberg — 3 operation(s) for parts.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - parts
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-parts-api-openapi.yml
+- aid: remberg:remberg-procedure-templates-api
+  name: Remberg procedure-templates API
+  description: The procedure-templates API from Remberg — 1 operation(s) for procedure-templates.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - procedure-templates
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-procedure-templates-api-openapi.yml
+- aid: remberg:remberg-tickets-api
+  name: Remberg tickets API
+  description: The tickets API from Remberg — 4 operation(s) for tickets.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - tickets
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-tickets-api-openapi.yml
+- aid: remberg:remberg-user-groups-api
+  name: Remberg user-groups API
+  description: The user-groups API from Remberg — 1 operation(s) for user-groups.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - user-groups
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-user-groups-api-openapi.yml
+- aid: remberg:remberg-user-roles-api
+  name: Remberg user-roles API
+  description: The user-roles API from Remberg — 1 operation(s) for user-roles.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - user-roles
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-user-roles-api-openapi.yml
+- aid: remberg:remberg-users-api
+  name: Remberg users API
+  description: The users API from Remberg — 3 operation(s) for users.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-users-api-openapi.yml
+- aid: remberg:remberg-work-orders-api
+  name: Remberg work-orders API
+  description: The work-orders API from Remberg — 12 operation(s) for work-orders.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - work-orders
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-work-orders-api-openapi.yml
+- aid: remberg:remberg-work-requests-api
+  name: Remberg work-requests API
+  description: The work-requests API from Remberg — 7 operation(s) for work-requests.
+  humanURL: https://developers.remberg.de/reference
+  baseURL: https://api.remberg.de
+  tags:
+  - work-requests
+  properties:
+  - type: OpenAPI
+    url: openapi/remberg-work-requests-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DeveloperPortal
+  url: https://developers.remberg.de/
+- type: Documentation
+  url: https://developers.remberg.de/docs
+- type: APIReference
+  url: https://developers.remberg.de/reference
+- type: GettingStarted
+  url: https://developers.remberg.de/docs/getting-started
+- type: HelpCenter
+  url: https://help.remberg.de/en/
+- type: Blog
+  url: https://remberg.com/blog
+- type: Pricing
+  url: https://remberg.com/pricing
+- type: Website
+  url: https://remberg.com
+- type: Authentication
+  url: authentication/remberg-authentication.yml
+- type: OpenAPI
+  url: https://developers.remberg.de/openapi
+- type: Conventions
+  url: conventions/remberg-conventions.yml
+- type: RateLimits
+  url: rate-limits/remberg-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/remberg-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/remberg-lifecycle.yml
+- type: StatusPage
+  url: https://status.remberg.de
+- type: Webhooks
+  url: asyncapi/remberg-events-webhooks.yml
+- type: DataModel
+  url: data-model/remberg-data-model.yml
+- type: Conformance
+  url: conformance/remberg-conformance.yml
+- type: Compliance
+  url: https://remberg.com/trust
+- type: TrustCenter
+  url: security/remberg-trust-center.yml
+- type: DomainSecurity
+  url: security/remberg-domain-security.yml
+- type: WellKnown
+  url: well-known/remberg-well-known.yml
+- type: LLMsTxt
+  url: llms/remberg-llms.txt
+- type: MCPServer
+  url: mcp/remberg-mcp.yml
+- type: AgenticAccess
+  url: agentic-access/remberg-agentic-access.yml
+- type: AgentSkill
+  url: skills/remberg-manage-assets.md
+- type: AgentSkill
+  url: skills/remberg-manage-work-orders.md
+- type: AgentSkill
+  url: skills/remberg-sync-organizations-contacts.md
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 42
+  pass: local-v1

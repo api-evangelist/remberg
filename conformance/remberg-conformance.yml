@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.json + developers.remberg.de docs + remberg.com/trust
+standards:
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 securityScheme; API-key only
+- id: oidc
+  conforms: false
+- id: apikey-auth
+  conforms: true
+  evidence: apiKey in header "authorization" across all 12 specs
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: error responses use {statusCode,message}, not application/problem+json
+- id: rfc6585-429
+  conforms: true
+  evidence: 429 Too Many Requests with Retry-After-Base/Burst headers documented
+- id: offset-pagination
+  conforms: true
+  evidence: page/limit query params on list endpoints
+- id: webhooks
+  conforms: true
+  evidence: Svix-backed webhooks with signature verification (svix-id/svix-timestamp/svix-signature)
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001 certificate published at remberg.com/trust
+- id: gdpr
+  conforms: true
+  evidence: EU data residency (Munich); GDPR-compliant per remberg.com
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key header in specs

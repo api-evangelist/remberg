@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/remberg-ai-openapi.json, openapi/remberg-assets-openapi.json, openapi/remberg-contacts-openapi.json,
+  openapi/remberg-files-openapi.json, openapi/remberg-forms-openapi.json, openapi/remberg-organizations-openapi.json,
+  openapi/remberg-parts-openapi.json, openapi/remberg-procedures-openapi.json, openapi/remberg-tickets-openapi.json,
+  openapi/remberg-users-openapi.json, openapi/remberg-work-orders-openapi.json, openapi/remberg-work-requests-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: authorization
+  type: apiKey
+  in: header
+  parameter: authorization
+  sources:
+  - openapi/remberg-ai-openapi.json
+  - openapi/remberg-assets-openapi.json
+  - openapi/remberg-contacts-openapi.json
+  - openapi/remberg-files-openapi.json
+  - openapi/remberg-forms-openapi.json
+  - openapi/remberg-organizations-openapi.json
+  - openapi/remberg-parts-openapi.json
+  - openapi/remberg-procedures-openapi.json
+  - openapi/remberg-tickets-openapi.json
+  - openapi/remberg-users-openapi.json
+  - openapi/remberg-work-orders-openapi.json
+  - openapi/remberg-work-requests-openapi.json

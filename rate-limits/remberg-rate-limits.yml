@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.remberg.de/docs/rate-limiting
+scope: per authenticated user, per endpoint
+algorithm: sliding window
+status_on_exceed: 429
+guidance: >-
+  Configure integrations to send no more than ~5 requests/second to stay under
+  both limits. 429 responses also count against the limit; back off using the
+  Retry-After-* header before retrying.
+rate_limits:
+- name: burst
+  limit_count: 10
+  window_seconds: 1
+  purpose: Prevents sudden request spikes
+- name: base
+  limit_count: 25
+  window_seconds: 5
+  purpose: Controls sustained request rate
+headers:
+  success: [X-RateLimit-Limit-Base, X-RateLimit-Remaining-Base, X-RateLimit-Reset-Base, X-RateLimit-Limit-Burst, X-RateLimit-Remaining-Burst, X-RateLimit-Reset-Burst]
+  throttled: [Retry-After-Base, Retry-After-Burst]

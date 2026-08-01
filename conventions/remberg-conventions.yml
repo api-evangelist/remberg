@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: developers.remberg.de docs (getting-started, rate-limiting, webhooks) + openapi/*.json
+authentication:
+  style: API key
+  transport: header
+  header: authorization
+  note: >-
+    Create keys under Settings > Data > API in the remberg account. Keys inherit
+    the signing user's access rights and expire after one year by default.
+pagination:
+  style: offset
+  params: [page, limit]
+  response_note: List endpoints return paginated collections; filter/sort via query params (search, sortField, sortDirection, createdAtFrom/To, updatedAtFrom/To).
+idempotency:
+  supported: false
+  note: >-
+    No Idempotency-Key header is documented or present in the OpenAPI. Some
+    delete-by-reference operations are described as idempotent (return 204 even
+    when the target is already absent), but there is no request-level
+    idempotency-key contract.
+identifiers:
+  note: >-
+    Assets and Work Orders are addressable three ways — internal id, human-readable
+    number, and ERP external reference. Operations that resolve by number/reference
+    return 409 when multiple records share the same value.
+rate_limiting:
+  scope: per authenticated user, per endpoint
+  burst: 10 requests / 1 second
+  base: 25 requests / 5 seconds
+  algorithm: sliding window
+  status_on_exceed: 429
+  headers_ok: [X-RateLimit-Limit-Base, X-RateLimit-Remaining-Base, X-RateLimit-Reset-Base, X-RateLimit-Limit-Burst, X-RateLimit-Remaining-Burst, X-RateLimit-Reset-Burst]
+  headers_429: [Retry-After-Base, Retry-After-Burst]
+  guidance: Stay under ~5 req/s; 429 responses also count against the limit.
+error_envelope:
+  fields: [statusCode, message]
+  content_type: application/json
+  note: Not RFC 9457 problem+json.
+versioning:
+  scheme: uri-path
+  current: v2
+webhooks:
+  provider: Svix
+  signature_headers: [svix-id, svix-timestamp, svix-signature]
+  ack: return 2xx within 15s
+  see: asyncapi/remberg-events-webhooks.yml
+cross_reference:
+  authentication: authentication/remberg-authentication.yml
+  errors: errors/remberg-problem-types.yml
+  lifecycle: lifecycle/remberg-lifecycle.yml
+  rate_limits: rate-limits/remberg-rate-limits.yml
