@@ -238,6 +238,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/remberg-ai-overlay.yaml
 - type: DeveloperPortal
   url: https://developers.remberg.de/
 - type: Documentation
