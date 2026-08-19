@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat procedure-templates API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "procedure-templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of Procedure Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/procedures/templates",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request. (default 20 items, max 1000 items)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying a search phrase over the procedure template's name or counter."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by procedure template type."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of Procedure Templates. Supports filtering via query parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

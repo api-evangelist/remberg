@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat inventories API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "inventories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a part inventory by part ID and storage asset ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts/:partTypeId/inventories/storage/:storageAssetId",
+            "params": [
+              {
+                "name": "partTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The part's internal ID."
+              },
+              {
+                "name": "storageAssetId",
+                "value": "",
+                "type": "path",
+                "description": "The storage asset's internal ID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the part inventory for a specific part type and storage asset combination, identified by their internal IDs."
+        },
+        {
+          "info": {
+            "name": "Update the stock of a part inventory by part ID and storage asset ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/parts/:partTypeId/inventories/storage/:storageAssetId",
+            "params": [
+              {
+                "name": "partTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The part's internal ID."
+              },
+              {
+                "name": "storageAssetId",
+                "value": "",
+                "type": "path",
+                "description": "The storage asset's internal ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Sets the target stock level for a specific part inventory identified by the part type ID and storage asset ID."
+        },
+        {
+          "info": {
+            "name": "Get a part inventory by part number and storage asset number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts/number/:partNumber/inventories/storage/number/:storageAssetNumber",
+            "params": [
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path",
+                "description": "The part's number (must be URL encoded)"
+              },
+              {
+                "name": "storageAssetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The storage asset's number (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the part inventory for a specific part type and storage asset combination, identified by their human-readable numbers. Both numbers must be URL-encoded."
+        },
+        {
+          "info": {
+            "name": "Update the stock of a part inventory by part number and storage asset number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/parts/number/:partNumber/inventories/storage/number/:storageAssetNumber",
+            "params": [
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path",
+                "description": "The part's number (must be URL encoded)"
+              },
+              {
+                "name": "storageAssetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The storage asset's number (must be URL encoded)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Sets the stock level of a part inventory identified by the part number and storage asset number. Both numbers must be URL-encoded."
+        },
+        {
+          "info": {
+            "name": "Get all part inventories by part ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts/:partTypeId/inventories",
+            "params": [
+              {
+                "name": "partTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The part's internal ID."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of all inventories for a specific part type, including storage location details. The part type is identified by its internal ID."
+        },
+        {
+          "info": {
+            "name": "Get all part inventories by part number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts/number/:partNumber/inventories",
+            "params": [
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path",
+                "description": "The part's number (must be URL encoded)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of part inventories for the part identified by its part number. The part number must be URL-encoded."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

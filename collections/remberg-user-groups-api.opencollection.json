@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat user-groups API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user-groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of user groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/users/groups",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Filter user groups by name (partial, case-insensitive match)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of user groups for the tenant behind the API key. Supports partial, case-insensitive search over the user group name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

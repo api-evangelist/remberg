@@ -1,0 +1,841 @@
+{
+  "item": [
+    {
+      "id": "0af7053a-84a3-4c35-9dd7-52c10459e9cd",
+      "name": "part-stock-changes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8890d0f-1615-4341-9f66-c5fc9e391739",
+          "name": "Get all part stock changes by part ID",
+          "request": {
+            "name": "Get all part stock changes by part ID",
+            "description": {
+              "content": "Returns a paginated list of stock changes for a specific part type, identified by its internal ID. Stock changes track inventory movements such as additions, removals, and reservations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts",
+                ":partTypeId",
+                "stock-changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Zero-based page index for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Maximum number of items to return per page (capped at 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partTypeId",
+                  "description": "(Required) The part's internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ebf09c97-a033-499b-81bc-8daf2bc0cc4f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":partTypeId",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partTypeId",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"change\": 8435.34885111565,\n      \"action\": \"plannedCanceled\",\n      \"comment\": \"string\",\n      \"storageAsset\": {\n        \"id\": \"string\",\n        \"assetNumber\": \"string\",\n        \"assetType\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"change\": 7951.129294892266,\n      \"action\": \"reservationCanceled\",\n      \"comment\": \"string\",\n      \"storageAsset\": {\n        \"id\": \"string\",\n        \"assetNumber\": \"string\",\n        \"assetType\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c40bd408-2f3e-40e1-a39a-c3d0933f20e4",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":partTypeId",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partTypeId",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9df1042f-0ba6-4c14-b8a1-418e040bb010",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":partTypeId",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partTypeId",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6184fa4c-294b-46d2-b294-61f84bcd80e4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":partTypeId",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partTypeId",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bedacde-416b-4120-8337-1378f289fbc1",
+          "name": "Get all part stock changes by part number",
+          "request": {
+            "name": "Get all part stock changes by part number",
+            "description": {
+              "content": "Returns a paginated list of stock changes for a specific part type, identified by its part number. Stock changes track inventory movements such as additions, removals, and reservations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts",
+                "number",
+                ":partNumber",
+                "stock-changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Zero-based page index for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Maximum number of items to return per page (capped at 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partNumber",
+                  "description": "(Required) The part's number (must be URL encoded)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b22401d-ff02-4edf-8d79-83adc8fca1b4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"change\": 4072.54129644672,\n      \"action\": \"created\",\n      \"comment\": \"string\",\n      \"storageAsset\": {\n        \"id\": \"string\",\n        \"assetNumber\": \"string\",\n        \"assetType\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"change\": 5719.163895836646,\n      \"action\": \"planned\",\n      \"comment\": \"string\",\n      \"storageAsset\": {\n        \"id\": \"string\",\n        \"assetNumber\": \"string\",\n        \"assetType\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b67c53d7-cb03-4f91-931a-43c88aa8f8a9",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dbab181f-3288-4a41-bf20-2f9c1f2987ad",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73ea8b98-3f75-471a-ba03-6e615ebdbb74",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber",
+                    "stock-changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2adcee50-7950-44e4-b80e-e94036abfaf4",
+    "name": "AI ai-chat part-stock-changes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

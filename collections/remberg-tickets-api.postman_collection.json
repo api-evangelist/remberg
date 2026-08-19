@@ -1,0 +1,1892 @@
+{
+  "item": [
+    {
+      "id": "4059f310-6034-4514-82cc-311c8d6636bc",
+      "name": "tickets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "613450a8-4d64-4c66-b77a-d0878151a064",
+          "name": "Get the available ticket categories as a tree structure",
+          "request": {
+            "name": "Get the available ticket categories as a tree structure",
+            "description": {
+              "content": "Returns the hierarchical tree of ticket categories available to the authenticated tenant. Use the result to populate category selectors when creating or updating tickets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33cc3b37-1e3b-4eed-ac65-a467e9dbf2a6",
+              "name": "Category tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"categories\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"children\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/TicketCfaCategoryChildResponseDto detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/TicketCfaCategoryChildResponseDto detected>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"children\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/TicketCfaCategoryChildResponseDto detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/TicketCfaCategoryChildResponseDto detected>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6094cfa-2e62-4eb9-a0f8-bb5f1d1ee680",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "802c00f8-781e-442f-a129-b500f36c72a7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "931634bf-844d-4bfc-b30e-794af580d01d",
+          "name": "Get a list of Tickets",
+          "request": {
+            "name": "Get a list of Tickets",
+            "description": {
+              "content": "Returns a paginated list of tickets visible to the authenticated tenant. Supports filtering and sorting via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request (default 20 items, max 1000 items)."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search term to filter tickets by subject or other searchable fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter tickets by completion status. new, open, pendingInternal, pendingExternal, solved, closed, moved."
+                },
+                {
+                  "disabled": false,
+                  "key": "priority",
+                  "value": "<string>",
+                  "description": "Filter tickets by priority. 000_low, 010_normal, 020_high, 030_critical."
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryId",
+                  "value": "<string>",
+                  "description": "Filter tickets by category internal ID. The filter uses the category hierarchy, so all tickets belonging to the specified category or any of its descendant categories will be included."
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedOrganizationId",
+                  "value": "<string>",
+                  "description": "Filter tickets by related organization internal ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedAssetId",
+                  "value": "<string>",
+                  "description": "Filter tickets by related asset internal ID (needs relatedAssetTypeId)."
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedAssetTypeId",
+                  "value": "<string>",
+                  "description": "Filter tickets by related asset type internal ID (needs relatedAssetId)."
+                },
+                {
+                  "disabled": false,
+                  "key": "assignedPersonId",
+                  "value": "<string>",
+                  "description": "Filter tickets by assigned person contact ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter tickets updated from this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter tickets updated until this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter tickets created from this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter tickets created until this date."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7e311f27-f9b4-4982-83c3-65f0c3a1ddde",
+              "name": "List of Tickets objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "priority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedOrganizationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetTypeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignedPersonId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tickets\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"status\": \"moved\",\n      \"ticketID\": \"string\",\n      \"priority\": \"020_high\",\n      \"relatedOrganizationIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relatedContactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relatedAssetIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sourceType\": \"string\",\n      \"customPropertyValues\": [\n        {\n          \"reference\": \"string\",\n          \"value\": {},\n          \"associationValue\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"reference\": \"string\",\n          \"value\": {},\n          \"associationValue\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"assignedPersonId\": \"string\",\n      \"assignedPerson\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"email\": \"string\"\n      },\n      \"summary\": \"string\",\n      \"solution\": \"string\",\n      \"resolutionTime\": 1509.2040518667816,\n      \"relatedOrganizations\": [\n        {\n          \"id\": \"string\",\n          \"organizationName\": \"string\",\n          \"organizationNumber\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"organizationName\": \"string\",\n          \"organizationNumber\": \"string\"\n        }\n      ],\n      \"relatedContacts\": [\n        {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"email\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"email\": \"string\"\n        }\n      ],\n      \"relatedAssets\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ],\n      \"supportEmailAddress\": \"string\",\n      \"categoryId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"createdAt\": {},\n      \"updatedAt\": {},\n      \"status\": \"moved\",\n      \"ticketID\": \"string\",\n      \"priority\": \"030_critical\",\n      \"relatedOrganizationIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relatedContactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relatedAssetIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sourceType\": \"string\",\n      \"customPropertyValues\": [\n        {\n          \"reference\": \"string\",\n          \"value\": {},\n          \"associationValue\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"reference\": \"string\",\n          \"value\": {},\n          \"associationValue\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"assignedPersonId\": \"string\",\n      \"assignedPerson\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"email\": \"string\"\n      },\n      \"summary\": \"string\",\n      \"solution\": \"string\",\n      \"resolutionTime\": 9222.071160519516,\n      \"relatedOrganizations\": [\n        {\n          \"id\": \"string\",\n          \"organizationName\": \"string\",\n          \"organizationNumber\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"organizationName\": \"string\",\n          \"organizationNumber\": \"string\"\n        }\n      ],\n      \"relatedContacts\": [\n        {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"email\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"email\": \"string\"\n        }\n      ],\n      \"relatedAssets\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ],\n      \"supportEmailAddress\": \"string\",\n      \"categoryId\": \"string\"\n    }\n  ],\n  \"count\": 5004.859806623486\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d581e9d-7d7a-4358-95ec-10a5154d4ef3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "priority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedOrganizationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetTypeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignedPersonId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "81731f6f-439b-47d4-818b-98813cba7f97",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "priority",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedOrganizationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetTypeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignedPersonId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10786f9e-dcb1-41f3-83a5-7523fdf16518",
+          "name": "Create a new Ticket",
+          "request": {
+            "name": "Create a new Ticket",
+            "description": {
+              "content": "Creates a new ticket for the authenticated tenant. Returns the ID of the newly created ticket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"note\": \"<string>\",\n  \"status\": \"open\",\n  \"priority\": \"000_low\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f61881b7-27ef-4bb7-a2e4-79b514e284e1",
+              "name": "Resource created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"note\": \"<string>\",\n  \"status\": \"open\",\n  \"priority\": \"000_low\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42b47536-182a-422f-a501-06a9c92fc5b6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"note\": \"<string>\",\n  \"status\": \"open\",\n  \"priority\": \"000_low\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de986fe3-72dc-4ca5-b638-bc9e75fe0a9d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"note\": \"<string>\",\n  \"status\": \"open\",\n  \"priority\": \"000_low\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c850aa36-1d29-41f7-a401-cff85eb94445",
+          "name": "Get a Ticket's conversations by its Ticket's internal ID",
+          "request": {
+            "name": "Get a Ticket's conversations by its Ticket's internal ID",
+            "description": {
+              "content": "Returns the conversation history of the specified ticket, including inbound and outbound email messages and other communication activities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets",
+                ":id",
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Ticket's internal ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f266533c-4b08-458f-b067-bf0c44824bbd",
+              "name": "Resource retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id",
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ticket's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activities\": [\n    {\n      \"creator\": {},\n      \"createdAt\": \"string\",\n      \"kind\": \"outboundEmail\",\n      \"plainText\": \"string\",\n      \"subject\": \"string\",\n      \"header\": {\n        \"to\": [\n          \"string\",\n          \"string\"\n        ],\n        \"cc\": [\n          \"string\",\n          \"string\"\n        ],\n        \"bcc\": [\n          \"string\",\n          \"string\"\n        ],\n        \"from\": \"string\"\n      }\n    },\n    {\n      \"creator\": {},\n      \"createdAt\": \"string\",\n      \"kind\": \"inboundEmail\",\n      \"plainText\": \"string\",\n      \"subject\": \"string\",\n      \"header\": {\n        \"to\": [\n          \"string\",\n          \"string\"\n        ],\n        \"cc\": [\n          \"string\",\n          \"string\"\n        ],\n        \"bcc\": [\n          \"string\",\n          \"string\"\n        ],\n        \"from\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85e770df-5a15-4ed3-82f0-1f009bb45afa",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id",
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ticket's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ab1f51d-5162-4839-96bc-d823398e11ac",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id",
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ticket's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c28ed99c-2e06-488e-9afa-2a367f93d8a0",
+          "name": "Get a Ticket by its internal ID",
+          "request": {
+            "name": "Get a Ticket by its internal ID",
+            "description": {
+              "content": "Returns a single ticket identified by its internal ID. Optionally includes associated resources such as contacts or organizations when requested via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Ticket's internal ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0ef722f-a075-41a3-9fba-103933873a7f",
+              "name": "Resource retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ticket's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"subject\": \"string\",\n  \"createdAt\": {},\n  \"updatedAt\": {},\n  \"status\": \"solved\",\n  \"ticketID\": \"string\",\n  \"priority\": \"030_critical\",\n  \"relatedOrganizationIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"relatedContactIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"relatedAssetIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"sourceType\": \"string\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"assignedPersonId\": \"string\",\n  \"assignedPerson\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"summary\": \"string\",\n  \"solution\": \"string\",\n  \"resolutionTime\": 4463.245377377755,\n  \"relatedOrganizations\": [\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    }\n  ],\n  \"relatedContacts\": [\n    {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"email\": \"string\"\n    }\n  ],\n  \"relatedAssets\": [\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\"\n    }\n  ],\n  \"supportEmailAddress\": \"string\",\n  \"categoryId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c19760f4-698c-4d07-b9d6-b5f3a6cadc50",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ticket's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db57b5c6-b7e2-4270-8b2c-241e588afca9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ticket's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd80cea5-6657-4909-9e1b-10937ed3581c",
+          "name": "Update a Ticket by its internal ID",
+          "request": {
+            "name": "Update a Ticket by its internal ID",
+            "description": {
+              "content": "Partially updates an existing ticket identified by its internal ID. Only the fields provided in the request body will be modified; omitted fields remain unchanged.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The internal ID of the Ticket"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedParts\": [\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb50cd5d-010d-47fb-b2f9-481d74339e4c",
+              "name": "Resource updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedParts\": [\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4dc9e8f3-b88a-47fd-a25b-5da4e32e4fde",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedParts\": [\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "973ebe9e-be46-4639-8111-b300f8858b22",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedParts\": [\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ec84179-d63f-4d7b-a002-ea26fd182d7f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"status\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"solution\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"assignedPerson\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedParts\": [\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"partId\": \"<string>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce162f9e-e07c-4e63-9ee4-1aa7995f3dfd",
+          "name": "Delete a Ticket by its internal ID",
+          "request": {
+            "name": "Delete a Ticket by its internal ID",
+            "description": {
+              "content": "Permanently deletes the ticket identified by its internal ID. Returns no content on success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tickets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The internal ID of the Ticket"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e88d48c0-0f30-4f7b-a99a-66fd02d2a717",
+              "name": "Resource deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34f79a61-6fed-4dd1-827e-298a5717f4e8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58811f65-7646-40c5-b047-99115e0b5c17",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a500c324-1588-4913-bf0d-032a94cd70f8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tickets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The internal ID of the Ticket"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f500fbc9-0fd2-4c87-8428-e9e0a83d9ff1",
+    "name": "AI ai-chat tickets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

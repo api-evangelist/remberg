@@ -1,0 +1,3172 @@
+{
+  "item": [
+    {
+      "id": "3aaffc3a-28d9-40ec-afb2-7b8874e4377b",
+      "name": "assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b0a7f4b-7ee6-41df-96a8-c493283c233e",
+          "name": "Get a list of assets",
+          "request": {
+            "name": "Get a list of assets",
+            "description": {
+              "content": "Returns a paginated list of assets the caller has access to. Supports filtering and sorting via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organizationNumber",
+                  "value": "<string>",
+                  "description": "Filter by specifying a related organization number."
+                },
+                {
+                  "disabled": false,
+                  "key": "parentAssetNumber",
+                  "value": "<string>",
+                  "description": "Filter by specifying the related parent asset number (only direct children are fetched)."
+                },
+                {
+                  "disabled": false,
+                  "key": "assetTypeLabel",
+                  "value": "<string>",
+                  "description": "Filter by specifying the asset type label."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortDirection",
+                  "value": "<string>",
+                  "description": "Sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "<string>",
+                  "description": "Sort field (default: assetNumber)"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96c0a8f0-bfa6-4b93-8bac-410ad5fc646d",
+              "name": "List of Assets objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "organizationNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentAssetNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetTypeLabel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\",\n      \"assetCategory\": \"storage\",\n      \"assetTypeId\": \"string\",\n      \"createdAt\": \"1972-05-19T21:23:23.213Z\",\n      \"updatedAt\": \"2005-03-19T11:57:12.815Z\",\n      \"criticality\": \"nonCritical\",\n      \"status\": \"running\",\n      \"name\": \"string\",\n      \"location\": {\n        \"company\": \"string\",\n        \"street\": \"string\",\n        \"streetNumber\": \"string\",\n        \"zipPostCode\": \"string\",\n        \"city\": \"string\",\n        \"countryProvince\": \"string\",\n        \"country\": \"string\",\n        \"other\": \"string\"\n      },\n      \"installationDate\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\",\n      \"assetCategory\": \"asset\",\n      \"assetTypeId\": \"string\",\n      \"createdAt\": \"2000-04-18T05:15:58.802Z\",\n      \"updatedAt\": \"1971-06-11T23:32:24.306Z\",\n      \"criticality\": \"coreProcess\",\n      \"status\": \"running\",\n      \"name\": \"string\",\n      \"location\": {\n        \"company\": \"string\",\n        \"street\": \"string\",\n        \"streetNumber\": \"string\",\n        \"zipPostCode\": \"string\",\n        \"city\": \"string\",\n        \"countryProvince\": \"string\",\n        \"country\": \"string\",\n        \"other\": \"string\"\n      },\n      \"installationDate\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f67dd55-fde2-430e-8dfe-b3860e150be9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "organizationNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentAssetNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetTypeLabel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f943cebb-49f9-48ce-ada7-c36a62ba2ff0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "organizationNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "parentAssetNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetTypeLabel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "351e7ecf-7239-4a0b-8a03-27abfe8382f2",
+          "name": "Create a new Asset",
+          "request": {
+            "name": "Create a new Asset",
+            "description": {
+              "content": "Creates a new asset with the provided properties. Returns the ID of the newly created asset. Responds with 409 if an asset with the same number already exists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<string>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\",\n  \"isNew\": \"<boolean>\",\n  \"isRunning\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "271b7241-3491-4eec-b03a-3b044ef8c40e",
+              "name": "Resource created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<string>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\",\n  \"isNew\": \"<boolean>\",\n  \"isRunning\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd323eb0-1f32-44b4-9b29-ea32c65d520e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<string>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\",\n  \"isNew\": \"<boolean>\",\n  \"isRunning\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a254f69d-d679-4344-bb98-c7130ca2e87d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<string>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\",\n  \"isNew\": \"<boolean>\",\n  \"isRunning\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c69ffb6f-b678-41cf-b1f9-0fd327bf3725",
+              "name": "Duplicate asset number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<string>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\",\n  \"isNew\": \"<boolean>\",\n  \"isRunning\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "503edba6-19da-4b83-8c95-dde625600eff",
+          "name": "Get an Asset by its internal ID",
+          "request": {
+            "name": "Get an Asset by its internal ID",
+            "description": {
+              "content": "Returns a single asset identified by its internal ID. Supports optional population of related resources via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The asset's internal ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98702788-22fc-43dd-9730-e499bf122425",
+              "name": "Asset retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdAt\": \"1991-03-09T18:47:25.678Z\",\n  \"updatedAt\": \"2011-01-24T16:53:50.361Z\",\n  \"assetNumber\": \"string\",\n  \"assetType\": \"string\",\n  \"assetCategory\": \"component\",\n  \"assetTypeId\": \"string\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"criticality\": \"coreProcess\",\n  \"status\": \"inactive\",\n  \"name\": \"string\",\n  \"parentAsset\": {\n    \"id\": \"string\",\n    \"assetNumber\": \"string\",\n    \"assetType\": \"string\"\n  },\n  \"location\": {\n    \"company\": \"string\",\n    \"street\": \"string\",\n    \"streetNumber\": \"string\",\n    \"zipPostCode\": \"string\",\n    \"city\": \"string\",\n    \"countryProvince\": \"string\",\n    \"country\": \"string\",\n    \"other\": \"string\"\n  },\n  \"relatedOrganizations\": [\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    }\n  ],\n  \"relatedContacts\": [\n    {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"email\": \"string\"\n    }\n  ],\n  \"assignedPerson\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"installationDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa5714b9-e649-4cef-b5a2-d5081a47db70",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5150c886-3a61-4bdf-ac73-ad22d35784b1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db11697c-26e1-41be-b1b9-a832cabb1925",
+          "name": "Update an Asset by its internal ID",
+          "request": {
+            "name": "Update an Asset by its internal ID",
+            "description": {
+              "content": "Partially updates an existing asset identified by its internal ID. Only the fields provided in the request body are modified. Returns 204 on success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The asset's internal ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f564ac32-8b67-4952-97a1-2c54020a8cb7",
+              "name": "Resource updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ca7820c-c0f3-4db1-887d-c6a2a0a923b3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd05b2be-3f93-4139-b744-0e072d50bdbd",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b36a5923-520d-40f1-a004-fdb21f1dcd9e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c86bee25-b68c-4b9b-b7b7-fd8c98b5c942",
+              "name": "Duplicate asset number and assetTypeId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e53c330-5504-46f6-aa7a-9a5f6881e710",
+          "name": "Delete an Asset by its internal ID",
+          "request": {
+            "name": "Delete an Asset by its internal ID",
+            "description": {
+              "content": "Permanently deletes the asset identified by its internal ID. Returns 204 on success. Fails with 409 if the asset is a parent to other assets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The asset's internal ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cc7cc061-8f4b-4578-9012-ae4716801d03",
+              "name": "Asset deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16ea10ad-4695-48e7-be4b-17436b62476a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ab4998f-407a-4188-87b0-3fba8bc27128",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d75b6caf-1561-46a3-aaea-84c763c7e621",
+              "name": "Asset is parent to other assets, cannot delete",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The asset's internal ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbd33461-c749-44bd-933b-f5058cd7742e",
+          "name": "Get an Asset by its number",
+          "request": {
+            "name": "Get an Asset by its number",
+            "description": {
+              "content": "Retrieves a single asset by its unique asset number. The asset number must be URL-encoded. Returns 409 if multiple assets share the same number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "number",
+                ":assetNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetNumber",
+                  "description": "(Required) The asset's number (must be URL encoded)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50de6b57-f778-48ed-ade8-9e9fec901f7c",
+              "name": "Asset retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdAt\": \"1984-11-28T13:11:06.718Z\",\n  \"updatedAt\": \"2017-06-01T13:58:49.581Z\",\n  \"assetNumber\": \"string\",\n  \"assetType\": \"string\",\n  \"assetCategory\": \"area\",\n  \"assetTypeId\": \"string\",\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"criticality\": \"coreProcess\",\n  \"status\": \"stopped\",\n  \"name\": \"string\",\n  \"parentAsset\": {\n    \"id\": \"string\",\n    \"assetNumber\": \"string\",\n    \"assetType\": \"string\"\n  },\n  \"location\": {\n    \"company\": \"string\",\n    \"street\": \"string\",\n    \"streetNumber\": \"string\",\n    \"zipPostCode\": \"string\",\n    \"city\": \"string\",\n    \"countryProvince\": \"string\",\n    \"country\": \"string\",\n    \"other\": \"string\"\n  },\n  \"relatedOrganizations\": [\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    }\n  ],\n  \"relatedContacts\": [\n    {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"email\": \"string\"\n    }\n  ],\n  \"assignedPerson\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"installationDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fb244c3-3a4b-455a-92c1-806919a612ed",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7064d4ce-c1b6-4917-a5d7-853cd571a9fc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5793b96-f18a-4dc4-911b-8a420f74ca3a",
+              "name": "More than one asset with the same serial number was found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6211ee4a-eea5-4dfd-b936-94bafea7e13d",
+          "name": "Update an Asset by its number",
+          "request": {
+            "name": "Update an Asset by its number",
+            "description": {
+              "content": "Partially updates a single asset identified by its unique asset number. The asset number must be URL-encoded. Returns 409 if the update would create a duplicate asset number and asset-type combination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "number",
+                ":assetNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetNumber",
+                  "description": "(Required) The asset's number (must be URL encoded)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0ca56af-639e-4cf9-92b1-7d62d581080e",
+              "name": "Resource updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f271d34b-c8fe-4c90-8317-dc8e280066c4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c154e99-f7ae-4fd8-953c-ecd5c6cf5060",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f7627da-352c-4cfa-88e7-f09e947d5f51",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f31476ac-4b61-43e8-9c84-2e1276686cf3",
+              "name": "Duplicate asset number and assetTypeId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetNumber\": \"<string>\",\n  \"assetTypeId\": \"<string>\",\n  \"assetTypeLabel\": \"<string>\",\n  \"name\": \"<string>\",\n  \"parentAssetId\": \"<string>\",\n  \"parentAssetNumber\": \"<string>\",\n  \"relatedOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assignedPersonId\": \"<object>\",\n  \"responsibleUserGroupId\": \"<string>\",\n  \"responsibleUserGroupName\": \"<string>\",\n  \"relatedContactIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"company\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"zipPostCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"countryProvince\": \"<string>\",\n    \"country\": \"<string>\",\n    \"other\": \"<string>\"\n  },\n  \"userGroupIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userGroupNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ],\n  \"criticality\": \"<string>\",\n  \"installationDate\": \"<YYYY-MM-DD>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7f64175-723a-4767-a061-20798d4a0e5d",
+          "name": "Delete an Asset by its number",
+          "request": {
+            "name": "Delete an Asset by its number",
+            "description": {
+              "content": "Permanently deletes a single asset identified by its unique asset number. The asset number must be URL-encoded. Returns 409 if the asset is a parent to other assets or if multiple assets share the same number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "number",
+                ":assetNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetNumber",
+                  "description": "(Required) The asset's number (must be URL encoded)"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e224221c-393f-4983-adc5-7659e0688029",
+              "name": "Asset deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad1eeb0a-c1e0-4f0f-8079-e6e846d222b7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c0c08aa-f54b-402f-ac6e-f50f17cc6255",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a87c7fe-ef5e-4130-aeee-e6964cafc2ae",
+              "name": "Cannot delete. Asset is parent to other assets or more than one asset with the same serial number was found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97f6f370-4d5d-47e0-acef-a385bb8294a2",
+          "name": "Get a list of part inventories by asset by serial number",
+          "request": {
+            "name": "Get a list of part inventories by asset by serial number",
+            "description": {
+              "content": "Returns a paginated list of part inventories associated with the asset identified by its serial number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "number",
+                ":assetNumber",
+                "inventories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetNumber",
+                  "description": "(Required) The asset's number (must be URL encoded)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "05937832-53b2-4032-b667-461599f95d7a",
+              "name": "List of part inventories by asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"storageAssetId\": \"string\",\n      \"partType\": {},\n      \"availableStock\": 7898.962971540415,\n      \"totalStock\": 101.25094643525512,\n      \"createdAt\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"storageAssetId\": \"string\",\n      \"partType\": {},\n      \"availableStock\": 4883.767560433202,\n      \"totalStock\": 2155.6572317606306,\n      \"createdAt\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e91e635d-e702-403b-9156-d9f01ec35f72",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "262c6ccd-c2a2-44fc-9e9b-bf89d58d18f0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f00241a-3ee0-4ad1-bd6e-216276394f6d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c6a6d8a-12fa-4ca7-8fe4-ebf69d3cb4f5",
+              "name": "More than one asset with the same serial number was found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "number",
+                    ":assetNumber",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetNumber",
+                      "description": "(Required) The asset's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9d8ba2a-f7d9-4fc4-86f2-cd815ac79317",
+          "name": "Get a list of part inventories by asset",
+          "request": {
+            "name": "Get a list of part inventories by asset",
+            "description": {
+              "content": "Returns a paginated list of part inventories associated with the asset identified by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                ":id",
+                "inventories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d296a160-5cd5-4c1d-b78f-16922e6ee359",
+              "name": "List of part inventories by asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"storageAssetId\": \"string\",\n      \"partType\": {},\n      \"availableStock\": 2966.826285399018,\n      \"totalStock\": 3519.476737949475,\n      \"createdAt\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"storageAssetId\": \"string\",\n      \"partType\": {},\n      \"availableStock\": 2961.080653603405,\n      \"totalStock\": 5469.333962911428,\n      \"createdAt\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51f783ef-d7d4-44fc-9683-b5c297fdde91",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1ad0d6b-97ca-4d9e-9d98-fb6165e5ecd6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8aa72b9c-a59f-4bde-84ba-22477ef5a6ab",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":id",
+                    "inventories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b1074309-b63a-4d12-9061-ad0053550eaf",
+    "name": "AI ai-chat assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

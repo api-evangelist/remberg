@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat asset-types API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "asset-types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an AssetType by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset type's internal ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a single asset type by its unique internal identifier, including all configured properties."
+        },
+        {
+          "info": {
+            "name": "Update an AssetType by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset type's internal ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing asset type identified by its internal ID. Only the fields provided in the request body will be modified."
+        },
+        {
+          "info": {
+            "name": "Delete an AssetType by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/assets/types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes the asset type identified by the given ID. Fails with 409 if the asset type still has associated assets."
+        },
+        {
+          "info": {
+            "name": "Get an AssetType by its label",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/types/label/:assetTypeLabel",
+            "params": [
+              {
+                "name": "assetTypeLabel",
+                "value": "",
+                "type": "path",
+                "description": "The asset type's label (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a single asset type by its unique label, including all configured properties. The label must be URL-encoded."
+        },
+        {
+          "info": {
+            "name": "Update an AssetType by its label",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/types/label/:assetTypeLabel",
+            "params": [
+              {
+                "name": "assetTypeLabel",
+                "value": "",
+                "type": "path",
+                "description": "The asset type's label (must be URL encoded)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing asset type identified by its label. Only the fields provided in the request body will be modified. The label must be URL-encoded."
+        },
+        {
+          "info": {
+            "name": "Delete an AssetType by its label",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/assets/types/label/:assetTypeLabel",
+            "params": [
+              {
+                "name": "assetTypeLabel",
+                "value": "",
+                "type": "path",
+                "description": "The asset type's label (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes the asset type identified by the given label. The label must be URL-encoded. Fails with 409 if the asset type still has associated assets."
+        },
+        {
+          "info": {
+            "name": "Create a new AssetType",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/assets/types",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new asset type with the given label and property definitions. Returns the ID of the newly created asset type. Fails with 409 if an asset type with the same label already exists."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

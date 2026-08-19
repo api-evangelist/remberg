@@ -1,0 +1,421 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat work-requests API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "work-requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Work Request by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/work-requests/erp/:externalReference",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "Work Request external reference (ERP Reference). Must be URL encoded."
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a single Work Request identified by its external reference (ERP Reference). Optionally include associated resources via query parameters."
+        },
+        {
+          "info": {
+            "name": "Update a Work Request by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/work-requests/erp/:externalReference",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "Work Request external reference (ERP Reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing Work Request identified by its external reference (ERP Reference). Only the fields provided in the request body will be modified."
+        },
+        {
+          "info": {
+            "name": "Delete a Work Request by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v1/work-requests/erp/:externalReference",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "Work Request external reference (ERP Reference). Must be URL encoded."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes a Work Request identified by its external reference (ERP Reference). Returns 204 on success or 404 if no matching Work Request exists."
+        },
+        {
+          "info": {
+            "name": "Approve a Work Request by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/work-requests/erp/:externalReference/approve",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "Work Request external reference (ERP Reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Approves a Work Request identified by its external reference (ERP Reference). An optional comment can be provided in the request body. Returns 204 on success."
+        },
+        {
+          "info": {
+            "name": "Decline a Work Request by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/work-requests/erp/:externalReference/decline",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "Work Request external reference (ERP Reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Declines a Work Request identified by its external reference (ERP Reference). An optional comment can be provided in the request body. Returns 204 on success."
+        },
+        {
+          "info": {
+            "name": "Get a list of Work Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/work-requests",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request (default 20 items, max 1000 items)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by status. 000_new, 010_approved, 020_declined, 030_completed."
+              },
+              {
+                "name": "relatedAssetId",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by Asset internal ID."
+              },
+              {
+                "name": "assetStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by Asset status. new, running, warning, stopped, inactive."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests updated from this date."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests updated until this date."
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests created from this date."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests created until this date."
+              },
+              {
+                "name": "failureTypeIds",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by failure type internal IDs."
+              },
+              {
+                "name": "failureTypeReferences",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by failure type external references (ERP References)."
+              },
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by external reference (ERP Reference)."
+              },
+              {
+                "name": "relatedWorkOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter Work Requests by related Work Order internal ID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of Work Requests. Use query parameters to filter, sort, and paginate results."
+        },
+        {
+          "info": {
+            "name": "Create a new Work Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v1/work-requests",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new Work Request with the provided details. Supports multipart/form-data to allow file attachments alongside the request body. Returns the internal ID of the created Work Request."
+        },
+        {
+          "info": {
+            "name": "Get a Work Request by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/work-requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Work Request internal ID."
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a single Work Request identified by its internal ID. Optionally include associated resources via query parameters."
+        },
+        {
+          "info": {
+            "name": "Update a Work Request by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/work-requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Work Request internal ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing Work Request identified by its internal ID. Only the fields provided in the request body will be modified."
+        },
+        {
+          "info": {
+            "name": "Delete a Work Request by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v1/work-requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes a Work Request identified by its internal ID. Returns 204 on success or 404 if no matching Work Request exists."
+        },
+        {
+          "info": {
+            "name": "Approve a Work Request by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/work-requests/:id/approve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Work Request internal ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Approves a Work Request identified by its internal ID. An optional comment can be provided in the request body. Returns 204 on success."
+        },
+        {
+          "info": {
+            "name": "Decline a Work Request by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/work-requests/:id/decline",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Work Request internal ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Declines a Work Request identified by its internal ID. An optional comment can be provided in the request body. Returns 204 on success."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

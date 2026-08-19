@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat contacts API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a specific contact by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the contact to retrieve"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a single contact by its unique identifier, including name, email, organization, and other profile details."
+        },
+        {
+          "info": {
+            "name": "Update a contact by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the contact to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing contact identified by its unique ID. Supports updating name, email, job position, phone number, and hourly rates. Returns status 209 if the contact was updated but sending the activation or verification email failed."
+        },
+        {
+          "info": {
+            "name": "Delete a contact by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v1/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the contact to delete"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes a contact identified by its unique ID. If the contact is linked to a remberg user account, that account is also deactivated."
+        },
+        {
+          "info": {
+            "name": "Get a list of contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/contacts",
+            "params": [
+              {
+                "name": "organizationNumber",
+                "value": "",
+                "type": "query",
+                "description": "Specify the organization number the contacts belong to."
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Define the sort order of the received payload. (asc/desc)"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Specify the field used for sorting."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Allows to filter by the search phrase over fullName, email properties."
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of contacts. Supports filtering by organization number, creation and update timestamps, and free-text search, as well as sorting and pagination via query parameters."
+        },
+        {
+          "info": {
+            "name": "Add a new contact to an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v1/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new contact within the specified organization. Requires a first name, last name, and organization number. Optionally accepts an email to link a remberg user account, as well as job position and phone number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

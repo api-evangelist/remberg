@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat tickets API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tickets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the available ticket categories as a tree structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/tickets/categories",
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the hierarchical tree of ticket categories available to the authenticated tenant. Use the result to populate category selectors when creating or updating tickets."
+        },
+        {
+          "info": {
+            "name": "Get a list of Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/tickets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request (default 20 items, max 1000 items)."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter tickets by subject or other searchable fields."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by completion status. new, open, pendingInternal, pendingExternal, solved, closed, moved."
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by priority. 000_low, 010_normal, 020_high, 030_critical."
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by category internal ID. The filter uses the category hierarchy, so all tickets belonging to the specified category or any of its descendant categories will be included."
+              },
+              {
+                "name": "relatedOrganizationId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by related organization internal ID."
+              },
+              {
+                "name": "relatedAssetId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by related asset internal ID (needs relatedAssetTypeId)."
+              },
+              {
+                "name": "relatedAssetTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by related asset type internal ID (needs relatedAssetId)."
+              },
+              {
+                "name": "assignedPersonId",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets by assigned person contact ID."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets updated from this date."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets updated until this date."
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets created from this date."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter tickets created until this date."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of tickets visible to the authenticated tenant. Supports filtering and sorting via query parameters."
+        },
+        {
+          "info": {
+            "name": "Create a new Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new ticket for the authenticated tenant. Returns the ID of the newly created ticket."
+        },
+        {
+          "info": {
+            "name": "Get a Ticket's conversations by its Ticket's internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/tickets/:id/conversations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Ticket's internal ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the conversation history of the specified ticket, including inbound and outbound email messages and other communication activities."
+        },
+        {
+          "info": {
+            "name": "Get a Ticket by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/tickets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Ticket's internal ID"
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single ticket identified by its internal ID. Optionally includes associated resources such as contacts or organizations when requested via query parameters."
+        },
+        {
+          "info": {
+            "name": "Update a Ticket by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/tickets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the Ticket"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing ticket identified by its internal ID. Only the fields provided in the request body will be modified; omitted fields remain unchanged."
+        },
+        {
+          "info": {
+            "name": "Delete a Ticket by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/tickets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the Ticket"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes the ticket identified by its internal ID. Returns no content on success."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

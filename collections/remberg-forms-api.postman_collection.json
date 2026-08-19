@@ -1,0 +1,617 @@
+{
+  "item": [
+    {
+      "id": "b0e2dc88-eb61-446f-9407-1e29d0c6e905",
+      "name": "forms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92159753-74c7-4a43-a619-93bd6d36dc7d",
+          "name": "Get a list of forms",
+          "request": {
+            "name": "Get a list of forms",
+            "description": {
+              "content": "Returns a paginated list of form instances the caller has access to. Supports filtering and sorting via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "forms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Fetch only forms with this status."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Define which page to fetch, using the limit property to define how many items a page will contain. (0 indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Define how many items to include per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "formTemplateId",
+                  "value": "<string>",
+                  "description": "Specify a form template ID to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "finalizedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Fetch forms with a finalizedAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "finalizedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Fetch forms with a finalizedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "createdAt",
+                  "description": "Specify the field used for sorting."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortDirection",
+                  "value": "desc",
+                  "description": "Define the sort order of the received payload."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "363c5a2d-f36b-4d67-8d39-ea0b5688f7e3",
+              "name": "List of forms",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "formTemplateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finalizedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "finalizedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "createdAt"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"formTemplateId\": \"string\",\n      \"counter\": 1,\n      \"name\": \"string\",\n      \"status\": \"finalized\",\n      \"createdAt\": \"1972-07-22T13:20:58.732Z\",\n      \"updatedAt\": \"1991-04-14T21:46:13.810Z\",\n      \"relatedWorkOrderId\": \"string\",\n      \"finalizedAt\": \"2019-10-19T07:17:26.252Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"formTemplateId\": \"string\",\n      \"counter\": 1,\n      \"name\": \"string\",\n      \"status\": \"inProgress\",\n      \"createdAt\": \"2003-12-09T19:21:27.468Z\",\n      \"updatedAt\": \"1973-05-31T02:16:56.029Z\",\n      \"relatedWorkOrderId\": \"string\",\n      \"finalizedAt\": \"1950-04-27T06:05:55.397Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92c246d2-2c15-4c9c-aed6-2ee095d2cec2",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "formTemplateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finalizedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "finalizedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "createdAt"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c0b9e5ab-10f4-4ec6-b86f-8c6aa2a952c7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "formTemplateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "finalizedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "finalizedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "createdAt"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9f099a7-e60e-445b-a36a-dca2d54bcf34",
+          "name": "Get a form by ID",
+          "request": {
+            "name": "Get a form by ID",
+            "description": {
+              "content": "Returns the details of a single form instance identified by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "forms",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<^[a-f]{24}$>",
+                  "key": "id",
+                  "description": "(Required) The form's ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2de65a67-ba10-4b9d-a251-4963dde1f0af",
+              "name": "Form details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<^[a-f]{24}$>",
+                      "key": "id",
+                      "description": "(Required) The form's ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"formTemplateId\": \"string\",\n  \"counter\": 1,\n  \"name\": \"string\",\n  \"status\": \"finalized\",\n  \"createdAt\": \"2003-04-19T02:38:09.091Z\",\n  \"updatedAt\": \"1953-07-28T16:56:52.385Z\",\n  \"data\": {\n    \"input_1\": \"Some input value\",\n    \"input_2\": null,\n    \"company_select_1\": {\n      \"organizationName\": \"Company GmbH\",\n      \"organizationNumber\": \"1234\"\n    }\n  },\n  \"relatedWorkOrderId\": \"string\",\n  \"finalizedAt\": \"2000-12-17T00:32:25.785Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1136f31b-d6c1-4bf8-b770-4a1ee59af044",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<^[a-f]{24}$>",
+                      "key": "id",
+                      "description": "(Required) The form's ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c39d6e3-527f-45d6-acd8-36c5bb6d1351",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<^[a-f]{24}$>",
+                      "key": "id",
+                      "description": "(Required) The form's ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72fd8a80-5564-488c-8df9-5b57bcd81cfa",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "forms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<^[a-f]{24}$>",
+                      "key": "id",
+                      "description": "(Required) The form's ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d75dcd6c-a79c-4fa8-a7dc-d6cb47b5b060",
+    "name": "AI ai-chat forms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

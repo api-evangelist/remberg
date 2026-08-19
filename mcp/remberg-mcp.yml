@@ -5,16 +5,16 @@ source: derived from 12 remberg OpenAPI files (no official hosted MCP server fou
 server:
   name: remberg
   transport: http
-  note: "candidate \u2014 no official MCP server published as of 2026-07-21"
+  note: candidate — no official MCP server published as of 2026-07-21
 tool_count: 115
 tools:
 - name: AiCopilotCfaController_getAnswer
-  description: Generate an AI-powered answer based on the provided context. Returns
-    the answer along with the knowledge-base sources us
+  description: Generate an AI-powered answer based on the provided context. Returns the answer along with
+    the knowledge-base sources us
   source_operation: openapi/remberg-ai-openapi.json#AiCopilotCfaController_getAnswer
 - name: AiCopilotCfaController_provideFeedback
-  description: Submit user feedback (positive or negative) for a previously generated
-    AI answer, identified by its trace ID.
+  description: Submit user feedback (positive or negative) for a previously generated AI answer, identified
+    by its trace ID.
   source_operation: openapi/remberg-ai-openapi.json#AiCopilotCfaController_provideFeedback
 - name: /v2/assets/failure-types_get
   description: Get all failure types
@@ -116,12 +116,12 @@ tools:
   description: Add a new contact to an organization
   source_operation: openapi/remberg-contacts-openapi.json#ContactsCfaController_createOne
 - name: /v1/files_get
-  description: Returns a list of top-level files and folders. Use the folderId query
-    parameter to retrieve nested resources.
+  description: Returns a list of top-level files and folders. Use the folderId query parameter to retrieve
+    nested resources.
   source_operation: openapi/remberg-files-openapi.json#/v1/files_get
 - name: /v1/files_post
-  description: Upload one or more files using multipart/form-data. Optionally specify
-    a target folder via the metadata payload.
+  description: Upload one or more files using multipart/form-data. Optionally specify a target folder
+    via the metadata payload.
   source_operation: openapi/remberg-files-openapi.json#/v1/files_post
 - name: /v1/files/resolve_get
   description: Resolve a file or folder by its slash-delimited path (e.g. "Engineering/Specs/vacuum.pdf")
@@ -134,15 +134,14 @@ tools:
   description: Update the metadata of a file or folder by its unique identifier.
   source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}_patch
 - name: /v1/files/{id}_delete
-  description: "Delete a file or folder by its unique identifier. This is a cascading\
-    \ operation \u2014 all nested child items will also be pe"
+  description: Delete a file or folder by its unique identifier. This is a cascading operation — all nested
+    child items will also be pe
   source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}_delete
 - name: /v1/files/{id}/download_get
   description: Download the binary content of a file by its unique id.
   source_operation: openapi/remberg-files-openapi.json#/v1/files/{id}/download_get
 - name: /v1/files/folder_post
-  description: Create a new folder. Optionally specify a parent folder to create a
-    nested folder.
+  description: Create a new folder. Optionally specify a parent folder to create a nested folder.
   source_operation: openapi/remberg-files-openapi.json#/v1/files/folder_post
 - name: /v1/files/{id}/content_patch
   description: Replace the binary content of an existing file by its unique id.
@@ -190,8 +189,7 @@ tools:
   description: Get a part inventory by part number and storage asset number
   source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_get
 - name: /v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_post
-  description: Update the stock of a part inventory by part number and storage asset
-    number
+  description: Update the stock of a part inventory by part number and storage asset number
   source_operation: openapi/remberg-parts-openapi.json#/v2/parts/number/{partNumber}/inventories/storage/number/{storageAssetNumber}_post
 - name: /v2/parts/{partTypeId}/inventories_get
   description: Get all part inventories by part ID
@@ -296,8 +294,7 @@ tools:
   description: Add checklist items to a Work Order by its internal ID
   source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/checklist_post
 - name: /v2/work-orders/erp/{externalReference}/checklist_post
-  description: Add checklist items to a Work Order by its external Reference (ERP
-    reference)
+  description: Add checklist items to a Work Order by its external Reference (ERP reference)
   source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/checklist_post
 - name: /v2/work-orders/{id}/times_get
   description: Get time entries for a Work Order
@@ -312,8 +309,7 @@ tools:
   description: Get stock changes for a Work Order by its external reference (ERP Reference)
   source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/stock-changes_get
 - name: /v2/work-orders/erp/{externalReference}/stock-changes_post
-  description: Create a PartStockChange for a Work Order by its external reference
-    (ERP Reference)
+  description: Create a PartStockChange for a Work Order by its external reference (ERP Reference)
   source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/stock-changes_post
 - name: /v2/work-orders/{id}/procedures_post
   description: Add a procedure to a Work Order by its internal ID
@@ -325,8 +321,7 @@ tools:
   description: Remove a procedure from a Work Order by its internal ID
   source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/{id}/procedures/{procedureInstanceId}_delete
 - name: /v2/work-orders/erp/{externalReference}/procedures/{procedureInstanceId}_delete
-  description: Remove a procedure from a Work Order by its external reference (ERP
-    reference)
+  description: Remove a procedure from a Work Order by its external reference (ERP reference)
   source_operation: openapi/remberg-work-orders-openapi.json#/v2/work-orders/erp/{externalReference}/procedures/{procedureInstanceId}_delete
 - name: /v1/work-requests/erp/{externalReference}_get
   description: Get a Work Request by its external reference (ERP Reference)
@@ -364,3 +359,9 @@ tools:
 - name: /v1/work-requests/{id}/decline_patch
   description: Decline a Work Request by its internal ID
   source_operation: openapi/remberg-work-requests-openapi.json#/v1/work-requests/{id}/decline_patch
+deployment:
+  mode: none
+  verified: derived
+  tools: 115
+  checked: '2026-08-12'
+  source: catalog MCP census

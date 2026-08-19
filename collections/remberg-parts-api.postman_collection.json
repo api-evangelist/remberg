@@ -1,0 +1,1963 @@
+{
+  "item": [
+    {
+      "id": "669ea5a8-dc2c-46be-a8be-9fd306435a04",
+      "name": "parts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92062349-3518-4bbb-9563-acdd1063a785",
+          "name": "Get all parts",
+          "request": {
+            "name": "Get all parts",
+            "description": {
+              "content": "Returns a paginated list of all parts. Use query parameters to filter, sort, and paginate the results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sortDirection",
+                  "value": "<string>",
+                  "description": "Sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "<string>",
+                  "description": "Sort field (default: name)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request. (default 20 items, max 1000 items)"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Filter by specifying a search phrase over the part's name, number or external reference."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "237704a8-8742-49a1-8311-8f4fd7f1a282",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"partNumber\": \"string\",\n      \"name\": \"string\",\n      \"createdAt\": \"1959-06-18T21:50:21.199Z\",\n      \"updatedAt\": \"2007-04-08T02:32:12.893Z\",\n      \"minimumStock\": 7561.448264411508,\n      \"availableStock\": 1327.5996882302609,\n      \"externalReference\": \"string\",\n      \"description\": \"string\",\n      \"price\": 5879.872237993415\n    },\n    {\n      \"id\": \"string\",\n      \"partNumber\": \"string\",\n      \"name\": \"string\",\n      \"createdAt\": \"1961-02-19T00:55:20.179Z\",\n      \"updatedAt\": \"1990-07-02T09:08:20.756Z\",\n      \"minimumStock\": 5443.626013428517,\n      \"availableStock\": 6518.649081899801,\n      \"externalReference\": \"string\",\n      \"description\": \"string\",\n      \"price\": 6859.9755319962405\n    }\n  ],\n  \"count\": 1350.5229795697494\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6dc24f9-9bba-4ebf-9e70-305a8021645b",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8dd74dcf-39ed-483b-bd4f-71e5cd5440be",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b711d6d6-1c18-4b05-a757-876504308a5c",
+          "name": "Create a new part",
+          "request": {
+            "name": "Create a new part",
+            "description": {
+              "content": "Creates a new part with the provided properties. Returns the created part including its generated ID. Responds with 409 if a part with the same number already exists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<number>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea689496-bec4-4db3-a3ca-d2d9d42cb4b9",
+              "name": "Resource created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<number>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "add6e179-ac25-4b5d-86f5-b7fff66f2ac0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<number>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1dcbeeca-6a0c-4d32-a776-b35ec9447fac",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<number>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c572c03-186e-4123-b0a4-2fdaa52222ec",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<number>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0801f08-f3c9-4602-8679-13e0241db5ba",
+              "name": "Duplicate part number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<number>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce1664fa-2300-47f2-8f80-aa9d01dd7bc6",
+          "name": "Get a specific part",
+          "request": {
+            "name": "Get a specific part",
+            "description": {
+              "content": "Returns a single part identified by its internal ID. Use query parameters to control which fields are included in the response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The part's internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94bb1ba4-d02d-43d1-af73-46af6e8d0996",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partNumber\": \"string\",\n  \"name\": \"string\",\n  \"createdAt\": \"2018-10-02T19:25:49.220Z\",\n  \"updatedAt\": \"1977-09-20T18:08:43.051Z\",\n  \"minimumStock\": 2068.5596424579912,\n  \"availableStock\": 9785.867204955846,\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"externalReference\": \"string\",\n  \"description\": \"string\",\n  \"price\": 1265.2804395138794,\n  \"distributorOrganizations\": [\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    }\n  ],\n  \"manufacturerOrganization\": {\n    \"id\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationNumber\": \"string\"\n  },\n  \"relatedAssets\": [\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\"\n    }\n  ],\n  \"relatedAssetTypes\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a9ed2f9-c4a5-491d-b501-5d88d2770569",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "027d9e42-e0af-4b32-9e8f-29993cb318ee",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "434f73b0-cb9b-4893-bc89-b0214d97f499",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b90dddf-269b-47ab-8a11-ffb680024531",
+          "name": "Update a specific part",
+          "request": {
+            "name": "Update a specific part",
+            "description": {
+              "content": "Partially updates a part identified by its internal ID. Only the fields provided in the request body will be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The part's internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0df74018-026a-4466-95ca-280f20483c9b",
+              "name": "Resource updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "323375e5-da66-4947-b0f2-020175a84aa8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd479cfb-fb2e-4313-94c7-acb86517dcd7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "83e1d970-a47d-4179-855d-083b5e1c71c0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3402416-e202-4c6d-810b-45666cd8711f",
+              "name": "Duplicate part number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The part's internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f91cfbdb-53cd-4685-b1b2-1edb4f009d84",
+          "name": "Get a Part by its number",
+          "request": {
+            "name": "Get a Part by its number",
+            "description": {
+              "content": "Returns a single part identified by its part number. The part number must be URL-encoded. Use query parameters to control which fields are included in the response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts",
+                "number",
+                ":partNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partNumber",
+                  "description": "(Required) The part's number (must be URL encoded)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c03ac812-b6e0-4482-8a62-92ee203c8da1",
+              "name": "Part retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partNumber\": \"string\",\n  \"name\": \"string\",\n  \"createdAt\": \"1983-03-19T10:20:56.700Z\",\n  \"updatedAt\": \"1995-11-06T17:49:15.262Z\",\n  \"minimumStock\": 1946.2678771531782,\n  \"availableStock\": 6490.920274351986,\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"reference\": \"string\",\n      \"value\": {},\n      \"associationValue\": [\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"assetNumber\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"externalReference\": \"string\",\n  \"description\": \"string\",\n  \"price\": 5868.290017532215,\n  \"distributorOrganizations\": [\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"organizationName\": \"string\",\n      \"organizationNumber\": \"string\"\n    }\n  ],\n  \"manufacturerOrganization\": {\n    \"id\": \"string\",\n    \"organizationName\": \"string\",\n    \"organizationNumber\": \"string\"\n  },\n  \"relatedAssets\": [\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"assetNumber\": \"string\",\n      \"assetType\": \"string\"\n    }\n  ],\n  \"relatedAssetTypes\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c829d87b-fe7d-4982-9129-5dbb19eaf4dc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5fedcd8-c268-4362-ae32-36162a09b740",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52428ed8-d30f-4200-af7b-7e05fda5c043",
+          "name": "Update a Part by its number",
+          "request": {
+            "name": "Update a Part by its number",
+            "description": {
+              "content": "Partially updates an existing part identified by its unique part number. The part number must be URL-encoded. Only the fields provided in the request body will be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "parts",
+                "number",
+                ":partNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partNumber",
+                  "description": "(Required) The part's number (must be URL encoded)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37833aeb-dd10-47a5-98b2-f2e0dce0a930",
+              "name": "Resource updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f238b6b4-e847-463b-8bbf-939d4e41a4cd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c7d8993-646e-4bcd-b18f-0e41b796d2ea",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef5496ec-2fdf-463b-a02d-1c10d90621da",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "01a33af0-1cb1-477f-8df1-7dd7597d921b",
+              "name": "Duplicate part number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "parts",
+                    "number",
+                    ":partNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partNumber",
+                      "description": "(Required) The part's number (must be URL encoded)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"partNumber\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\",\n  \"price\": \"<object>\",\n  \"minimumStock\": \"<number>\",\n  \"distributorOrganizationIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"distributorOrganizationNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manufacturerOrganizationId\": \"<string>\",\n  \"manufacturerOrganizationNumber\": \"<string>\",\n  \"relatedAssetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relatedAssetTypeLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"customPropertyValues\": [\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"value\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a08c3b9-eeea-4ce2-b9f3-f05993c51619",
+    "name": "AI ai-chat parts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

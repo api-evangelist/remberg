@@ -1,0 +1,3061 @@
+{
+  "item": [
+    {
+      "id": "535c17ed-0918-4e3b-ac53-d6d43b98ccb4",
+      "name": "files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b98e143-406c-4dda-9fe2-5039c03167e9",
+          "name": "/v1/files get",
+          "request": {
+            "name": "/v1/files get",
+            "description": {
+              "content": "Returns a list of top-level files and folders. Use the folderId query parameter to retrieve nested resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "folderId",
+                  "value": "<string>",
+                  "description": "Set the internal folderId to receive items within a folder."
+                },
+                {
+                  "disabled": false,
+                  "key": "isFolder",
+                  "value": "<boolean>",
+                  "description": "Specifies whether or not the output of the received payload contains both files and folders, or only folders (if set to true)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortDirection",
+                  "value": "<string>",
+                  "description": "Define the sort order of the received payload."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortField",
+                  "value": "<string>",
+                  "description": "Specify the field used for sorting."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request.(default 20 items)"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Allows to filter by the search phrase over name property."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3ea4d7a-b733-4b69-b002-502c848dcc1f",
+              "name": "\n    Returns list of top level files (and folders).\n    In order to get nested resources, please use folderId param.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isFolder",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"id\": \"string\",\n        \"originalName\": \"string\",\n        \"name\": \"string\",\n        \"fileType\": \"string\",\n        \"isFolder\": true,\n        \"isPublic\": true,\n        \"size\": 0,\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"parentId\": \"string\",\n        \"folderPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"description\": \"string\",\n        \"associatedAssetNumber\": [\n          \"string\",\n          \"string\"\n        ],\n        \"associatedAssetType\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aiKnowledgeBaseStatus\": {}\n      },\n      {\n        \"id\": \"string\",\n        \"originalName\": \"string\",\n        \"name\": \"string\",\n        \"fileType\": \"string\",\n        \"isFolder\": true,\n        \"isPublic\": false,\n        \"size\": 0,\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"parentId\": \"string\",\n        \"folderPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"description\": \"string\",\n        \"associatedAssetNumber\": [\n          \"string\",\n          \"string\"\n        ],\n        \"associatedAssetType\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aiKnowledgeBaseStatus\": {}\n      }\n    ]\n  },\n  {\n    \"data\": [\n      {\n        \"id\": \"string\",\n        \"originalName\": \"string\",\n        \"name\": \"string\",\n        \"fileType\": \"string\",\n        \"isFolder\": true,\n        \"isPublic\": true,\n        \"size\": 0,\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"parentId\": \"string\",\n        \"folderPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"description\": \"string\",\n        \"associatedAssetNumber\": [\n          \"string\",\n          \"string\"\n        ],\n        \"associatedAssetType\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aiKnowledgeBaseStatus\": {}\n      },\n      {\n        \"id\": \"string\",\n        \"originalName\": \"string\",\n        \"name\": \"string\",\n        \"fileType\": \"string\",\n        \"isFolder\": true,\n        \"isPublic\": false,\n        \"size\": 0,\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\",\n        \"parentId\": \"string\",\n        \"folderPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"description\": \"string\",\n        \"associatedAssetNumber\": [\n          \"string\",\n          \"string\"\n        ],\n        \"associatedAssetType\": [\n          \"string\",\n          \"string\"\n        ],\n        \"aiKnowledgeBaseStatus\": {}\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ed54c57-9d89-4584-8908-04ac72f6338d",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isFolder",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14e68284-563b-44d0-840b-e3a156cf905b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isFolder",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sortDirection",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortField",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f0e4392-94a0-4f32-a102-25a23c54e473",
+          "name": "/v1/files post",
+          "request": {
+            "name": "/v1/files post",
+            "description": {
+              "content": "Upload one or more files using multipart/form-data. Optionally specify a target folder via the metadata payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "isPublic",
+                  "value": "false",
+                  "type": "text",
+                  "description": "If this parameter is set to true, the uploaded files will be visible in the portal."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "parentId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Set the internal parentId to nest a file inside a folder."
+                },
+                {
+                  "key": "assetType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes"
+                },
+                {
+                  "key": "assetNumber",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets"
+                },
+                {
+                  "key": "assetTypes",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Specify a list of assetTypes to assign a file to them."
+                },
+                {
+                  "key": "assetNumbers",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Specify a list of assetNumbers to assign a file to them."
+                },
+                {
+                  "key": "isAddedToKnowledgeBase",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Specify if the file should be added to the knowledge base for the AI Copilot."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bc0d559-8368-4b1b-9a84-f2f018dd121c",
+              "name": "Files uploaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If this parameter is set to true, the uploaded files will be visible in the portal.",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublic",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set the internal parentId to nest a file inside a folder.",
+                        "type": "text/plain"
+                      },
+                      "key": "parentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes",
+                        "type": "text/plain"
+                      },
+                      "key": "assetType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumber",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetTypes to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetTypes",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetNumbers to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumbers",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify if the file should be added to the knowledge base for the AI Copilot.",
+                        "type": "text/plain"
+                      },
+                      "key": "isAddedToKnowledgeBase",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"originalName\": \"string\",\n    \"name\": \"string\",\n    \"ancestors\": [],\n    \"fileType\": \"string\",\n    \"isFolder\": false,\n    \"isPublic\": true,\n    \"size\": 0,\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"parentId\": \"string\",\n    \"folderPath\": [\n      \"string\",\n      \"string\"\n    ],\n    \"description\": \"string\",\n    \"associatedAssetNumber\": [\n      \"string\",\n      \"string\"\n    ],\n    \"associatedAssetType\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aiKnowledgeBaseStatus\": {}\n  },\n  {\n    \"id\": \"string\",\n    \"originalName\": \"string\",\n    \"name\": \"string\",\n    \"ancestors\": [],\n    \"fileType\": \"string\",\n    \"isFolder\": true,\n    \"isPublic\": true,\n    \"size\": 0,\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"parentId\": \"string\",\n    \"folderPath\": [\n      \"string\",\n      \"string\"\n    ],\n    \"description\": \"string\",\n    \"associatedAssetNumber\": [\n      \"string\",\n      \"string\"\n    ],\n    \"associatedAssetType\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aiKnowledgeBaseStatus\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e5084b5-75d2-4332-b18f-99f48da43cdc",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If this parameter is set to true, the uploaded files will be visible in the portal.",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublic",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set the internal parentId to nest a file inside a folder.",
+                        "type": "text/plain"
+                      },
+                      "key": "parentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes",
+                        "type": "text/plain"
+                      },
+                      "key": "assetType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumber",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetTypes to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetTypes",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetNumbers to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumbers",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify if the file should be added to the knowledge base for the AI Copilot.",
+                        "type": "text/plain"
+                      },
+                      "key": "isAddedToKnowledgeBase",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b735ed85-2a2d-4abe-b3e7-b41d23ed0e8d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If this parameter is set to true, the uploaded files will be visible in the portal.",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublic",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set the internal parentId to nest a file inside a folder.",
+                        "type": "text/plain"
+                      },
+                      "key": "parentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes",
+                        "type": "text/plain"
+                      },
+                      "key": "assetType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumber",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetTypes to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetTypes",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetNumbers to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumbers",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify if the file should be added to the knowledge base for the AI Copilot.",
+                        "type": "text/plain"
+                      },
+                      "key": "isAddedToKnowledgeBase",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dbde1fc8-2d4f-4e5d-b4a0-30b566a7692a",
+              "name": "Duplicate asset serialNumber",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "If this parameter is set to true, the uploaded files will be visible in the portal.",
+                        "type": "text/plain"
+                      },
+                      "key": "isPublic",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set the internal parentId to nest a file inside a folder.",
+                        "type": "text/plain"
+                      },
+                      "key": "parentId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes",
+                        "type": "text/plain"
+                      },
+                      "key": "assetType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumber",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetTypes to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetTypes",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify a list of assetNumbers to assign a file to them.",
+                        "type": "text/plain"
+                      },
+                      "key": "assetNumbers",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify if the file should be added to the knowledge base for the AI Copilot.",
+                        "type": "text/plain"
+                      },
+                      "key": "isAddedToKnowledgeBase",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7398245d-42ec-4871-9c17-e134ea211032",
+          "name": "/v1/files/resolve get",
+          "request": {
+            "name": "/v1/files/resolve get",
+            "description": {
+              "content": "Resolve a file or folder by its slash-delimited path (e.g. \"Engineering/Specs/vacuum.pdf\") and return its metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                "resolve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "path",
+                  "value": "<string>",
+                  "description": "(Required) Slash-delimited path including the filename (e.g., \"Engineering/Specs/vacuum.pdf\"). Path must be URL-encoded."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98fc792e-aae1-4cee-a2fb-aac74caeafd7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"originalName\": \"string\",\n  \"name\": \"string\",\n  \"ancestors\": [],\n  \"fileType\": \"string\",\n  \"isFolder\": true,\n  \"isPublic\": false,\n  \"size\": 0,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"parentId\": \"string\",\n  \"folderPath\": [\n    \"string\",\n    \"string\"\n  ],\n  \"description\": \"string\",\n  \"associatedAssetNumber\": [\n    \"string\",\n    \"string\"\n  ],\n  \"associatedAssetType\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aiKnowledgeBaseStatus\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25e4ba92-90bb-4b8c-a4c3-00d88b85881a",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcfa5a7f-9644-4a19-a8ac-232c10467081",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06c4cb6f-15c3-4406-9fcf-5981536cc8eb",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e30cf64-0f5f-40c5-8038-a99fa2ab34f6",
+          "name": "/v1/files/{id} get",
+          "request": {
+            "name": "/v1/files/{id} get",
+            "description": {
+              "content": "Retrieve the metadata of a single file or folder by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Internal file id to receive metadata of a file."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "97e6e49c-7d82-4586-90ef-08d8c438a0f3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive metadata of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"originalName\": \"string\",\n  \"name\": \"string\",\n  \"ancestors\": [],\n  \"fileType\": \"string\",\n  \"isFolder\": true,\n  \"isPublic\": false,\n  \"size\": 0,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"parentId\": \"string\",\n  \"folderPath\": [\n    \"string\",\n    \"string\"\n  ],\n  \"description\": \"string\",\n  \"associatedAssetNumber\": [\n    \"string\",\n    \"string\"\n  ],\n  \"associatedAssetType\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aiKnowledgeBaseStatus\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28c555ac-f097-43d8-86c2-f20b0e06e822",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive metadata of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b547c8b-646e-4987-a70e-d2dbf87adb17",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive metadata of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "637e1f5d-49ad-4f38-93f1-264e05121db3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive metadata of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67497c61-5e75-42e0-895e-c92a8153a651",
+          "name": "/v1/files/{id} patch",
+          "request": {
+            "name": "/v1/files/{id} patch",
+            "description": {
+              "content": "Update the metadata of a file or folder by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Internal file id to change the metadata for a file or folder."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isAddedToKnowledgeBase\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d665663-16cd-4544-a5c4-0bf3d009d394",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to change the metadata for a file or folder."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isAddedToKnowledgeBase\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"originalName\": \"string\",\n  \"name\": \"string\",\n  \"ancestors\": [],\n  \"fileType\": \"string\",\n  \"isFolder\": true,\n  \"isPublic\": false,\n  \"size\": 0,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"parentId\": \"string\",\n  \"folderPath\": [\n    \"string\",\n    \"string\"\n  ],\n  \"description\": \"string\",\n  \"associatedAssetNumber\": [\n    \"string\",\n    \"string\"\n  ],\n  \"associatedAssetType\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aiKnowledgeBaseStatus\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27f2d51f-67a9-42c0-b5b2-7607eb6dae1b",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to change the metadata for a file or folder."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isAddedToKnowledgeBase\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbbf5e53-315f-462e-bb33-ab078e4d761c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to change the metadata for a file or folder."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isAddedToKnowledgeBase\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fb9cb2b-af57-4cf7-b400-1a7081253f40",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to change the metadata for a file or folder."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isAddedToKnowledgeBase\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45bc1271-ef2b-4c58-889d-5382859ef8ea",
+              "name": "Duplicate asset serialNumber",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to change the metadata for a file or folder."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isPublic\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"removeAssetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isAddedToKnowledgeBase\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95824027-d504-40ae-aa80-7b876dc05ac6",
+          "name": "/v1/files/{id} delete",
+          "request": {
+            "name": "/v1/files/{id} delete",
+            "description": {
+              "content": "Delete a file or folder by its unique identifier. This is a cascading operation — all nested child items will also be permanently deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Internal id to delete a file or a folder. Caution: Deletion is a cascading operation so all child items will also be deleted."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "25211eb8-d7ee-424a-b56d-147c7537b973",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal id to delete a file or a folder. Caution: Deletion is a cascading operation so all child items will also be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6baa582-a5cf-4e8b-a614-1e29a8323e95",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal id to delete a file or a folder. Caution: Deletion is a cascading operation so all child items will also be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c38fa28-97ed-4322-9778-c2cfd0d9a3a0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal id to delete a file or a folder. Caution: Deletion is a cascading operation so all child items will also be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8e7135f-df55-4273-a2b2-00c0d6846c4c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal id to delete a file or a folder. Caution: Deletion is a cascading operation so all child items will also be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "598e5529-abd6-47f0-b266-f4383ea2f259",
+          "name": "/v1/files/{id}/download get",
+          "request": {
+            "name": "/v1/files/{id}/download get",
+            "description": {
+              "content": "Download the binary content of a file by its unique id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                ":id",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Internal file id to receive just the binary of a file."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ff30412f-65af-46f8-9b9f-e580ff8c45fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive just the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d00786c-3ce1-4ae7-b317-00cadb30980a",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive just the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f20a0f90-89ce-4c94-a9f6-3344edaf7337",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive just the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8cc66816-eaae-4d7e-8d4e-394c2c6e96cd",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to receive just the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4b03ac2-beb7-4ec3-8dbd-818a93ce75d7",
+          "name": "/v1/files/folder post",
+          "request": {
+            "name": "/v1/files/folder post",
+            "description": {
+              "content": "Create a new folder. Optionally specify a parent folder to create a nested folder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"isPublic\": false,\n  \"description\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aeae4757-8d1e-4384-a5cd-c86d75a3718f",
+              "name": "Folder Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isPublic\": false,\n  \"description\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"originalName\": \"string\",\n  \"name\": \"string\",\n  \"ancestors\": [],\n  \"fileType\": \"string\",\n  \"isFolder\": true,\n  \"isPublic\": false,\n  \"size\": 0,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"parentId\": \"string\",\n  \"folderPath\": [\n    \"string\",\n    \"string\"\n  ],\n  \"description\": \"string\",\n  \"associatedAssetNumber\": [\n    \"string\",\n    \"string\"\n  ],\n  \"associatedAssetType\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aiKnowledgeBaseStatus\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6475e482-5e16-40d6-ac19-505d906f7cc5",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isPublic\": false,\n  \"description\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "586a65c5-a059-42d0-8019-3286c2afc7c7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isPublic\": false,\n  \"description\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c5d7512-72c9-4062-a1a3-11de7d254cd3",
+              "name": "Duplicate asset serialNumber",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"isPublic\": false,\n  \"description\": \"<string>\",\n  \"parentId\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"assetNumber\": \"<string>\",\n  \"assetTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28d6a1fe-d4bf-4311-86a3-f8396211b8a7",
+          "name": "/v1/files/{id}/content patch",
+          "request": {
+            "name": "/v1/files/{id}/content patch",
+            "description": {
+              "content": "Replace the binary content of an existing file by its unique id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "files",
+                ":id",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Internal file id to replace the binary of a file."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Replace the current binary of a file with a new binary."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0ae31a4d-bbd8-4548-b1bf-a2c3e43dcb7e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to replace the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Replace the current binary of a file with a new binary.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"originalName\": \"string\",\n  \"name\": \"string\",\n  \"ancestors\": [],\n  \"fileType\": \"string\",\n  \"isFolder\": true,\n  \"isPublic\": false,\n  \"size\": 0,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"parentId\": \"string\",\n  \"folderPath\": [\n    \"string\",\n    \"string\"\n  ],\n  \"description\": \"string\",\n  \"associatedAssetNumber\": [\n    \"string\",\n    \"string\"\n  ],\n  \"associatedAssetType\": [\n    \"string\",\n    \"string\"\n  ],\n  \"aiKnowledgeBaseStatus\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a826e1c0-4b27-49bb-953a-629ff90224ac",
+              "name": "The file was removed from AI Copilot",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to replace the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Replace the current binary of a file with a new binary.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "code": 209,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c389643-db3e-4fac-a4ec-82ff682491f5",
+              "name": "Missing or invalid required parameter/s",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to replace the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Replace the current binary of a file with a new binary.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6249320a-dd90-450e-b270-2ddc9a1eb2b9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to replace the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Replace the current binary of a file with a new binary.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea4b39cb-8d73-43d2-8bc1-36b38dfb813f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "files",
+                    ":id",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Internal file id to replace the binary of a file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Replace the current binary of a file with a new binary.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b9cdb533-7f17-436f-ad9d-51ac8874cdc3",
+    "name": "AI ai-chat files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

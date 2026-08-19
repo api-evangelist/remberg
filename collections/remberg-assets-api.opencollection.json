@@ -1,0 +1,367 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat assets API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              },
+              {
+                "name": "organizationNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying a related organization number."
+              },
+              {
+                "name": "parentAssetNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying the related parent asset number (only direct children are fetched)."
+              },
+              {
+                "name": "assetTypeLabel",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying the asset type label."
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Sort field (default: assetNumber)"
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of assets the caller has access to. Supports filtering and sorting via query parameters."
+        },
+        {
+          "info": {
+            "name": "Create a new Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/assets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new asset with the provided properties. Returns the ID of the newly created asset. Responds with 409 if an asset with the same number already exists."
+        },
+        {
+          "info": {
+            "name": "Get an Asset by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single asset identified by its internal ID. Supports optional population of related resources via query parameters."
+        },
+        {
+          "info": {
+            "name": "Update an Asset by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing asset identified by its internal ID. Only the fields provided in the request body are modified. Returns 204 on success."
+        },
+        {
+          "info": {
+            "name": "Delete an Asset by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/assets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes the asset identified by its internal ID. Returns 204 on success. Fails with 409 if the asset is a parent to other assets."
+        },
+        {
+          "info": {
+            "name": "Get an Asset by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a single asset by its unique asset number. The asset number must be URL-encoded. Returns 409 if multiple assets share the same number."
+        },
+        {
+          "info": {
+            "name": "Update an Asset by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates a single asset identified by its unique asset number. The asset number must be URL-encoded. Returns 409 if the update would create a duplicate asset number and asset-type combination."
+        },
+        {
+          "info": {
+            "name": "Delete an Asset by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes a single asset identified by its unique asset number. The asset number must be URL-encoded. Returns 409 if the asset is a parent to other assets or if multiple assets share the same number."
+        },
+        {
+          "info": {
+            "name": "Get a list of part inventories by asset by serial number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber/inventories",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of part inventories associated with the asset identified by its serial number."
+        },
+        {
+          "info": {
+            "name": "Get a list of part inventories by asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/:id/inventories",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of part inventories associated with the asset identified by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

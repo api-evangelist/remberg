@@ -1,0 +1,647 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat work-orders API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "work-orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of Work Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/work-orders",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              },
+              {
+                "name": "relatedOrganizationNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying a related organization number."
+              },
+              {
+                "name": "parentWorkOrderExternalReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying the parent work order external reference (ERP Reference). Provide either this or the parentWorkOrderId."
+              },
+              {
+                "name": "parentWorkOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying the parent work order internal ID. Provide either this or the parentWorkOrderExternalReference"
+              },
+              {
+                "name": "statusReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the status reference of the work order."
+              },
+              {
+                "name": "typeReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the type reference of the work order."
+              },
+              {
+                "name": "statusCompleted",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the completed state of the work order."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "dueDateFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dueDate FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "dueDateUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a dueDate UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of Work Orders. Supports filtering and sorting via query parameters."
+        },
+        {
+          "info": {
+            "name": "Create a new WorkOrder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new Work Order with the provided properties and returns its ID."
+        },
+        {
+          "info": {
+            "name": "Get a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/work-orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's internal ID"
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single Work Order identified by its internal ID, including all its properties and optional populated references."
+        },
+        {
+          "info": {
+            "name": "Update a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/work-orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the work order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing Work Order identified by its internal ID. Only the fields provided in the request body will be modified."
+        },
+        {
+          "info": {
+            "name": "Delete an Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/work-orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's internal ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes an existing Work Order identified by its internal ID. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Get a Work Order by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single Work Order identified by its external reference (ERP reference), including all its properties and optional populated references. Returns 409 if multiple Work Orders share the same external reference."
+        },
+        {
+          "info": {
+            "name": "Update a Work Order by its external reference (ERP reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing Work Order identified by its external reference (ERP reference). Only the fields provided in the request body will be modified. Returns 409 if multiple Work Orders share the same external reference."
+        },
+        {
+          "info": {
+            "name": "Delete an Work Order by its external reference (ERP reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes an existing Work Order identified by its external reference (ERP reference). Returns 409 if multiple Work Orders share the same external reference. This action cannot be undone."
+        },
+        {
+          "info": {
+            "name": "Add checklist items to a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders/:id/checklist",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the work order"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds one or more checklist items to an existing Work Order identified by its internal ID."
+        },
+        {
+          "info": {
+            "name": "Add checklist items to a Work Order by its external Reference (ERP reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference/checklist",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds one or more checklist items to an existing Work Order identified by its external reference (ERP reference). Returns 409 if multiple Work Orders share the same external reference."
+        },
+        {
+          "info": {
+            "name": "Get time entries for a Work Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/work-orders/:id/times",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the work order"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the time entries associated with a Work Order identified by its internal ID."
+        },
+        {
+          "info": {
+            "name": "Get stock changes for a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/work-orders/:id/stock-changes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the work order"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 20, max 1000)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of part stock changes associated with a Work Order identified by its internal ID."
+        },
+        {
+          "info": {
+            "name": "Create a PartStockChange for a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders/:id/stock-changes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's internal ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new part stock change entry (e.g. planned, reserved, or taken) for the Work Order identified by its internal ID."
+        },
+        {
+          "info": {
+            "name": "Get stock changes for a Work Order by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference/stock-changes",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 20, max 1000)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of part stock changes associated with a Work Order identified by its external reference (ERP reference). Returns 409 if multiple Work Orders share the same external reference."
+        },
+        {
+          "info": {
+            "name": "Create a PartStockChange for a Work Order by its external reference (ERP Reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference/stock-changes",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new part stock change entry (e.g. planned, reserved, or taken) for the Work Order identified by its external reference (ERP reference). Returns 409 if multiple Work Orders share the same external reference."
+        },
+        {
+          "info": {
+            "name": "Add a procedure to a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders/:id/procedures",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's internal ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a Procedure Template as a new procedure instance to an existing Work Order identified by its internal ID. Per-type procedure limits are enforced by the Work Order. Returns the id of the created procedure instance."
+        },
+        {
+          "info": {
+            "name": "Add a procedure to a Work Order by its external reference (ERP reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference/procedures",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Adds a Procedure Template as a new procedure instance to an existing Work Order identified by its external reference (ERP reference). Per-type procedure limits are enforced by the Work Order. Returns 409 if multiple Work Orders share the same external reference."
+        },
+        {
+          "info": {
+            "name": "Remove a procedure from a Work Order by its internal ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/work-orders/:id/procedures/:procedureInstanceId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's internal ID"
+              },
+              {
+                "name": "procedureInstanceId",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the procedure instance to remove"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a procedure instance from an existing Work Order identified by its internal ID. Idempotent: returns 204 even if the procedure instance is not attached to the Work Order."
+        },
+        {
+          "info": {
+            "name": "Remove a procedure from a Work Order by its external reference (ERP reference)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/work-orders/erp/:externalReference/procedures/:procedureInstanceId",
+            "params": [
+              {
+                "name": "externalReference",
+                "value": "",
+                "type": "path",
+                "description": "The Work Order's external reference (ERP reference). Must be URL encoded."
+              },
+              {
+                "name": "procedureInstanceId",
+                "value": "",
+                "type": "path",
+                "description": "The internal ID of the procedure instance to remove"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Removes a procedure instance from an existing Work Order identified by its external reference (ERP reference). Idempotent: returns 204 even if the procedure instance is not attached to the Work Order. Returns 409 if multiple Work Orders share the same external reference."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat failure-types API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "failure-types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all failure types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/failure-types",
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of all failure types available in the tenant."
+        },
+        {
+          "info": {
+            "name": "Create a new failure type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/assets/failure-types",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new failure type for the tenant. The request body must include a label. Returns the created failure type."
+        },
+        {
+          "info": {
+            "name": "Update an existing failure type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/failure-types/:reference",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path",
+                "description": "The reference of the failure type to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing failure type identified by its reference. The request body may include any updatable fields such as the label."
+        },
+        {
+          "info": {
+            "name": "Delete a failure type by its reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v2/assets/failure-types/:reference",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path",
+                "description": "failure type reference"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes the failure type identified by the given reference. This action cannot be undone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

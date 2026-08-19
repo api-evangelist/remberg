@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ai-chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AiCopilotCfaController_getAnswer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v1/ai/answer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generate an AI-powered answer based on the provided context. Returns the answer along with the knowledge-base sources used to produce it."
+        },
+        {
+          "info": {
+            "name": "AiCopilotCfaController_provideFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v1/ai/feedback/:traceId",
+            "params": [
+              {
+                "name": "traceId",
+                "value": "",
+                "type": "path",
+                "description": "traceId of the conversation to provide feedback for"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Submit user feedback (positive or negative) for a previously generated AI answer, identified by its trace ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

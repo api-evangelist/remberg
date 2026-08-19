@@ -1,0 +1,880 @@
+{
+  "item": [
+    {
+      "id": "e3d2374d-a01b-423a-b6f7-e9b3f5d8b9d7",
+      "name": "failure-types",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c56c490-74e1-4be8-b17c-7c0de3d20bdc",
+          "name": "Get all failure types",
+          "request": {
+            "name": "Get all failure types",
+            "description": {
+              "content": "Returns a list of all failure types available in the tenant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "failure-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b3a742e-8e36-4a0c-8bb2-705e0a8265c5",
+              "name": "A list of failure types",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"label\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"tr\": \"string\",\n        \"fr\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\",\n        \"el\": \"string\",\n        \"th\": \"string\",\n        \"pl\": \"string\",\n        \"cs\": \"string\",\n        \"hu\": \"string\",\n        \"ro\": \"string\",\n        \"pt\": \"string\",\n        \"nl\": \"string\",\n        \"sk\": \"string\",\n        \"sr\": \"string\",\n        \"sv\": \"string\"\n      },\n      \"reference\": \"string\",\n      \"createdAt\": {},\n      \"description\": \"string\",\n      \"updatedAt\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"label\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"tr\": \"string\",\n        \"fr\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\",\n        \"el\": \"string\",\n        \"th\": \"string\",\n        \"pl\": \"string\",\n        \"cs\": \"string\",\n        \"hu\": \"string\",\n        \"ro\": \"string\",\n        \"pt\": \"string\",\n        \"nl\": \"string\",\n        \"sk\": \"string\",\n        \"sr\": \"string\",\n        \"sv\": \"string\"\n      },\n      \"reference\": \"string\",\n      \"createdAt\": {},\n      \"description\": \"string\",\n      \"updatedAt\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c43a21e-3fa7-4804-9e56-e6d76de2d8e5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aaac0448-6401-4245-a7d1-c9b077159aa5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "188a4f66-cc18-4c87-9c06-dffeb19ad244",
+          "name": "Create a new failure type",
+          "request": {
+            "name": "Create a new failure type",
+            "description": {
+              "content": "Creates a new failure type for the tenant. The request body must include a label. Returns the created failure type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "failure-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reference\": \"<string>\",\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c4377d1-e759-4742-859f-462c7f7f64fb",
+              "name": "failure type created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference\": \"<string>\",\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38d076a1-3e4f-4518-b679-ddc0a3bddfd0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference\": \"<string>\",\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93fc27a4-4e4f-41ae-b3f5-943c4d2c03be",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reference\": \"<string>\",\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ff89a7a-b689-4516-8b5e-baceeca511eb",
+          "name": "Update an existing failure type",
+          "request": {
+            "name": "Update an existing failure type",
+            "description": {
+              "content": "Updates an existing failure type identified by its reference. The request body may include any updatable fields such as the label.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "failure-types",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) The reference of the failure type to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bad23136-2e69-4fae-bbf1-8d6ea8ac1da8",
+              "name": "failure type updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) The reference of the failure type to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32c3578d-f8fc-4beb-b8bb-cc278970577f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) The reference of the failure type to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6df10ac-a401-478e-b637-6c157fc50f20",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) The reference of the failure type to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": {\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"es\": \"<string>\",\n    \"it\": \"<string>\",\n    \"el\": \"<string>\",\n    \"th\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"cs\": \"<string>\",\n    \"hu\": \"<string>\",\n    \"ro\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"sk\": \"<string>\",\n    \"sr\": \"<string>\",\n    \"sv\": \"<string>\"\n  },\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37f6e247-120b-499d-8451-50836adae6b9",
+          "name": "Delete a failure type by its reference",
+          "request": {
+            "name": "Delete a failure type by its reference",
+            "description": {
+              "content": "Permanently deletes the failure type identified by the given reference. This action cannot be undone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                "failure-types",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) failure type reference"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33402a50-e1d8-4bc3-84f8-cce4038d0926",
+              "name": "failure type deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) failure type reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c19660d2-27a6-4137-85d9-62aab4bdd131",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) failure type reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3937d93a-cda2-48cc-94ea-81c73fe9cd28",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    "failure-types",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) failure type reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "080b4506-38da-4af6-8beb-48805fe6330a",
+    "name": "AI ai-chat failure-types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}

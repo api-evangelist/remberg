@@ -1,0 +1,315 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat asset-status-signals API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "asset-status-signals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get status signals for an asset by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/:id/status-signals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request. (default 20 items, max 1000 items)"
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "resolvedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolvedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "resolvedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolvedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of status signals for the asset identified by its internal ID. Status signals indicate the operational state of the asset (e.g. OK, warning, or error)."
+        },
+        {
+          "info": {
+            "name": "Create a status signal for an asset by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/assets/:id/status-signals",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new status signal for the asset identified by its internal ID. Status signals represent the operational state of an asset (e.g. OK, warning, or error) and can include an optional comment."
+        },
+        {
+          "info": {
+            "name": "Get status signals for an asset by number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber/status-signals",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request. (default 20 items, max 1000 items)"
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "resolvedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolvedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "resolvedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolvedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of status signals for the asset identified by its asset number. Status signals indicate the operational state of the asset (e.g. OK, warning, or error). Returns 409 if multiple assets share the same number."
+        },
+        {
+          "info": {
+            "name": "Create a status signal for an asset by number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber/status-signals",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new status signal for the asset identified by its asset number. Status signals represent the operational state of an asset (e.g. OK, warning, or error) and can include an optional comment. Returns 409 if multiple assets share the same number."
+        },
+        {
+          "info": {
+            "name": "Resolve all status signals for an asset by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/:id/status-signals/resolve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The asset's internal ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Resolves all active status signals for the asset identified by its internal ID. After this operation, the asset will have no unresolved status signals."
+        },
+        {
+          "info": {
+            "name": "Resolve all status signals for an asset by number",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/assets/number/:assetNumber/status-signals/resolve",
+            "params": [
+              {
+                "name": "assetNumber",
+                "value": "",
+                "type": "path",
+                "description": "The asset's number (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Resolves all active status signals for the asset identified by its asset number. After this operation, the asset will have no unresolved status signals. Returns 409 if multiple assets share the same number."
+        },
+        {
+          "info": {
+            "name": "Get all status signals with asset information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/assets/status-signals",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request. (default 20 items, max 1000 items)"
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "resolvedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolvedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "resolvedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resolvedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "workOrderExternalReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Work Order external reference (ERP Reference)."
+              },
+              {
+                "name": "workRequestReference",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Work Request external reference (ERP Reference)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of all status signals across assets, including associated asset information. Use this endpoint to monitor the operational state of your entire asset fleet."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

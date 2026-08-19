@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat parts API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "parts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all parts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts",
+            "params": [
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Sort field (default: name)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request. (default 20 items, max 1000 items)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specifying a search phrase over the part's name, number or external reference."
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of all parts. Use query parameters to filter, sort, and paginate the results."
+        },
+        {
+          "info": {
+            "name": "Create a new part",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v2/parts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new part with the provided properties. Returns the created part including its generated ID. Responds with 409 if a part with the same number already exists."
+        },
+        {
+          "info": {
+            "name": "Get a specific part",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The part's internal ID."
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single part identified by its internal ID. Use query parameters to control which fields are included in the response."
+        },
+        {
+          "info": {
+            "name": "Update a specific part",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/parts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The part's internal ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates a part identified by its internal ID. Only the fields provided in the request body will be modified."
+        },
+        {
+          "info": {
+            "name": "Get a Part by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v2/parts/number/:partNumber",
+            "params": [
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path",
+                "description": "The part's number (must be URL encoded)"
+              },
+              {
+                "name": "associations",
+                "value": "",
+                "type": "query",
+                "description": "Define which associations should be included in the response."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single part identified by its part number. The part number must be URL-encoded. Use query parameters to control which fields are included in the response."
+        },
+        {
+          "info": {
+            "name": "Update a Part by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v2/parts/number/:partNumber",
+            "params": [
+              {
+                "name": "partNumber",
+                "value": "",
+                "type": "path",
+                "description": "The part's number (must be URL encoded)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing part identified by its unique part number. The part number must be URL-encoded. Only the fields provided in the request body will be modified."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

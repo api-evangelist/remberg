@@ -1,0 +1,325 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat organizations API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an Organization by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/organizations/number/:organizationNumber",
+            "params": [
+              {
+                "name": "organizationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The organization's number (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a single organization by its unique organization number. The number must be URL encoded."
+        },
+        {
+          "info": {
+            "name": "Update an Organization by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/organizations/number/:organizationNumber",
+            "params": [
+              {
+                "name": "organizationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The organization's number (must be URL encoded)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an existing organization identified by its unique organization number. The number must be URL encoded. Supports partial updates — only the provided fields will be modified."
+        },
+        {
+          "info": {
+            "name": "Delete an Organization by its number",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v1/organizations/number/:organizationNumber",
+            "params": [
+              {
+                "name": "organizationNumber",
+                "value": "",
+                "type": "path",
+                "description": "The organization's number (must be URL encoded)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a single organization identified by its organization number. The number must be URL-encoded. Returns 204 on success or if the organization does not exist. Fails with 409 if multiple organizations share the same number."
+        },
+        {
+          "info": {
+            "name": "Get a specific organization by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the organization to retrieve"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a single organization by its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Update a organization by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.remberg.de/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the organization to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an existing organization identified by its unique ID. Supports partial updates — only the provided fields will be modified."
+        },
+        {
+          "info": {
+            "name": "Delete an organization by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.remberg.de/v1/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the organization to delete"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Permanently deletes a single organization identified by its unique ID. Returns 204 on success."
+        },
+        {
+          "info": {
+            "name": "Get a list of organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/organizations",
+            "params": [
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Define the sort order of the received payload. (asc/desc)"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Specify the field used for sorting."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Allows to filter by the search phrase over name, organizationNumber, website, phoneNumber properties."
+              },
+              {
+                "name": "createdAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "createdAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by createdAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "updatedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updatedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a paginated list of organizations. Supports filtering by creation and update timestamps, full-text search, and sorting."
+        },
+        {
+          "info": {
+            "name": "Create a new organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.remberg.de/v1/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new organization with the provided details. Returns the created organization. Fails with 409 if an organization with the same number already exists."
+        },
+        {
+          "info": {
+            "name": "Get a list of contacts for a specific organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/organizations/:id/contacts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the organization the contacts belong to"
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Define the sort order of the received payload. (asc/desc)"
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Specify the field used for sorting."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items will be received in the payload per request.(default 20 items, max 1000 items)"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Allows to filter by the search phrase over fullName, email properties."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve a paginated list of contacts that belong to the specified organization. Supports full-text search and sorting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

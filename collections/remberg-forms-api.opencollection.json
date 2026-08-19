@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat forms API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/forms",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Fetch only forms with this status."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Define which page to fetch, using the limit property to define how many items a page will contain. (0 indexed)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Define how many items to include per page."
+              },
+              {
+                "name": "formTemplateId",
+                "value": "",
+                "type": "query",
+                "description": "Specify a form template ID to filter by."
+              },
+              {
+                "name": "finalizedAtFrom",
+                "value": "",
+                "type": "query",
+                "description": "Fetch forms with a finalizedAt date FROM the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "finalizedAtUntil",
+                "value": "",
+                "type": "query",
+                "description": "Fetch forms with a finalizedAt date UNTIL the provided value as an ISO UTC string. Inclusive."
+              },
+              {
+                "name": "sortField",
+                "value": "",
+                "type": "query",
+                "description": "Specify the field used for sorting."
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "Define the sort order of the received payload."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of form instances the caller has access to. Supports filtering and sorting via query parameters."
+        },
+        {
+          "info": {
+            "name": "Get a form by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/forms/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The form's ID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the details of a single form instance identified by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

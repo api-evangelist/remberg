@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AI ai-chat user-roles API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user-roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of assignable user roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.remberg.de/v1/users/roles",
+            "auth": {
+              "type": "apikey",
+              "key": "authorization",
+              "value": "{{authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all user roles available in the tenant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

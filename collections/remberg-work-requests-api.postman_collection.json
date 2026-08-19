@@ -1,0 +1,3862 @@
+{
+  "item": [
+    {
+      "id": "c44f9b25-c244-46e0-9156-c94908abc1ec",
+      "name": "work-requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57363613-7020-4dd9-93bd-d875e409dc69",
+          "name": "Get a Work Request by its external reference (ERP Reference)",
+          "request": {
+            "name": "Get a Work Request by its external reference (ERP Reference)",
+            "description": {
+              "content": "Retrieves a single Work Request identified by its external reference (ERP Reference). Optionally include associated resources via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                "erp",
+                ":externalReference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalReference",
+                  "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2dee7a95-f0e7-47e1-935f-1820fad0b7bb",
+              "name": "Work Request retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"counter\": \"string\",\n  \"status\": \"020_declined\",\n  \"relatedAssetId\": \"string\",\n  \"createdAt\": \"1985-06-12T22:35:14.845Z\",\n  \"updatedAt\": \"1972-03-26T13:41:34.350Z\",\n  \"assetStatus\": \"warning\",\n  \"description\": \"string\",\n  \"declineReason\": \"string\",\n  \"externalReference\": \"string\",\n  \"relatedWorkOrderId\": \"string\",\n  \"relatedWorkOrder\": {\n    \"id\": \"string\",\n    \"counter\": \"string\",\n    \"subject\": \"string\",\n    \"externalReference\": \"string\"\n  },\n  \"createdBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"updatedBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"failureTypeIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"failureTypes\": [\n    {\n      \"id\": \"string\",\n      \"reference\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"reference\": \"string\"\n    }\n  ],\n  \"approvedBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"approvedAt\": \"1992-06-18T12:12:25.930Z\",\n  \"completedBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"completedAt\": \"1957-03-21T05:02:17.215Z\",\n  \"relatedAsset\": {\n    \"id\": \"string\",\n    \"assetNumber\": \"string\",\n    \"assetType\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "736e4479-6467-465b-a72e-0ee4e8a2f76e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "601de895-439a-4130-ac81-c40c97a716e6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58baada1-5552-4cf2-a515-301132a90df4",
+          "name": "Update a Work Request by its external reference (ERP Reference)",
+          "request": {
+            "name": "Update a Work Request by its external reference (ERP Reference)",
+            "description": {
+              "content": "Updates an existing Work Request identified by its external reference (ERP Reference). Only the fields provided in the request body will be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                "erp",
+                ":externalReference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalReference",
+                  "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f963d138-0a91-48cb-ac4e-7837dd984fd1",
+              "name": "Work Request updated by its external reference (ERP Reference)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06df8e85-f29e-43c0-a681-8abc4f212332",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85eafbea-656b-4bce-abe4-0dbd4f17b043",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "950bb21e-d4a0-49fa-8205-3bc30aaa2f97",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e49eb480-ecbc-4140-aa4b-495731fb2aa2",
+          "name": "Delete a Work Request by its external reference (ERP Reference)",
+          "request": {
+            "name": "Delete a Work Request by its external reference (ERP Reference)",
+            "description": {
+              "content": "Permanently deletes a Work Request identified by its external reference (ERP Reference). Returns 204 on success or 404 if no matching Work Request exists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                "erp",
+                ":externalReference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalReference",
+                  "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "396cf19a-40a0-4f14-9a43-1823b248f81e",
+              "name": "Work Request deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c58bfd8-5026-41d1-8d1f-c345743d4df0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aed06c71-e923-4f1c-8113-3e20b4da6a74",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4f90e38-d783-403c-b58e-257157f61ee5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce00d522-d997-45ec-b7ec-82bab1371a5a",
+          "name": "Approve a Work Request by its external reference (ERP Reference)",
+          "request": {
+            "name": "Approve a Work Request by its external reference (ERP Reference)",
+            "description": {
+              "content": "Approves a Work Request identified by its external reference (ERP Reference). An optional comment can be provided in the request body. Returns 204 on success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                "erp",
+                ":externalReference",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalReference",
+                  "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2be742e-1128-4100-aead-abddabb40a54",
+              "name": "Work Request approved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e1a26e1-88d2-4aa1-aeb3-76fde9cf7fae",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b7f860d-3115-4135-8a0b-0dd25196194d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb648bbb-8144-4e19-a40b-f486b4b2aba3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f185e65-8f93-421f-b15e-57611602b1a8",
+          "name": "Decline a Work Request by its external reference (ERP Reference)",
+          "request": {
+            "name": "Decline a Work Request by its external reference (ERP Reference)",
+            "description": {
+              "content": "Declines a Work Request identified by its external reference (ERP Reference). An optional comment can be provided in the request body. Returns 204 on success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                "erp",
+                ":externalReference",
+                "decline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalReference",
+                  "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50644530-3c9c-4f84-948f-30bfc7cc2c70",
+              "name": "Work Request declined",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ff35c85-675a-4602-957c-7bb6c40151ae",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b573b1d-7e55-4033-bd23-f2685d218426",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9962149a-e990-4fc7-8bdf-daa3777caedb",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    "erp",
+                    ":externalReference",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalReference",
+                      "description": "(Required) Work Request external reference (ERP Reference). Must be URL encoded."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3f56082-bb43-400a-a1ef-62c05dd810ae",
+          "name": "Get a list of Work Requests",
+          "request": {
+            "name": "Get a list of Work Requests",
+            "description": {
+              "content": "Returns a paginated list of Work Requests. Use query parameters to filter, sort, and paginate results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Define how many items will be received in the payload per request (default 20 items, max 1000 items)."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by status. 000_new, 010_approved, 020_declined, 030_completed."
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedAssetId",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by Asset internal ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "assetStatus",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by Asset status. new, running, warning, stopped, inactive."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter Work Requests updated from this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter Work Requests updated until this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtFrom",
+                  "value": "<dateTime>",
+                  "description": "Filter Work Requests created from this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAtUntil",
+                  "value": "<dateTime>",
+                  "description": "Filter Work Requests created until this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "failureTypeIds",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by failure type internal IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "failureTypeIds",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by failure type internal IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "failureTypeReferences",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by failure type external references (ERP References)."
+                },
+                {
+                  "disabled": false,
+                  "key": "failureTypeReferences",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by failure type external references (ERP References)."
+                },
+                {
+                  "disabled": false,
+                  "key": "externalReference",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by external reference (ERP Reference)."
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedWorkOrderId",
+                  "value": "<string>",
+                  "description": "Filter Work Requests by related Work Order internal ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c076ec60-0fc5-4ad4-8dff-c3661f5edbf8",
+              "name": "List of Work Request objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "failureTypeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeReferences",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeReferences",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalReference",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedWorkOrderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"counter\": \"string\",\n      \"status\": \"030_completed\",\n      \"relatedAssetId\": \"string\",\n      \"createdAt\": \"2009-09-24T05:29:31.427Z\",\n      \"updatedAt\": \"1973-07-14T16:06:34.113Z\",\n      \"assetStatus\": \"new\",\n      \"description\": \"string\",\n      \"declineReason\": \"string\",\n      \"externalReference\": \"string\",\n      \"relatedWorkOrderId\": \"string\",\n      \"failureTypeIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"failureTypes\": [\n        {\n          \"id\": \"string\",\n          \"reference\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"reference\": \"string\"\n        }\n      ],\n      \"approvedAt\": \"2013-08-26T15:05:12.926Z\",\n      \"completedAt\": \"1947-06-21T10:51:14.551Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"counter\": \"string\",\n      \"status\": \"010_approved\",\n      \"relatedAssetId\": \"string\",\n      \"createdAt\": \"2024-07-29T03:53:27.095Z\",\n      \"updatedAt\": \"1978-06-15T11:54:44.490Z\",\n      \"assetStatus\": \"inactive\",\n      \"description\": \"string\",\n      \"declineReason\": \"string\",\n      \"externalReference\": \"string\",\n      \"relatedWorkOrderId\": \"string\",\n      \"failureTypeIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"failureTypes\": [\n        {\n          \"id\": \"string\",\n          \"reference\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"reference\": \"string\"\n        }\n      ],\n      \"approvedAt\": \"2004-04-07T22:00:33.561Z\",\n      \"completedAt\": \"1987-07-28T21:37:06.384Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90c6de8a-e068-4246-9565-ec61be9dd4ab",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "failureTypeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeReferences",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeReferences",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalReference",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedWorkOrderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21ad63cc-78e9-4e00-a0dd-2c5c91b3e4a4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedAssetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "updatedAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtFrom",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "createdAtUntil",
+                      "value": "2023-12-10T10:00:00.000Z"
+                    },
+                    {
+                      "key": "failureTypeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeReferences",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "failureTypeReferences",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalReference",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedWorkOrderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2069adff-ee85-4ecf-ac3b-0be3770effb8",
+          "name": "Create a new Work Request",
+          "request": {
+            "name": "Create a new Work Request",
+            "description": {
+              "content": "Creates a new Work Request with the provided details. Supports multipart/form-data to allow file attachments alongside the request body. Returns the internal ID of the created Work Request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "relatedAssetId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Asset internal ID for which the Work Request is created."
+                },
+                {
+                  "key": "assetStatus",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Current status of the asset. Might be required via Tenant level settings. (This can only be one of new,running,warning,stopped,inactive)"
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Description of the Work Request. Might be required via Tenant level settings."
+                },
+                {
+                  "key": "externalReference",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "External reference (ERP Reference) of the Work Request."
+                },
+                {
+                  "key": "failureTypeIds",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Failure Type internal IDs for the Work Request. Might be required via Tenant level settings."
+                },
+                {
+                  "key": "failureTypeReferences",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "type": "text",
+                  "description": "Failure Type external references (ERP References) for the Work Request. Might be required via Tenant level settings."
+                },
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "Files to attach to the Work Request. Might be required via Tenant level settings."
+                },
+                {
+                  "key": "requesterEmail",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Requester email of the Work Request."
+                },
+                {
+                  "key": "requesterName",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Requester name of the Work Request."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71220a85-d817-4fd3-b64f-832ef4811f6b",
+              "name": "The created Work Request internal ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Asset internal ID for which the Work Request is created.",
+                        "type": "text/plain"
+                      },
+                      "key": "relatedAssetId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Current status of the asset. Might be required via Tenant level settings. (This can only be one of new,running,warning,stopped,inactive)",
+                        "type": "text/plain"
+                      },
+                      "key": "assetStatus",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Description of the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "External reference (ERP Reference) of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "externalReference",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Failure Type internal IDs for the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "failureTypeIds",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Failure Type external references (ERP References) for the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "failureTypeReferences",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Files to attach to the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Requester email of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "requesterEmail",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Requester name of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "requesterName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d03b0f3-e5f2-4455-8543-d746eb29ea0d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Asset internal ID for which the Work Request is created.",
+                        "type": "text/plain"
+                      },
+                      "key": "relatedAssetId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Current status of the asset. Might be required via Tenant level settings. (This can only be one of new,running,warning,stopped,inactive)",
+                        "type": "text/plain"
+                      },
+                      "key": "assetStatus",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Description of the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "External reference (ERP Reference) of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "externalReference",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Failure Type internal IDs for the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "failureTypeIds",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Failure Type external references (ERP References) for the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "failureTypeReferences",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Files to attach to the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Requester email of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "requesterEmail",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Requester name of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "requesterName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "508ca79f-998d-4039-ad1d-6c06f380f499",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Asset internal ID for which the Work Request is created.",
+                        "type": "text/plain"
+                      },
+                      "key": "relatedAssetId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Current status of the asset. Might be required via Tenant level settings. (This can only be one of new,running,warning,stopped,inactive)",
+                        "type": "text/plain"
+                      },
+                      "key": "assetStatus",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Description of the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "External reference (ERP Reference) of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "externalReference",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Failure Type internal IDs for the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "failureTypeIds",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Failure Type external references (ERP References) for the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "failureTypeReferences",
+                      "value": "[\"<string>\",\"<string>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Files to attach to the Work Request. Might be required via Tenant level settings.",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Requester email of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "requesterEmail",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Requester name of the Work Request.",
+                        "type": "text/plain"
+                      },
+                      "key": "requesterName",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ea60e0f-7899-4394-96f3-ef074179fe42",
+          "name": "Get a Work Request by its internal ID",
+          "request": {
+            "name": "Get a Work Request by its internal ID",
+            "description": {
+              "content": "Retrieves a single Work Request identified by its internal ID. Optionally include associated resources via query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "associations",
+                  "value": "<string>",
+                  "description": "Define which associations should be included in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Work Request internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "180027d9-19d5-4832-b2be-57d3c8911119",
+              "name": "Work Request retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"counter\": \"string\",\n  \"status\": \"000_new\",\n  \"relatedAssetId\": \"string\",\n  \"createdAt\": \"2026-04-11T12:55:35.852Z\",\n  \"updatedAt\": \"1984-07-13T00:28:34.000Z\",\n  \"assetStatus\": \"stopped\",\n  \"description\": \"string\",\n  \"declineReason\": \"string\",\n  \"externalReference\": \"string\",\n  \"relatedWorkOrderId\": \"string\",\n  \"relatedWorkOrder\": {\n    \"id\": \"string\",\n    \"counter\": \"string\",\n    \"subject\": \"string\",\n    \"externalReference\": \"string\"\n  },\n  \"createdBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"updatedBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"failureTypeIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"failureTypes\": [\n    {\n      \"id\": \"string\",\n      \"reference\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"reference\": \"string\"\n    }\n  ],\n  \"approvedBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"approvedAt\": \"2021-06-07T20:29:40.958Z\",\n  \"completedBy\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\"\n  },\n  \"completedAt\": \"2025-07-25T03:25:54.228Z\",\n  \"relatedAsset\": {\n    \"id\": \"string\",\n    \"assetNumber\": \"string\",\n    \"assetType\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cac1e86-479b-459b-a1d8-ad6ea3604f76",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bd3b723-86a9-4ebb-8705-1a2037ba6810",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associations",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68a4e1b4-b739-47f0-8286-f39164b8f8f4",
+          "name": "Update a Work Request by its internal ID",
+          "request": {
+            "name": "Update a Work Request by its internal ID",
+            "description": {
+              "content": "Updates an existing Work Request identified by its internal ID. Only the fields provided in the request body will be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Work Request internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76daa670-c0c0-4b61-b3c3-2433d48f78d9",
+              "name": "Work Request updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d79d1a13-657a-4058-bb1d-c83108d62a9e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8badffa7-14e0-4d58-b123-6cb2cf313116",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cccb3180-8472-41a2-835b-b3bbed27b37e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failureTypeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"failureTypeReferences\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"assetStatus\": \"<string>\",\n  \"description\": \"<string>\",\n  \"externalReference\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71df217a-aec9-426b-847f-5a81ecf5ebb9",
+          "name": "Delete a Work Request by its internal ID",
+          "request": {
+            "name": "Delete a Work Request by its internal ID",
+            "description": {
+              "content": "Permanently deletes a Work Request identified by its internal ID. Returns 204 on success or 404 if no matching Work Request exists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36df3096-d2c5-4147-a9a2-49ba06319b2a",
+              "name": "Work Request deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65a00e1a-2e53-48d0-b20c-7609d041b25e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "939359d3-cbf4-46b4-91cd-5edf421f9829",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46894790-d87b-4b5c-adbf-e190ae53c74c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fca36c00-9143-4f39-bcec-6254e5b7b347",
+          "name": "Approve a Work Request by its internal ID",
+          "request": {
+            "name": "Approve a Work Request by its internal ID",
+            "description": {
+              "content": "Approves a Work Request identified by its internal ID. An optional comment can be provided in the request body. Returns 204 on success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                ":id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Work Request internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa8af0c9-d10e-452b-bba6-bf1e442dd1bd",
+              "name": "Work Request approved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6cb1464f-8119-49dd-8d13-1699fa61b717",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bbb7db5-fd95-4d1d-adb3-dcca10b4737e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1315ad4d-c55b-4237-8f9c-a31fbf6b05ea",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workOrderId\": \"<string>\",\n  \"workOrderPrefill\": {\n    \"subject\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"000_low\",\n    \"typeId\": \"<string>\",\n    \"performingGroupIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a989c48-bddd-4920-af5d-4074bb078dbf",
+          "name": "Decline a Work Request by its internal ID",
+          "request": {
+            "name": "Decline a Work Request by its internal ID",
+            "description": {
+              "content": "Declines a Work Request identified by its internal ID. An optional comment can be provided in the request body. Returns 204 on success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "work-requests",
+                ":id",
+                "decline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Work Request internal ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0f62cea-cc65-49ff-94d8-73c4acfd7c4b",
+              "name": "Work Request declined",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89c7468a-0288-454c-a09a-e416cda84a45",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58132d27-243e-4c90-8958-7183d826f7d3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2977d666-3b32-4819-944c-926e162fa44d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "work-requests",
+                    ":id",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Work Request internal ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"declineReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.remberg.de",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "04c54b17-62bd-4202-86ef-6b2b622d9e2f",
+    "name": "AI ai-chat work-requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The remberg AI API description",
+      "type": "text/plain"
+    }
+  }
+}
