@@ -39,6 +39,16 @@ tags:
 - Field Service
 - Work Orders
 - Industrial
+- Software-as-a-Service
+- Germany
+tags_raw:
+- Maintenance
+- Asset Management
+- CMMS
+- EAM
+- Field Service
+- Work Orders
+- Industrial
 - SaaS
 - Germany
 apis:
@@ -48,6 +58,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - AI Chat
+  tags_raw:
   - ai-chat
   properties:
   - type: OpenAPI
@@ -68,6 +80,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Asset Types
+  tags_raw:
   - asset-types
   properties:
   - type: OpenAPI
@@ -78,6 +92,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Assets
+  tags_raw:
   - assets
   properties:
   - type: OpenAPI
@@ -88,6 +104,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Contacts
+  tags_raw:
   - contacts
   properties:
   - type: OpenAPI
@@ -108,6 +126,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - File
+  tags_raw:
   - files
   properties:
   - type: OpenAPI
@@ -118,6 +138,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Forms
+  tags_raw:
   - forms
   properties:
   - type: OpenAPI
@@ -128,6 +150,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Inventories
+  tags_raw:
   - inventories
   properties:
   - type: OpenAPI
@@ -138,6 +162,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Organization
+  tags_raw:
   - organizations
   properties:
   - type: OpenAPI
@@ -158,6 +184,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Parts
+  tags_raw:
   - parts
   properties:
   - type: OpenAPI
@@ -168,6 +196,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Procedure Templates
+  tags_raw:
   - procedure-templates
   properties:
   - type: OpenAPI
@@ -178,6 +208,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Tickets
+  tags_raw:
   - tickets
   properties:
   - type: OpenAPI
@@ -188,6 +220,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - User Groups
+  tags_raw:
   - user-groups
   properties:
   - type: OpenAPI
@@ -198,6 +232,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - User Roles
+  tags_raw:
   - user-roles
   properties:
   - type: OpenAPI
@@ -208,6 +244,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -218,6 +256,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Work Orders
+  tags_raw:
   - work-orders
   properties:
   - type: OpenAPI
@@ -228,6 +268,8 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
+  - Work Requests
+  tags_raw:
   - work-requests
   properties:
   - type: OpenAPI
