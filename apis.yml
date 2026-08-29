@@ -7,6 +7,18 @@ description: remberg is a Munich-based B2B SaaS provider of an Intelligent Asset
   REST API (api.remberg.de) across Assets, Work Orders, Work Requests, Tickets, Parts, Organizations,
   Contacts, Users, Files, Forms, Procedures, and AI, with API-key auth, Svix-based webhooks, documented
   rate limits, and ISO 27001 certification.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
