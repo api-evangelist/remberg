@@ -1,0 +1,57 @@
+slug: remberg
+provider: Remberg
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Manufacturing & Industrial
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: assets
+  spec_file: remberg-assets-api-openapi.yml
+  capability_id: BC-1040.40
+  capability_id_l1: BC-1040
+  capability_name: Asset Information Management
+  confidence: 0.8
+  evidence: POST /v2/assets 'Create a new Asset'; GET /v2/assets/number/{assetNumber} 'Get an Asset by
+    its number'; GET /v2/assets/{id}/inventories 'Get a list of part inventories by asset'
+  reason: Core asset register CRUD with asset numbers, addresses, organisation/contact info and custom
+    properties on a CMMS/EAM platform — maintenance of asset master data and technical records.
+- tag: work-orders
+  spec_file: remberg-work-orders-api-openapi.yml
+  capability_id: BC-1030.50
+  capability_id_l1: BC-1030
+  capability_name: Maintenance Work Order Management
+  confidence: 0.8
+  evidence: '"POST /v2/work-orders  Create a new WorkOrder"; "Get time entries for a Work Order"; "Get
+    stock changes for a Work Order" — vendor is "CMMS/EAM/CAFM software ... to manage assets, work orders,
+    spare parts ... and preventive maintenance"'
+  reason: Full CRUD lifecycle over maintenance work orders, with checklists, labour time and spare-part
+    stock consumption, on an asset-maintenance platform — maintenance work order lifecycle. Slight ambiguity
+    with generic/field-service work order management, hence 0.8.
+- tag: asset-types
+  spec_file: remberg-asset-types-api-openapi.yml
+  capability_id: BC-1040.40
+  capability_id_l1: BC-1040
+  capability_name: Asset Information Management
+  confidence: 0.75
+  evidence: POST /v2/assets/types 'Create a new AssetType'; GET /v2/assets/types/label/{assetTypeLabel}
+    'Get an AssetType by its label'; schema AssetTypeCfaResponseDto
+  reason: CRUD over asset type/classification definitions on an asset management platform — asset master
+    data structure and technical classification, i.e. Asset Information Management.
+- tag: organizations
+  spec_file: remberg-organizations-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: '''Get a list of organizations'', ''Create a new organization'', ''Get a list of contacts
+    for a specific organization''; schemas AddressCfaResponseDto, PhoneNumberCfaResponseDto'
+  reason: CRUD over business-partner organisations with addresses, phone numbers and contacts is customer/account
+    master data maintenance; it is a data-management surface rather than a sales or service process.
