@@ -70,7 +70,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - AI Chat
+  - ai-chat
   tags_raw:
   - ai-chat
   properties:
@@ -92,7 +92,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - Asset Types
+  - asset-types
   tags_raw:
   - asset-types
   properties:
@@ -162,7 +162,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - Inventories
+  - inventories
   tags_raw:
   - inventories
   properties:
@@ -208,7 +208,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - Procedure Templates
+  - procedure-templates
   tags_raw:
   - procedure-templates
   properties:
@@ -232,7 +232,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - User Groups
+  - user-groups
   tags_raw:
   - user-groups
   properties:
@@ -244,7 +244,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - User Roles
+  - user-roles
   tags_raw:
   - user-roles
   properties:
@@ -268,7 +268,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - Work Orders
+  - work-orders
   tags_raw:
   - work-orders
   properties:
@@ -280,7 +280,7 @@ apis:
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - Work Requests
+  - work-requests
   tags_raw:
   - work-requests
   properties:
