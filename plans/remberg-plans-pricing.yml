@@ -10,6 +10,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: per-seat
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+  managed_tier: ESSENTIAL
 published: true
 note: CMMS SaaS per-user pricing in EUR (GBP/USD toggles available); unlimited free Requester and Viewer
   seats. Billing annual; monthly available for 10+ users. API & webhooks included from Premium. Field
