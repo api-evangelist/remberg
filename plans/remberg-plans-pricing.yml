@@ -1,0 +1,50 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://remberg.com/pricing
+sources:
+- https://remberg.com/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+published: true
+note: CMMS SaaS per-user pricing in EUR (GBP/USD toggles available); unlimited free Requester and Viewer
+  seats. Billing annual; monthly available for 10+ users. API & webhooks included from Premium. Field
+  service management priced separately on request.
+plan_count: 4
+currency: EUR
+plans:
+- name: FREE
+  price_text: 0 € per user / month
+  price: 0
+  currency: EUR
+  period: month
+  unit: per user
+  included_quota: Unlimited assets & work requests & work orders, Built-in AI, Offline-first mobile app
+- name: ESSENTIAL
+  price_text: 25 € per user / month
+  price: 25
+  currency: EUR
+  period: month
+  unit: per user
+  included_quota: 'All of FREE plus: Basic analytics, Unlimited maintenance plans, Multi-asset & multi-user
+    work orders, Time tracking, 3 procedure templates'
+- name: PREMIUM
+  price_text: 45 € per user / month
+  price: 45
+  currency: EUR
+  period: month
+  unit: per user
+  included_quota: 'All of ESSENTIAL plus: Advanced analytics, AI reports, Scheduling board, Parts & inventory,
+    Floor plans, APIs & webhooks, Unlimited procedure templates'
+- name: ENTERPRISE
+  price_text: Custom pricing
+  period: none
+  included_quota: 'All of PREMIUM plus: Cost tracking & analytics, Multi-workspace, SSO, advanced procedures,
+    extended customization'
+rate_limit_statements:
+- Date Range 90 days
+- Procedure Templates 1 3 Unlimited Unlimited
