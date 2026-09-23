@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat contacts API
-  description: The remberg AI API description
+  title: Contacts API
+  description: The remberg Contacts API description
   version: v1
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: contacts
+- name: Contacts
 paths:
   /v1/contacts/{id}:
     get:
@@ -37,7 +37,7 @@ paths:
       - authorization: []
       summary: Get a specific contact by ID
       tags:
-      - contacts
+      - Contacts
       x-controller-class: ContactsCfaController
     patch:
       description: Partially updates an existing contact identified by its unique ID. Supports updating name, email, job position, phone number, and hourly rates. Returns status 209 if the contact was updated but sending the activation or verification email failed.
@@ -74,7 +74,7 @@ paths:
       - authorization: []
       summary: Update a contact by ID
       tags:
-      - contacts
+      - Contacts
       x-controller-class: ContactsCfaController
     delete:
       description: Permanently deletes a contact identified by its unique ID. If the contact is linked to a remberg user account, that account is also deactivated.
@@ -99,7 +99,7 @@ paths:
       - authorization: []
       summary: Delete a contact by ID
       tags:
-      - contacts
+      - Contacts
       x-controller-class: ContactsCfaController
   /v1/contacts:
     get:
@@ -194,7 +194,7 @@ paths:
       - authorization: []
       summary: Get a list of contacts
       tags:
-      - contacts
+      - Contacts
       x-controller-class: ContactsCfaController
     post:
       description: Creates a new contact within the specified organization. Requires a first name, last name, and organization number. Optionally accepts an email to link a remberg user account, as well as job position and phone number.
@@ -225,7 +225,7 @@ paths:
       - authorization: []
       summary: Add a new contact to an organization
       tags:
-      - contacts
+      - Contacts
       x-controller-class: ContactsCfaController
 components:
   schemas:
@@ -265,15 +265,17 @@ components:
         countryPrefix:
           type: string
           pattern: ^[0-9]{1,3}$
-    PhoneNumberCfaBodyDto:
+    HourlyRateCfaResponseDto:
       type: object
       properties:
-        number:
+        value:
+          type: number
+          description: Hourly rate value in full currency (e.g. euros).
+        validFrom:
           type: string
-          pattern: ^[0-9 (,),/, ,-]*$
-        countryPrefix:
-          type: string
-          pattern: ^[0-9]{1,3}$
+          description: Date from which this rate is effective (YYYY-MM-DD). Empty or omitted for the fallback rate.
+      required:
+      - value
     ContactsCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -297,29 +299,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/HourlyRateCfaUpdateBodyDto'
-    ContactsCfaFindManyResponseDto:
-      type: object
-      properties:
-        count:
-          type: number
-        contacts:
-          type: array
-          items:
-            type: string
-      required:
-      - count
-      - contacts
-    HourlyRateCfaResponseDto:
-      type: object
-      properties:
-        value:
-          type: number
-          description: Hourly rate value in full currency (e.g. euros).
-        validFrom:
-          type: string
-          description: Date from which this rate is effective (YYYY-MM-DD). Empty or omitted for the fallback rate.
-      required:
-      - value
     HourlyRateCfaUpdateBodyDto:
       type: object
       properties:
@@ -333,6 +312,27 @@ components:
           example: '2026-02-03'
       required:
       - value
+    ContactsCfaFindManyResponseDto:
+      type: object
+      properties:
+        count:
+          type: number
+        contacts:
+          type: array
+          items:
+            type: string
+      required:
+      - count
+      - contacts
+    PhoneNumberCfaBodyDto:
+      type: object
+      properties:
+        number:
+          type: string
+          pattern: ^[0-9 (,),/, ,-]*$
+        countryPrefix:
+          type: string
+          pattern: ^[0-9]{1,3}$
     ContactCfaResponseDto:
       type: object
       properties:

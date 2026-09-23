@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat user-groups API
-  description: The remberg AI API description
+  title: Users User Groups API
+  description: The remberg Users customer API description
   version: v1
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: user-groups
+- name: User Groups
 paths:
   /v1/users/groups:
     get:
@@ -47,10 +47,19 @@ paths:
       - authorization: []
       summary: Get a list of user groups
       tags:
-      - user-groups
+      - User Groups
       x-controller-class: UserGroupsCfaController
 components:
   schemas:
+    UserGroupsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupCfaResponseDto'
+      required:
+      - data
     UserGroupCfaResponseDto:
       type: object
       properties:
@@ -66,15 +75,6 @@ components:
       required:
       - id
       - name
-    UserGroupsCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGroupCfaResponseDto'
-      required:
-      - data
   securitySchemes:
     authorization:
       type: apiKey

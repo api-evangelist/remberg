@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat work-requests API
-  description: The remberg AI API description
+  title: Work Requests API
+  description: Customer-facing API for Work Requests management
   version: v1
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: work-requests
+- name: Work Requests
 paths:
   /v1/work-requests/erp/{externalReference}:
     get:
@@ -51,7 +51,7 @@ paths:
       - authorization: []
       summary: Get a Work Request by its external reference (ERP Reference)
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
     patch:
       description: Updates an existing Work Request identified by its external reference (ERP Reference). Only the fields provided in the request body will be modified.
@@ -86,7 +86,7 @@ paths:
       - authorization: []
       summary: Update a Work Request by its external reference (ERP Reference)
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
     delete:
       description: Permanently deletes a Work Request identified by its external reference (ERP Reference). Returns 204 on success or 404 if no matching Work Request exists.
@@ -111,7 +111,7 @@ paths:
       - authorization: []
       summary: Delete a Work Request by its external reference (ERP Reference)
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
   /v1/work-requests/erp/{externalReference}/approve:
     patch:
@@ -147,7 +147,7 @@ paths:
       - authorization: []
       summary: Approve a Work Request by its external reference (ERP Reference)
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
   /v1/work-requests/erp/{externalReference}/decline:
     patch:
@@ -183,7 +183,7 @@ paths:
       - authorization: []
       summary: Decline a Work Request by its external reference (ERP Reference)
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
   /v1/work-requests:
     get:
@@ -306,7 +306,7 @@ paths:
       - authorization: []
       summary: Get a list of Work Requests
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
     post:
       description: Creates a new Work Request with the provided details. Supports multipart/form-data to allow file attachments alongside the request body. Returns the internal ID of the created Work Request.
@@ -333,7 +333,7 @@ paths:
       - authorization: []
       summary: Create a new Work Request
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
   /v1/work-requests/{id}:
     get:
@@ -377,7 +377,7 @@ paths:
       - authorization: []
       summary: Get a Work Request by its internal ID
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
     patch:
       description: Updates an existing Work Request identified by its internal ID. Only the fields provided in the request body will be modified.
@@ -412,7 +412,7 @@ paths:
       - authorization: []
       summary: Update a Work Request by its internal ID
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
     delete:
       description: Permanently deletes a Work Request identified by its internal ID. Returns 204 on success or 404 if no matching Work Request exists.
@@ -436,7 +436,7 @@ paths:
       - authorization: []
       summary: Delete a Work Request by its internal ID
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
   /v1/work-requests/{id}/approve:
     patch:
@@ -472,7 +472,7 @@ paths:
       - authorization: []
       summary: Approve a Work Request by its internal ID
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
   /v1/work-requests/{id}/decline:
     patch:
@@ -508,18 +508,19 @@ paths:
       - authorization: []
       summary: Decline a Work Request by its internal ID
       tags:
-      - work-requests
+      - Work Requests
       x-controller-class: WorkRequestsCfaController
 components:
   schemas:
-    WorkRequestsCfaCreateOneResponseDto:
+    WorkRequestsCfaFindManyResponseDto:
       type: object
       properties:
-        id:
-          type: string
-          description: Internal ID of the created Work Request.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkRequestListItemCfaResponseDto'
       required:
-      - id
+      - data
     WorkRequestsCfaCreateOneMultipartBodyDto:
       type: object
       properties:
@@ -565,25 +566,6 @@ components:
           description: Requester name of the Work Request.
       required:
       - relatedAssetId
-    WorkOrderInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The work orders internal ID
-        counter:
-          type: string
-          description: The work orders counter
-        subject:
-          type: string
-          description: The work orders subject
-        externalReference:
-          type: string
-          description: The work orders external reference (ERP Reference)
-      required:
-      - id
-      - counter
-      - subject
     ContactInfoCfaResponseDto:
       type: object
       properties:
@@ -597,102 +579,20 @@ components:
           type: string
       required:
       - id
-    WorkRequestsCfaUpdateBodyDto:
+    WorkRequestsCfaCreateOneResponseDto:
       type: object
       properties:
-        failureTypeIds:
-          description: Failure Type internal IDs.
-          type: array
-          items:
-            type: string
-        failureTypeReferences:
-          description: Failure Type references.
-          type: array
-          items:
-            type: string
-        assetStatus:
+        id:
           type: string
-          enum:
-          - new
-          - running
-          - warning
-          - stopped
-          - inactive
-          description: Asset status to set.
-        description:
-          type: string
-          description: Work Request description.
-        externalReference:
-          type: string
-          description: External reference (ERP Reference) of the Work Request.
-    WorkRequestsCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkRequestListItemCfaResponseDto'
+          description: Internal ID of the created Work Request.
       required:
-      - data
+      - id
     WorkRequestsCfaDeclineBodyDto:
       type: object
       properties:
         declineReason:
           type: string
           description: Decline reason when rejecting the Work Request.
-    CustomTagInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Custom tag internal ID
-        reference:
-          type: string
-          description: Custom tag external reference (ERP Reference)
-      required:
-      - id
-      - reference
-    WorkRequestCfaWorkOrderPrefillBodyDto:
-      type: object
-      properties:
-        subject:
-          type: string
-          description: Work Order subject.
-        description:
-          type: string
-          description: Work Order description.
-        priority:
-          type: string
-          description: Work Order priority.
-          enum:
-          - 000_low
-          - 010_normal
-          - 020_high
-          - 030_critical
-          default: 000_low
-        typeId:
-          type: string
-          description: Work Order type ID.
-        performingGroupIds:
-          description: Performing group IDs.
-          type: array
-          items:
-            type: string
-      required:
-      - subject
-    AssetInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        assetNumber:
-          type: string
-        assetType:
-          type: string
-      required:
-      - id
-      - assetNumber
-      - assetType
     WorkRequestListItemCfaResponseDto:
       type: object
       properties:
@@ -865,6 +765,19 @@ components:
       - relatedAssetId
       - createdAt
       - updatedAt
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
     WorkRequestsCfaApproveBodyDto:
       type: object
       properties:
@@ -875,6 +788,93 @@ components:
           description: Work order prefill data for creating a new Work Order when approving. Will be ignored if "workOrderId" is present.
           allOf:
           - $ref: '#/components/schemas/WorkRequestCfaWorkOrderPrefillBodyDto'
+    WorkRequestsCfaUpdateBodyDto:
+      type: object
+      properties:
+        failureTypeIds:
+          description: Failure Type internal IDs.
+          type: array
+          items:
+            type: string
+        failureTypeReferences:
+          description: Failure Type references.
+          type: array
+          items:
+            type: string
+        assetStatus:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: Asset status to set.
+        description:
+          type: string
+          description: Work Request description.
+        externalReference:
+          type: string
+          description: External reference (ERP Reference) of the Work Request.
+    WorkRequestCfaWorkOrderPrefillBodyDto:
+      type: object
+      properties:
+        subject:
+          type: string
+          description: Work Order subject.
+        description:
+          type: string
+          description: Work Order description.
+        priority:
+          type: string
+          description: Work Order priority.
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+          default: 000_low
+        typeId:
+          type: string
+          description: Work Order type ID.
+        performingGroupIds:
+          description: Performing group IDs.
+          type: array
+          items:
+            type: string
+      required:
+      - subject
+    WorkOrderInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The work orders internal ID
+        counter:
+          type: string
+          description: The work orders counter
+        subject:
+          type: string
+          description: The work orders subject
+        externalReference:
+          type: string
+          description: The work orders external reference (ERP Reference)
+      required:
+      - id
+      - counter
+      - subject
+    CustomTagInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Custom tag internal ID
+        reference:
+          type: string
+          description: Custom tag external reference (ERP Reference)
+      required:
+      - id
+      - reference
   securitySchemes:
     authorization:
       type: apiKey

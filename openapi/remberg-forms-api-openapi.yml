@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat forms API
-  description: The remberg AI API description
+  title: Forms API
+  description: The remberg Forms API description
   version: v1
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: forms
+- name: Forms
 paths:
   /v1/forms:
     get:
@@ -97,7 +97,7 @@ paths:
       - authorization: []
       summary: Get a list of forms
       tags:
-      - forms
+      - Forms
       x-controller-class: FormsCfaController
   /v1/forms/{id}:
     get:
@@ -128,10 +128,20 @@ paths:
       - authorization: []
       summary: Get a form by ID
       tags:
-      - forms
+      - Forms
       x-controller-class: FormsCfaController
 components:
   schemas:
+    FormListCfaResponseDto:
+      type: object
+      properties:
+        data:
+          description: A list of forms along with their summary.
+          type: array
+          items:
+            $ref: '#/components/schemas/FormListItemCfaResponseDto'
+      required:
+      - data
     FormDetailsCfaResponseDto:
       type: object
       properties:
@@ -240,16 +250,6 @@ components:
       - status
       - createdAt
       - updatedAt
-    FormListCfaResponseDto:
-      type: object
-      properties:
-        data:
-          description: A list of forms along with their summary.
-          type: array
-          items:
-            $ref: '#/components/schemas/FormListItemCfaResponseDto'
-      required:
-      - data
   securitySchemes:
     authorization:
       type: apiKey

@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat work-orders API
-  description: The remberg AI API description
-  version: v1
+  title: Work Orders API
+  description: The remberg work order API description
+  version: v2
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: work-orders
+- name: Work Orders
 paths:
   /v2/work-orders:
     get:
@@ -125,7 +125,7 @@ paths:
       - authorization: []
       summary: Get a list of Work Orders
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     post:
       description: Creates a new Work Order with the provided properties and returns its ID.
@@ -152,7 +152,7 @@ paths:
       - authorization: []
       summary: Create a new WorkOrder
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/{id}:
     get:
@@ -192,7 +192,7 @@ paths:
       - authorization: []
       summary: Get a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     patch:
       description: Partially updates an existing Work Order identified by its internal ID. Only the fields provided in the request body will be modified.
@@ -227,7 +227,7 @@ paths:
       - authorization: []
       summary: Update a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     delete:
       description: Permanently deletes an existing Work Order identified by its internal ID. This action cannot be undone.
@@ -252,7 +252,7 @@ paths:
       - authorization: []
       summary: Delete an Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/erp/{externalReference}:
     get:
@@ -295,7 +295,7 @@ paths:
       - authorization: []
       summary: Get a Work Order by its external reference (ERP Reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     patch:
       description: Partially updates an existing Work Order identified by its external reference (ERP reference). Only the fields provided in the request body will be modified. Returns 409 if multiple Work Orders share the same external reference.
@@ -333,7 +333,7 @@ paths:
       - authorization: []
       summary: Update a Work Order by its external reference (ERP reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     delete:
       description: Permanently deletes an existing Work Order identified by its external reference (ERP reference). Returns 409 if multiple Work Orders share the same external reference. This action cannot be undone.
@@ -359,7 +359,7 @@ paths:
       - authorization: []
       summary: Delete an Work Order by its external reference (ERP reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/{id}/checklist:
     post:
@@ -395,7 +395,7 @@ paths:
       - authorization: []
       summary: Add checklist items to a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/erp/{externalReference}/checklist:
     post:
@@ -432,7 +432,7 @@ paths:
       - authorization: []
       summary: Add checklist items to a Work Order by its external Reference (ERP reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/{id}/times:
     get:
@@ -460,7 +460,7 @@ paths:
       - authorization: []
       summary: Get time entries for a Work Order
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/{id}/stock-changes:
     get:
@@ -502,7 +502,7 @@ paths:
       - authorization: []
       summary: Get stock changes for a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     post:
       description: Creates a new part stock change entry (e.g. planned, reserved, or taken) for the Work Order identified by its internal ID.
@@ -537,7 +537,7 @@ paths:
       - authorization: []
       summary: Create a PartStockChange for a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/erp/{externalReference}/stock-changes:
     get:
@@ -582,7 +582,7 @@ paths:
       - authorization: []
       summary: Get stock changes for a Work Order by its external reference (ERP Reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
     post:
       description: Creates a new part stock change entry (e.g. planned, reserved, or taken) for the Work Order identified by its external reference (ERP reference). Returns 409 if multiple Work Orders share the same external reference.
@@ -618,9 +618,9 @@ paths:
           description: More than one Work Order with the same external reference (ERP reference) was found
       security:
       - authorization: []
-      summary: Create a PartStockChange for a Work Order by its external reference (ERP Reference)
+      summary: Create a PartStockChange for a Work Order by its external reference (ERP…
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/{id}/procedures:
     post:
@@ -656,7 +656,7 @@ paths:
       - authorization: []
       summary: Add a procedure to a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/erp/{externalReference}/procedures:
     post:
@@ -695,7 +695,7 @@ paths:
       - authorization: []
       summary: Add a procedure to a Work Order by its external reference (ERP reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/{id}/procedures/{procedureInstanceId}:
     delete:
@@ -727,7 +727,7 @@ paths:
       - authorization: []
       summary: Remove a procedure from a Work Order by its internal ID
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
   /v2/work-orders/erp/{externalReference}/procedures/{procedureInstanceId}:
     delete:
@@ -762,52 +762,68 @@ paths:
       - authorization: []
       summary: Remove a procedure from a Work Order by its external reference (ERP reference)
       tags:
-      - work-orders
+      - Work Orders
       x-controller-class: WorkOrdersCfaController
 components:
   schemas:
-    CustomPropertyValueCfaResponseDto:
+    PartTypeInfoCfaResponseDto:
       type: object
       properties:
-        reference:
+        id:
           type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          type: object
-          description: The value of the custom property
-        associationValue:
-          description: The populated related object value if "customProperties" is present in "associations" query
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
-            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
-            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+          description: The part's internal ID.
+        partNumber:
+          type: string
+          description: The part's unique number.
+        externalReference:
+          type: string
+          description: The part's external reference.
+        name:
+          type: string
+          description: The part's name.
       required:
-      - reference
-      - value
-    WorkOrderCfaCreateManyChecklistItemsBodyDto:
+      - id
+      - partNumber
+      - name
+    WorkOrdersCfaPartStockChangeCreateOneBodyDto:
       type: object
       properties:
-        checklist:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderCfaCreateManyChecklistItemBodyDto'
-      required:
-      - checklist
-    WorkOrderTimesCfaResponseDto:
-      type: object
-      properties:
-        totalDurationInSeconds:
+        partTypeNumber:
+          type: string
+          description: The part number
+        storageAssetNumber:
+          type: string
+          description: The storage asset number
+        change:
           type: number
-          description: The total duration of the time entries in seconds.
-        timeEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderTimeEntryCfaResponseDto'
+          description: The change amount
+        comment:
+          type: string
+          description: Optional comment for the stock change
+        action:
+          type: string
+          enum:
+          - created
+          - added
+          - taken
+          - reserved
+          - reservationCanceled
+          - planned
+          - plannedCanceled
+          default: planned
+          description: The type of stock change action. Defaults to planned.
       required:
-      - totalDurationInSeconds
-      - timeEntries
+      - partTypeNumber
+      - storageAssetNumber
+      - change
+    WorkOrderCfaAddProcedureResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the created procedure instance
+      required:
+      - id
     WorkOrderCfaResponseDto:
       type: object
       properties:
@@ -948,154 +964,676 @@ components:
       - customPropertyValues
       - assignedContactIds
       - assignedGroupIds
-    ContactInfoCfaResponseDto:
+    WorkOrderTimeEntryCfaResponseDto:
       type: object
       properties:
-        id:
+        performingPersonId:
           type: string
-        firstName:
+          description: The internal ID of the performing person.
+        startTime:
           type: string
-        lastName:
+          format: date-time
+          description: The start date and time of the time entry.
+        endTime:
           type: string
-        email:
-          type: string
+          format: date-time
+          description: The end date and time of the time entry.
+        durationInSeconds:
+          type: number
+          description: The duration of the time entry in seconds.
       required:
-      - id
-    WorkOrderListItemCfaResponseDto:
+      - performingPersonId
+      - startTime
+      - endTime
+      - durationInSeconds
+    WorkOrdersCfaPartStockChangesFindManyResponseDto:
       type: object
       properties:
-        id:
-          type: string
-          description: The work order's internal ID
-        createdAt:
-          type: string
-          format: date-time
-          description: The work order's creation date
-        createdByType:
-          type: string
-          enum:
-          - user
-          - apiKey
-          - system
-          - maintenancePlan
-          - userViaWorkRequest
-          - other
-          description: Indicates how the work order was created
-          example: userViaWorkRequest
-        updatedAt:
-          type: string
-          format: date-time
-          description: The work order's date of the last update as an ISO UTC string
-          example: '2025-01-15T10:00:00.000Z'
-        counter:
-          type: string
-          description: The work order's counter
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderCfaPartStockChangeResponseDto'
+        count:
+          type: object
+      required:
+      - data
+      - count
+    WorkOrderCfaCreateOneBodyDto:
+      type: object
+      properties:
         subject:
           type: string
-          description: The work order's subject
-        parentWorkOrderId:
+          description: The Work Order's subject
+        description:
           type: string
-          description: The work order's parent work order internal ID
-        relatedOrganizationId:
-          type: string
-          description: The work order's related organization internal ID
-        externalReference:
-          type: string
-          description: The work order's external reference (ERP Reference)
+          description: A detailed description of the Work Order
         statusReference:
           type: string
-          description: The work order's status reference
+          description: The reference of the Work Order status.
         typeReference:
           type: string
-          description: The work order's type reference
-        dueDate:
-          type: object
-          description: The work order's due date
-      required:
-      - id
-      - createdAt
-      - createdByType
-      - updatedAt
-      - counter
-      - subject
-      - statusReference
-    WorkOrderCfaPartStockChangeResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The stock change's internal ID.
-        createdAt:
-          type: string
-          format: date-time
-          description: The creation date of the stock change
-        updatedAt:
-          type: string
-          format: date-time
-          description: The last update date of the stock change
-        change:
-          type: number
-          description: The change amount
-        action:
+          description: The reference of the Work Order type.
+        priority:
           type: string
           enum:
-          - created
-          - added
-          - taken
-          - reserved
-          - reservationCanceled
-          - planned
-          - plannedCanceled
-          description: The action type of the stock change
-        partType:
-          description: The part type associated with this stock change
-          allOf:
-          - $ref: '#/components/schemas/PartTypeInfoCfaResponseDto'
-        storageAsset:
-          description: The storage asset where the stock change occurred
-          allOf:
-          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+          description: The priority of the Work Order.
+          default: 000_low
+        dueDate:
+          type: string
+          description: The due date of the Work Order.
+          format: YYYY-MM-DD
+          example: '2025-01-31'
+        externalReference:
+          type: string
+          description: The external reference (ERP Reference) of the Work Order.
+        parentWorkOrderExternalReference:
+          type: string
+          description: The parent Work Order external reference (ERP Reference) of the Work Order. (Provide either this or the parentWorkOrderId)
+        parentWorkOrderId:
+          type: string
+          description: The parent Work Order internal ID of the Work Order. (Provide either this or the parentWorkOrderExternalReference)
+        relatedOrganizationId:
+          type: string
+          description: The related organization internal ID of the Work Order.
+        relatedAssetIds:
+          description: The related asset internal IDs of the Work Order.
+          type: array
+          items:
+            type: string
+        customPropertyValues:
+          description: The custom property values of the Work Order.
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCreateCfaBodyDto'
+        startDate:
+          type: string
+          description: The start date of the work order. Must be provided together with endDate.
+          format: YYYY-MM-DDTHH:mm:ss.SSSZ
+          example: '2023-12-10T10:00:00.000Z'
+        endDate:
+          type: string
+          description: The end date of the work order. Must be provided together with startDate. Must be after startDate.
+          format: YYYY-MM-DDTHH:mm:ss.SSSZ
+          example: '2023-12-10T18:00:00.000Z'
+        isFullDay:
+          type: boolean
+          description: Whether the work order is planned for the full day. This field is ignored if startDate and endDate are not provided. When true, startDate will be set to the beginning of the day and endDate to the end of the day in the specified timezone.
+        tz:
+          type: string
+          enum:
+          - Africa/Algiers
+          - Atlantic/Cape_Verde
+          - Africa/Ndjamena
+          - Africa/Abidjan
+          - Africa/Bamako
+          - Africa/Banjul
+          - Africa/Conakry
+          - Africa/Dakar
+          - Africa/Freetown
+          - Africa/Lome
+          - Africa/Nouakchott
+          - Africa/Ouagadougou
+          - Atlantic/St_Helena
+          - Africa/Cairo
+          - Africa/Accra
+          - Africa/Bissau
+          - Africa/Nairobi
+          - Africa/Addis_Ababa
+          - Africa/Asmara
+          - Africa/Dar_es_Salaam
+          - Africa/Djibouti
+          - Africa/Kampala
+          - Africa/Mogadishu
+          - Indian/Antananarivo
+          - Indian/Comoro
+          - Indian/Mayotte
+          - Africa/Monrovia
+          - Africa/Tripoli
+          - Indian/Mauritius
+          - Africa/Casablanca
+          - Africa/El_Aaiun
+          - Africa/Maputo
+          - Africa/Blantyre
+          - Africa/Bujumbura
+          - Africa/Gaborone
+          - Africa/Harare
+          - Africa/Kigali
+          - Africa/Lubumbashi
+          - Africa/Lusaka
+          - Africa/Windhoek
+          - Africa/Lagos
+          - Africa/Bangui
+          - Africa/Brazzaville
+          - Africa/Douala
+          - Africa/Kinshasa
+          - Africa/Libreville
+          - Africa/Luanda
+          - Africa/Malabo
+          - Africa/Niamey
+          - Africa/Porto-Novo
+          - Indian/Reunion
+          - Africa/Sao_Tome
+          - Indian/Mahe
+          - Africa/Johannesburg
+          - Africa/Maseru
+          - Africa/Mbabane
+          - Africa/Khartoum
+          - Africa/Juba
+          - Africa/Tunis
+          - Antarctica/Casey
+          - Antarctica/Davis
+          - Antarctica/Mawson
+          - Indian/Kerguelen
+          - Antarctica/DumontDUrville
+          - Antarctica/Syowa
+          - Antarctica/Troll
+          - Antarctica/Vostok
+          - Antarctica/Rothera
+          - Asia/Kabul
+          - Asia/Yerevan
+          - Asia/Baku
+          - Asia/Dhaka
+          - Asia/Thimphu
+          - Indian/Chagos
+          - Asia/Brunei
+          - Asia/Yangon
+          - Asia/Shanghai
+          - Asia/Urumqi
+          - Asia/Hong_Kong
+          - Asia/Taipei
+          - Asia/Macau
+          - Asia/Nicosia
+          - Asia/Famagusta
+          - Europe/Nicosia
+          - Asia/Tbilisi
+          - Asia/Dili
+          - Asia/Kolkata
+          - Asia/Jakarta
+          - Asia/Pontianak
+          - Asia/Makassar
+          - Asia/Jayapura
+          - Asia/Tehran
+          - Asia/Baghdad
+          - Asia/Jerusalem
+          - Asia/Tokyo
+          - Asia/Amman
+          - Asia/Almaty
+          - Asia/Qyzylorda
+          - Asia/Qostanay
+          - Asia/Aqtobe
+          - Asia/Aqtau
+          - Asia/Atyrau
+          - Asia/Oral
+          - Asia/Bishkek
+          - Asia/Seoul
+          - Asia/Pyongyang
+          - Asia/Beirut
+          - Asia/Kuala_Lumpur
+          - Asia/Kuching
+          - Indian/Maldives
+          - Asia/Hovd
+          - Asia/Ulaanbaatar
+          - Asia/Choibalsan
+          - Asia/Kathmandu
+          - Asia/Karachi
+          - Asia/Gaza
+          - Asia/Hebron
+          - Asia/Manila
+          - Asia/Qatar
+          - Asia/Bahrain
+          - Asia/Riyadh
+          - Asia/Aden
+          - Asia/Kuwait
+          - Asia/Singapore
+          - Asia/Colombo
+          - Asia/Damascus
+          - Asia/Dushanbe
+          - Asia/Bangkok
+          - Asia/Phnom_Penh
+          - Asia/Vientiane
+          - Asia/Ashgabat
+          - Asia/Dubai
+          - Asia/Muscat
+          - Asia/Samarkand
+          - Asia/Tashkent
+          - Asia/Ho_Chi_Minh
+          - Australia/Darwin
+          - Australia/Perth
+          - Australia/Eucla
+          - Australia/Brisbane
+          - Australia/Lindeman
+          - Australia/Adelaide
+          - Australia/Hobart
+          - Australia/Currie
+          - Australia/Melbourne
+          - Australia/Sydney
+          - Australia/Broken_Hill
+          - Australia/Lord_Howe
+          - Antarctica/Macquarie
+          - Indian/Christmas
+          - Indian/Cocos
+          - Pacific/Fiji
+          - Pacific/Gambier
+          - Pacific/Marquesas
+          - Pacific/Tahiti
+          - Pacific/Guam
+          - Pacific/Saipan
+          - Pacific/Tarawa
+          - Pacific/Enderbury
+          - Pacific/Kiritimati
+          - Pacific/Majuro
+          - Pacific/Kwajalein
+          - Pacific/Chuuk
+          - Pacific/Pohnpei
+          - Pacific/Kosrae
+          - Pacific/Nauru
+          - Pacific/Noumea
+          - Pacific/Auckland
+          - Pacific/Chatham
+          - Antarctica/McMurdo
+          - Pacific/Rarotonga
+          - Pacific/Niue
+          - Pacific/Norfolk
+          - Pacific/Palau
+          - Pacific/Port_Moresby
+          - Pacific/Bougainville
+          - Pacific/Pitcairn
+          - Pacific/Pago_Pago
+          - Pacific/Midway
+          - Pacific/Apia
+          - Pacific/Guadalcanal
+          - Pacific/Fakaofo
+          - Pacific/Tongatapu
+          - Pacific/Funafuti
+          - Pacific/Wake
+          - Pacific/Efate
+          - Pacific/Wallis
+          - Africa/Asmera
+          - Africa/Timbuktu
+          - America/Argentina/ComodRivadavia
+          - America/Atka
+          - America/Buenos_Aires
+          - America/Catamarca
+          - America/Coral_Harbour
+          - America/Cordoba
+          - America/Ensenada
+          - America/Fort_Wayne
+          - America/Indianapolis
+          - America/Jujuy
+          - America/Knox_IN
+          - America/Louisville
+          - America/Mendoza
+          - America/Montreal
+          - America/Porto_Acre
+          - America/Rosario
+          - America/Santa_Isabel
+          - America/Shiprock
+          - America/Virgin
+          - Antarctica/South_Pole
+          - Asia/Ashkhabad
+          - Asia/Calcutta
+          - Asia/Chongqing
+          - Asia/Chungking
+          - Asia/Dacca
+          - Asia/Harbin
+          - Asia/Kashgar
+          - Asia/Katmandu
+          - Asia/Macao
+          - Asia/Rangoon
+          - Asia/Saigon
+          - Asia/Tel_Aviv
+          - Asia/Thimbu
+          - Asia/Ujung_Pandang
+          - Asia/Ulan_Bator
+          - Atlantic/Faeroe
+          - Atlantic/Jan_Mayen
+          - Australia/ACT
+          - Australia/Canberra
+          - Australia/LHI
+          - Australia/NSW
+          - Australia/North
+          - Australia/Queensland
+          - Australia/South
+          - Australia/Tasmania
+          - Australia/Victoria
+          - Australia/West
+          - Australia/Yancowinna
+          - Brazil/Acre
+          - Brazil/DeNoronha
+          - Brazil/East
+          - Brazil/West
+          - Canada/Atlantic
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Mountain
+          - Canada/Newfoundland
+          - Canada/Pacific
+          - Canada/Saskatchewan
+          - Canada/Yukon
+          - Chile/Continental
+          - Chile/EasterIsland
+          - Etc/UCT
+          - Etc/UTC
+          - Europe/Belfast
+          - Europe/Tiraspol
+          - Mexico/BajaNorte
+          - Mexico/BajaSur
+          - Mexico/General
+          - Pacific/Johnston
+          - Pacific/Ponape
+          - Pacific/Samoa
+          - Pacific/Truk
+          - Pacific/Yap
+          - US/Alaska
+          - US/Aleutian
+          - US/Arizona
+          - US/Central
+          - US/East-Indiana
+          - US/Eastern
+          - US/Hawaii
+          - US/Indiana-Starke
+          - US/Michigan
+          - US/Mountain
+          - US/Pacific
+          - US/Samoa
+          - Europe/London
+          - Europe/Jersey
+          - Europe/Guernsey
+          - Europe/Isle_of_Man
+          - Europe/Dublin
+          - Europe/Tirane
+          - Europe/Andorra
+          - Europe/Vienna
+          - Europe/Minsk
+          - Europe/Brussels
+          - Europe/Sofia
+          - Europe/Prague
+          - Europe/Copenhagen
+          - Atlantic/Faroe
+          - America/Danmarkshavn
+          - America/Scoresbysund
+          - America/Godthab
+          - America/Thule
+          - Europe/Tallinn
+          - Europe/Helsinki
+          - Europe/Mariehamn
+          - Europe/Paris
+          - Europe/Berlin
+          - Europe/Busingen
+          - Europe/Gibraltar
+          - Europe/Athens
+          - Europe/Budapest
+          - Atlantic/Reykjavik
+          - Europe/Rome
+          - Europe/Vatican
+          - Europe/San_Marino
+          - Europe/Riga
+          - Europe/Vaduz
+          - Europe/Vilnius
+          - Europe/Luxembourg
+          - Europe/Malta
+          - Europe/Chisinau
+          - Europe/Monaco
+          - Europe/Amsterdam
+          - Europe/Oslo
+          - Arctic/Longyearbyen
+          - Europe/Warsaw
+          - Europe/Lisbon
+          - Atlantic/Azores
+          - Atlantic/Madeira
+          - Europe/Bucharest
+          - Europe/Kaliningrad
+          - Europe/Moscow
+          - Europe/Simferopol
+          - Europe/Astrakhan
+          - Europe/Volgograd
+          - Europe/Saratov
+          - Europe/Kirov
+          - Europe/Samara
+          - Europe/Ulyanovsk
+          - Asia/Yekaterinburg
+          - Asia/Omsk
+          - Asia/Barnaul
+          - Asia/Novosibirsk
+          - Asia/Tomsk
+          - Asia/Novokuznetsk
+          - Asia/Krasnoyarsk
+          - Asia/Irkutsk
+          - Asia/Chita
+          - Asia/Yakutsk
+          - Asia/Vladivostok
+          - Asia/Khandyga
+          - Asia/Sakhalin
+          - Asia/Magadan
+          - Asia/Srednekolymsk
+          - Asia/Ust-Nera
+          - Asia/Kamchatka
+          - Asia/Anadyr
+          - Europe/Belgrade
+          - Europe/Ljubljana
+          - Europe/Podgorica
+          - Europe/Sarajevo
+          - Europe/Skopje
+          - Europe/Zagreb
+          - Europe/Bratislava
+          - Europe/Madrid
+          - Africa/Ceuta
+          - Atlantic/Canary
+          - Europe/Stockholm
+          - Europe/Zurich
+          - Europe/Istanbul
+          - Asia/Istanbul
+          - Europe/Kiev
+          - Europe/Uzhgorod
+          - Europe/Zaporozhye
+          - America/New_York
+          - America/Chicago
+          - America/North_Dakota/Center
+          - America/North_Dakota/New_Salem
+          - America/North_Dakota/Beulah
+          - America/Denver
+          - America/Los_Angeles
+          - America/Juneau
+          - America/Sitka
+          - America/Metlakatla
+          - America/Yakutat
+          - America/Anchorage
+          - America/Nome
+          - America/Adak
+          - Pacific/Honolulu
+          - America/Phoenix
+          - America/Boise
+          - America/Indiana/Indianapolis
+          - America/Indiana/Marengo
+          - America/Indiana/Vincennes
+          - America/Indiana/Tell_City
+          - America/Indiana/Petersburg
+          - America/Indiana/Knox
+          - America/Indiana/Winamac
+          - America/Indiana/Vevay
+          - America/Kentucky/Louisville
+          - America/Kentucky/Monticello
+          - America/Detroit
+          - America/Menominee
+          - America/St_Johns
+          - America/Goose_Bay
+          - America/Halifax
+          - America/Glace_Bay
+          - America/Moncton
+          - America/Blanc-Sablon
+          - America/Toronto
+          - America/Thunder_Bay
+          - America/Nipigon
+          - America/Rainy_River
+          - America/Atikokan
+          - America/Winnipeg
+          - America/Regina
+          - America/Swift_Current
+          - America/Edmonton
+          - America/Vancouver
+          - America/Dawson_Creek
+          - America/Fort_Nelson
+          - America/Creston
+          - America/Pangnirtung
+          - America/Iqaluit
+          - America/Resolute
+          - America/Rankin_Inlet
+          - America/Cambridge_Bay
+          - America/Yellowknife
+          - America/Inuvik
+          - America/Whitehorse
+          - America/Dawson
+          - America/Cancun
+          - America/Merida
+          - America/Matamoros
+          - America/Monterrey
+          - America/Mexico_City
+          - America/Ojinaga
+          - America/Chihuahua
+          - America/Hermosillo
+          - America/Mazatlan
+          - America/Bahia_Banderas
+          - America/Tijuana
+          - America/Nassau
+          - America/Barbados
+          - America/Belize
+          - Atlantic/Bermuda
+          - America/Costa_Rica
+          - America/Havana
+          - America/Santo_Domingo
+          - America/El_Salvador
+          - America/Guatemala
+          - America/Port-au-Prince
+          - America/Tegucigalpa
+          - America/Jamaica
+          - America/Martinique
+          - America/Managua
+          - America/Panama
+          - America/Cayman
+          - America/Puerto_Rico
+          - America/Miquelon
+          - America/Grand_Turk
+          - America/Argentina/Buenos_Aires
+          - America/Argentina/Cordoba
+          - America/Argentina/Salta
+          - America/Argentina/Tucuman
+          - America/Argentina/La_Rioja
+          - America/Argentina/San_Juan
+          - America/Argentina/Jujuy
+          - America/Argentina/Catamarca
+          - America/Argentina/Mendoza
+          - America/Argentina/San_Luis
+          - America/Argentina/Rio_Gallegos
+          - America/Argentina/Ushuaia
+          - America/Aruba
+          - America/La_Paz
+          - America/Noronha
+          - America/Belem
+          - America/Santarem
+          - America/Fortaleza
+          - America/Recife
+          - America/Araguaina
+          - America/Maceio
+          - America/Bahia
+          - America/Sao_Paulo
+          - America/Campo_Grande
+          - America/Cuiaba
+          - America/Porto_Velho
+          - America/Boa_Vista
+          - America/Manaus
+          - America/Eirunepe
+          - America/Rio_Branco
+          - America/Santiago
+          - America/Punta_Arenas
+          - Pacific/Easter
+          - Antarctica/Palmer
+          - America/Bogota
+          - America/Curacao
+          - America/Lower_Princes
+          - America/Kralendijk
+          - America/Guayaquil
+          - Pacific/Galapagos
+          - Atlantic/Stanley
+          - America/Cayenne
+          - America/Guyana
+          - America/Asuncion
+          - America/Lima
+          - Atlantic/South_Georgia
+          - America/Paramaribo
+          - America/Port_of_Spain
+          - America/Anguilla
+          - America/Antigua
+          - America/Dominica
+          - America/Grenada
+          - America/Guadeloupe
+          - America/Marigot
+          - America/Montserrat
+          - America/St_Barthelemy
+          - America/St_Kitts
+          - America/St_Lucia
+          - America/St_Thomas
+          - America/St_Vincent
+          - America/Tortola
+          - America/Montevideo
+          - America/Caracas
+          description: The time zone for the planned work order. This field is ignored if startDate and endDate are not provided. If not provided, the tenant timezone will be used.
+        assignedContactIds:
+          description: The performing contact internal IDs for the work order planning.
+          type: array
+          items:
+            type: string
+        assignedGroupIds:
+          description: The performing group internal IDs for the work order planning.
+          type: array
+          items:
+            type: string
+        responsibleGroupId:
+          type: string
+          description: The responsible group internal ID for the work order.
+        responsibleContactId:
+          type: string
+          description: The responsible contact internal ID for the work order.
+        estimatedDurationInSeconds:
+          type: number
+          description: The estimated duration in seconds for the work order.
+          example: 3600
       required:
-      - id
-      - createdAt
-      - updatedAt
-      - change
-      - action
-    WorkOrderCfaAddProcedureBodyDto:
+      - subject
+    CustomPropertyValueCreateCfaBodyDto:
       type: object
       properties:
-        procedureTemplateId:
+        reference:
           type: string
-          description: The internal ID of the Procedure Template to add to the Work Order. A new procedure instance is created from it. Per-type procedure limits are enforced by the Work Order.
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property
       required:
-      - procedureTemplateId
-    AddressCfaResponseDto:
-      type: object
-      properties:
-        company:
-          type: string
-          description: The name of the company or organization associated with the address.
-        street:
-          type: string
-          description: The name of the street for the address.
-        streetNumber:
-          type: string
-          description: The specific number or identifier for the location on the street.
-        zipPostCode:
-          type: string
-          description: The postal or ZIP code for the address.
-        city:
-          type: string
-          description: The name of the city where the address is located.
-        countryProvince:
-          type: string
-          description: The province or state within the country of the address.
-        country:
-          type: string
-          description: The name of the country for the address.
-        other:
-          type: string
-          description: Additional details or descriptions related to the address.
+      - reference
+      - value
     WorkOrderCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -1709,728 +2247,39 @@ components:
             $ref: '#/components/schemas/WorkOrderListItemCfaResponseDto'
       required:
       - data
-    WorkOrderCfaAddProcedureResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the created procedure instance
-      required:
-      - id
-    WorkOrderTimeEntryCfaResponseDto:
-      type: object
-      properties:
-        performingPersonId:
-          type: string
-          description: The internal ID of the performing person.
-        startTime:
-          type: string
-          format: date-time
-          description: The start date and time of the time entry.
-        endTime:
-          type: string
-          format: date-time
-          description: The end date and time of the time entry.
-        durationInSeconds:
-          type: number
-          description: The duration of the time entry in seconds.
-      required:
-      - performingPersonId
-      - startTime
-      - endTime
-      - durationInSeconds
-    AssetInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        assetNumber:
-          type: string
-        assetType:
-          type: string
-      required:
-      - id
-      - assetNumber
-      - assetType
-    OrganizationInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        organizationName:
-          type: string
-        organizationNumber:
-          type: string
-      required:
-      - id
-      - organizationName
-    CustomPropertyValueCreateCfaBodyDto:
+    CustomPropertyValueCfaResponseDto:
       type: object
       properties:
         reference:
           type: string
           description: The reference of the custom property the value is assigned to
         value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          type: object
           description: The value of the custom property
+        associationValue:
+          description: The populated related object value if "customProperties" is present in "associations" query
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
       required:
       - reference
       - value
-    WorkOrderCfaCreateOneBodyDto:
+    ContactInfoCfaResponseDto:
       type: object
       properties:
-        subject:
+        id:
           type: string
-          description: The Work Order's subject
-        description:
+        firstName:
           type: string
-          description: A detailed description of the Work Order
-        statusReference:
+        lastName:
           type: string
-          description: The reference of the Work Order status.
-        typeReference:
+        email:
           type: string
-          description: The reference of the Work Order type.
-        priority:
-          type: string
-          enum:
-          - 000_low
-          - 010_normal
-          - 020_high
-          - 030_critical
-          description: The priority of the Work Order.
-          default: 000_low
-        dueDate:
-          type: string
-          description: The due date of the Work Order.
-          format: YYYY-MM-DD
-          example: '2025-01-31'
-        externalReference:
-          type: string
-          description: The external reference (ERP Reference) of the Work Order.
-        parentWorkOrderExternalReference:
-          type: string
-          description: The parent Work Order external reference (ERP Reference) of the Work Order. (Provide either this or the parentWorkOrderId)
-        parentWorkOrderId:
-          type: string
-          description: The parent Work Order internal ID of the Work Order. (Provide either this or the parentWorkOrderExternalReference)
-        relatedOrganizationId:
-          type: string
-          description: The related organization internal ID of the Work Order.
-        relatedAssetIds:
-          description: The related asset internal IDs of the Work Order.
-          type: array
-          items:
-            type: string
-        customPropertyValues:
-          description: The custom property values of the Work Order.
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomPropertyValueCreateCfaBodyDto'
-        startDate:
-          type: string
-          description: The start date of the work order. Must be provided together with endDate.
-          format: YYYY-MM-DDTHH:mm:ss.SSSZ
-          example: '2023-12-10T10:00:00.000Z'
-        endDate:
-          type: string
-          description: The end date of the work order. Must be provided together with startDate. Must be after startDate.
-          format: YYYY-MM-DDTHH:mm:ss.SSSZ
-          example: '2023-12-10T18:00:00.000Z'
-        isFullDay:
-          type: boolean
-          description: Whether the work order is planned for the full day. This field is ignored if startDate and endDate are not provided. When true, startDate will be set to the beginning of the day and endDate to the end of the day in the specified timezone.
-        tz:
-          type: string
-          enum:
-          - Africa/Algiers
-          - Atlantic/Cape_Verde
-          - Africa/Ndjamena
-          - Africa/Abidjan
-          - Africa/Bamako
-          - Africa/Banjul
-          - Africa/Conakry
-          - Africa/Dakar
-          - Africa/Freetown
-          - Africa/Lome
-          - Africa/Nouakchott
-          - Africa/Ouagadougou
-          - Atlantic/St_Helena
-          - Africa/Cairo
-          - Africa/Accra
-          - Africa/Bissau
-          - Africa/Nairobi
-          - Africa/Addis_Ababa
-          - Africa/Asmara
-          - Africa/Dar_es_Salaam
-          - Africa/Djibouti
-          - Africa/Kampala
-          - Africa/Mogadishu
-          - Indian/Antananarivo
-          - Indian/Comoro
-          - Indian/Mayotte
-          - Africa/Monrovia
-          - Africa/Tripoli
-          - Indian/Mauritius
-          - Africa/Casablanca
-          - Africa/El_Aaiun
-          - Africa/Maputo
-          - Africa/Blantyre
-          - Africa/Bujumbura
-          - Africa/Gaborone
-          - Africa/Harare
-          - Africa/Kigali
-          - Africa/Lubumbashi
-          - Africa/Lusaka
-          - Africa/Windhoek
-          - Africa/Lagos
-          - Africa/Bangui
-          - Africa/Brazzaville
-          - Africa/Douala
-          - Africa/Kinshasa
-          - Africa/Libreville
-          - Africa/Luanda
-          - Africa/Malabo
-          - Africa/Niamey
-          - Africa/Porto-Novo
-          - Indian/Reunion
-          - Africa/Sao_Tome
-          - Indian/Mahe
-          - Africa/Johannesburg
-          - Africa/Maseru
-          - Africa/Mbabane
-          - Africa/Khartoum
-          - Africa/Juba
-          - Africa/Tunis
-          - Antarctica/Casey
-          - Antarctica/Davis
-          - Antarctica/Mawson
-          - Indian/Kerguelen
-          - Antarctica/DumontDUrville
-          - Antarctica/Syowa
-          - Antarctica/Troll
-          - Antarctica/Vostok
-          - Antarctica/Rothera
-          - Asia/Kabul
-          - Asia/Yerevan
-          - Asia/Baku
-          - Asia/Dhaka
-          - Asia/Thimphu
-          - Indian/Chagos
-          - Asia/Brunei
-          - Asia/Yangon
-          - Asia/Shanghai
-          - Asia/Urumqi
-          - Asia/Hong_Kong
-          - Asia/Taipei
-          - Asia/Macau
-          - Asia/Nicosia
-          - Asia/Famagusta
-          - Europe/Nicosia
-          - Asia/Tbilisi
-          - Asia/Dili
-          - Asia/Kolkata
-          - Asia/Jakarta
-          - Asia/Pontianak
-          - Asia/Makassar
-          - Asia/Jayapura
-          - Asia/Tehran
-          - Asia/Baghdad
-          - Asia/Jerusalem
-          - Asia/Tokyo
-          - Asia/Amman
-          - Asia/Almaty
-          - Asia/Qyzylorda
-          - Asia/Qostanay
-          - Asia/Aqtobe
-          - Asia/Aqtau
-          - Asia/Atyrau
-          - Asia/Oral
-          - Asia/Bishkek
-          - Asia/Seoul
-          - Asia/Pyongyang
-          - Asia/Beirut
-          - Asia/Kuala_Lumpur
-          - Asia/Kuching
-          - Indian/Maldives
-          - Asia/Hovd
-          - Asia/Ulaanbaatar
-          - Asia/Choibalsan
-          - Asia/Kathmandu
-          - Asia/Karachi
-          - Asia/Gaza
-          - Asia/Hebron
-          - Asia/Manila
-          - Asia/Qatar
-          - Asia/Bahrain
-          - Asia/Riyadh
-          - Asia/Aden
-          - Asia/Kuwait
-          - Asia/Singapore
-          - Asia/Colombo
-          - Asia/Damascus
-          - Asia/Dushanbe
-          - Asia/Bangkok
-          - Asia/Phnom_Penh
-          - Asia/Vientiane
-          - Asia/Ashgabat
-          - Asia/Dubai
-          - Asia/Muscat
-          - Asia/Samarkand
-          - Asia/Tashkent
-          - Asia/Ho_Chi_Minh
-          - Australia/Darwin
-          - Australia/Perth
-          - Australia/Eucla
-          - Australia/Brisbane
-          - Australia/Lindeman
-          - Australia/Adelaide
-          - Australia/Hobart
-          - Australia/Currie
-          - Australia/Melbourne
-          - Australia/Sydney
-          - Australia/Broken_Hill
-          - Australia/Lord_Howe
-          - Antarctica/Macquarie
-          - Indian/Christmas
-          - Indian/Cocos
-          - Pacific/Fiji
-          - Pacific/Gambier
-          - Pacific/Marquesas
-          - Pacific/Tahiti
-          - Pacific/Guam
-          - Pacific/Saipan
-          - Pacific/Tarawa
-          - Pacific/Enderbury
-          - Pacific/Kiritimati
-          - Pacific/Majuro
-          - Pacific/Kwajalein
-          - Pacific/Chuuk
-          - Pacific/Pohnpei
-          - Pacific/Kosrae
-          - Pacific/Nauru
-          - Pacific/Noumea
-          - Pacific/Auckland
-          - Pacific/Chatham
-          - Antarctica/McMurdo
-          - Pacific/Rarotonga
-          - Pacific/Niue
-          - Pacific/Norfolk
-          - Pacific/Palau
-          - Pacific/Port_Moresby
-          - Pacific/Bougainville
-          - Pacific/Pitcairn
-          - Pacific/Pago_Pago
-          - Pacific/Midway
-          - Pacific/Apia
-          - Pacific/Guadalcanal
-          - Pacific/Fakaofo
-          - Pacific/Tongatapu
-          - Pacific/Funafuti
-          - Pacific/Wake
-          - Pacific/Efate
-          - Pacific/Wallis
-          - Africa/Asmera
-          - Africa/Timbuktu
-          - America/Argentina/ComodRivadavia
-          - America/Atka
-          - America/Buenos_Aires
-          - America/Catamarca
-          - America/Coral_Harbour
-          - America/Cordoba
-          - America/Ensenada
-          - America/Fort_Wayne
-          - America/Indianapolis
-          - America/Jujuy
-          - America/Knox_IN
-          - America/Louisville
-          - America/Mendoza
-          - America/Montreal
-          - America/Porto_Acre
-          - America/Rosario
-          - America/Santa_Isabel
-          - America/Shiprock
-          - America/Virgin
-          - Antarctica/South_Pole
-          - Asia/Ashkhabad
-          - Asia/Calcutta
-          - Asia/Chongqing
-          - Asia/Chungking
-          - Asia/Dacca
-          - Asia/Harbin
-          - Asia/Kashgar
-          - Asia/Katmandu
-          - Asia/Macao
-          - Asia/Rangoon
-          - Asia/Saigon
-          - Asia/Tel_Aviv
-          - Asia/Thimbu
-          - Asia/Ujung_Pandang
-          - Asia/Ulan_Bator
-          - Atlantic/Faeroe
-          - Atlantic/Jan_Mayen
-          - Australia/ACT
-          - Australia/Canberra
-          - Australia/LHI
-          - Australia/NSW
-          - Australia/North
-          - Australia/Queensland
-          - Australia/South
-          - Australia/Tasmania
-          - Australia/Victoria
-          - Australia/West
-          - Australia/Yancowinna
-          - Brazil/Acre
-          - Brazil/DeNoronha
-          - Brazil/East
-          - Brazil/West
-          - Canada/Atlantic
-          - Canada/Central
-          - Canada/Eastern
-          - Canada/Mountain
-          - Canada/Newfoundland
-          - Canada/Pacific
-          - Canada/Saskatchewan
-          - Canada/Yukon
-          - Chile/Continental
-          - Chile/EasterIsland
-          - Etc/UCT
-          - Etc/UTC
-          - Europe/Belfast
-          - Europe/Tiraspol
-          - Mexico/BajaNorte
-          - Mexico/BajaSur
-          - Mexico/General
-          - Pacific/Johnston
-          - Pacific/Ponape
-          - Pacific/Samoa
-          - Pacific/Truk
-          - Pacific/Yap
-          - US/Alaska
-          - US/Aleutian
-          - US/Arizona
-          - US/Central
-          - US/East-Indiana
-          - US/Eastern
-          - US/Hawaii
-          - US/Indiana-Starke
-          - US/Michigan
-          - US/Mountain
-          - US/Pacific
-          - US/Samoa
-          - Europe/London
-          - Europe/Jersey
-          - Europe/Guernsey
-          - Europe/Isle_of_Man
-          - Europe/Dublin
-          - Europe/Tirane
-          - Europe/Andorra
-          - Europe/Vienna
-          - Europe/Minsk
-          - Europe/Brussels
-          - Europe/Sofia
-          - Europe/Prague
-          - Europe/Copenhagen
-          - Atlantic/Faroe
-          - America/Danmarkshavn
-          - America/Scoresbysund
-          - America/Godthab
-          - America/Thule
-          - Europe/Tallinn
-          - Europe/Helsinki
-          - Europe/Mariehamn
-          - Europe/Paris
-          - Europe/Berlin
-          - Europe/Busingen
-          - Europe/Gibraltar
-          - Europe/Athens
-          - Europe/Budapest
-          - Atlantic/Reykjavik
-          - Europe/Rome
-          - Europe/Vatican
-          - Europe/San_Marino
-          - Europe/Riga
-          - Europe/Vaduz
-          - Europe/Vilnius
-          - Europe/Luxembourg
-          - Europe/Malta
-          - Europe/Chisinau
-          - Europe/Monaco
-          - Europe/Amsterdam
-          - Europe/Oslo
-          - Arctic/Longyearbyen
-          - Europe/Warsaw
-          - Europe/Lisbon
-          - Atlantic/Azores
-          - Atlantic/Madeira
-          - Europe/Bucharest
-          - Europe/Kaliningrad
-          - Europe/Moscow
-          - Europe/Simferopol
-          - Europe/Astrakhan
-          - Europe/Volgograd
-          - Europe/Saratov
-          - Europe/Kirov
-          - Europe/Samara
-          - Europe/Ulyanovsk
-          - Asia/Yekaterinburg
-          - Asia/Omsk
-          - Asia/Barnaul
-          - Asia/Novosibirsk
-          - Asia/Tomsk
-          - Asia/Novokuznetsk
-          - Asia/Krasnoyarsk
-          - Asia/Irkutsk
-          - Asia/Chita
-          - Asia/Yakutsk
-          - Asia/Vladivostok
-          - Asia/Khandyga
-          - Asia/Sakhalin
-          - Asia/Magadan
-          - Asia/Srednekolymsk
-          - Asia/Ust-Nera
-          - Asia/Kamchatka
-          - Asia/Anadyr
-          - Europe/Belgrade
-          - Europe/Ljubljana
-          - Europe/Podgorica
-          - Europe/Sarajevo
-          - Europe/Skopje
-          - Europe/Zagreb
-          - Europe/Bratislava
-          - Europe/Madrid
-          - Africa/Ceuta
-          - Atlantic/Canary
-          - Europe/Stockholm
-          - Europe/Zurich
-          - Europe/Istanbul
-          - Asia/Istanbul
-          - Europe/Kiev
-          - Europe/Uzhgorod
-          - Europe/Zaporozhye
-          - America/New_York
-          - America/Chicago
-          - America/North_Dakota/Center
-          - America/North_Dakota/New_Salem
-          - America/North_Dakota/Beulah
-          - America/Denver
-          - America/Los_Angeles
-          - America/Juneau
-          - America/Sitka
-          - America/Metlakatla
-          - America/Yakutat
-          - America/Anchorage
-          - America/Nome
-          - America/Adak
-          - Pacific/Honolulu
-          - America/Phoenix
-          - America/Boise
-          - America/Indiana/Indianapolis
-          - America/Indiana/Marengo
-          - America/Indiana/Vincennes
-          - America/Indiana/Tell_City
-          - America/Indiana/Petersburg
-          - America/Indiana/Knox
-          - America/Indiana/Winamac
-          - America/Indiana/Vevay
-          - America/Kentucky/Louisville
-          - America/Kentucky/Monticello
-          - America/Detroit
-          - America/Menominee
-          - America/St_Johns
-          - America/Goose_Bay
-          - America/Halifax
-          - America/Glace_Bay
-          - America/Moncton
-          - America/Blanc-Sablon
-          - America/Toronto
-          - America/Thunder_Bay
-          - America/Nipigon
-          - America/Rainy_River
-          - America/Atikokan
-          - America/Winnipeg
-          - America/Regina
-          - America/Swift_Current
-          - America/Edmonton
-          - America/Vancouver
-          - America/Dawson_Creek
-          - America/Fort_Nelson
-          - America/Creston
-          - America/Pangnirtung
-          - America/Iqaluit
-          - America/Resolute
-          - America/Rankin_Inlet
-          - America/Cambridge_Bay
-          - America/Yellowknife
-          - America/Inuvik
-          - America/Whitehorse
-          - America/Dawson
-          - America/Cancun
-          - America/Merida
-          - America/Matamoros
-          - America/Monterrey
-          - America/Mexico_City
-          - America/Ojinaga
-          - America/Chihuahua
-          - America/Hermosillo
-          - America/Mazatlan
-          - America/Bahia_Banderas
-          - America/Tijuana
-          - America/Nassau
-          - America/Barbados
-          - America/Belize
-          - Atlantic/Bermuda
-          - America/Costa_Rica
-          - America/Havana
-          - America/Santo_Domingo
-          - America/El_Salvador
-          - America/Guatemala
-          - America/Port-au-Prince
-          - America/Tegucigalpa
-          - America/Jamaica
-          - America/Martinique
-          - America/Managua
-          - America/Panama
-          - America/Cayman
-          - America/Puerto_Rico
-          - America/Miquelon
-          - America/Grand_Turk
-          - America/Argentina/Buenos_Aires
-          - America/Argentina/Cordoba
-          - America/Argentina/Salta
-          - America/Argentina/Tucuman
-          - America/Argentina/La_Rioja
-          - America/Argentina/San_Juan
-          - America/Argentina/Jujuy
-          - America/Argentina/Catamarca
-          - America/Argentina/Mendoza
-          - America/Argentina/San_Luis
-          - America/Argentina/Rio_Gallegos
-          - America/Argentina/Ushuaia
-          - America/Aruba
-          - America/La_Paz
-          - America/Noronha
-          - America/Belem
-          - America/Santarem
-          - America/Fortaleza
-          - America/Recife
-          - America/Araguaina
-          - America/Maceio
-          - America/Bahia
-          - America/Sao_Paulo
-          - America/Campo_Grande
-          - America/Cuiaba
-          - America/Porto_Velho
-          - America/Boa_Vista
-          - America/Manaus
-          - America/Eirunepe
-          - America/Rio_Branco
-          - America/Santiago
-          - America/Punta_Arenas
-          - Pacific/Easter
-          - Antarctica/Palmer
-          - America/Bogota
-          - America/Curacao
-          - America/Lower_Princes
-          - America/Kralendijk
-          - America/Guayaquil
-          - Pacific/Galapagos
-          - Atlantic/Stanley
-          - America/Cayenne
-          - America/Guyana
-          - America/Asuncion
-          - America/Lima
-          - Atlantic/South_Georgia
-          - America/Paramaribo
-          - America/Port_of_Spain
-          - America/Anguilla
-          - America/Antigua
-          - America/Dominica
-          - America/Grenada
-          - America/Guadeloupe
-          - America/Marigot
-          - America/Montserrat
-          - America/St_Barthelemy
-          - America/St_Kitts
-          - America/St_Lucia
-          - America/St_Thomas
-          - America/St_Vincent
-          - America/Tortola
-          - America/Montevideo
-          - America/Caracas
-          description: The time zone for the planned work order. This field is ignored if startDate and endDate are not provided. If not provided, the tenant timezone will be used.
-        assignedContactIds:
-          description: The performing contact internal IDs for the work order planning.
-          type: array
-          items:
-            type: string
-        assignedGroupIds:
-          description: The performing group internal IDs for the work order planning.
-          type: array
-          items:
-            type: string
-        responsibleGroupId:
-          type: string
-          description: The responsible group internal ID for the work order.
-        responsibleContactId:
-          type: string
-          description: The responsible contact internal ID for the work order.
-        estimatedDurationInSeconds:
-          type: number
-          description: The estimated duration in seconds for the work order.
-          example: 3600
       required:
-      - subject
-    WorkOrdersCfaPartStockChangeCreateOneBodyDto:
-      type: object
-      properties:
-        partTypeNumber:
-          type: string
-          description: The part number
-        storageAssetNumber:
-          type: string
-          description: The storage asset number
-        change:
-          type: number
-          description: The change amount
-        comment:
-          type: string
-          description: Optional comment for the stock change
-        action:
-          type: string
-          enum:
-          - created
-          - added
-          - taken
-          - reserved
-          - reservationCanceled
-          - planned
-          - plannedCanceled
-          default: planned
-          description: The type of stock change action. Defaults to planned.
-      required:
-      - partTypeNumber
-      - storageAssetNumber
-      - change
+      - id
     CustomPropertyValueUpdateCfaBodyDto:
       type: object
       properties:
@@ -2458,11 +2307,37 @@ components:
             items:
               type: string
             description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          nullable: true
           description: The value of the custom property (pass null to remove the custom property value)
       required:
       - reference
       - value
+    AddressCfaResponseDto:
+      type: object
+      properties:
+        company:
+          type: string
+          description: The name of the company or organization associated with the address.
+        street:
+          type: string
+          description: The name of the street for the address.
+        streetNumber:
+          type: string
+          description: The specific number or identifier for the location on the street.
+        zipPostCode:
+          type: string
+          description: The postal or ZIP code for the address.
+        city:
+          type: string
+          description: The name of the city where the address is located.
+        countryProvince:
+          type: string
+          description: The province or state within the country of the address.
+        country:
+          type: string
+          description: The name of the country for the address.
+        other:
+          type: string
+          description: Additional details or descriptions related to the address.
     WorkOrdersCfaPartStockChangeCreateOneResponseDto:
       type: object
       properties:
@@ -2471,6 +2346,19 @@ components:
           description: The ID of the created part stock change
       required:
       - id
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
     WorkOrderProcedureValueCfaResponseDto:
       type: object
       properties:
@@ -2510,6 +2398,148 @@ components:
       - totalFields
       - completedFields
       - failedFields
+    WorkOrderCfaAddProcedureBodyDto:
+      type: object
+      properties:
+        procedureTemplateId:
+          type: string
+          description: The internal ID of the Procedure Template to add to the Work Order. A new procedure instance is created from it. Per-type procedure limits are enforced by the Work Order.
+      required:
+      - procedureTemplateId
+    WorkOrderTimesCfaResponseDto:
+      type: object
+      properties:
+        totalDurationInSeconds:
+          type: number
+          description: The total duration of the time entries in seconds.
+        timeEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderTimeEntryCfaResponseDto'
+      required:
+      - totalDurationInSeconds
+      - timeEntries
+    WorkOrderCfaCreateManyChecklistItemsBodyDto:
+      type: object
+      properties:
+        checklist:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderCfaCreateManyChecklistItemBodyDto'
+      required:
+      - checklist
+    OrganizationInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        organizationName:
+          type: string
+        organizationNumber:
+          type: string
+      required:
+      - id
+      - organizationName
+    WorkOrderCfaPartStockChangeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The stock change's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The creation date of the stock change
+        updatedAt:
+          type: string
+          format: date-time
+          description: The last update date of the stock change
+        change:
+          type: number
+          description: The change amount
+        action:
+          type: string
+          enum:
+          - created
+          - added
+          - taken
+          - reserved
+          - reservationCanceled
+          - planned
+          - plannedCanceled
+          description: The action type of the stock change
+        partType:
+          description: The part type associated with this stock change
+          allOf:
+          - $ref: '#/components/schemas/PartTypeInfoCfaResponseDto'
+        storageAsset:
+          description: The storage asset where the stock change occurred
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+      required:
+      - id
+      - createdAt
+      - updatedAt
+      - change
+      - action
+    WorkOrderListItemCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The work order's internal ID
+        createdAt:
+          type: string
+          format: date-time
+          description: The work order's creation date
+        createdByType:
+          type: string
+          enum:
+          - user
+          - apiKey
+          - system
+          - maintenancePlan
+          - userViaWorkRequest
+          - other
+          description: Indicates how the work order was created
+          example: userViaWorkRequest
+        updatedAt:
+          type: string
+          format: date-time
+          description: The work order's date of the last update as an ISO UTC string
+          example: '2025-01-15T10:00:00.000Z'
+        counter:
+          type: string
+          description: The work order's counter
+        subject:
+          type: string
+          description: The work order's subject
+        parentWorkOrderId:
+          type: string
+          description: The work order's parent work order internal ID
+        relatedOrganizationId:
+          type: string
+          description: The work order's related organization internal ID
+        externalReference:
+          type: string
+          description: The work order's external reference (ERP Reference)
+        statusReference:
+          type: string
+          description: The work order's status reference
+        typeReference:
+          type: string
+          description: The work order's type reference
+        dueDate:
+          type: object
+          description: The work order's due date
+      required:
+      - id
+      - createdAt
+      - createdByType
+      - updatedAt
+      - counter
+      - subject
+      - statusReference
     WorkOrderCfaCreateManyChecklistItemBodyDto:
       type: object
       properties:
@@ -2521,37 +2551,6 @@ components:
           description: The description of the checklist item.
       required:
       - title
-    PartTypeInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The part's internal ID.
-        partNumber:
-          type: string
-          description: The part's unique number.
-        externalReference:
-          type: string
-          description: The part's external reference.
-        name:
-          type: string
-          description: The part's name.
-      required:
-      - id
-      - partNumber
-      - name
-    WorkOrdersCfaPartStockChangesFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderCfaPartStockChangeResponseDto'
-        count:
-          type: object
-      required:
-      - data
-      - count
   securitySchemes:
     authorization:
       type: apiKey

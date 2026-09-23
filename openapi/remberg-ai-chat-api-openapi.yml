@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat API
+  title: AI Chat API
   description: The remberg AI API description
   version: v1
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: ai-chat
+- name: AI Chat
 paths:
   /v1/ai/answer:
     post:
@@ -40,9 +40,10 @@ paths:
           description: Too many requests.
       security:
       - authorization: []
-      summary: ''
+      summary: Ai copilot cfa controller get answer
       tags:
-      - ai-chat
+      - AI Chat
+      x-summary-source: derived
   /v1/ai/feedback/{traceId}:
     post:
       description: Submit user feedback (positive or negative) for a previously generated AI answer, identified by its trace ID.
@@ -71,22 +72,85 @@ paths:
           description: Conversation is missing a traceId.
       security:
       - authorization: []
-      summary: ''
+      summary: Ai copilot cfa controller provide feedback
       tags:
-      - ai-chat
+      - AI Chat
+      x-summary-source: derived
 components:
   schemas:
-    AiFeedbackCfaBodyDto:
+    GetAnswerCfaTicketSourceResponseDto:
       type: object
       properties:
-        score:
-          type: number
-          description: Feedback score (0-10)
-        comment:
+        sourceType:
+          type: object
+          description: type of the source (e.g. file or ticket)
+        text:
           type: string
-          description: Qualitative feedback to explain the score or give additional information to improve future responses
+          description: text snippet of the source that was used to generate the answer
+        ticketId:
+          type: string
+          description: remberg id of the ticket where the information can be found in
+        title:
+          type: string
+          description: title of the ticket where the information can be found in
       required:
-      - score
+      - sourceType
+      - text
+      - ticketId
+      - title
+    GetAnswerCfaFileSourceResponseDto:
+      type: object
+      properties:
+        sourceType:
+          type: object
+          description: type of the source (e.g. file or ticket)
+        text:
+          type: string
+          description: text snippet of the source that was used to generate the answer
+        fileId:
+          type: string
+          description: remberg id of the file where the information can be found in
+        fileName:
+          type: string
+          description: name of the file where the information can be found in
+        page:
+          type: number
+          description: page on which the information can be found
+      required:
+      - sourceType
+      - text
+      - fileId
+      - fileName
+      - page
+    GetAnswerCfaBodyDto:
+      type: object
+      properties:
+        question:
+          type: string
+          description: Question that should be answered by the request
+        context:
+          description: Additional information to narrow the context that shall be used to answer the question (will use all available information if left empty)
+          type: array
+          items:
+            $ref: '#/components/schemas/GetAnswerCfaContextBodyDto'
+      required:
+      - question
+    GetAnswerCfaContextBodyDto:
+      type: object
+      properties:
+        instanceId:
+          type: string
+          description: remberg id of the object that should be used to limit the context
+        type:
+          type: string
+          enum:
+          - asset
+          - file
+          - assetType
+          description: type of the object that should be used to limit the context
+      required:
+      - instanceId
+      - type
     GetAnswerCfaResponseDto:
       type: object
       properties:
@@ -115,79 +179,17 @@ components:
       - answer
       - sources
       - score
-    GetAnswerCfaFileSourceResponseDto:
+    AiFeedbackCfaBodyDto:
       type: object
       properties:
-        sourceType:
-          type: object
-          description: type of the source (e.g. file or ticket)
-        text:
-          type: string
-          description: text snippet of the source that was used to generate the answer
-        fileId:
-          type: string
-          description: remberg id of the file where the information can be found in
-        fileName:
-          type: string
-          description: name of the file where the information can be found in
-        page:
+        score:
           type: number
-          description: page on which the information can be found
+          description: Feedback score (0-10)
+        comment:
+          type: string
+          description: Qualitative feedback to explain the score or give additional information to improve future responses
       required:
-      - sourceType
-      - text
-      - fileId
-      - fileName
-      - page
-    GetAnswerCfaTicketSourceResponseDto:
-      type: object
-      properties:
-        sourceType:
-          type: object
-          description: type of the source (e.g. file or ticket)
-        text:
-          type: string
-          description: text snippet of the source that was used to generate the answer
-        ticketId:
-          type: string
-          description: remberg id of the ticket where the information can be found in
-        title:
-          type: string
-          description: title of the ticket where the information can be found in
-      required:
-      - sourceType
-      - text
-      - ticketId
-      - title
-    GetAnswerCfaContextBodyDto:
-      type: object
-      properties:
-        instanceId:
-          type: string
-          description: remberg id of the object that should be used to limit the context
-        type:
-          type: string
-          enum:
-          - asset
-          - file
-          - assetType
-          description: type of the object that should be used to limit the context
-      required:
-      - instanceId
-      - type
-    GetAnswerCfaBodyDto:
-      type: object
-      properties:
-        question:
-          type: string
-          description: Question that should be answered by the request
-        context:
-          description: Additional information to narrow the context that shall be used to answer the question (will use all available information if left empty)
-          type: array
-          items:
-            $ref: '#/components/schemas/GetAnswerCfaContextBodyDto'
-      required:
-      - question
+      - score
   securitySchemes:
     authorization:
       type: apiKey

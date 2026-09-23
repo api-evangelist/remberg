@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat asset-types API
-  description: The remberg AI API description
-  version: v1
+  title: Assets Asset Types API
+  description: The remberg Assets API description
+  version: v2
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: asset-types
+- name: Asset Types
 paths:
   /v2/assets/types/{id}:
     get:
@@ -35,7 +35,7 @@ paths:
       - authorization: []
       summary: Get an AssetType by its internal ID
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
     patch:
       description: Partially updates an existing asset type identified by its internal ID. Only the fields provided in the request body will be modified.
@@ -72,7 +72,7 @@ paths:
       - authorization: []
       summary: Update an AssetType by its internal ID
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
     delete:
       description: Permanently deletes the asset type identified by the given ID. Fails with 409 if the asset type still has associated assets.
@@ -97,7 +97,7 @@ paths:
       - authorization: []
       summary: Delete an AssetType by its internal ID
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
   /v2/assets/types/label/{assetTypeLabel}:
     get:
@@ -125,7 +125,7 @@ paths:
       - authorization: []
       summary: Get an AssetType by its label
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
     patch:
       description: Partially updates an existing asset type identified by its label. Only the fields provided in the request body will be modified. The label must be URL-encoded.
@@ -162,7 +162,7 @@ paths:
       - authorization: []
       summary: Update an AssetType by its label
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
     delete:
       description: Permanently deletes the asset type identified by the given label. The label must be URL-encoded. Fails with 409 if the asset type still has associated assets.
@@ -187,7 +187,7 @@ paths:
       - authorization: []
       summary: Delete an AssetType by its label
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
   /v2/assets/types:
     post:
@@ -217,7 +217,7 @@ paths:
       - authorization: []
       summary: Create a new AssetType
       tags:
-      - asset-types
+      - Asset Types
       x-controller-class: AssetTypesCfaController
 components:
   schemas:

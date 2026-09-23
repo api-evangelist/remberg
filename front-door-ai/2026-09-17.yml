@@ -1,0 +1,27 @@
+# Front Door AI Index — remberg — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: remberg
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: remberg.com
+  final_host: remberg.com
+  ownership: own
+  owner: remberg
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 7
+  host_score: 7
+  density: 8.29
+  words: 844
+  tiers:
+    agentic: 2
+    core: 5
+    model: 0
+  ambiguous: 1
+  top_terms:
+    AI: 5
+    copilot: 2
+    intelligence: 1

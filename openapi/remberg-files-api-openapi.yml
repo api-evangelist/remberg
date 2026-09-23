@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: AI ai-chat files API
-  description: The remberg AI API description
+  title: Files API
+  description: The remberg Files API description
   version: v1
   contact: {}
 servers:
 - url: https://api.remberg.de
 tags:
-- name: files
+- name: Files
 paths:
   /v1/files:
     get:
@@ -106,10 +106,11 @@ paths:
           description: Forbidden
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files get
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
     post:
       description: Upload one or more files using multipart/form-data. Optionally specify a target folder via the metadata payload.
       operationId: /v1/files_post
@@ -137,10 +138,11 @@ paths:
           description: Duplicate asset serialNumber
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files post
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
   /v1/files/resolve:
     get:
       description: Resolve a file or folder by its slash-delimited path (e.g. "Engineering/Specs/vacuum.pdf") and return its metadata.
@@ -167,10 +169,11 @@ paths:
           description: Not Found
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/resolve get
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
   /v1/files/{id}:
     get:
       description: Retrieve the metadata of a single file or folder by its unique identifier.
@@ -197,10 +200,11 @@ paths:
           description: Not Found
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/{id} get
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
     patch:
       description: Update the metadata of a file or folder by its unique identifier.
       operationId: /v1/files/{id}_patch
@@ -234,10 +238,11 @@ paths:
           description: Duplicate asset serialNumber
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/{id} patch
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
     delete:
       description: Delete a file or folder by its unique identifier. This is a cascading operation — all nested child items will also be permanently deleted.
       operationId: /v1/files/{id}_delete
@@ -259,10 +264,11 @@ paths:
           description: Not Found
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/{id} delete
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
   /v1/files/{id}/download:
     get:
       description: Download the binary content of a file by its unique id.
@@ -285,10 +291,11 @@ paths:
           description: Not Found
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/{id}/download get
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
   /v1/files/folder:
     post:
       description: Create a new folder. Optionally specify a parent folder to create a nested folder.
@@ -315,10 +322,11 @@ paths:
           description: Duplicate asset serialNumber
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/folder post
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
   /v1/files/{id}/content:
     patch:
       description: Replace the binary content of an existing file by its unique id.
@@ -358,10 +366,11 @@ paths:
           description: Not Found
       security:
       - authorization: []
-      summary: ''
+      summary: /v1/files/{id}/content patch
       tags:
-      - files
+      - Files
       x-controller-class: DriveFilesCfaController
+      x-summary-source: derived
 components:
   schemas:
     DriveFilesCfaResponseDto:
@@ -433,6 +442,49 @@ components:
             $ref: '#/components/schemas/DriveFilesCfaResponseDto'
       required:
       - data
+    DriveFilesCfaUpdateOneBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Update the existing name.
+        description:
+          type: string
+          description: Update the existing description.
+        isPublic:
+          type: boolean
+          description: If this parameter is set to true, the uploaded files or folders will be visible in the portal.
+        assetType:
+          type: string
+          deprecated: true
+          description: Update or add an AssetType assignment for a file or a folder.. You can use assetTypes instead to assign multiple assetTypes
+        assetNumber:
+          type: string
+          deprecated: true
+          description: Update or add an assetNumber and assetType assignment for a file or a folder. You can use assetNumbers instead to assign multiple assets
+        assetTypes:
+          description: Specify a list of assetTypes to assign a file to them.
+          type: array
+          items:
+            type: string
+        assetNumbers:
+          description: Specify a list of assetNumbers to assign a file to them.
+          type: array
+          items:
+            type: string
+        removeAssetTypes:
+          description: Specify a list of assetTypes to remove from a file assignment.
+          type: array
+          items:
+            type: string
+        removeAssetNumbers:
+          description: Specify a list of assetNumbers to remove from a file assignment.
+          type: array
+          items:
+            type: string
+        isAddedToKnowledgeBase:
+          type: boolean
+          description: Specify if the file should be added to the knowledge base for the AI Copilot.
     DriveFilesCfaCreateFileMultipartBodyDto:
       type: object
       properties:
@@ -508,49 +560,6 @@ components:
             type: string
       required:
       - name
-    DriveFilesCfaUpdateOneBodyDto:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Update the existing name.
-        description:
-          type: string
-          description: Update the existing description.
-        isPublic:
-          type: boolean
-          description: If this parameter is set to true, the uploaded files or folders will be visible in the portal.
-        assetType:
-          type: string
-          deprecated: true
-          description: Update or add an AssetType assignment for a file or a folder.. You can use assetTypes instead to assign multiple assetTypes
-        assetNumber:
-          type: string
-          deprecated: true
-          description: Update or add an assetNumber and assetType assignment for a file or a folder. You can use assetNumbers instead to assign multiple assets
-        assetTypes:
-          description: Specify a list of assetTypes to assign a file to them.
-          type: array
-          items:
-            type: string
-        assetNumbers:
-          description: Specify a list of assetNumbers to assign a file to them.
-          type: array
-          items:
-            type: string
-        removeAssetTypes:
-          description: Specify a list of assetTypes to remove from a file assignment.
-          type: array
-          items:
-            type: string
-        removeAssetNumbers:
-          description: Specify a list of assetNumbers to remove from a file assignment.
-          type: array
-          items:
-            type: string
-        isAddedToKnowledgeBase:
-          type: boolean
-          description: Specify if the file should be added to the knowledge base for the AI Copilot.
   securitySchemes:
     authorization:
       type: apiKey
