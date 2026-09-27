@@ -244,16 +244,15 @@ components:
       - id
       - assetNumber
       - assetType
-    PartInventoryWithStorageCfaResponseDto:
+    PartInventoryCfaResponseDto:
       type: object
       properties:
         id:
           type: string
           description: The inventory's internal ID.
-        storageAsset:
-          description: The inventory's storage asset information.
-          allOf:
-          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+        storageAssetId:
+          type: string
+          description: The inventory's storage asset ID.
         partTypeId:
           type: string
           description: The inventory's part type ID.
@@ -269,7 +268,7 @@ components:
           description: The inventory's creation date.
       required:
       - id
-      - storageAsset
+      - storageAssetId
       - partTypeId
       - availableStock
       - totalStock
@@ -298,15 +297,16 @@ components:
       required:
       - data
       - count
-    PartInventoryCfaResponseDto:
+    PartInventoryWithStorageCfaResponseDto:
       type: object
       properties:
         id:
           type: string
           description: The inventory's internal ID.
-        storageAssetId:
-          type: string
-          description: The inventory's storage asset ID.
+        storageAsset:
+          description: The inventory's storage asset information.
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
         partTypeId:
           type: string
           description: The inventory's part type ID.
@@ -322,7 +322,7 @@ components:
           description: The inventory's creation date.
       required:
       - id
-      - storageAssetId
+      - storageAsset
       - partTypeId
       - availableStock
       - totalStock

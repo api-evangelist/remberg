@@ -766,238 +766,31 @@ paths:
       x-controller-class: WorkOrdersCfaController
 components:
   schemas:
-    PartTypeInfoCfaResponseDto:
+    ContactInfoCfaResponseDto:
       type: object
       properties:
         id:
           type: string
-          description: The part's internal ID.
-        partNumber:
+        firstName:
           type: string
-          description: The part's unique number.
-        externalReference:
+        lastName:
           type: string
-          description: The part's external reference.
-        name:
+        email:
           type: string
-          description: The part's name.
       required:
       - id
-      - partNumber
-      - name
-    WorkOrdersCfaPartStockChangeCreateOneBodyDto:
-      type: object
-      properties:
-        partTypeNumber:
-          type: string
-          description: The part number
-        storageAssetNumber:
-          type: string
-          description: The storage asset number
-        change:
-          type: number
-          description: The change amount
-        comment:
-          type: string
-          description: Optional comment for the stock change
-        action:
-          type: string
-          enum:
-          - created
-          - added
-          - taken
-          - reserved
-          - reservationCanceled
-          - planned
-          - plannedCanceled
-          default: planned
-          description: The type of stock change action. Defaults to planned.
-      required:
-      - partTypeNumber
-      - storageAssetNumber
-      - change
-    WorkOrderCfaAddProcedureResponseDto:
+    OrganizationInfoCfaResponseDto:
       type: object
       properties:
         id:
           type: string
-          description: The ID of the created procedure instance
+        organizationName:
+          type: string
+        organizationNumber:
+          type: string
       required:
       - id
-    WorkOrderCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The work order's internal ID
-        createdAt:
-          type: string
-          format: date-time
-          description: The work order's creation date
-        updatedAt:
-          type: string
-          format: date-time
-          description: The work order's date of the last update as an ISO UTC string
-          example: '2025-01-15T10:00:00.000Z'
-        counter:
-          type: string
-          description: The work order's counter
-        createdByType:
-          type: string
-          enum:
-          - user
-          - apiKey
-          - system
-          - maintenancePlan
-          - userViaWorkRequest
-          - other
-          description: Indicates how the work order was created
-          example: userViaWorkRequest
-        subject:
-          type: string
-          description: The work order's subject
-        description:
-          type: string
-          description: The work order's description
-        startDate:
-          type: string
-          format: date-time
-          description: The work order's planning start date as an ISO UTC string
-          example: '2025-01-15T10:00:00.000Z'
-        endDate:
-          type: string
-          format: date-time
-          description: The work order's planning end date as an ISO UTC string
-          example: '2025-01-15T10:00:00.000Z'
-        dueDate:
-          type: string
-          format: date
-          description: The work order's due date as an ISO 8601 string
-          example: '2025-01-15'
-        parentWorkOrderId:
-          type: string
-          description: The work order's parent work order internal ID
-        location:
-          description: The work order's location
-          allOf:
-          - $ref: '#/components/schemas/AddressCfaResponseDto'
-        priority:
-          type: string
-          enum:
-          - 000_low
-          - 010_normal
-          - 020_high
-          - 030_critical
-          description: The work order's priority
-        externalReference:
-          type: string
-          description: The work order's external reference
-        relatedOrganizationId:
-          type: string
-          description: The asset's manufacturer organization internal ID
-        relatedOrganization:
-          description: The asset's manufacturer organization (only if relatedOrganization is included in associations)
-          allOf:
-          - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
-        relatedAssetIds:
-          description: The work order's related asset internal IDs
-          type: array
-          items:
-            type: string
-        relatedAssets:
-          description: The work order's related assets (only if relatedAssets is included in associations)
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetInfoCfaResponseDto'
-        relatedTicketId:
-          type: string
-          description: The work order's related ticket internal ID
-        relatedCaseId:
-          type: string
-          description: This field is deprecated, use relatedTicketId instead. The work order's related ticket internal ID.
-        typeReference:
-          type: string
-          description: The work order's type reference
-        statusReference:
-          type: string
-          description: The work order's status reference
-        customPropertyValues:
-          description: The work order's custom properties
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomPropertyValueCfaResponseDto'
-        assignedContactIds:
-          description: The work order's performing contact internal IDs
-          type: array
-          items:
-            type: string
-        assignedGroupIds:
-          description: The work order's performing group internal IDs
-          type: array
-          items:
-            type: string
-        responsibleGroupId:
-          type: string
-          description: The work order's responsible group internal ID
-        responsibleContactId:
-          type: string
-          description: The work order's responsible contact internal ID
-        totalDurationInSeconds:
-          type: number
-          description: The work order's total duration in seconds
-        estimatedDurationInSeconds:
-          type: number
-          description: The work order's estimated duration in seconds
-        procedureValues:
-          description: The work order's procedure summaries
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderProcedureValueCfaResponseDto'
-      required:
-      - id
-      - createdAt
-      - updatedAt
-      - counter
-      - createdByType
-      - subject
-      - statusReference
-      - customPropertyValues
-      - assignedContactIds
-      - assignedGroupIds
-    WorkOrderTimeEntryCfaResponseDto:
-      type: object
-      properties:
-        performingPersonId:
-          type: string
-          description: The internal ID of the performing person.
-        startTime:
-          type: string
-          format: date-time
-          description: The start date and time of the time entry.
-        endTime:
-          type: string
-          format: date-time
-          description: The end date and time of the time entry.
-        durationInSeconds:
-          type: number
-          description: The duration of the time entry in seconds.
-      required:
-      - performingPersonId
-      - startTime
-      - endTime
-      - durationInSeconds
-    WorkOrdersCfaPartStockChangesFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderCfaPartStockChangeResponseDto'
-        count:
-          type: object
-      required:
-      - data
-      - count
+      - organizationName
     WorkOrderCfaCreateOneBodyDto:
       type: object
       properties:
@@ -1603,6 +1396,303 @@ components:
           example: 3600
       required:
       - subject
+    WorkOrderCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The work order's internal ID
+        createdAt:
+          type: string
+          format: date-time
+          description: The work order's creation date
+        updatedAt:
+          type: string
+          format: date-time
+          description: The work order's date of the last update as an ISO UTC string
+          example: '2025-01-15T10:00:00.000Z'
+        counter:
+          type: string
+          description: The work order's counter
+        createdByType:
+          type: string
+          enum:
+          - user
+          - apiKey
+          - system
+          - maintenancePlan
+          - userViaWorkRequest
+          - other
+          description: Indicates how the work order was created
+          example: userViaWorkRequest
+        subject:
+          type: string
+          description: The work order's subject
+        description:
+          type: string
+          description: The work order's description
+        startDate:
+          type: string
+          format: date-time
+          description: The work order's planning start date as an ISO UTC string
+          example: '2025-01-15T10:00:00.000Z'
+        endDate:
+          type: string
+          format: date-time
+          description: The work order's planning end date as an ISO UTC string
+          example: '2025-01-15T10:00:00.000Z'
+        dueDate:
+          type: string
+          format: date
+          description: The work order's due date as an ISO 8601 string
+          example: '2025-01-15'
+        parentWorkOrderId:
+          type: string
+          description: The work order's parent work order internal ID
+        location:
+          description: The work order's location
+          allOf:
+          - $ref: '#/components/schemas/AddressCfaResponseDto'
+        priority:
+          type: string
+          enum:
+          - 000_low
+          - 010_normal
+          - 020_high
+          - 030_critical
+          description: The work order's priority
+        externalReference:
+          type: string
+          description: The work order's external reference
+        relatedOrganizationId:
+          type: string
+          description: The asset's manufacturer organization internal ID
+        relatedOrganization:
+          description: The asset's manufacturer organization (only if relatedOrganization is included in associations)
+          allOf:
+          - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+        relatedAssetIds:
+          description: The work order's related asset internal IDs
+          type: array
+          items:
+            type: string
+        relatedAssets:
+          description: The work order's related assets (only if relatedAssets is included in associations)
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+        relatedTicketId:
+          type: string
+          description: The work order's related ticket internal ID
+        relatedCaseId:
+          type: string
+          description: This field is deprecated, use relatedTicketId instead. The work order's related ticket internal ID.
+        typeReference:
+          type: string
+          description: The work order's type reference
+        statusReference:
+          type: string
+          description: The work order's status reference
+        customPropertyValues:
+          description: The work order's custom properties
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCfaResponseDto'
+        assignedContactIds:
+          description: The work order's performing contact internal IDs
+          type: array
+          items:
+            type: string
+        assignedGroupIds:
+          description: The work order's performing group internal IDs
+          type: array
+          items:
+            type: string
+        responsibleGroupId:
+          type: string
+          description: The work order's responsible group internal ID
+        responsibleContactId:
+          type: string
+          description: The work order's responsible contact internal ID
+        totalDurationInSeconds:
+          type: number
+          description: The work order's total duration in seconds
+        estimatedDurationInSeconds:
+          type: number
+          description: The work order's estimated duration in seconds
+        procedureValues:
+          description: The work order's procedure summaries
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderProcedureValueCfaResponseDto'
+      required:
+      - id
+      - createdAt
+      - updatedAt
+      - counter
+      - createdByType
+      - subject
+      - statusReference
+      - customPropertyValues
+      - assignedContactIds
+      - assignedGroupIds
+    CustomPropertyValueUpdateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property (pass null to remove the custom property value)
+      required:
+      - reference
+      - value
+    WorkOrderCfaAddProcedureResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the created procedure instance
+      required:
+      - id
+    AddressCfaResponseDto:
+      type: object
+      properties:
+        company:
+          type: string
+          description: The name of the company or organization associated with the address.
+        street:
+          type: string
+          description: The name of the street for the address.
+        streetNumber:
+          type: string
+          description: The specific number or identifier for the location on the street.
+        zipPostCode:
+          type: string
+          description: The postal or ZIP code for the address.
+        city:
+          type: string
+          description: The name of the city where the address is located.
+        countryProvince:
+          type: string
+          description: The province or state within the country of the address.
+        country:
+          type: string
+          description: The name of the country for the address.
+        other:
+          type: string
+          description: Additional details or descriptions related to the address.
+    WorkOrderListItemCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The work order's internal ID
+        createdAt:
+          type: string
+          format: date-time
+          description: The work order's creation date
+        createdByType:
+          type: string
+          enum:
+          - user
+          - apiKey
+          - system
+          - maintenancePlan
+          - userViaWorkRequest
+          - other
+          description: Indicates how the work order was created
+          example: userViaWorkRequest
+        updatedAt:
+          type: string
+          format: date-time
+          description: The work order's date of the last update as an ISO UTC string
+          example: '2025-01-15T10:00:00.000Z'
+        counter:
+          type: string
+          description: The work order's counter
+        subject:
+          type: string
+          description: The work order's subject
+        parentWorkOrderId:
+          type: string
+          description: The work order's parent work order internal ID
+        relatedOrganizationId:
+          type: string
+          description: The work order's related organization internal ID
+        externalReference:
+          type: string
+          description: The work order's external reference (ERP Reference)
+        statusReference:
+          type: string
+          description: The work order's status reference
+        typeReference:
+          type: string
+          description: The work order's type reference
+        dueDate:
+          type: object
+          description: The work order's due date
+      required:
+      - id
+      - createdAt
+      - createdByType
+      - updatedAt
+      - counter
+      - subject
+      - statusReference
+    WorkOrderTimeEntryCfaResponseDto:
+      type: object
+      properties:
+        performingPersonId:
+          type: string
+          description: The internal ID of the performing person.
+        startTime:
+          type: string
+          format: date-time
+          description: The start date and time of the time entry.
+        endTime:
+          type: string
+          format: date-time
+          description: The end date and time of the time entry.
+        durationInSeconds:
+          type: number
+          description: The duration of the time entry in seconds.
+      required:
+      - performingPersonId
+      - startTime
+      - endTime
+      - durationInSeconds
+    WorkOrderCfaCreateManyChecklistItemBodyDto:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the checklist item.
+        description:
+          type: string
+          description: The description of the checklist item.
+      required:
+      - title
     CustomPropertyValueCreateCfaBodyDto:
       type: object
       properties:
@@ -1634,6 +1724,46 @@ components:
       required:
       - reference
       - value
+    WorkOrdersCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderListItemCfaResponseDto'
+      required:
+      - data
+    WorkOrdersCfaPartStockChangeCreateOneBodyDto:
+      type: object
+      properties:
+        partTypeNumber:
+          type: string
+          description: The part number
+        storageAssetNumber:
+          type: string
+          description: The storage asset number
+        change:
+          type: number
+          description: The change amount
+        comment:
+          type: string
+          description: Optional comment for the stock change
+        action:
+          type: string
+          enum:
+          - created
+          - added
+          - taken
+          - reserved
+          - reservationCanceled
+          - planned
+          - plannedCanceled
+          default: planned
+          description: The type of stock change action. Defaults to planned.
+      required:
+      - partTypeNumber
+      - storageAssetNumber
+      - change
     WorkOrderCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -2238,15 +2368,48 @@ components:
           type: number
           description: The estimated duration of the work order in seconds.
           example: 3600
-    WorkOrdersCfaFindManyResponseDto:
+    WorkOrderCfaPartStockChangeResponseDto:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderListItemCfaResponseDto'
+        id:
+          type: string
+          description: The stock change's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The creation date of the stock change
+        updatedAt:
+          type: string
+          format: date-time
+          description: The last update date of the stock change
+        change:
+          type: number
+          description: The change amount
+        action:
+          type: string
+          enum:
+          - created
+          - added
+          - taken
+          - reserved
+          - reservationCanceled
+          - planned
+          - plannedCanceled
+          description: The action type of the stock change
+        partType:
+          description: The part type associated with this stock change
+          allOf:
+          - $ref: '#/components/schemas/PartTypeInfoCfaResponseDto'
+        storageAsset:
+          description: The storage asset where the stock change occurred
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
       required:
-      - data
+      - id
+      - createdAt
+      - updatedAt
+      - change
+      - action
     CustomPropertyValueCfaResponseDto:
       type: object
       properties:
@@ -2267,85 +2430,6 @@ components:
       required:
       - reference
       - value
-    ContactInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-      required:
-      - id
-    CustomPropertyValueUpdateCfaBodyDto:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          description: The value of the custom property (pass null to remove the custom property value)
-      required:
-      - reference
-      - value
-    AddressCfaResponseDto:
-      type: object
-      properties:
-        company:
-          type: string
-          description: The name of the company or organization associated with the address.
-        street:
-          type: string
-          description: The name of the street for the address.
-        streetNumber:
-          type: string
-          description: The specific number or identifier for the location on the street.
-        zipPostCode:
-          type: string
-          description: The postal or ZIP code for the address.
-        city:
-          type: string
-          description: The name of the city where the address is located.
-        countryProvince:
-          type: string
-          description: The province or state within the country of the address.
-        country:
-          type: string
-          description: The name of the country for the address.
-        other:
-          type: string
-          description: Additional details or descriptions related to the address.
-    WorkOrdersCfaPartStockChangeCreateOneResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the created part stock change
-      required:
-      - id
     AssetInfoCfaResponseDto:
       type: object
       properties:
@@ -2359,6 +2443,46 @@ components:
       - id
       - assetNumber
       - assetType
+    WorkOrdersCfaPartStockChangesFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderCfaPartStockChangeResponseDto'
+        count:
+          type: object
+      required:
+      - data
+      - count
+    WorkOrderCfaCreateManyChecklistItemsBodyDto:
+      type: object
+      properties:
+        checklist:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrderCfaCreateManyChecklistItemBodyDto'
+      required:
+      - checklist
+    PartTypeInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The part's internal ID.
+        partNumber:
+          type: string
+          description: The part's unique number.
+        externalReference:
+          type: string
+          description: The part's external reference.
+        name:
+          type: string
+          description: The part's name.
+      required:
+      - id
+      - partNumber
+      - name
     WorkOrderProcedureValueCfaResponseDto:
       type: object
       properties:
@@ -2419,138 +2543,14 @@ components:
       required:
       - totalDurationInSeconds
       - timeEntries
-    WorkOrderCfaCreateManyChecklistItemsBodyDto:
-      type: object
-      properties:
-        checklist:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrderCfaCreateManyChecklistItemBodyDto'
-      required:
-      - checklist
-    OrganizationInfoCfaResponseDto:
+    WorkOrdersCfaPartStockChangeCreateOneResponseDto:
       type: object
       properties:
         id:
           type: string
-        organizationName:
-          type: string
-        organizationNumber:
-          type: string
+          description: The ID of the created part stock change
       required:
       - id
-      - organizationName
-    WorkOrderCfaPartStockChangeResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The stock change's internal ID.
-        createdAt:
-          type: string
-          format: date-time
-          description: The creation date of the stock change
-        updatedAt:
-          type: string
-          format: date-time
-          description: The last update date of the stock change
-        change:
-          type: number
-          description: The change amount
-        action:
-          type: string
-          enum:
-          - created
-          - added
-          - taken
-          - reserved
-          - reservationCanceled
-          - planned
-          - plannedCanceled
-          description: The action type of the stock change
-        partType:
-          description: The part type associated with this stock change
-          allOf:
-          - $ref: '#/components/schemas/PartTypeInfoCfaResponseDto'
-        storageAsset:
-          description: The storage asset where the stock change occurred
-          allOf:
-          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
-      required:
-      - id
-      - createdAt
-      - updatedAt
-      - change
-      - action
-    WorkOrderListItemCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The work order's internal ID
-        createdAt:
-          type: string
-          format: date-time
-          description: The work order's creation date
-        createdByType:
-          type: string
-          enum:
-          - user
-          - apiKey
-          - system
-          - maintenancePlan
-          - userViaWorkRequest
-          - other
-          description: Indicates how the work order was created
-          example: userViaWorkRequest
-        updatedAt:
-          type: string
-          format: date-time
-          description: The work order's date of the last update as an ISO UTC string
-          example: '2025-01-15T10:00:00.000Z'
-        counter:
-          type: string
-          description: The work order's counter
-        subject:
-          type: string
-          description: The work order's subject
-        parentWorkOrderId:
-          type: string
-          description: The work order's parent work order internal ID
-        relatedOrganizationId:
-          type: string
-          description: The work order's related organization internal ID
-        externalReference:
-          type: string
-          description: The work order's external reference (ERP Reference)
-        statusReference:
-          type: string
-          description: The work order's status reference
-        typeReference:
-          type: string
-          description: The work order's type reference
-        dueDate:
-          type: object
-          description: The work order's due date
-      required:
-      - id
-      - createdAt
-      - createdByType
-      - updatedAt
-      - counter
-      - subject
-      - statusReference
-    WorkOrderCfaCreateManyChecklistItemBodyDto:
-      type: object
-      properties:
-        title:
-          type: string
-          description: The title of the checklist item.
-        description:
-          type: string
-          description: The description of the checklist item.
-      required:
-      - title
   securitySchemes:
     authorization:
       type: apiKey

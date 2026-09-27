@@ -434,232 +434,6 @@ paths:
       x-controller-class: AssetsCfaController
 components:
   schemas:
-    AssetsCfaFindManyInventoriesByAssetResponseDto:
-      type: object
-      properties:
-        data:
-          description: The list of part inventories with part type information.
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetsCfaPartInventoryWithTypeResponseDto'
-      required:
-      - data
-    AssetsCfaUpdateOneBodyDto:
-      type: object
-      properties:
-        assetNumber:
-          type: string
-          description: The asset's number
-        assetTypeId:
-          type: string
-          description: The asset type internal ID that this asset belongs to (Provide either this or the assetTypeLabel)
-        assetTypeLabel:
-          type: string
-          description: The asset type label that this asset belongs to (Provide either this or the assetTypeId)
-        name:
-          type: string
-          description: The asset's display name (if not specified the assetTypeLabel is used as display name)
-        parentAssetId:
-          type: string
-          description: The internal ID of this asset's parent (Provide either this or the parentAssetNumber)
-        parentAssetNumber:
-          type: string
-          description: The asset number of this asset's parent (Provide either this or the parentAssetId)
-        relatedOrganizationIds:
-          description: The internal IDs of the organizations that will be related to the asset (Provide either this or the relatedOrganizationNumbers).
-          type: array
-          items:
-            type: string
-        relatedOrganizationNumbers:
-          description: The numbers of the organizations that will be related to the asset (Provide either this or the relatedOrganizationIds).
-          type: array
-          items:
-            type: string
-        assignedPersonId:
-          type:
-          - object
-          - 'null'
-          description: The internal ID of the person that will be assigned to the asset (Provide null to unset value)
-        responsibleUserGroupId:
-          type: string
-          description: The internal ID of the user group that will be responsible for the asset (Provide either this or the responsibleUserGroupName)
-        responsibleUserGroupName:
-          type: string
-          description: The name of the user group that will be responsible for the asset (Provide either this or the responsibleUserGroupId)
-        relatedContactIds:
-          description: The internal IDs of the contacts that will be related to the asset. The value provided will replace existing relations.
-          type: array
-          items:
-            type: string
-        location:
-          description: The asset's location
-          allOf:
-          - $ref: '#/components/schemas/AddressCfaBodyDto'
-        userGroupIds:
-          description: The internal IDs of the user groups that will be related to the asset (Provide either this or the userGroupNames). The value provided will replace existing relations.
-          type: array
-          items:
-            type: string
-        userGroupNames:
-          description: The names of the user groups that will be related to the asset (Provide either this or the userGroupIds). The value provided will replace existing relations.
-          type: array
-          items:
-            type: string
-        customPropertyValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
-        criticality:
-          type: string
-          enum:
-          - nonCritical
-          - important
-          - coreProcess
-          - safety
-          description: The asset’s criticality
-        installationDate:
-          type:
-          - string
-          - 'null'
-          format: YYYY-MM-DD
-          description: The asset’s installation date (Provide null to unset value)
-    AssetCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The asset's internal ID.
-        createdAt:
-          type: string
-          format: date-time
-          description: The asset's creation date
-        updatedAt:
-          type: string
-          format: date-time
-          description: The asset's date of the last update
-        assetNumber:
-          type: string
-          description: The asset's unique serial number.
-        assetType:
-          type: string
-          description: The asset's type.
-        assetCategory:
-          type: string
-          enum:
-          - area
-          - group
-          - asset
-          - component
-          - storage
-          description: The asset's category
-        assetTypeId:
-          type: string
-          description: The asset's type internal ID
-        name:
-          type: string
-          description: The asset's name.
-        parentAsset:
-          description: The asset's parent
-          allOf:
-          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
-        location:
-          description: The asset's location
-          allOf:
-          - $ref: '#/components/schemas/AddressCfaResponseDto'
-        relatedOrganizations:
-          description: The asset's related organizations
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
-        relatedContacts:
-          description: The asset's related contacts
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInfoCfaResponseDto'
-        assignedPerson:
-          description: The asset's primary person
-          allOf:
-          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
-        customPropertyValues:
-          description: The asset's custom properties
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomPropertyValueCfaResponseDto'
-        criticality:
-          type: string
-          enum:
-          - nonCritical
-          - important
-          - coreProcess
-          - safety
-          description: The asset's criticality
-        status:
-          type: string
-          enum:
-          - new
-          - running
-          - warning
-          - stopped
-          - inactive
-          description: The asset's current highest importance signal's status
-        installationDate:
-          type: string
-          format: YYYY-MM-DD
-          description: The assets's installation date
-      required:
-      - id
-      - createdAt
-      - updatedAt
-      - assetNumber
-      - assetType
-      - assetCategory
-      - assetTypeId
-      - customPropertyValues
-      - criticality
-      - status
-    OrganizationInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        organizationName:
-          type: string
-        organizationNumber:
-          type: string
-      required:
-      - id
-      - organizationName
-    CustomPropertyValueCreateCfaBodyDto:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          description: The value of the custom property
-      required:
-      - reference
-      - value
     ContactInfoCfaResponseDto:
       type: object
       properties:
@@ -673,47 +447,20 @@ components:
           type: string
       required:
       - id
-    CustomPropertyValueUpdateCfaBodyDto:
+    AssetInfoCfaResponseDto:
       type: object
       properties:
-        reference:
+        id:
           type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          description: The value of the custom property (pass null to remove the custom property value)
+        assetNumber:
+          type: string
+        assetType:
+          type: string
       required:
-      - reference
-      - value
-    AssetsCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetListItemCfaResponseDto'
-      required:
-      - data
-    AddressCfaResponseDto:
+      - id
+      - assetNumber
+      - assetType
+    AddressCfaBodyDto:
       type: object
       properties:
         company:
@@ -809,34 +556,279 @@ components:
       - updatedAt
       - criticality
       - status
-    AssetsCfaPartInventoryWithTypeResponseDto:
+    OrganizationInfoCfaResponseDto:
       type: object
       properties:
         id:
           type: string
-          description: The part inventory's internal ID.
-        storageAssetId:
+        organizationName:
           type: string
-          description: The part inventory's storage asset ID.
-        partType:
-          type: object
-          description: The part inventory's part type.
-        availableStock:
-          type: number
-          description: The part inventory's available stock.
-        totalStock:
-          type: number
-          description: The part inventory's total stock.
-        createdAt:
-          type: object
-          description: The part inventory's creation date.
+        organizationNumber:
+          type: string
       required:
       - id
-      - storageAssetId
-      - partType
-      - availableStock
-      - totalStock
+      - organizationName
+    CustomPropertyValueUpdateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property (pass null to remove the custom property value)
+      required:
+      - reference
+      - value
+    AssetsCfaUpdateOneBodyDto:
+      type: object
+      properties:
+        assetNumber:
+          type: string
+          description: The asset's number
+        assetTypeId:
+          type: string
+          description: The asset type internal ID that this asset belongs to (Provide either this or the assetTypeLabel)
+        assetTypeLabel:
+          type: string
+          description: The asset type label that this asset belongs to (Provide either this or the assetTypeId)
+        name:
+          type: string
+          description: The asset's display name (if not specified the assetTypeLabel is used as display name)
+        parentAssetId:
+          type: string
+          description: The internal ID of this asset's parent (Provide either this or the parentAssetNumber)
+        parentAssetNumber:
+          type: string
+          description: The asset number of this asset's parent (Provide either this or the parentAssetId)
+        relatedOrganizationIds:
+          description: The internal IDs of the organizations that will be related to the asset (Provide either this or the relatedOrganizationNumbers).
+          type: array
+          items:
+            type: string
+        relatedOrganizationNumbers:
+          description: The numbers of the organizations that will be related to the asset (Provide either this or the relatedOrganizationIds).
+          type: array
+          items:
+            type: string
+        assignedPersonId:
+          type:
+          - object
+          - 'null'
+          description: The internal ID of the person that will be assigned to the asset (Provide null to unset value)
+        responsibleUserGroupId:
+          type: string
+          description: The internal ID of the user group that will be responsible for the asset (Provide either this or the responsibleUserGroupName)
+        responsibleUserGroupName:
+          type: string
+          description: The name of the user group that will be responsible for the asset (Provide either this or the responsibleUserGroupId)
+        relatedContactIds:
+          description: The internal IDs of the contacts that will be related to the asset. The value provided will replace existing relations.
+          type: array
+          items:
+            type: string
+        location:
+          description: The asset's location
+          allOf:
+          - $ref: '#/components/schemas/AddressCfaBodyDto'
+        userGroupIds:
+          description: The internal IDs of the user groups that will be related to the asset (Provide either this or the userGroupNames). The value provided will replace existing relations.
+          type: array
+          items:
+            type: string
+        userGroupNames:
+          description: The names of the user groups that will be related to the asset (Provide either this or the userGroupIds). The value provided will replace existing relations.
+          type: array
+          items:
+            type: string
+        customPropertyValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
+        criticality:
+          type: string
+          enum:
+          - nonCritical
+          - important
+          - coreProcess
+          - safety
+          description: The asset’s criticality
+        installationDate:
+          type:
+          - string
+          - 'null'
+          format: YYYY-MM-DD
+          description: The asset’s installation date (Provide null to unset value)
+    AssetsCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    AssetsCfaFindManyInventoriesByAssetResponseDto:
+      type: object
+      properties:
+        data:
+          description: The list of part inventories with part type information.
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetsCfaPartInventoryWithTypeResponseDto'
+      required:
+      - data
+    CustomPropertyValueCreateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property
+      required:
+      - reference
+      - value
+    AssetsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetListItemCfaResponseDto'
+      required:
+      - data
+    AssetCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The asset's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The asset's creation date
+        updatedAt:
+          type: string
+          format: date-time
+          description: The asset's date of the last update
+        assetNumber:
+          type: string
+          description: The asset's unique serial number.
+        assetType:
+          type: string
+          description: The asset's type.
+        assetCategory:
+          type: string
+          enum:
+          - area
+          - group
+          - asset
+          - component
+          - storage
+          description: The asset's category
+        assetTypeId:
+          type: string
+          description: The asset's type internal ID
+        name:
+          type: string
+          description: The asset's name.
+        parentAsset:
+          description: The asset's parent
+          allOf:
+          - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+        location:
+          description: The asset's location
+          allOf:
+          - $ref: '#/components/schemas/AddressCfaResponseDto'
+        relatedOrganizations:
+          description: The asset's related organizations
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+        relatedContacts:
+          description: The asset's related contacts
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        assignedPerson:
+          description: The asset's primary person
+          allOf:
+          - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+        customPropertyValues:
+          description: The asset's custom properties
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomPropertyValueCfaResponseDto'
+        criticality:
+          type: string
+          enum:
+          - nonCritical
+          - important
+          - coreProcess
+          - safety
+          description: The asset's criticality
+        status:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: The asset's current highest importance signal's status
+        installationDate:
+          type: string
+          format: YYYY-MM-DD
+          description: The assets's installation date
+      required:
+      - id
       - createdAt
+      - updatedAt
+      - assetNumber
+      - assetType
+      - assetCategory
+      - assetTypeId
+      - customPropertyValues
+      - criticality
+      - status
     AssetCfaCreateOneBodyDto:
       type: object
       properties:
@@ -922,27 +914,35 @@ components:
           description: Deprecated. Use `isNew` instead (inverted semantics).
       required:
       - assetNumber
-    AssetInfoCfaResponseDto:
+    AssetsCfaPartInventoryWithTypeResponseDto:
       type: object
       properties:
         id:
           type: string
-        assetNumber:
+          description: The part inventory's internal ID.
+        storageAssetId:
           type: string
-        assetType:
-          type: string
+          description: The part inventory's storage asset ID.
+        partType:
+          type: object
+          description: The part inventory's part type.
+        availableStock:
+          type: number
+          description: The part inventory's available stock.
+        totalStock:
+          type: number
+          description: The part inventory's total stock.
+        createdAt:
+          type: object
+          description: The part inventory's creation date.
       required:
       - id
-      - assetNumber
-      - assetType
-    AssetsCfaCreateOneResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-      required:
-      - id
-    AddressCfaBodyDto:
+      - storageAssetId
+      - partType
+      - availableStock
+      - totalStock
+      - createdAt
+    AddressCfaResponseDto:
       type: object
       properties:
         company:

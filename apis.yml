@@ -67,7 +67,7 @@ tags_raw:
 - Germany
 apis:
 - aid: remberg:remberg-ai-chat-api
-  name: Remberg ai-chat API
+  name: Remberg AI Chat API
   description: The ai-chat API from Remberg — 2 operation(s) for ai-chat.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -79,7 +79,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-ai-chat-api-openapi.yml
 - aid: remberg:remberg-asset-status-signals-api
-  name: Remberg asset-status-signals API
+  name: Remberg Asset Status Signals API
   description: The asset-status-signals API from Remberg — 5 operation(s) for asset-status-signals.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -89,7 +89,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-asset-status-signals-api-openapi.yml
 - aid: remberg:remberg-asset-types-api
-  name: Remberg asset-types API
+  name: Remberg Asset Types API
   description: The asset-types API from Remberg — 3 operation(s) for asset-types.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -101,7 +101,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-asset-types-api-openapi.yml
 - aid: remberg:remberg-assets-api
-  name: Remberg assets API
+  name: Remberg Assets API
   description: The assets API from Remberg — 5 operation(s) for assets.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -113,7 +113,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-assets-api-openapi.yml
 - aid: remberg:remberg-contacts-api
-  name: Remberg contacts API
+  name: Remberg Contacts API
   description: The contacts API from Remberg — 2 operation(s) for contacts.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -125,7 +125,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-contacts-api-openapi.yml
 - aid: remberg:remberg-failure-types-api
-  name: Remberg failure-types API
+  name: Remberg Failure Types API
   description: The failure-types API from Remberg — 2 operation(s) for failure-types.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -135,7 +135,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-failure-types-api-openapi.yml
 - aid: remberg:remberg-files-api
-  name: Remberg files API
+  name: Remberg Files API
   description: The files API from Remberg — 6 operation(s) for files.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -147,7 +147,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-files-api-openapi.yml
 - aid: remberg:remberg-forms-api
-  name: Remberg forms API
+  name: Remberg Forms API
   description: The forms API from Remberg — 2 operation(s) for forms.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -159,7 +159,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-forms-api-openapi.yml
 - aid: remberg:remberg-inventories-api
-  name: Remberg inventories API
+  name: Remberg Inventories API
   description: The inventories API from Remberg — 4 operation(s) for inventories.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -171,7 +171,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-inventories-api-openapi.yml
 - aid: remberg:remberg-organizations-api
-  name: Remberg organizations API
+  name: Remberg Organizations API
   description: The organizations API from Remberg — 4 operation(s) for organizations.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -183,7 +183,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-organizations-api-openapi.yml
 - aid: remberg:remberg-part-stock-changes-api
-  name: Remberg part-stock-changes API
+  name: Remberg Part Stock Changes API
   description: The part-stock-changes API from Remberg — 2 operation(s) for part-stock-changes.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -193,7 +193,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-part-stock-changes-api-openapi.yml
 - aid: remberg:remberg-parts-api
-  name: Remberg parts API
+  name: Remberg Parts API
   description: The parts API from Remberg — 3 operation(s) for parts.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -205,7 +205,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-parts-api-openapi.yml
 - aid: remberg:remberg-procedure-templates-api
-  name: Remberg procedure-templates API
+  name: Remberg Procedure Templates API
   description: The procedure-templates API from Remberg — 1 operation(s) for procedure-templates.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -217,19 +217,20 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-procedure-templates-api-openapi.yml
 - aid: remberg:remberg-tickets-api
-  name: Remberg tickets API
+  name: Remberg Tickets API
   description: The tickets API from Remberg — 4 operation(s) for tickets.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
   tags:
-  - Tickets
+  - Ticketing
   tags_raw:
   - tickets
+  - Tickets
   properties:
   - type: OpenAPI
     url: openapi/remberg-tickets-api-openapi.yml
 - aid: remberg:remberg-user-groups-api
-  name: Remberg user-groups API
+  name: Remberg User Groups API
   description: The user-groups API from Remberg — 1 operation(s) for user-groups.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -241,7 +242,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-user-groups-api-openapi.yml
 - aid: remberg:remberg-user-roles-api
-  name: Remberg user-roles API
+  name: Remberg User Roles API
   description: The user-roles API from Remberg — 1 operation(s) for user-roles.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -253,7 +254,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-user-roles-api-openapi.yml
 - aid: remberg:remberg-users-api
-  name: Remberg users API
+  name: Remberg Users API
   description: The users API from Remberg — 3 operation(s) for users.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -265,7 +266,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-users-api-openapi.yml
 - aid: remberg:remberg-work-orders-api
-  name: Remberg work-orders API
+  name: Remberg Work Orders API
   description: The work-orders API from Remberg — 12 operation(s) for work-orders.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
@@ -277,7 +278,7 @@ apis:
   - type: OpenAPI
     url: openapi/remberg-work-orders-api-openapi.yml
 - aid: remberg:remberg-work-requests-api
-  name: Remberg work-requests API
+  name: Remberg Work Requests API
   description: The work-requests API from Remberg — 7 operation(s) for work-requests.
   humanURL: https://developers.remberg.de/reference
   baseURL: https://api.remberg.de
