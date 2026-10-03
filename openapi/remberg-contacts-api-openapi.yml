@@ -229,59 +229,6 @@ paths:
       x-controller-class: ContactsCfaController
 components:
   schemas:
-    ContactsCfaFindManyResponseDto:
-      type: object
-      properties:
-        count:
-          type: number
-        contacts:
-          type: array
-          items:
-            type: string
-      required:
-      - count
-      - contacts
-    PhoneNumberCfaResponseDto:
-      type: object
-      properties:
-        number:
-          type: string
-          pattern: ^[0-9 (,),/, ,-]*$
-        countryPrefix:
-          type: string
-          pattern: ^[0-9]{1,3}$
-    ContactsCfaUpdateOneBodyDto:
-      type: object
-      properties:
-        firstName:
-          type: string
-          description: The first name of the contact.
-        lastName:
-          type: string
-          description: The last name of the contact.
-        rembergUserEmail:
-          type: string
-          description: The email address associated with the contacts's remberg account.
-        phoneNumber:
-          type: object
-          description: The phone number of the contact. This field is optional.
-        jobPosition:
-          type: string
-          description: The contacts's job position within the organization. This field is optional.
-        hourlyRates:
-          description: 'Full list of hourly rates. Exactly one entry must be the fallback rate. Currency format: up to 2 decimal places.'
-          type: array
-          items:
-            $ref: '#/components/schemas/HourlyRateCfaUpdateBodyDto'
-    PhoneNumberCfaBodyDto:
-      type: object
-      properties:
-        number:
-          type: string
-          pattern: ^[0-9 (,),/, ,-]*$
-        countryPrefix:
-          type: string
-          pattern: ^[0-9]{1,3}$
     ContactsCfaCreateOneBodyDto:
       type: object
       properties:
@@ -309,30 +256,41 @@ components:
       - lastName
       - organizationNumber
       - rembergUserEmail
-    HourlyRateCfaResponseDto:
+    ContactsCfaUpdateOneBodyDto:
       type: object
       properties:
-        value:
-          type: number
-          description: Hourly rate value in full currency (e.g. euros).
-        validFrom:
+        firstName:
           type: string
-          description: Date from which this rate is effective (YYYY-MM-DD). Empty or omitted for the fallback rate.
-      required:
-      - value
-    HourlyRateCfaUpdateBodyDto:
+          description: The first name of the contact.
+        lastName:
+          type: string
+          description: The last name of the contact.
+        rembergUserEmail:
+          type: string
+          description: The email address associated with the contacts's remberg account.
+        phoneNumber:
+          type: object
+          description: The phone number of the contact. This field is optional.
+        jobPosition:
+          type: string
+          description: The contacts's job position within the organization. This field is optional.
+        hourlyRates:
+          description: 'Full list of hourly rates. Exactly one entry must be the fallback rate. Currency format: up to 2 decimal places.'
+          type: array
+          items:
+            $ref: '#/components/schemas/HourlyRateCfaUpdateBodyDto'
+    ContactsCfaFindManyResponseDto:
       type: object
       properties:
-        value:
+        count:
           type: number
-          description: Hourly rate value in full currency (e.g. euros). Up to 2 decimal places.
-          example: 40.81
-        validFrom:
-          type: string
-          description: Date from which this rate is effective (YYYY-MM-DD). Empty or omitted for the fallback rate.
-          example: '2026-02-03'
+        contacts:
+          type: array
+          items:
+            type: string
       required:
-      - value
+      - count
+      - contacts
     ContactCfaResponseDto:
       type: object
       properties:
@@ -369,6 +327,48 @@ components:
       - lastName
       - rembergUserEmail
       - organizationNumber
+    PhoneNumberCfaResponseDto:
+      type: object
+      properties:
+        number:
+          type: string
+          pattern: ^[0-9 (,),/, ,-]*$
+        countryPrefix:
+          type: string
+          pattern: ^[0-9]{1,3}$
+    HourlyRateCfaUpdateBodyDto:
+      type: object
+      properties:
+        value:
+          type: number
+          description: Hourly rate value in full currency (e.g. euros). Up to 2 decimal places.
+          example: 40.81
+        validFrom:
+          type: string
+          description: Date from which this rate is effective (YYYY-MM-DD). Empty or omitted for the fallback rate.
+          example: '2026-02-03'
+      required:
+      - value
+    PhoneNumberCfaBodyDto:
+      type: object
+      properties:
+        number:
+          type: string
+          pattern: ^[0-9 (,),/, ,-]*$
+        countryPrefix:
+          type: string
+          pattern: ^[0-9]{1,3}$
+    HourlyRateCfaResponseDto:
+      type: object
+      properties:
+        value:
+          type: number
+          description: Hourly rate value in full currency (e.g. euros).
+        validFrom:
+          type: string
+          description: Date from which this rate is effective (YYYY-MM-DD). Empty or omitted for the fallback rate.
+      required:
+      - value
   securitySchemes:
     authorization:
       type: apiKey

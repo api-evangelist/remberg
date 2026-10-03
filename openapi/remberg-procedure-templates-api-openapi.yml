@@ -63,16 +63,6 @@ paths:
       x-controller-class: ProcedureTemplatesCfaController
 components:
   schemas:
-    ProcedureTemplateCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          description: The list of procedure templates
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcedureTemplateListItemCfaResponseDto'
-      required:
-      - data
     ProcedureTemplateListItemCfaResponseDto:
       type: object
       properties:
@@ -112,6 +102,16 @@ components:
       - type
       - createdAt
       - updatedAt
+    ProcedureTemplateCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: The list of procedure templates
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureTemplateListItemCfaResponseDto'
+      required:
+      - data
   securitySchemes:
     authorization:
       type: apiKey

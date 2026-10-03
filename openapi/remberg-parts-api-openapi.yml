@@ -282,70 +282,66 @@ paths:
       x-controller-class: PartTypesCfaController
 components:
   schemas:
-    ContactInfoCfaResponseDto:
+    PartTypeListItemCfaResponseDto:
       type: object
       properties:
         id:
           type: string
-        firstName:
+          description: The part's internal ID.
+        partNumber:
           type: string
-        lastName:
+          description: The part's unique number.
+        externalReference:
           type: string
-        email:
+          description: The part's external reference.
+        name:
           type: string
+          description: The part's name.
+        description:
+          type: string
+          description: The part's description.
+        createdAt:
+          type: string
+          format: date-time
+          description: The part's creation date.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The part's date of the last update.
+        price:
+          type: number
+          description: The part's price per unit.
+        minimumStock:
+          type: number
+          description: The part's minimum stock.
+        availableStock:
+          type: number
+          description: The part's available stock.
       required:
       - id
-    AssetTypeInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-      required:
-      - id
-      - label
-    AssetInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        assetNumber:
-          type: string
-        assetType:
-          type: string
-      required:
-      - id
-      - assetNumber
-      - assetType
-    CustomPropertyValueUpdateCfaBodyDto:
+      - partNumber
+      - name
+      - createdAt
+      - updatedAt
+      - minimumStock
+      - availableStock
+    CustomPropertyValueCfaResponseDto:
       type: object
       properties:
         reference:
           type: string
           description: The reference of the custom property the value is assigned to
         value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          description: The value of the custom property (pass null to remove the custom property value)
+          type: object
+          description: The value of the custom property
+        associationValue:
+          description: The populated related object value if "customProperties" is present in "associations" query
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
       required:
       - reference
       - value
@@ -417,13 +413,61 @@ components:
       - minimumStock
       - availableStock
       - customPropertyValues
-    PartTypesCfaCreateOneResponseDto:
+    CustomPropertyValueCreateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property
+      required:
+      - reference
+      - value
+    AssetTypeInfoCfaResponseDto:
       type: object
       properties:
         id:
           type: string
+        label:
+          type: string
       required:
       - id
+      - label
+    PartTypesCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: The list of part items.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartTypeListItemCfaResponseDto'
+        count:
+          type: number
+          description: The total number of parts found.
+      required:
+      - data
+      - count
     OrganizationInfoCfaResponseDto:
       type: object
       properties:
@@ -436,6 +480,50 @@ components:
       required:
       - id
       - organizationName
+    ContactInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+    CustomPropertyValueUpdateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property (pass null to remove the custom property value)
+      required:
+      - reference
+      - value
     PartTypesCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -497,94 +585,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
-    CustomPropertyValueCreateCfaBodyDto:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          description: The value of the custom property
-      required:
-      - reference
-      - value
-    PartTypesCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          description: The list of part items.
-          type: array
-          items:
-            $ref: '#/components/schemas/PartTypeListItemCfaResponseDto'
-        count:
-          type: number
-          description: The total number of parts found.
-      required:
-      - data
-      - count
-    PartTypeListItemCfaResponseDto:
+    AssetInfoCfaResponseDto:
       type: object
       properties:
         id:
           type: string
-          description: The part's internal ID.
-        partNumber:
+        assetNumber:
           type: string
-          description: The part's unique number.
-        externalReference:
+        assetType:
           type: string
-          description: The part's external reference.
-        name:
-          type: string
-          description: The part's name.
-        description:
-          type: string
-          description: The part's description.
-        createdAt:
-          type: string
-          format: date-time
-          description: The part's creation date.
-        updatedAt:
-          type: string
-          format: date-time
-          description: The part's date of the last update.
-        price:
-          type: number
-          description: The part's price per unit.
-        minimumStock:
-          type: number
-          description: The part's minimum stock.
-        availableStock:
-          type: number
-          description: The part's available stock.
       required:
       - id
-      - partNumber
-      - name
-      - createdAt
-      - updatedAt
-      - minimumStock
-      - availableStock
+      - assetNumber
+      - assetType
+    PartTypesCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+      - id
     PartTypesCfaCreateOneBodyDto:
       type: object
       properties:
@@ -649,26 +669,6 @@ components:
       required:
       - name
       - partNumber
-    CustomPropertyValueCfaResponseDto:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          type: object
-          description: The value of the custom property
-        associationValue:
-          description: The populated related object value if "customProperties" is present in "associations" query
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
-            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
-            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
-      required:
-      - reference
-      - value
   securitySchemes:
     authorization:
       type: apiKey

@@ -817,6 +817,73 @@ components:
       - status
       - createdAt
       - updatedAt
+    UsersCfaCreateOneBodyDto:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The login email of the user. Must be unique per tenant.
+        role:
+          type: string
+          description: 'The role to assign: an internal default-role shorthand (adminUser, managerUser, fullUser, viewerUser) or a role id from GET /v1/users/roles.'
+        firstName:
+          type: string
+          description: The first name of the user.
+        lastName:
+          type: string
+          description: The last name of the user.
+        position:
+          type: string
+          description: The job position of the user.
+        externalReference:
+          type: string
+          description: A workspace-unique reference to this user in an external system. Must be unique per tenant.
+        lang:
+          type: string
+          enum:
+          - en-US
+          - de-DE
+          - tr-TR
+          - fr-FR
+          - es-ES
+          - it-IT
+          - el-GR
+          - th-TH
+          - pl-PL
+          - cs-CZ
+          - hu-HU
+          - ro-RO
+          - pt-PT
+          - nl-NL
+          - sk-SK
+          - sr-RS
+          - sv-SE
+          description: The selected system language.
+        sendInvitationEmail:
+          type: boolean
+          description: Send the activation invite email. Defaults to false (no email is sent).
+        groupIds:
+          description: User group ids from GET /v1/users/groups.
+          type: array
+          items:
+            type: string
+      required:
+      - email
+      - role
+      - firstName
+      - lastName
+    user_group_cfa_response_dto_UserGroupCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A remberg internal unique identifier for the user group.
+        name:
+          type: string
+          description: The name of the user group.
+      required:
+      - id
+      - name
     UsersCfaCreateOneResponseDto:
       type: object
       properties:
@@ -825,6 +892,18 @@ components:
           description: A remberg internal unique identifier for the created user.
       required:
       - id
+    UsersCfaFindManyResponseDto:
+      type: object
+      properties:
+        count:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCfaListItemResponseDto'
+      required:
+      - count
+      - data
     UserCfaListItemResponseDto:
       type: object
       properties:
@@ -858,18 +937,6 @@ components:
       required:
       - id
       - email
-    user_group_cfa_response_dto_UserGroupCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A remberg internal unique identifier for the user group.
-        name:
-          type: string
-          description: The name of the user group.
-      required:
-      - id
-      - name
     UsersCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -1436,73 +1503,6 @@ components:
           type: array
           items:
             type: string
-    UsersCfaFindManyResponseDto:
-      type: object
-      properties:
-        count:
-          type: number
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserCfaListItemResponseDto'
-      required:
-      - count
-      - data
-    UsersCfaCreateOneBodyDto:
-      type: object
-      properties:
-        email:
-          type: string
-          description: The login email of the user. Must be unique per tenant.
-        role:
-          type: string
-          description: 'The role to assign: an internal default-role shorthand (adminUser, managerUser, fullUser, viewerUser) or a role id from GET /v1/users/roles.'
-        firstName:
-          type: string
-          description: The first name of the user.
-        lastName:
-          type: string
-          description: The last name of the user.
-        position:
-          type: string
-          description: The job position of the user.
-        externalReference:
-          type: string
-          description: A workspace-unique reference to this user in an external system. Must be unique per tenant.
-        lang:
-          type: string
-          enum:
-          - en-US
-          - de-DE
-          - tr-TR
-          - fr-FR
-          - es-ES
-          - it-IT
-          - el-GR
-          - th-TH
-          - pl-PL
-          - cs-CZ
-          - hu-HU
-          - ro-RO
-          - pt-PT
-          - nl-NL
-          - sk-SK
-          - sr-RS
-          - sv-SE
-          description: The selected system language.
-        sendInvitationEmail:
-          type: boolean
-          description: Send the activation invite email. Defaults to false (no email is sent).
-        groupIds:
-          description: User group ids from GET /v1/users/groups.
-          type: array
-          items:
-            type: string
-      required:
-      - email
-      - role
-      - firstName
-      - lastName
   securitySchemes:
     authorization:
       type: apiKey

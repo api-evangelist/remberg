@@ -113,6 +113,33 @@ paths:
       x-controller-class: CustomTagsDynamicCfaController
 components:
   schemas:
+    CustomTagCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Item internal ID.
+        label:
+          description: The label that the item has in each language.
+          allOf:
+          - $ref: '#/components/schemas/MultiLanguageTextResponseDto'
+        description:
+          type: string
+          description: The description of the item.
+        reference:
+          type: string
+          description: The reference identifier.
+        createdAt:
+          type: object
+          description: The creation timestamp.
+        updatedAt:
+          type: object
+          description: The last update timestamp.
+      required:
+      - id
+      - label
+      - reference
+      - createdAt
     CustomTagCfaCreateResponseDto:
       type: object
       properties:
@@ -121,6 +148,16 @@ components:
           description: The reference of the created item.
       required:
       - reference
+    CustomTagCfaFindAllResponseDto:
+      type: object
+      properties:
+        data:
+          description: Array of items.
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomTagCfaResponseDto'
+      required:
+      - data
     MultiLanguageTextResponseDto:
       type: object
       properties:
@@ -191,26 +228,6 @@ components:
       required:
       - reference
       - label
-    CustomTagCfaUpdateBodyDto:
-      type: object
-      properties:
-        label:
-          description: The label that the item has in each language. At least one language is required.
-          allOf:
-          - $ref: '#/components/schemas/MultiLanguageTextBodyDto'
-        description:
-          type: string
-          description: The description of the item.
-    CustomTagCfaFindAllResponseDto:
-      type: object
-      properties:
-        data:
-          description: Array of items.
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomTagCfaResponseDto'
-      required:
-      - data
     MultiLanguageTextBodyDto:
       type: object
       properties:
@@ -265,33 +282,16 @@ components:
         sv:
           type: string
           description: Label text in Swedish (sv).
-    CustomTagCfaResponseDto:
+    CustomTagCfaUpdateBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          description: Item internal ID.
         label:
-          description: The label that the item has in each language.
+          description: The label that the item has in each language. At least one language is required.
           allOf:
-          - $ref: '#/components/schemas/MultiLanguageTextResponseDto'
+          - $ref: '#/components/schemas/MultiLanguageTextBodyDto'
         description:
           type: string
           description: The description of the item.
-        reference:
-          type: string
-          description: The reference identifier.
-        createdAt:
-          type: object
-          description: The creation timestamp.
-        updatedAt:
-          type: object
-          description: The last update timestamp.
-      required:
-      - id
-      - label
-      - reference
-      - createdAt
   securitySchemes:
     authorization:
       type: apiKey

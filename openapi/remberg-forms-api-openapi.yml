@@ -132,16 +132,6 @@ paths:
       x-controller-class: FormsCfaController
 components:
   schemas:
-    FormListCfaResponseDto:
-      type: object
-      properties:
-        data:
-          description: A list of forms along with their summary.
-          type: array
-          items:
-            $ref: '#/components/schemas/FormListItemCfaResponseDto'
-      required:
-      - data
     FormDetailsCfaResponseDto:
       type: object
       properties:
@@ -204,6 +194,16 @@ components:
       - status
       - createdAt
       - updatedAt
+      - data
+    FormListCfaResponseDto:
+      type: object
+      properties:
+        data:
+          description: A list of forms along with their summary.
+          type: array
+          items:
+            $ref: '#/components/schemas/FormListItemCfaResponseDto'
+      required:
       - data
     FormListItemCfaResponseDto:
       type: object

@@ -231,58 +231,6 @@ paths:
       x-controller-class: PartInventoriesCfaController
 components:
   schemas:
-    AssetInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        assetNumber:
-          type: string
-        assetType:
-          type: string
-      required:
-      - id
-      - assetNumber
-      - assetType
-    PartInventoryCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The inventory's internal ID.
-        storageAssetId:
-          type: string
-          description: The inventory's storage asset ID.
-        partTypeId:
-          type: string
-          description: The inventory's part type ID.
-        availableStock:
-          type: number
-          description: The inventory's available stock.
-        totalStock:
-          type: number
-          description: The inventory's total stock.
-        createdAt:
-          type: string
-          format: date-time
-          description: The inventory's creation date.
-      required:
-      - id
-      - storageAssetId
-      - partTypeId
-      - availableStock
-      - totalStock
-      - createdAt
-    PartInventoriesCfaUpdateStockBodyDto:
-      type: object
-      properties:
-        targetStock:
-          type: number
-          description: Target stock level for the part inventory.
-          example: 10
-          minimum: 0
-      required:
-      - targetStock
     PartInventoriesWithStorageCfaFindManyResponseDto:
       type: object
       properties:
@@ -327,6 +275,58 @@ components:
       - availableStock
       - totalStock
       - createdAt
+    PartInventoriesCfaUpdateStockBodyDto:
+      type: object
+      properties:
+        targetStock:
+          type: number
+          description: Target stock level for the part inventory.
+          example: 10
+          minimum: 0
+      required:
+      - targetStock
+    PartInventoryCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The inventory's internal ID.
+        storageAssetId:
+          type: string
+          description: The inventory's storage asset ID.
+        partTypeId:
+          type: string
+          description: The inventory's part type ID.
+        availableStock:
+          type: number
+          description: The inventory's available stock.
+        totalStock:
+          type: number
+          description: The inventory's total stock.
+        createdAt:
+          type: string
+          format: date-time
+          description: The inventory's creation date.
+      required:
+      - id
+      - storageAssetId
+      - partTypeId
+      - availableStock
+      - totalStock
+      - createdAt
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
   securitySchemes:
     authorization:
       type: apiKey

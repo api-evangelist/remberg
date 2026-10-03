@@ -51,6 +51,15 @@ paths:
       x-controller-class: UserGroupsCfaController
 components:
   schemas:
+    UserGroupsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupCfaResponseDto'
+      required:
+      - data
     UserGroupCfaResponseDto:
       type: object
       properties:
@@ -66,15 +75,6 @@ components:
       required:
       - id
       - name
-    UserGroupsCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGroupCfaResponseDto'
-      required:
-      - data
   securitySchemes:
     authorization:
       type: apiKey
