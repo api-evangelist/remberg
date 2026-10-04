@@ -512,6 +512,16 @@ paths:
       x-controller-class: WorkRequestsCfaController
 components:
   schemas:
+    WorkRequestsCfaApproveBodyDto:
+      type: object
+      properties:
+        workOrderId:
+          type: string
+          description: Work Order internal ID to link instead of creating a new one when approving.
+        workOrderPrefill:
+          description: Work order prefill data for creating a new Work Order when approving. Will be ignored if "workOrderId" is present.
+          allOf:
+          - $ref: '#/components/schemas/WorkRequestCfaWorkOrderPrefillBodyDto'
     WorkRequestsCfaUpdateBodyDto:
       type: object
       properties:
@@ -577,6 +587,139 @@ components:
             $ref: '#/components/schemas/WorkRequestListItemCfaResponseDto'
       required:
       - data
+    WorkRequestListItemCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Work Request internal ID.
+        counter:
+          type: string
+          description: Work Request human-readable ID, e.g. "WR-000012".
+        status:
+          type: string
+          enum:
+          - 000_new
+          - 010_approved
+          - 020_declined
+          - 030_completed
+          description: Work Request status.
+        relatedAssetId:
+          type: string
+          description: Asset internal ID.
+        assetStatus:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: Asset status when the Work Request was created.
+        description:
+          type: string
+          description: Work Request description.
+        declineReason:
+          type: string
+          description: Work Request decline reason.
+        externalReference:
+          type: string
+          description: External reference (ERP Reference) of the Work Request.
+        relatedWorkOrderId:
+          type: string
+          description: Work Order internal ID.
+        failureTypeIds:
+          description: Work Request Failure Type internal IDs.
+          type: array
+          items:
+            type: string
+        failureTypes:
+          description: Work Request Failure Types with internal ID and external reference (ERP Reference).
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomTagInfoCfaResponseDto'
+        createdAt:
+          type: string
+          format: date-time
+          description: Work Request creation timestamp.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Work Request last update timestamp.
+        approvedAt:
+          type: string
+          format: date-time
+          description: Work Request approval timestamp.
+        completedAt:
+          type: string
+          format: date-time
+          description: Work Request completion timestamp.
+      required:
+      - id
+      - counter
+      - status
+      - relatedAssetId
+      - createdAt
+      - updatedAt
+    WorkOrderInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The work orders internal ID
+        counter:
+          type: string
+          description: The work orders counter
+        subject:
+          type: string
+          description: The work orders subject
+        externalReference:
+          type: string
+          description: The work orders external reference (ERP Reference)
+      required:
+      - id
+      - counter
+      - subject
+    ContactInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+    AssetInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
+      required:
+      - id
+      - assetNumber
+      - assetType
+    WorkRequestsCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal ID of the created Work Request.
+      required:
+      - id
+    WorkRequestsCfaDeclineBodyDto:
+      type: object
+      properties:
+        declineReason:
+          type: string
+          description: Decline reason when rejecting the Work Request.
     WorkRequestCfaResponseDto:
       type: object
       properties:
@@ -687,109 +830,6 @@ components:
       required:
       - id
       - reference
-    WorkRequestsCfaApproveBodyDto:
-      type: object
-      properties:
-        workOrderId:
-          type: string
-          description: Work Order internal ID to link instead of creating a new one when approving.
-        workOrderPrefill:
-          description: Work order prefill data for creating a new Work Order when approving. Will be ignored if "workOrderId" is present.
-          allOf:
-          - $ref: '#/components/schemas/WorkRequestCfaWorkOrderPrefillBodyDto'
-    WorkRequestListItemCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Work Request internal ID.
-        counter:
-          type: string
-          description: Work Request human-readable ID, e.g. "WR-000012".
-        status:
-          type: string
-          enum:
-          - 000_new
-          - 010_approved
-          - 020_declined
-          - 030_completed
-          description: Work Request status.
-        relatedAssetId:
-          type: string
-          description: Asset internal ID.
-        assetStatus:
-          type: string
-          enum:
-          - new
-          - running
-          - warning
-          - stopped
-          - inactive
-          description: Asset status when the Work Request was created.
-        description:
-          type: string
-          description: Work Request description.
-        declineReason:
-          type: string
-          description: Work Request decline reason.
-        externalReference:
-          type: string
-          description: External reference (ERP Reference) of the Work Request.
-        relatedWorkOrderId:
-          type: string
-          description: Work Order internal ID.
-        failureTypeIds:
-          description: Work Request Failure Type internal IDs.
-          type: array
-          items:
-            type: string
-        failureTypes:
-          description: Work Request Failure Types with internal ID and external reference (ERP Reference).
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomTagInfoCfaResponseDto'
-        createdAt:
-          type: string
-          format: date-time
-          description: Work Request creation timestamp.
-        updatedAt:
-          type: string
-          format: date-time
-          description: Work Request last update timestamp.
-        approvedAt:
-          type: string
-          format: date-time
-          description: Work Request approval timestamp.
-        completedAt:
-          type: string
-          format: date-time
-          description: Work Request completion timestamp.
-      required:
-      - id
-      - counter
-      - status
-      - relatedAssetId
-      - createdAt
-      - updatedAt
-    WorkOrderInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The work orders internal ID
-        counter:
-          type: string
-          description: The work orders counter
-        subject:
-          type: string
-          description: The work orders subject
-        externalReference:
-          type: string
-          description: The work orders external reference (ERP Reference)
-      required:
-      - id
-      - counter
-      - subject
     WorkRequestsCfaCreateOneMultipartBodyDto:
       type: object
       properties:
@@ -835,46 +875,6 @@ components:
           description: Requester name of the Work Request.
       required:
       - relatedAssetId
-    WorkRequestsCfaCreateOneResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Internal ID of the created Work Request.
-      required:
-      - id
-    WorkRequestsCfaDeclineBodyDto:
-      type: object
-      properties:
-        declineReason:
-          type: string
-          description: Decline reason when rejecting the Work Request.
-    ContactInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-      required:
-      - id
-    AssetInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        assetNumber:
-          type: string
-        assetType:
-          type: string
-      required:
-      - id
-      - assetNumber
-      - assetType
   securitySchemes:
     authorization:
       type: apiKey

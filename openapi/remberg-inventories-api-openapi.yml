@@ -245,6 +245,16 @@ components:
       required:
       - data
       - count
+    PartInventoriesCfaUpdateStockBodyDto:
+      type: object
+      properties:
+        targetStock:
+          type: number
+          description: Target stock level for the part inventory.
+          example: 10
+          minimum: 0
+      required:
+      - targetStock
     PartInventoryWithStorageCfaResponseDto:
       type: object
       properties:
@@ -275,16 +285,19 @@ components:
       - availableStock
       - totalStock
       - createdAt
-    PartInventoriesCfaUpdateStockBodyDto:
+    AssetInfoCfaResponseDto:
       type: object
       properties:
-        targetStock:
-          type: number
-          description: Target stock level for the part inventory.
-          example: 10
-          minimum: 0
+        id:
+          type: string
+        assetNumber:
+          type: string
+        assetType:
+          type: string
       required:
-      - targetStock
+      - id
+      - assetNumber
+      - assetType
     PartInventoryCfaResponseDto:
       type: object
       properties:
@@ -314,19 +327,6 @@ components:
       - availableStock
       - totalStock
       - createdAt
-    AssetInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        assetNumber:
-          type: string
-        assetType:
-          type: string
-      required:
-      - id
-      - assetNumber
-      - assetType
   securitySchemes:
     authorization:
       type: apiKey

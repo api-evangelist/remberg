@@ -221,6 +221,23 @@ paths:
       x-controller-class: AssetTypesCfaController
 components:
   schemas:
+    AssetTypesCfaCreateAndUpdateOneBodyDto:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The asset type's label
+        category:
+          type: string
+          enum:
+          - area
+          - group
+          - asset
+          - component
+          - storage
+          description: The asset type's category
+      required:
+      - label
     AssetTypeCfaResponseDto:
       type: object
       properties:
@@ -253,23 +270,6 @@ components:
       - updatedAt
       - label
       - category
-    AssetTypesCfaCreateAndUpdateOneBodyDto:
-      type: object
-      properties:
-        label:
-          type: string
-          description: The asset type's label
-        category:
-          type: string
-          enum:
-          - area
-          - group
-          - asset
-          - component
-          - storage
-          description: The asset type's category
-      required:
-      - label
   securitySchemes:
     authorization:
       type: apiKey

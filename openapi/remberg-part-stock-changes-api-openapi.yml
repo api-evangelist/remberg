@@ -151,16 +151,6 @@ paths:
       x-controller-class: PartStockChangesCfaController
 components:
   schemas:
-    PartStockChangesCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          description: List of part stock changes.
-          type: array
-          items:
-            $ref: '#/components/schemas/PartStockChangeCfaResponseDto'
-      required:
-      - data
     PartStockChangeCfaResponseDto:
       type: object
       properties:
@@ -213,6 +203,16 @@ components:
       - id
       - assetNumber
       - assetType
+    PartStockChangesCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          description: List of part stock changes.
+          type: array
+          items:
+            $ref: '#/components/schemas/PartStockChangeCfaResponseDto'
+      required:
+      - data
   securitySchemes:
     authorization:
       type: apiKey

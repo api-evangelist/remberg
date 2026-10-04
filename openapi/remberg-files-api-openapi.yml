@@ -373,6 +373,81 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    DriveFilesCfaCreateFileMultipartBodyDto:
+      type: object
+      properties:
+        isPublic:
+          type: boolean
+          default: false
+          description: If this parameter is set to true, the uploaded files will be visible in the portal.
+        description:
+          type: string
+        parentId:
+          type: string
+          description: Set the internal parentId to nest a file inside a folder.
+        files:
+          type: array
+          items:
+            type: string
+            format: binary
+        assetType:
+          type: string
+          deprecated: true
+          description: Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes
+        assetNumber:
+          type: string
+          deprecated: true
+          description: Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets
+        assetTypes:
+          description: Specify a list of assetTypes to assign a file to them.
+          type: array
+          items:
+            type: string
+        assetNumbers:
+          description: Specify a list of assetNumbers to assign a file to them.
+          type: array
+          items:
+            type: string
+        isAddedToKnowledgeBase:
+          type: boolean
+          description: Specify if the file should be added to the knowledge base for the AI Copilot.
+      required:
+      - files
+    DriveFilesCfaCreateFolderBodyDto:
+      type: object
+      properties:
+        isPublic:
+          type: boolean
+          default: false
+          description: If this parameter is set to true, the folder will be visible in the portal.
+        description:
+          type: string
+        parentId:
+          type: string
+          description: Set the internal folderId to nest a folder inside a folder.
+        name:
+          type: string
+          description: Define the name of the new folder.
+        assetType:
+          type: string
+          deprecated: true
+          description: Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes
+        assetNumber:
+          type: string
+          deprecated: true
+          description: Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets
+        assetTypes:
+          description: Specify a list of assetTypes to assign a folder to them.
+          type: array
+          items:
+            type: string
+        assetNumbers:
+          description: Specify a list of assetNumbers to assign a folder to them.
+          type: array
+          items:
+            type: string
+      required:
+      - name
     DriveFilesCfaResponseDto:
       type: object
       properties:
@@ -442,46 +517,6 @@ components:
             $ref: '#/components/schemas/DriveFilesCfaResponseDto'
       required:
       - data
-    DriveFilesCfaCreateFileMultipartBodyDto:
-      type: object
-      properties:
-        isPublic:
-          type: boolean
-          default: false
-          description: If this parameter is set to true, the uploaded files will be visible in the portal.
-        description:
-          type: string
-        parentId:
-          type: string
-          description: Set the internal parentId to nest a file inside a folder.
-        files:
-          type: array
-          items:
-            type: string
-            format: binary
-        assetType:
-          type: string
-          deprecated: true
-          description: Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes
-        assetNumber:
-          type: string
-          deprecated: true
-          description: Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets
-        assetTypes:
-          description: Specify a list of assetTypes to assign a file to them.
-          type: array
-          items:
-            type: string
-        assetNumbers:
-          description: Specify a list of assetNumbers to assign a file to them.
-          type: array
-          items:
-            type: string
-        isAddedToKnowledgeBase:
-          type: boolean
-          description: Specify if the file should be added to the knowledge base for the AI Copilot.
-      required:
-      - files
     DriveFilesCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -525,41 +560,6 @@ components:
         isAddedToKnowledgeBase:
           type: boolean
           description: Specify if the file should be added to the knowledge base for the AI Copilot.
-    DriveFilesCfaCreateFolderBodyDto:
-      type: object
-      properties:
-        isPublic:
-          type: boolean
-          default: false
-          description: If this parameter is set to true, the folder will be visible in the portal.
-        description:
-          type: string
-        parentId:
-          type: string
-          description: Set the internal folderId to nest a folder inside a folder.
-        name:
-          type: string
-          description: Define the name of the new folder.
-        assetType:
-          type: string
-          deprecated: true
-          description: Specify an assetType to assign a file to a specific category of assets. You can use assetTypes instead to assign multiple assetTypes
-        assetNumber:
-          type: string
-          deprecated: true
-          description: Specify an assetNumber and assetType to assign a file to a specific asset. You can use assetNumbers instead to assign multiple assets
-        assetTypes:
-          description: Specify a list of assetTypes to assign a folder to them.
-          type: array
-          items:
-            type: string
-        assetNumbers:
-          description: Specify a list of assetNumbers to assign a folder to them.
-          type: array
-          items:
-            type: string
-      required:
-      - name
   securitySchemes:
     authorization:
       type: apiKey

@@ -434,36 +434,7 @@ paths:
       x-controller-class: AssetsCfaController
 components:
   schemas:
-    CustomPropertyValueCfaResponseDto:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          type: object
-          description: The value of the custom property
-        associationValue:
-          description: The populated related object value if "customProperties" is present in "associations" query
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
-            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
-            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
-      required:
-      - reference
-      - value
-    AssetsCfaFindManyResponseDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetListItemCfaResponseDto'
-      required:
-      - data
-    AssetCfaCreateOneBodyDto:
+    AssetsCfaUpdateOneBodyDto:
       type: object
       properties:
         assetNumber:
@@ -495,8 +466,10 @@ components:
           items:
             type: string
         assignedPersonId:
-          type: string
-          description: The internal ID of the person that will be assigned to the asset
+          type:
+          - object
+          - 'null'
+          description: The internal ID of the person that will be assigned to the asset (Provide null to unset value)
         responsibleUserGroupId:
           type: string
           description: The internal ID of the user group that will be responsible for the asset (Provide either this or the responsibleUserGroupName)
@@ -525,7 +498,7 @@ components:
         customPropertyValues:
           type: array
           items:
-            $ref: '#/components/schemas/CustomPropertyValueCreateCfaBodyDto'
+            $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
         criticality:
           type: string
           enum:
@@ -533,58 +506,13 @@ components:
           - important
           - coreProcess
           - safety
-          description: The asset’s criticality (default is Non-Critical)
+          description: The asset’s criticality
         installationDate:
-          type: string
+          type:
+          - string
+          - 'null'
           format: YYYY-MM-DD
-          description: The asset’s installation date
-        isNew:
-          type: boolean
-          description: Determines the initial status of the created asset. If true, the asset will be created with status "new", otherwise with status "running".
-        isRunning:
-          type: boolean
-          default: true
-          deprecated: true
-          description: Deprecated. Use `isNew` instead (inverted semantics).
-      required:
-      - assetNumber
-    AddressCfaResponseDto:
-      type: object
-      properties:
-        company:
-          type: string
-          description: The name of the company or organization associated with the address.
-        street:
-          type: string
-          description: The name of the street for the address.
-        streetNumber:
-          type: string
-          description: The specific number or identifier for the location on the street.
-        zipPostCode:
-          type: string
-          description: The postal or ZIP code for the address.
-        city:
-          type: string
-          description: The name of the city where the address is located.
-        countryProvince:
-          type: string
-          description: The province or state within the country of the address.
-        country:
-          type: string
-          description: The name of the country for the address.
-        other:
-          type: string
-          description: Additional details or descriptions related to the address.
-    AssetsCfaFindManyInventoriesByAssetResponseDto:
-      type: object
-      properties:
-        data:
-          description: The list of part inventories with part type information.
-          type: array
-          items:
-            $ref: '#/components/schemas/AssetsCfaPartInventoryWithTypeResponseDto'
-      required:
-      - data
+          description: The asset’s installation date (Provide null to unset value)
     AssetCfaResponseDto:
       type: object
       properties:
@@ -717,118 +645,7 @@ components:
           type: string
       required:
       - id
-    AddressCfaBodyDto:
-      type: object
-      properties:
-        company:
-          type: string
-          description: The name of the company or organization associated with the address.
-        street:
-          type: string
-          description: The name of the street for the address.
-        streetNumber:
-          type: string
-          description: The specific number or identifier for the location on the street.
-        zipPostCode:
-          type: string
-          description: The postal or ZIP code for the address.
-        city:
-          type: string
-          description: The name of the city where the address is located.
-        countryProvince:
-          type: string
-          description: The province or state within the country of the address.
-        country:
-          type: string
-          description: The name of the country for the address.
-        other:
-          type: string
-          description: Additional details or descriptions related to the address.
-    OrganizationInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        organizationName:
-          type: string
-        organizationNumber:
-          type: string
-      required:
-      - id
-      - organizationName
-    ContactInfoCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-      required:
-      - id
-    CustomPropertyValueUpdateCfaBodyDto:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: The reference of the custom property the value is assigned to
-        value:
-          anyOf:
-          - type: string
-            format: date
-            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
-          - type: string
-            format: date-time
-            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
-          - type: string
-            format: uri
-            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
-          - type: string
-            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
-          - type: number
-            description: Numeric value (NUMBER type). Integer or decimal number
-          - type: boolean
-            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
-          - type: array
-            items:
-              type: string
-            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
-          description: The value of the custom property (pass null to remove the custom property value)
-      required:
-      - reference
-      - value
-    AssetsCfaPartInventoryWithTypeResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The part inventory's internal ID.
-        storageAssetId:
-          type: string
-          description: The part inventory's storage asset ID.
-        partType:
-          type: object
-          description: The part inventory's part type.
-        availableStock:
-          type: number
-          description: The part inventory's available stock.
-        totalStock:
-          type: number
-          description: The part inventory's total stock.
-        createdAt:
-          type: object
-          description: The part inventory's creation date.
-      required:
-      - id
-      - storageAssetId
-      - partType
-      - availableStock
-      - totalStock
-      - createdAt
-    AssetsCfaUpdateOneBodyDto:
+    AssetCfaCreateOneBodyDto:
       type: object
       properties:
         assetNumber:
@@ -860,10 +677,8 @@ components:
           items:
             type: string
         assignedPersonId:
-          type:
-          - object
-          - 'null'
-          description: The internal ID of the person that will be assigned to the asset (Provide null to unset value)
+          type: string
+          description: The internal ID of the person that will be assigned to the asset
         responsibleUserGroupId:
           type: string
           description: The internal ID of the user group that will be responsible for the asset (Provide either this or the responsibleUserGroupName)
@@ -892,7 +707,7 @@ components:
         customPropertyValues:
           type: array
           items:
-            $ref: '#/components/schemas/CustomPropertyValueUpdateCfaBodyDto'
+            $ref: '#/components/schemas/CustomPropertyValueCreateCfaBodyDto'
         criticality:
           type: string
           enum:
@@ -900,13 +715,120 @@ components:
           - important
           - coreProcess
           - safety
-          description: The asset’s criticality
+          description: The asset’s criticality (default is Non-Critical)
         installationDate:
-          type:
-          - string
-          - 'null'
+          type: string
           format: YYYY-MM-DD
-          description: The asset’s installation date (Provide null to unset value)
+          description: The asset’s installation date
+        isNew:
+          type: boolean
+          description: Determines the initial status of the created asset. If true, the asset will be created with status "new", otherwise with status "running".
+        isRunning:
+          type: boolean
+          default: true
+          deprecated: true
+          description: Deprecated. Use `isNew` instead (inverted semantics).
+      required:
+      - assetNumber
+    AssetsCfaPartInventoryWithTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The part inventory's internal ID.
+        storageAssetId:
+          type: string
+          description: The part inventory's storage asset ID.
+        partType:
+          type: object
+          description: The part inventory's part type.
+        availableStock:
+          type: number
+          description: The part inventory's available stock.
+        totalStock:
+          type: number
+          description: The part inventory's total stock.
+        createdAt:
+          type: object
+          description: The part inventory's creation date.
+      required:
+      - id
+      - storageAssetId
+      - partType
+      - availableStock
+      - totalStock
+      - createdAt
+    CustomPropertyValueUpdateCfaBodyDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          anyOf:
+          - type: string
+            format: date
+            description: 'Date value (DATE type). Format: YYYY-MM-DD (e.g., 2025-10-13)'
+          - type: string
+            format: date-time
+            description: 'DateTime value (DATETIME type). Format: ISO 8601 (e.g., 2025-10-13T16:49:00Z)'
+          - type: string
+            format: uri
+            description: 'URL value (URL type). Format: Valid URI (e.g., https://example.com/path)'
+          - type: string
+            description: Text value (TEXT and TEXTAREA types). Plain text string of any length
+          - type: number
+            description: Numeric value (NUMBER type). Integer or decimal number
+          - type: boolean
+            description: 'Boolean value (CHECKBOX type). Accepts: true or false'
+          - type: array
+            items:
+              type: string
+            description: 'Array of string IDs (SELECT, ASSET_SELECT, CONTACT_SELECT, ORGANIZATION_SELECT types). Format: ["id1", "id2", ...]'
+          description: The value of the custom property (pass null to remove the custom property value)
+      required:
+      - reference
+      - value
+    ContactInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+    AddressCfaBodyDto:
+      type: object
+      properties:
+        company:
+          type: string
+          description: The name of the company or organization associated with the address.
+        street:
+          type: string
+          description: The name of the street for the address.
+        streetNumber:
+          type: string
+          description: The specific number or identifier for the location on the street.
+        zipPostCode:
+          type: string
+          description: The postal or ZIP code for the address.
+        city:
+          type: string
+          description: The name of the city where the address is located.
+        countryProvince:
+          type: string
+          description: The province or state within the country of the address.
+        country:
+          type: string
+          description: The name of the country for the address.
+        other:
+          type: string
+          description: Additional details or descriptions related to the address.
     AssetInfoCfaResponseDto:
       type: object
       properties:
@@ -920,6 +842,64 @@ components:
       - id
       - assetNumber
       - assetType
+    AssetsCfaFindManyInventoriesByAssetResponseDto:
+      type: object
+      properties:
+        data:
+          description: The list of part inventories with part type information.
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetsCfaPartInventoryWithTypeResponseDto'
+      required:
+      - data
+    OrganizationInfoCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        organizationName:
+          type: string
+        organizationNumber:
+          type: string
+      required:
+      - id
+      - organizationName
+    AssetsCfaFindManyResponseDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetListItemCfaResponseDto'
+      required:
+      - data
+    AddressCfaResponseDto:
+      type: object
+      properties:
+        company:
+          type: string
+          description: The name of the company or organization associated with the address.
+        street:
+          type: string
+          description: The name of the street for the address.
+        streetNumber:
+          type: string
+          description: The specific number or identifier for the location on the street.
+        zipPostCode:
+          type: string
+          description: The postal or ZIP code for the address.
+        city:
+          type: string
+          description: The name of the city where the address is located.
+        countryProvince:
+          type: string
+          description: The province or state within the country of the address.
+        country:
+          type: string
+          description: The name of the country for the address.
+        other:
+          type: string
+          description: Additional details or descriptions related to the address.
     AssetListItemCfaResponseDto:
       type: object
       properties:
@@ -989,6 +969,26 @@ components:
       - updatedAt
       - criticality
       - status
+    CustomPropertyValueCfaResponseDto:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: The reference of the custom property the value is assigned to
+        value:
+          type: object
+          description: The value of the custom property
+        associationValue:
+          description: The populated related object value if "customProperties" is present in "associations" query
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AssetInfoCfaResponseDto'
+            - $ref: '#/components/schemas/ContactInfoCfaResponseDto'
+            - $ref: '#/components/schemas/OrganizationInfoCfaResponseDto'
+      required:
+      - reference
+      - value
   securitySchemes:
     authorization:
       type: apiKey

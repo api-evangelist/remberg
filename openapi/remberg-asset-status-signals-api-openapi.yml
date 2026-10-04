@@ -353,6 +353,71 @@ paths:
       x-controller-class: AssetStatusSignalsCfaController
 components:
   schemas:
+    AssetStatusSignalsCfaCreateOneResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The internal ID of the created status signal
+      required:
+      - id
+    AssetStatusSignalsCfaCreateOneBodyDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: The status of the signal (warning, stopped, inactive)
+        comment:
+          type: string
+          description: An optional comment for the status signal
+        reportedAt:
+          type: string
+          format: date-time
+          description: Manual start timestamp (ISO 8601 UTC). Defaults to "now" when omitted.
+        resolvedAt:
+          type: string
+          format: date-time
+          description: Manual end timestamp (ISO 8601 UTC). When set, the signal is created already resolved.
+      required:
+      - status
+    AssetStatusSignalCfaResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The status signal's internal ID.
+        createdAt:
+          type: string
+          format: date-time
+          description: The status signal's creation date
+        reportedAt:
+          type: string
+          format: date-time
+          description: The status signal's start date (when the status began)
+        resolvedAt:
+          type: string
+          format: date-time
+          description: The status signal's resolution date
+        status:
+          type: string
+          enum:
+          - new
+          - running
+          - warning
+          - stopped
+          - inactive
+          description: The status of the signal
+      required:
+      - id
+      - createdAt
+      - reportedAt
+      - status
     AssetStatusSignalWithAssetInfoCfaResponseDto:
       type: object
       properties:
@@ -390,81 +455,16 @@ components:
       - reportedAt
       - status
       - asset
-    AssetStatusSignalCfaResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The status signal's internal ID.
-        createdAt:
-          type: string
-          format: date-time
-          description: The status signal's creation date
-        reportedAt:
-          type: string
-          format: date-time
-          description: The status signal's start date (when the status began)
-        resolvedAt:
-          type: string
-          format: date-time
-          description: The status signal's resolution date
-        status:
-          type: string
-          enum:
-          - new
-          - running
-          - warning
-          - stopped
-          - inactive
-          description: The status of the signal
-      required:
-      - id
-      - createdAt
-      - reportedAt
-      - status
-    AssetStatusSignalsCfaCreateOneResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The internal ID of the created status signal
-      required:
-      - id
-    AssetStatusSignalsCfaFindManyResponseDto:
+    AssetStatusSignalsCfaFindManyWithAssetInfoResponseDto:
       type: object
       properties:
         data:
-          description: Array of asset status signals
+          description: Array of asset status signals with asset information
           type: array
           items:
-            $ref: '#/components/schemas/AssetStatusSignalCfaResponseDto'
+            $ref: '#/components/schemas/AssetStatusSignalWithAssetInfoCfaResponseDto'
       required:
       - data
-    AssetStatusSignalsCfaCreateOneBodyDto:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - new
-          - running
-          - warning
-          - stopped
-          - inactive
-          description: The status of the signal (warning, stopped, inactive)
-        comment:
-          type: string
-          description: An optional comment for the status signal
-        reportedAt:
-          type: string
-          format: date-time
-          description: Manual start timestamp (ISO 8601 UTC). Defaults to "now" when omitted.
-        resolvedAt:
-          type: string
-          format: date-time
-          description: Manual end timestamp (ISO 8601 UTC). When set, the signal is created already resolved.
-      required:
-      - status
     AssetInfoCfaResponseDto:
       type: object
       properties:
@@ -478,14 +478,14 @@ components:
       - id
       - assetNumber
       - assetType
-    AssetStatusSignalsCfaFindManyWithAssetInfoResponseDto:
+    AssetStatusSignalsCfaFindManyResponseDto:
       type: object
       properties:
         data:
-          description: Array of asset status signals with asset information
+          description: Array of asset status signals
           type: array
           items:
-            $ref: '#/components/schemas/AssetStatusSignalWithAssetInfoCfaResponseDto'
+            $ref: '#/components/schemas/AssetStatusSignalCfaResponseDto'
       required:
       - data
   securitySchemes:

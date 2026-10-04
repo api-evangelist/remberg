@@ -964,84 +964,6 @@ components:
       - name
       - lang
       - tz
-    OrganizationsCfaFindManyResponseDto:
-      type: object
-      properties:
-        count:
-          type: number
-        organizations:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationCfaResponseDto'
-      required:
-      - count
-      - organizations
-    AddressCfaResponseDto:
-      type: object
-      properties:
-        company:
-          type: string
-          description: The name of the company or organization associated with the address.
-        street:
-          type: string
-          description: The name of the street for the address.
-        streetNumber:
-          type: string
-          description: The specific number or identifier for the location on the street.
-        zipPostCode:
-          type: string
-          description: The postal or ZIP code for the address.
-        city:
-          type: string
-          description: The name of the city where the address is located.
-        countryProvince:
-          type: string
-          description: The province or state within the country of the address.
-        country:
-          type: string
-          description: The name of the country for the address.
-        other:
-          type: string
-          description: Additional details or descriptions related to the address.
-    ContactsCfaFindManyResponseDto:
-      type: object
-      properties:
-        count:
-          type: number
-        contacts:
-          type: array
-          items:
-            type: string
-      required:
-      - count
-      - contacts
-    AddressCfaBodyDto:
-      type: object
-      properties:
-        company:
-          type: string
-          description: The name of the company or organization associated with the address.
-        street:
-          type: string
-          description: The name of the street for the address.
-        streetNumber:
-          type: string
-          description: The specific number or identifier for the location on the street.
-        zipPostCode:
-          type: string
-          description: The postal or ZIP code for the address.
-        city:
-          type: string
-          description: The name of the city where the address is located.
-        countryProvince:
-          type: string
-          description: The province or state within the country of the address.
-        country:
-          type: string
-          description: The name of the country for the address.
-        other:
-          type: string
-          description: Additional details or descriptions related to the address.
     OrganizationsCfaCreateOneBodyDto:
       type: object
       properties:
@@ -1607,6 +1529,18 @@ components:
           description: The time zone in which the organization operates.
       required:
       - name
+    OrganizationsCfaFindManyResponseDto:
+      type: object
+      properties:
+        count:
+          type: number
+        organizations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationCfaResponseDto'
+      required:
+      - count
+      - organizations
     OrganizationsCfaUpdateOneBodyDto:
       type: object
       properties:
@@ -2170,6 +2104,33 @@ components:
           - America/Montevideo
           - America/Caracas
           description: The time zone in which the organization operates.
+    AddressCfaBodyDto:
+      type: object
+      properties:
+        company:
+          type: string
+          description: The name of the company or organization associated with the address.
+        street:
+          type: string
+          description: The name of the street for the address.
+        streetNumber:
+          type: string
+          description: The specific number or identifier for the location on the street.
+        zipPostCode:
+          type: string
+          description: The postal or ZIP code for the address.
+        city:
+          type: string
+          description: The name of the city where the address is located.
+        countryProvince:
+          type: string
+          description: The province or state within the country of the address.
+        country:
+          type: string
+          description: The name of the country for the address.
+        other:
+          type: string
+          description: Additional details or descriptions related to the address.
     PhoneNumberCfaResponseDto:
       type: object
       properties:
@@ -2188,6 +2149,45 @@ components:
         countryPrefix:
           type: string
           pattern: ^[0-9]{1,3}$
+    ContactsCfaFindManyResponseDto:
+      type: object
+      properties:
+        count:
+          type: number
+        contacts:
+          type: array
+          items:
+            type: string
+      required:
+      - count
+      - contacts
+    AddressCfaResponseDto:
+      type: object
+      properties:
+        company:
+          type: string
+          description: The name of the company or organization associated with the address.
+        street:
+          type: string
+          description: The name of the street for the address.
+        streetNumber:
+          type: string
+          description: The specific number or identifier for the location on the street.
+        zipPostCode:
+          type: string
+          description: The postal or ZIP code for the address.
+        city:
+          type: string
+          description: The name of the city where the address is located.
+        countryProvince:
+          type: string
+          description: The province or state within the country of the address.
+        country:
+          type: string
+          description: The name of the country for the address.
+        other:
+          type: string
+          description: Additional details or descriptions related to the address.
   securitySchemes:
     authorization:
       type: apiKey
