@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.remberg.de/openapi/contacts.json",
+ "requested_url": "https://developers.remberg.de/openapi/contacts.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 8944,
+ "sha256": "2a7bf96f5deba433222f5eb32532687a994d96f05d2d40f7a2df6d7b197fc45c",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
