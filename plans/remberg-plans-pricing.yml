@@ -53,3 +53,43 @@ plans:
 rate_limit_statements:
 - Date Range 90 days
 - Procedure Templates 1 3 Unlimited Unlimited
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - seat
+  units:
+  - seat
+  plans:
+  - name: FREE
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: ESSENTIAL
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: PREMIUM
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: ENTERPRISE
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
