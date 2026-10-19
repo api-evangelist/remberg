@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.remberg.de/openapi/files.json",
+ "requested_url": "https://developers.remberg.de/openapi/files.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 22046,
+ "sha256": "9ebf3a8637f5f1786e1b738106ebc365c85eef3f79538e92dd439b537437f3f7",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

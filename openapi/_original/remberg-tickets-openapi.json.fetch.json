@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.remberg.de/openapi/tickets.json",
+ "requested_url": "https://developers.remberg.de/openapi/tickets.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 25299,
+ "sha256": "8359e7f3c6c8f4cccbb5a01f88703bb2c12dd1795af45bfbb3739c626e99983d",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

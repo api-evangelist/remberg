@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.remberg.de/openapi/work-orders.json",
+ "requested_url": "https://developers.remberg.de/openapi/work-orders.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 95759,
+ "sha256": "1ae9b6663c12af9b396c4a31c00d855467ac2d10ec15fed8da7443615caeb541",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
